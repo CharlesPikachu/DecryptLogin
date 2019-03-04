@@ -6,9 +6,20 @@ You can star this repository to keep track of the project if it's helpful for yo
 
 # Done
 #### weibo(only support mobile)
-- [code](./login/weibo.py)
+- [ ] PC
+- [x] [mobile](./login/weibo.py)
 #### douban(only support pc)
-- code
+- [x] [PC](./login/douban.py)
+- [ ] mobile
+#### QQ zone
+- [ ] PC
+- [ ] mobile
+#### GitHub
+- [ ] PC
+- [ ] mobile
+
+# Usage
+preparing
 
 # More
 #### WeChat Official Accounts

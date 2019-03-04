@@ -1,6 +1,8 @@
 '''
 Function:
-	微博模拟登录(https://m.weibo.cn/)
+	微博模拟登录:
+		--PC端暂不支持
+		--https://m.weibo.cn/(移动端)
 Author:
 	Charles
 微信公众号:
@@ -8,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-02-25
+	2019-03-04
 '''
 import requests
 
@@ -66,7 +68,7 @@ class weibo():
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		elif version == 'pc':
-			pass
+			return None
 		else:
 			raise ValueError('Unsupport argument in weibo.login -> version %s, expect <mobile> or <pc>...' % version)
 
