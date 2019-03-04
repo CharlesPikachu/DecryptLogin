@@ -10,7 +10,7 @@ GitHub:
 更新日期:
 	2019-03-04
 '''
-from platforms import *
+from .platforms import *
 
 
 '''模拟登录'''
@@ -25,9 +25,3 @@ class Login():
 		return github.github().login(username, password, version)
 	def __repr__(self):
 		return self.info
-
-
-'''test'''
-if __name__ == '__main__':
-	l = Login()
-	print(l)
