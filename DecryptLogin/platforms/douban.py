@@ -1,3 +1,4 @@
+# coding: utf-8
 '''
 Function:
 	豆瓣模拟登录

@@ -21,8 +21,36 @@ You can star this repository to keep track of the project if it's helpful for yo
 - [ ] PC
 - [ ] mobile
 
+# Install
+### Use setup.py
+#### Step1
+```sh
+git clone https://github.com/CharlesPikachu/DecryptLogin.git
+```
+#### Step2
+```sh
+cd DecryptLogin -> run "python setup.py install"
+```
+### Use install
+```sh
+pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
+```
+
 # Usage
-preparing
+#### Example
+```sh
+from DecryptLogin import login
+l = login.Login()
+session = l.douban(username[telephone number], password, 'pc')
+session = l.github(username[email], password, 'pc')
+session = l.weibo(username[telephone number], password, 'mobile')
+```
+#### Explain
+```sh
+username: your username.
+password: your password.
+version: pc/mobile.
+```
 
 # More
 #### WeChat Official Accounts

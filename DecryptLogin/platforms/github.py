@@ -1,3 +1,4 @@
+# coding: utf-8
 '''
 Function:
 	GitHub模拟登录
