@@ -62,7 +62,6 @@ class weibo():
 					}
 			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
 			if res.json()['retcode'] == 20000000:
-				self.session.headers.update(self.login_headers)
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				return self.session
 			else:

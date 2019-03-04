@@ -5,16 +5,22 @@ You can star this repository to keep track of the project if it's helpful for yo
 ```
 
 # Done
-#### weibo(only support mobile)
+#### weibo
 - [ ] PC
-- [x] [mobile](./login/weibo.py)
-#### douban(only support pc)
-- [x] [PC](./login/douban.py)
+- [x] [mobile](https://m.weibo.cn/) -> in weibo.py
+#### douban
+- [x] [PC](https://www.douban.com/) -> in douban.py
 - [ ] mobile
 #### QQ zone
 - [ ] PC
 - [ ] mobile
 #### GitHub
+- [x] [PC](https://github.com/) -> in github.py
+- [ ] mobile
+#### WeChat
+- [ ] PC
+- [ ] mobile
+#### jianshu
 - [ ] PC
 - [ ] mobile
 

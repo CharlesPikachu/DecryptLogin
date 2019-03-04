@@ -59,7 +59,6 @@ class douban():
 					}
 			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
 			if res.json()['status'] == 'success':
-				self.session.headers.update(self.login_headers)
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				return self.session
 			else:
