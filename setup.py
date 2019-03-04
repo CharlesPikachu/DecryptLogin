@@ -10,13 +10,13 @@ GitHub:
 更新日期:
 	2019-03-04
 '''
+import DecryptLogin
 from setuptools import setup, find_packages
 
 
 setup(
 	name='DecryptLogin',
-	version='0.1.0',
-	scripts=['login.py'],
+	version=DecryptLogin.__version__,
 	description='Login some website using requests.',
 	classifiers=[
 			'License :: OSI Approved :: MIT License',
