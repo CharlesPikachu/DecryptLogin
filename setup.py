@@ -16,6 +16,7 @@ from setuptools import setup, find_packages
 setup(
 	name='DecryptLogin',
 	version='0.1.0',
+	scripts=['login.py'],
 	description='Login some website using requests.',
 	classifiers=[
 			'License :: OSI Approved :: MIT License',
@@ -26,7 +27,7 @@ setup(
 	url='https://github.com/CharlesPikachu/DecryptLogin',
 	author_email='charlesjzc@qq.com',
 	license='MIT',
-	include_package_data=False,
+	include_package_data=True,
 	zip_safe=True,
 	packages=find_packages()
 )
