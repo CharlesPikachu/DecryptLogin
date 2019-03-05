@@ -4,6 +4,9 @@ Login some website using requests.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
 ```
 
+# Introduction in Chinese
+https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
+
 # Done
 #### weibo
 - [ ] PC
