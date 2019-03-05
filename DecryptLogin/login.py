@@ -9,7 +9,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-04
+	2019-03-05
 '''
 try:
 	from .platforms import *
@@ -33,6 +33,9 @@ class Login():
 	'''网易云音乐'''
 	def music163(self, username, password, version='pc'):
 		return music163.music163().login(username, password, version)
+	'''12306'''
+	def zt12306(self, username, password, version='pc'):
+		return zt12306.zt12306().login(username, password, version)
 	'''Info'''
 	def __repr__(self):
 		return self.info

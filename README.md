@@ -23,6 +23,9 @@ You can star this repository to keep track of the project if it's helpful for yo
 #### Music163
 - [x] [PC](https://music.163.com/) → in src/platforms/music163.py
 - [ ] mobile
+#### 12306
+- [x] [PC](https://www.12306.cn/index/) → in src/platforms/zt12306.py
+- [ ] mobile
 
 # Install
 ### Use setup.py
@@ -48,6 +51,7 @@ session = l.douban(username[telephone], password, 'pc')
 session = l.github(username[email], password, 'pc')
 session = l.weibo(username[telephone], password, 'mobile')
 session = l.music163(username[telephone/email], password, 'pc')
+session = l.zt12306(username[telephone], password, 'pc')
 ```
 #### Explain
 ```sh
