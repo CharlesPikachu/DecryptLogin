@@ -63,7 +63,7 @@ class github():
 					'password': password
 					}
 			res = self.session.post(self.post_url, headers=self.login_headers, data=data)
-			if res.status_code == 200:
+			if res.status_code == 200 and 'Sign in to GitHub · GitHub' not in res.text:
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				return self.session
 			else:
