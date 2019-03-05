@@ -7,15 +7,15 @@ You can star this repository to keep track of the project if it's helpful for yo
 # Done
 #### weibo
 - [ ] PC
-- [x] [mobile](https://m.weibo.cn/) -> in src/platforms/weibo.py
+- [x] [mobile](https://m.weibo.cn/) → in src/platforms/weibo.py
 #### douban
-- [x] [PC](https://www.douban.com/) -> in src/platforms/douban.py
+- [x] [PC](https://www.douban.com/) → in src/platforms/douban.py
 - [ ] mobile
 #### QQ zone
 - [ ] PC
 - [ ] mobile
 #### GitHub
-- [x] [PC](https://github.com/) -> in src/platforms/github.py
+- [x] [PC](https://github.com/) → in src/platforms/github.py
 - [ ] mobile
 #### WeChat
 - [ ] PC
