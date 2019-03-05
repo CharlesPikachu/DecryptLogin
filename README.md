@@ -20,6 +20,9 @@ You can star this repository to keep track of the project if it's helpful for yo
 #### WeChat
 - [ ] PC
 - [ ] mobile
+#### Music163
+- [x] [PC](https://music.163.com/) → in src/platforms/music163.py
+- [ ] mobile
 
 # Install
 ### Use setup.py
@@ -41,9 +44,10 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```sh
 from DecryptLogin import login
 l = login.Login()
-session = l.douban(username[telephone number], password, 'pc')
+session = l.douban(username[telephone], password, 'pc')
 session = l.github(username[email], password, 'pc')
-session = l.weibo(username[telephone number], password, 'mobile')
+session = l.weibo(username[telephone], password, 'mobile')
+session = l.music163(username[telephone/email], password, 'pc')
 ```
 #### Explain
 ```sh

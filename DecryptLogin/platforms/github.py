@@ -76,6 +76,7 @@ class github():
 		token = re.findall(r'authenticity_token.*?value="(.*?)"', res.text)[0]
 		return token
 
+
 '''test'''
 if __name__ == '__main__':
 	github().login('', '')
