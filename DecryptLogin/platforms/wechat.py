@@ -19,7 +19,10 @@ import json
 import time
 import requests
 import xml.dom.minidom
-from utils.utils import *
+try:
+	from .utils.utils import *
+except:
+	from utils.utils import *
 
 
 '''

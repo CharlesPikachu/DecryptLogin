@@ -16,7 +16,10 @@ GitHub:
 import os
 import time
 import requests
-from utils.utils import *
+try:
+	from .utils.utils import *
+except:
+	from utils.utils import *
 
 
 '''
