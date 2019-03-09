@@ -131,9 +131,9 @@ class wechat():
 	'''微信初始化'''
 	def __initWechat(self, params):
 		self.base_uri = self.redirect_uri[:self.redirect_uri.rfind('/')]
-		url = self.base_uri + '/webwxinit?pass_ticket={}&skey={}&r={}'.format(kwargs.get('pass_ticket'), kwargs.get('skey'), int(time.time()))
+		url = self.base_uri + '/webwxinit?pass_ticket={}&skey={}&r={}'.format(params.get('pass_ticket'), params.get('skey'), int(time.time()))
 		data = {
-					'BaseRequest': {'Uin': int(kwargs.get('wxuin')), 'Sid': kwargs.get('wxsid'), 'Skey': kwargs.get('skey'), 'DeviceID': 'e000000000000000'}
+					'BaseRequest': {'Uin': int(params.get('wxuin')), 'Sid': params.get('wxsid'), 'Skey': params.get('skey'), 'DeviceID': 'e000000000000000'}
 				}
 		headers = self.headers
 		headers['ContentType'] = 'application/json; charset=UTF-8'
