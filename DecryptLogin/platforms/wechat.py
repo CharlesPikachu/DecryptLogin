@@ -58,7 +58,6 @@ class wechat():
 			while True:
 				code = self.__isVerifyQR(tip, uuid)
 				if code == '200':
-					os.remove(os.path.join(self.cur_path, 'vcode.jpg'))
 					break
 				elif code == '201':
 					tip = 0
