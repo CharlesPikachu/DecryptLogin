@@ -143,7 +143,7 @@ class wechat():
 		user = info['User']
 		error_msg = info['BaseResponse']['ErrMsg']
 		ret = info['BaseResponse']['Ret']
-		return ret, user, error_msg
+		return ret, user.get('NickName'), error_msg
 
 
 '''test'''
