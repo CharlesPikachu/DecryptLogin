@@ -36,6 +36,9 @@ class Login():
 	'''12306'''
 	def zt12306(self, username, password, version='pc'):
 		return zt12306.zt12306().login(username, password, version)
+	'''微信'''
+	def wechat(self, username=None, password=None, version='pc'):
+		return wechat.wechat().login(username, password, version)
 	'''Info'''
 	def __repr__(self):
 		return self.info

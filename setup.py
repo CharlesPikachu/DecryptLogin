@@ -29,7 +29,7 @@ setup(
 	author_email='charlesjzc@qq.com',
 	license='MIT',
 	include_package_data=True,
-	install_requires=['requests', 'pycryptodome', 'pillow'],
+	install_requires=['requests', 'pycryptodome'],
 	zip_safe=True,
 	packages=find_packages()
 )

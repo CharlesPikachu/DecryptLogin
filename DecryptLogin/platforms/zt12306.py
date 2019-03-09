@@ -11,12 +11,12 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-05
+	2019-03-09
 '''
 import os
 import time
 import requests
-from PIL import Image
+from utils.utils import *
 
 
 '''
@@ -68,14 +68,12 @@ class zt12306():
 	'''下载验证码'''
 	def __downloadVcode(self):
 		res = self.session.get(self.vcode_url, headers=self.headers)
-		with open(os.path.join(self.cur_path, 'vcode.jpg'), 'wb') as f:
-			f.write(res.content)
+		saveImage(res.content, os.path.join(self.cur_path, 'vcode.jpg'))
 		return True
 	'''验证码验证'''
 	def __verifyVcode(self):
 		img_path = os.path.join(self.cur_path, 'vcode.jpg')
-		img = Image.open(img_path)
-		img.show()
+		showImage(img_path)
 		user_enter = input('Enter the positions of verification code, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
 		verify_list = []
 		for each in user_enter.split(','):
@@ -90,7 +88,7 @@ class zt12306():
 				'rand': 'sjrand'
 				}
 		res = self.session.post(url=self.verify_url, headers=self.headers, data=data)
-		os.remove(img_path)
+		removeImage(img_path)
 		if res.json()['result_code'] == '4':
 			return True
 		else:

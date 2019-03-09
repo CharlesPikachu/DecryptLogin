@@ -21,7 +21,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 - [x] [PC](https://github.com/) → in src/platforms/github.py
 - [ ] mobile
 #### WeChat
-- [x] PC
+- [x] [PC](https://wx.qq.com/) → in src/platforms/wechat.py
 - [ ] mobile
 #### Music163
 - [x] [PC](https://music.163.com/) → in src/platforms/music163.py
