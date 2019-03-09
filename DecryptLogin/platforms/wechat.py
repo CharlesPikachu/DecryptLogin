@@ -129,7 +129,7 @@ class wechat():
 			removeImage(os.path.join(self.cur_path, 'vcode.jpg'))
 		return code
 	'''微信初始化'''
-	def __initWechat(self, **kwargs):
+	def __initWechat(self, params):
 		self.base_uri = self.redirect_uri[:self.redirect_uri.rfind('/')]
 		url = self.base_uri + '/webwxinit?pass_ticket={}&skey={}&r={}'.format(kwargs.get('pass_ticket'), kwargs.get('skey'), int(time.time()))
 		data = {
