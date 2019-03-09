@@ -21,7 +21,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 - [x] [PC](https://github.com/) → in src/platforms/github.py
 - [ ] mobile
 #### WeChat
-- [ ] PC
+- [x] PC
 - [ ] mobile
 #### Music163
 - [x] [PC](https://music.163.com/) → in src/platforms/music163.py
@@ -47,7 +47,7 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 
 # Usage
 #### Example
-```sh
+```python
 from DecryptLogin import login
 l = login.Login()
 session = l.douban(username[telephone], password, 'pc')
@@ -55,6 +55,7 @@ session = l.github(username[email], password, 'pc')
 session = l.weibo(username[telephone], password, 'mobile')
 session = l.music163(username[telephone/email], password, 'pc')
 session = l.zt12306(username[telephone], password, 'pc')
+session = l.wechat('pc')
 ```
 #### Explain
 ```sh
