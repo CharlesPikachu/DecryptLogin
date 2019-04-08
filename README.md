@@ -42,7 +42,7 @@ git clone https://github.com/CharlesPikachu/DecryptLogin.git
 ```sh
 cd DecryptLogin -> run "python setup.py install"
 ```
-### Use install
+### Use pip
 ```sh
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
