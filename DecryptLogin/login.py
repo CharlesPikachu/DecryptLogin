@@ -20,7 +20,7 @@ except:
 '''模拟登录'''
 class Login():
 	def __init__(self, **kwargs):
-		self.info = 'Login some website using requests, support douban, weibo and gitHub now.'
+		self.info = 'Login some website using requests.'
 	'''豆瓣'''
 	def douban(self, username, password, version='pc'):
 		return douban.douban().login(username, password, version)
