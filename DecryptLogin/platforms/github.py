@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-04
+	2019-12-06
 '''
 import re
 import requests
@@ -30,29 +30,14 @@ Detail:
 '''
 class github():
 	def __init__(self, **kwargs):
-		self.login_headers = {
-								'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-								'Accept-Encoding': 'gzip, deflate, br',
-								'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-								'Cache-Control': 'no-cache',
-								'Connection': 'keep-alive',
-								'Content-Length': '196',
-								'Content-Type': 'application/x-www-form-urlencoded',
-								'Host': 'github.com',
-								'Origin': 'https://github.com',
-								'Pragma': 'no-cache',
-								'Referer': 'https://github.com/login',
-								'Upgrade-Insecure-Requests': '1',
-								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-							}
-		self.login_url = 'https://github.com/login'
-		self.post_url = 'https://github.com/session'
+		self.info = 'github'
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
+			self.__initializePC()
 			token = self.__getToken()
 			data = {
 					'commit': 'Sign in',
@@ -74,8 +59,30 @@ class github():
 		res = self.session.get(self.login_url)
 		token = re.findall(r'authenticity_token.*?value="(.*?)"', res.text)[0]
 		return token
+	'''初始化PC端'''
+	def __initializePC(self):
+		self.login_headers = {
+								'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+								'Accept-Encoding': 'gzip, deflate, br',
+								'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+								'Cache-Control': 'no-cache',
+								'Connection': 'keep-alive',
+								'Content-Length': '196',
+								'Content-Type': 'application/x-www-form-urlencoded',
+								'Host': 'github.com',
+								'Origin': 'https://github.com',
+								'Pragma': 'no-cache',
+								'Referer': 'https://github.com/login',
+								'Upgrade-Insecure-Requests': '1',
+								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+							}
+		self.login_url = 'https://github.com/login'
+		self.post_url = 'https://github.com/session'
+	'''初始化移动端'''
+	def __initializeMobile(self):
+		pass
 
 
 '''test'''
 if __name__ == '__main__':
-	github().login('', '')
+	github().login('CharlesPikachu', 'jinzc960108')

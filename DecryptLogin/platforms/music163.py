@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-05
+	2019-12-06
 '''
 import os
 import json
@@ -74,24 +74,14 @@ Detail:
 '''
 class music163():
 	def __init__(self, **kwargs):
-		self.login_headers = {
-								'Accept':'*/*',
-								'Accept-Language':'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
-								'Connection':'keep-alive',
-								'Content-Type':'application/x-www-form-urlencoded',
-								'Referer':'http://music.163.com',
-								'Host':'music.163.com',
-								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-							}
-		self.login_url_email = 'http://music.163.com/weapi/login?csrf_token='
-		self.login_url_phone = 'http://music.163.com/weapi/login/cellphone?csrf_token='
-		self.cracker = Cracker()
+		self.info = 'music163'
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
+			self.__initializePC()
 			account_type = self.__getAccountType(username)
 			md5 = hashlib.md5()
 			md5.update(password.encode('utf-8'))
@@ -107,7 +97,7 @@ class music163():
 			else:
 				data['username'] = username
 				data = self.cracker.get(data)
-				res = self.session.post(self.login_url_phone, headers=self.login_headers, data=data)
+				res = self.session.post(self.login_url_email, headers=self.login_headers, data=data)
 			if res.json()['code'] == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				return self.session
@@ -123,6 +113,23 @@ class music163():
 		except:
 			account_type = 'email'
 		return account_type
+	'''初始化PC端'''
+	def __initializePC(self):
+		self.login_headers = {
+								'Accept':'*/*',
+								'Accept-Language':'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
+								'Connection':'keep-alive',
+								'Content-Type':'application/x-www-form-urlencoded',
+								'Referer':'http://music.163.com',
+								'Host':'music.163.com',
+								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+							}
+		self.login_url_email = 'http://music.163.com/weapi/login?csrf_token='
+		self.login_url_phone = 'http://music.163.com/weapi/login/cellphone?csrf_token='
+		self.cracker = Cracker()
+	'''初始化移动端'''
+	def __initializeMobile(self):
+		pass
 
 
 '''test'''

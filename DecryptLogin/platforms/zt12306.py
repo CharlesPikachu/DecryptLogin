@@ -10,12 +10,12 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-09
+	2019-12-06
 '''
 import os
 import time
 import requests
-from ..utils.utils import *
+from utils import *
 
 
 '''
@@ -32,13 +32,7 @@ Detail:
 '''
 class zt12306():
 	def __init__(self, **kwargs):
-		self.headers = {
-							'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-						}
-		self.positions = ['36,46', '109,44', '181,47', '254,44', '33,112', '105,116', '186,116', '253,115']
-		self.vcode_url = 'https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&module=login&rand=sjrand&0.5579044251920726'
-		self.verify_url = 'https://kyfw.12306.cn/passport/captcha/captcha-check'
-		self.login_url = 'https://kyfw.12306.cn/passport/web/login'
+		self.info = 'zt12306'
 		self.cur_path = os.path.abspath(os.path.dirname(__file__))
 		self.session = requests.Session()
 	'''登录函数'''
@@ -46,6 +40,7 @@ class zt12306():
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
+			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
 			res = self.__verifyVcode()
@@ -92,6 +87,18 @@ class zt12306():
 			return True
 		else:
 			return False
+	'''初始化PC端'''
+	def __initializePC(self):
+		self.headers = {
+							'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+						}
+		self.positions = ['36,46', '109,44', '181,47', '254,44', '33,112', '105,116', '186,116', '253,115']
+		self.vcode_url = 'https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&module=login&rand=sjrand&0.5579044251920726'
+		self.verify_url = 'https://kyfw.12306.cn/passport/captcha/captcha-check'
+		self.login_url = 'https://kyfw.12306.cn/passport/web/login'
+	'''初始化移动端'''
+	def __initializeMobile(self):
+		pass
 
 
 '''test'''
