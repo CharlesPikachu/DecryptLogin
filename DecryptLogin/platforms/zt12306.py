@@ -1,4 +1,3 @@
-# coding: utf-8
 '''
 Function:
 	12306模拟登录

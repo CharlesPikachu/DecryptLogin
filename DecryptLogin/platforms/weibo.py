@@ -1,4 +1,3 @@
-# coding: utf-8
 '''
 Function:
 	微博模拟登录:

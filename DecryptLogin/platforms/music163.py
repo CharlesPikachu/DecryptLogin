@@ -1,4 +1,3 @@
-# coding: utf-8
 '''
 Function:
 	网易云音乐模拟登录

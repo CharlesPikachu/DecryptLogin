@@ -1,4 +1,3 @@
-# coding: utf-8
 '''
 Function:
 	工具函数
