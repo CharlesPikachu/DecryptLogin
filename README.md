@@ -54,6 +54,7 @@ session = l.github(username[email], password, 'pc')
 session = l.weibo(username[telephone], password, 'mobile')
 session = l.music163(username[telephone/email], password, 'pc')
 session = l.zt12306(username[telephone], password, 'pc')
+session = l.QQZone('mobile')
 ```
 #### Explain
 ```
