@@ -1,1 +1,1 @@
-__all__ = ['douban', 'github', 'weibo', 'music163', 'zt12306', 'wechat']
+__all__ = ['douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone']

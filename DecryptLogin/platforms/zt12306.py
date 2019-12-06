@@ -33,7 +33,7 @@ Detail:
 class zt12306():
 	def __init__(self, **kwargs):
 		self.info = 'zt12306'
-		self.cur_path = os.path.abspath(os.path.dirname(__file__))
+		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, version='pc'):

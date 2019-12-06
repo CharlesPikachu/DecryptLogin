@@ -35,6 +35,9 @@ class Login():
 	'''12306'''
 	def zt12306(self, username, password, version='pc'):
 		return zt12306.zt12306().login(username, password, version)
+	'''QQ空间'''
+	def QQZone(self, username='', password='', version='mobile'):
+		return QQZone.QQZone().login(username, password)
 	'''Info'''
 	def __repr__(self):
 		return self.info
