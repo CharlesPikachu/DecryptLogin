@@ -18,7 +18,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 - [ ] mobile
 #### QQ zone
 - [ ] PC
-- [x] mobile(https://ssl.ptlogin2.qq.com/ptqrlogin) → in src/platforms/QQZone.py
+- [x] [mobile](https://ssl.ptlogin2.qq.com/ptqrlogin) → in src/platforms/QQZone.py
 #### GitHub
 - [x] [PC](https://github.com/) → in src/platforms/github.py
 - [ ] mobile
