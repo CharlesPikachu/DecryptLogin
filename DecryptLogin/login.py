@@ -1,6 +1,6 @@
 '''
 Function:
-	模拟登录
+	requests模拟登录
 Author:
 	Charles
 微信公众号:
@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-05
+	2019-12-06
 '''
 try:
 	from .platforms import *
