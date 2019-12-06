@@ -15,7 +15,7 @@ GitHub:
 import os
 import time
 import requests
-from ..utils import *
+from ..utils.utils import *
 
 
 '''

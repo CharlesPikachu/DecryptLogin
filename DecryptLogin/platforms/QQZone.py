@@ -18,7 +18,7 @@ import time
 import random
 import warnings
 import requests
-from ..utils import *
+from ..utils.utils import *
 warnings.filterwarnings('ignore')
 
 
