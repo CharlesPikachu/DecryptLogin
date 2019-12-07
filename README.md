@@ -9,28 +9,16 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 #### Some Examples
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
 
-# Done
-#### weibo
-- [ ] PC
-- [x] [mobile](https://m.weibo.cn/) → in src/platforms/weibo.py
-#### douban
-- [x] [PC](https://www.douban.com/) → in src/platforms/douban.py
-- [ ] mobile
-#### GitHub
-- [x] [PC](https://github.com/) → in src/platforms/github.py
-- [ ] mobile
-#### Music163
-- [x] [PC](https://music.163.com/) → in src/platforms/music163.py
-- [ ] mobile
-#### 12306
-- [x] [PC](https://www.12306.cn/index/) → in src/platforms/zt12306.py
-- [ ] mobile
-#### QQ zone
-- [ ] PC
-- [x] [mobile](https://ssl.ptlogin2.qq.com/ptqrlogin) → in src/platforms/QQZone.py
-#### QQ Qun
-- [ ] PC
-- [x] [mobile](http://ui.ptlogin2.qq.com/cgi-bin/login?appid=549000912&s_url=http://qun.qq.com/member.html) → in src/platforms/QQQun.py
+# Support List
+|  Websites        | support PC API?                     |  support mobile API?              |
+|  :----:          | :----:                              |  :----:                           |
+|  weibo           | No                                  |  [Yes](./src/platforms/weibo.py)  |
+|  douban          | [Yes](./src/platforms/douban.py)    |  No                               |
+|  GitHub          | [Yes](./src/platforms/github.py)    |  No                               |
+|  Music163        | [Yes](./src/platforms/music163.py)  |  No                               |
+|  12306           | [Yes](./src/platforms/zt12306.py)   |  No                               |
+|  QQZone          | No                                  |  [Yes](./src/platforms/QQZone.py) |
+|  QQQun           | No                                  |  [Yes](./src/platforms/QQQun.py)  |
 
 # Install
 ### Use setup.py
