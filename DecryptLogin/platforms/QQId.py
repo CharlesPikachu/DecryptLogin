@@ -86,7 +86,7 @@ class QQId():
 							't': '1',
 							'g': '1',
 							'from_ui': '1',
-							'ptlang': '2052'
+							'ptlang': '2052',
 							'action': '0-0-' + str(int(time.time())),
 							'js_ver': '19112817',
 							'js_type': '1',
