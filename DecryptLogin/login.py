@@ -41,6 +41,9 @@ class Login():
 	'''QQ群'''
 	def QQQun(self, username='', password='', version='mobile'):
 		return QQQun.QQQun().login(username, password)
+	'''QQ安全中心'''
+	def QQId(self, username='', password='', version='mobile'):
+		return QQId.QQId().login(username, password)
 	'''Info'''
 	def __repr__(self):
 		return self.info

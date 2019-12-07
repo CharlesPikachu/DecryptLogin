@@ -19,6 +19,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |
 |  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |
 |  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |
+|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |
 
 # Install
 ### Use setup.py
@@ -36,7 +37,7 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
 
 # Usage
-#### Example
+#### Examples
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -47,6 +48,7 @@ session = lg.music163(username[telephone/email], password, 'pc')
 session = lg.zt12306(username[telephone], password, 'pc')
 session = lg.QQZone('mobile')
 session = lg.QQQun('mobile')
+session = lg.QQId('mobile')
 ```
 #### Arguments
 ```

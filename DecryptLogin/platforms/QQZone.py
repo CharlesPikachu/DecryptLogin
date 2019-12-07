@@ -2,7 +2,7 @@
 Function:
 	QQ空间模拟登录
 		--PC端暂不支持
-		--https://ssl.ptlogin2.qq.com/ptqrlogin(移动端)
+		--https://z.qzone.com/download.html(移动端)
 Author:
 	Charles
 微信公众号:

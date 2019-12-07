@@ -1,8 +1,8 @@
 '''
 Function:
-	QQ群模拟登录
+	QQ安全中心模拟登录
 		--PC端暂不支持
-		--http://qun.qq.com/member.html(移动端)
+		--https://id.qq.com/index.html(移动端)
 Author:
 	Charles
 微信公众号:
@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 
 '''
 Function:
-	QQ群模拟登录
+	QQ安全中心模拟登录
 Detail:
 	-login:
 		Input:
@@ -34,9 +34,9 @@ Detail:
 		Return:
 			--session: 登录后的requests.Session()
 '''
-class QQQun():
+class QQId():
 	def __init__(self, **kwargs):
-		self.info = 'QQQun'
+		self.info = 'QQId'
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
@@ -46,21 +46,27 @@ class QQQun():
 			self.__initializeMobile()
 			# 获取pt_login_sig
 			params = {
-						'appid': '549000912',
-						's_url': 'http://qun.qq.com/member.html'
+						'pt_disable_pwd': '1',
+						'appid': '1006102',
+						'daid': '1',
+						'style': '23',
+						'hide_border': '1',
+						'proxy_url': 'https://id.qq.com/login/proxy.html',
+						's_url': 'https://id.qq.com/index.html'
 					}
-			res = self.session.get(self.login_url, headers=self.headers, verify=False, params=params)
+			res = self.session.get(self.xlogin_url, headers=self.headers, verify=False, params=params)
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			pt_login_sig = all_cookies['pt_login_sig']
 			# 获得ptqrtoken
 			params = {
-						'appid': '549000912',
+						'appid': '1006102',
 						'e': '2',
 						'l': 'M',
 						's': '3',
 						'd': '72',
 						'v': '4',
 						't': str(random.random()),
+						'daid': '1',
 						'pt_3rd_aid': '0'
 					}
 			res = self.session.get(self.qrshow_url, headers=self.headers, verify=False, params=params)
@@ -73,20 +79,22 @@ class QQQun():
 			# 检测二维码状态
 			while True:
 				params = {
-							'u1': 'http://qun.qq.com/member.html',
+							'u1': 'https://id.qq.com/index.html',
 							'ptqrtoken': ptqrtoken,
 							'ptredirect': '1',
 							'h': '1',
 							't': '1',
 							'g': '1',
 							'from_ui': '1',
-							'ptlang': '2052',
+							'ptlang': '2052'
 							'action': '0-0-' + str(int(time.time())),
 							'js_ver': '19112817',
 							'js_type': '1',
 							'login_sig': pt_login_sig,
 							'pt_uistyle': '40',
-							'aid': '549000912',
+							'aid': '1006102',
+							'daid': '1',
+							'ptdrvs': 'tdFUBPqGbsl12CBHGONGr1T3rqmzLwCrhYVcn7cbpIikibC3NmyChzmAr0L*Nxkn',
 							'has_onekey': '1'
 						}
 				res = self.session.get(self.qrlogin_url, headers=self.headers, verify=False, params=params)
@@ -108,7 +116,7 @@ class QQQun():
 		elif version == 'pc':
 			return None
 		else:
-			raise ValueError('Unsupport argument in QQQun.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in QQId.login -> version %s, expect <mobile> or <pc>...' % version)
 	'''初始化PC端'''
 	def __initializePC(self):
 		pass
@@ -117,7 +125,7 @@ class QQQun():
 		self.headers = {
 						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
 						}
-		self.login_url = 'http://ui.ptlogin2.qq.com/cgi-bin/login?'
+		self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
 		self.qrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
 		self.qrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
 	'''qrsig转ptqrtoken, hash33函数'''
@@ -130,4 +138,4 @@ class QQQun():
 
 '''test'''
 if __name__ == '__main__':
-	QQQun().login()
+	QQId().login()
