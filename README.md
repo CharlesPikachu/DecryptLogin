@@ -10,16 +10,16 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
 
 # Support List
-|  Websites        | support PC API?                              |  support mobile API?                       |
-|  :----:          | :----:                                       |  :----:                                    |
-|  weibo           | No                                           |  [Yes](./DecryptLogin/platforms/weibo.py)  |
-|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                        |
-|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                        |
-|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                        |
-|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |
-|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |
-|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |
-|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |
+|  Websites        | support PC API?                              |  support mobile API?                       |  in Chinese    |
+|  :----:          | :----:                                       |  :----:                                    |  :----:        |
+|  weibo           | No                                           |  [Yes](./DecryptLogin/platforms/weibo.py)  |  新浪微博      |
+|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                        |  豆瓣          |
+|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                        |  Github        |
+|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                        |  网易云音乐    |
+|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |  中国铁路12306 |
+|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |  QQ空间        |
+|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
+|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  QQ安全中心    |
 
 # Install
 ### Use setup.py
