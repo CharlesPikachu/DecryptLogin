@@ -10,15 +10,15 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
 
 # Support List
-|  Websites        | support PC API?                     |  support mobile API?              |
-|  :----:          | :----:                              |  :----:                           |
-|  weibo           | No                                  |  [Yes](./src/platforms/weibo.py)  |
-|  douban          | [Yes](./src/platforms/douban.py)    |  No                               |
-|  GitHub          | [Yes](./src/platforms/github.py)    |  No                               |
-|  Music163        | [Yes](./src/platforms/music163.py)  |  No                               |
-|  12306           | [Yes](./src/platforms/zt12306.py)   |  No                               |
-|  QQZone          | No                                  |  [Yes](./src/platforms/QQZone.py) |
-|  QQQun           | No                                  |  [Yes](./src/platforms/QQQun.py)  |
+|  Websites        | support PC API?                              |  support mobile API?                       |
+|  :----:          | :----:                                       |  :----:                                    |
+|  weibo           | No                                           |  [Yes](./DecryptLogin/platforms/weibo.py)  |
+|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                        |
+|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                        |
+|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                        |
+|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |
+|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |
+|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |
 
 # Install
 ### Use setup.py
