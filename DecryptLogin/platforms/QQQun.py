@@ -1,8 +1,8 @@
 '''
 Function:
-	QQ空间模拟登录
+	QQ群模拟登录
 		--PC端暂不支持
-		--https://ssl.ptlogin2.qq.com/ptqrlogin(移动端)
+		--http://ui.ptlogin2.qq.com/cgi-bin/login?appid=549000912&s_url=http://qun.qq.com/member.html(移动端)
 Author:
 	Charles
 微信公众号:
@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-06
+	2019-12-07
 '''
 import os
 import re
@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 
 '''
 Function:
-	QQ空间模拟登录
+	QQ群模拟登录
 Detail:
 	-login:
 		Input:
@@ -34,9 +34,9 @@ Detail:
 		Return:
 			--session: 登录后的requests.Session()
 '''
-class QQZone():
+class QQQun():
 	def __init__(self, **kwargs):
-		self.info = 'QQZone'
+		self.info = 'QQQun'
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
@@ -46,24 +46,10 @@ class QQZone():
 			self.__initializeMobile()
 			# 获取pt_login_sig
 			params = {
-						'proxy_url': 'https://qzs.qq.com/qzone/v6/portal/proxy.html',
-						'daid': '5',
-						'hide_title_bar': '1',
-						'low_login': '0',
-						'qlogin_auto_login': '1',
-						'no_verifyimg': '1',
-						'link_target': 'blank',
 						'appid': '549000912',
-						'style': '22',
-						'target': 'self',
-						's_url': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
-						'pt_qr_app': '手机QQ空间',
-						'pt_qr_link': 'https://z.qzone.com/download.html',
-						'self_regurl': 'https://qzs.qq.com/qzone/v6/reg/index.html',
-						'pt_qr_help_link': 'https://z.qzone.com/download.html',
-						'pt_no_auth': '0'
+						's_url': 'http://qun.qq.com/member.html'
 					}
-			res = self.session.get(self.xlogin_url, headers=self.headers, verify=False, params=params)
+			res = self.session.get(self.login_url, headers=self.headers, verify=False, params=params)
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			pt_login_sig = all_cookies['pt_login_sig']
 			# 获得ptqrtoken
@@ -75,7 +61,6 @@ class QQZone():
 						'd': '72',
 						'v': '4',
 						't': str(random.random()),
-						'daid': '5',
 						'pt_3rd_aid': '0'
 					}
 			res = self.session.get(self.qrshow_url, headers=self.headers, verify=False, params=params)
@@ -88,9 +73,9 @@ class QQZone():
 			# 检测二维码状态
 			while True:
 				params = {
-							'u1': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
+							'u1': 'http://qun.qq.com/member.html',
 							'ptqrtoken': ptqrtoken,
-							'ptredirect': '0',
+							'ptredirect': '1',
 							'h': '1',
 							't': '1',
 							'g': '1',
@@ -102,8 +87,6 @@ class QQZone():
 							'login_sig': pt_login_sig,
 							'pt_uistyle': '40',
 							'aid': '549000912',
-							'daid': '5',
-							'ptdrvs': 'AnyQUpMB2syC5zV6V4JDelrCvoAMh-HP6Xy5jvKJzHBIplMBK37jV1o3JjBWmY7j*U1eD8quewY_',
 							'has_onekey': '1'
 						}
 				res = self.session.get(self.qrlogin_url, headers=self.headers, verify=False, params=params)
@@ -125,7 +108,7 @@ class QQZone():
 		elif version == 'pc':
 			return None
 		else:
-			raise ValueError('Unsupport argument in QQZone.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in QQQun.login -> version %s, expect <mobile> or <pc>...' % version)
 	'''初始化PC端'''
 	def __initializePC(self):
 		pass
@@ -134,7 +117,7 @@ class QQZone():
 		self.headers = {
 						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
 						}
-		self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
+		self.login_url = 'http://ui.ptlogin2.qq.com/cgi-bin/login?'
 		self.qrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
 		self.qrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
 	'''qrsig转ptqrtoken, hash33函数'''
@@ -147,4 +130,4 @@ class QQZone():
 
 '''test'''
 if __name__ == '__main__':
-	QQZone().login()
+	QQQun().login()

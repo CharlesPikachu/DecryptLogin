@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-06
+	2019-12-07
 '''
 try:
 	from .platforms import *
@@ -38,6 +38,9 @@ class Login():
 	'''QQ空间'''
 	def QQZone(self, username='', password='', version='mobile'):
 		return QQZone.QQZone().login(username, password)
+	'''QQ群'''
+	def QQQun(self, username='', password='', version='mobile'):
+		return QQQun.QQQun().login(username, password)
 	'''Info'''
 	def __repr__(self):
 		return self.info

@@ -16,9 +16,6 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 #### douban
 - [x] [PC](https://www.douban.com/) → in src/platforms/douban.py
 - [ ] mobile
-#### QQ zone
-- [ ] PC
-- [x] [mobile](https://ssl.ptlogin2.qq.com/ptqrlogin) → in src/platforms/QQZone.py
 #### GitHub
 - [x] [PC](https://github.com/) → in src/platforms/github.py
 - [ ] mobile
@@ -28,6 +25,12 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 #### 12306
 - [x] [PC](https://www.12306.cn/index/) → in src/platforms/zt12306.py
 - [ ] mobile
+#### QQ zone
+- [ ] PC
+- [x] [mobile](https://ssl.ptlogin2.qq.com/ptqrlogin) → in src/platforms/QQZone.py
+#### QQ Qun
+- [ ] PC
+- [x] [mobile](http://ui.ptlogin2.qq.com/cgi-bin/login?appid=549000912&s_url=http://qun.qq.com/member.html) → in src/platforms/QQQun.py
 
 # Install
 ### Use setup.py
@@ -48,15 +51,16 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 #### Example
 ```python
 from DecryptLogin import login
-l = login.Login()
-session = l.douban(username[telephone], password, 'pc')
-session = l.github(username[email], password, 'pc')
-session = l.weibo(username[telephone], password, 'mobile')
-session = l.music163(username[telephone/email], password, 'pc')
-session = l.zt12306(username[telephone], password, 'pc')
-session = l.QQZone('mobile')
+lg = login.Login()
+session = lg.douban(username[telephone], password, 'pc')
+session = lg.github(username[email], password, 'pc')
+session = lg.weibo(username[telephone], password, 'mobile')
+session = lg.music163(username[telephone/email], password, 'pc')
+session = lg.zt12306(username[telephone], password, 'pc')
+session = lg.QQZone('mobile')
+session = lg.QQQun('mobile')
 ```
-#### Explain
+#### Arguments
 ```
 username: your username.
 password: your password.
