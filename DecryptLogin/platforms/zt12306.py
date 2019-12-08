@@ -35,11 +35,13 @@ class zt12306():
 		self.info = 'zt12306'
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
+		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
+			self.username = username
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)

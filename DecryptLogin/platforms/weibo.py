@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-06
+	2019-12-08
 '''
 import requests
 
@@ -31,9 +31,11 @@ class weibo():
 	def __init__(self, **kwargs):
 		self.info = 'weibo'
 		self.session = requests.Session()
+		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='mobile'):
 		if version == 'mobile':
+			self.username = username
 			self.__initializeMobile()
 			data = {
 					'username': username,

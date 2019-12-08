@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-06
+	2019-12-08
 '''
 import re
 import requests
@@ -32,11 +32,13 @@ class github():
 	def __init__(self, **kwargs):
 		self.info = 'github'
 		self.session = requests.Session()
+		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
+			self.username = username
 			self.__initializePC()
 			token = self.__getToken()
 			data = {
