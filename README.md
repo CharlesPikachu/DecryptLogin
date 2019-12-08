@@ -41,14 +41,14 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```python
 from DecryptLogin import login
 lg = login.Login()
-session = lg.douban(username[telephone], password, 'pc')
-session = lg.github(username[email], password, 'pc')
-session = lg.weibo(username[telephone], password, 'mobile')
-session = lg.music163(username[telephone/email], password, 'pc')
-session = lg.zt12306(username[telephone], password, 'pc')
-session = lg.QQZone('mobile')
-session = lg.QQQun('mobile')
-session = lg.QQId('mobile')
+username, session = lg.douban(username[telephone], password, 'pc')
+username, session = lg.github(username[email], password, 'pc')
+username, session = lg.weibo(username[telephone], password, 'mobile')
+username, session = lg.music163(username[telephone/email], password, 'pc')
+username, session = lg.zt12306(username[telephone], password, 'pc')
+username, session = lg.QQZone('mobile')
+username, session = lg.QQQun('mobile')
+username, session = lg.QQId('mobile')
 ```
 #### Arguments
 ```
