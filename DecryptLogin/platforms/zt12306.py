@@ -35,13 +35,11 @@ class zt12306():
 		self.info = 'zt12306'
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
-		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
-			self.username = username
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
@@ -56,7 +54,7 @@ class zt12306():
 			res = self.session.post(self.login_url, headers=self.headers, data=data)
 			if res.status_code == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return self.session
+				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:

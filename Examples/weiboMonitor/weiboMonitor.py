@@ -14,7 +14,7 @@ from DecryptLogin import login
 '''微博监控'''
 class wbMonitor():
 	def __init__(self, username, password, time_interval=30, **kwargs):
-		self.session = login.Login().weibo(username, password, 'mobile')
+		_, self.session = login.Login().weibo(username, password, 'mobile')
 		self.headers = {
 						'Accept': 'application/json, text/plain, */*',
 						'Accept-Encoding': 'gzip, deflate, br',

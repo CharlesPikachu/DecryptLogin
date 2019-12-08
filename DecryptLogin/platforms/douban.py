@@ -31,13 +31,11 @@ class douban():
 	def __init__(self, **kwargs):
 		self.info = 'douban'
 		self.session = requests.Session()
-		self.username = username
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
-			self.username = username
 			self.__initializePC()
 			data = {
 					'ck': '20FY',
@@ -50,7 +48,7 @@ class douban():
 			res.encoding = 'gbk'
 			if res.json()['status'] == 'success':
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return self.session
+				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:

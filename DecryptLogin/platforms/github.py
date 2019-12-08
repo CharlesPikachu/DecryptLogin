@@ -32,13 +32,11 @@ class github():
 	def __init__(self, **kwargs):
 		self.info = 'github'
 		self.session = requests.Session()
-		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
-			self.username = username
 			self.__initializePC()
 			token = self.__getToken()
 			data = {
@@ -51,7 +49,7 @@ class github():
 			res = self.session.post(self.post_url, headers=self.login_headers, data=data)
 			if res.status_code == 200 and 'Sign in to GitHub · GitHub' not in res.text:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return self.session
+				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:

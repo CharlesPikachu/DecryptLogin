@@ -76,13 +76,11 @@ class music163():
 	def __init__(self, **kwargs):
 		self.info = 'music163'
 		self.session = requests.Session()
-		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
 		if version == 'mobile':
 			return None
 		elif version == 'pc':
-			self.username = username
 			self.__initializePC()
 			account_type = self.__getAccountType(username)
 			md5 = hashlib.md5()
@@ -102,7 +100,7 @@ class music163():
 				res = self.session.post(self.login_url_email, headers=self.login_headers, data=data)
 			if res.json()['code'] == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return self.session
+				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:

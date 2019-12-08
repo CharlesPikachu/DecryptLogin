@@ -39,7 +39,6 @@ class QQId():
 		self.info = 'QQId'
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
-		self.username = ''
 	'''登录函数'''
 	def login(self, username='', password='', version='mobile'):
 		if version == 'mobile':
@@ -106,7 +105,6 @@ class QQId():
 				time.sleep(2)
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			qq_number = re.findall(r'&uin=(.+?)&service', res.text)[0]
-			self.username = qq_number
 			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			url_refresh = res.text[res.text.find('http'): res.text.find('pt_3rd_aid=0')] + 'pt_3rd_aid=0'
 			self.session.cookies.update(all_cookies)
@@ -114,7 +112,7 @@ class QQId():
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			self.session.cookies.update(all_cookies)
 			removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
-			return self.session
+			return qq_number, self.session
 		elif version == 'pc':
 			return None
 		else:

@@ -31,11 +31,9 @@ class weibo():
 	def __init__(self, **kwargs):
 		self.info = 'weibo'
 		self.session = requests.Session()
-		self.username = ''
 	'''登录函数'''
 	def login(self, username, password, version='mobile'):
 		if version == 'mobile':
-			self.username = username
 			self.__initializeMobile()
 			data = {
 					'username': username,
@@ -57,7 +55,7 @@ class weibo():
 			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
 			if res.json()['retcode'] == 20000000:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return self.session
+				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		elif version == 'pc':
