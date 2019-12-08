@@ -19,7 +19,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |  中国铁路12306 |
 |  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |  QQ空间        |
 |  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
-|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  QQ安全中心    |
+|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
 
 # Install
 ### Use setup.py

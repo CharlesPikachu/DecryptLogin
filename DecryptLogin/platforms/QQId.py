@@ -1,6 +1,6 @@
 '''
 Function:
-	QQ安全中心模拟登录
+	QQ中心模拟登录
 		--PC端暂不支持
 		--https://id.qq.com/index.html(移动端)
 Author:
@@ -24,7 +24,7 @@ warnings.filterwarnings('ignore')
 
 '''
 Function:
-	QQ安全中心模拟登录
+	QQ中心模拟登录
 Detail:
 	-login:
 		Input:
