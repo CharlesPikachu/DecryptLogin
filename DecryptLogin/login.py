@@ -10,10 +10,7 @@ GitHub:
 更新日期:
 	2019-12-07
 '''
-try:
-	from .platforms import *
-except:
-	from platforms import *
+from .platforms import *
 
 
 '''模拟登录'''
