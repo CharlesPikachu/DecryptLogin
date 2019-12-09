@@ -13,7 +13,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 # Support List
 |  Websites        | support PC API?                              |  support mobile API?                       |  in Chinese    |
 |  :----:          | :----:                                       |  :----:                                    |  :----:        |
-|  weibo           | No                                           |  [Yes](./DecryptLogin/platforms/weibo.py)  |  新浪微博      |
+|  weibo           | [Yes](./DecryptLogin/platforms/weibo.py)     |  [Yes](./DecryptLogin/platforms/weibo.py)  |  新浪微博      |
 |  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                        |  豆瓣          |
 |  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                        |  Github        |
 |  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                        |  网易云音乐    |
