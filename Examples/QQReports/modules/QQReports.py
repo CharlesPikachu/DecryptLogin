@@ -124,8 +124,8 @@ class QQReports():
 		recent_operation_info['过去30天我退出的群个数'] = len(group_info.get('ls', []))
 		recent_operation_info['过去30天我退出的群'] = []
 		if 'ls' in group_info.keys():
-			for key, value in group_info.items():
-				recent_operation_info['过去30天我退出的群'].append(str(value['n']))
+			for each in group_info['ls']:
+				recent_operation_info['过去30天我退出的群'].append(str(each['n']))
 		# 近一年删除的好友
 		params = {
 					'bkn': str(bkn),
