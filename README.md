@@ -23,16 +23,14 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
 
 # Install
-### Use setup.py
-#### Step1
+#### Use setup.py
 ```sh
+Step1:
 git clone https://github.com/CharlesPikachu/DecryptLogin.git
-```
-#### Step2
-```sh
+Step2:
 cd DecryptLogin -> run "python setup.py install"
 ```
-### Use pip
+#### Use pip
 ```sh
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
