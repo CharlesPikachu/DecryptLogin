@@ -36,6 +36,12 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
 
 # Usage
+#### Arguments
+```
+username: your username.
+password: your password.
+version: pc/mobile.
+```
 #### Examples
 ```python
 from DecryptLogin import login
@@ -48,12 +54,6 @@ username, session = lg.zt12306(username[telephone], password, 'pc')
 username, session = lg.QQZone('mobile')
 username, session = lg.QQQun('mobile')
 username, session = lg.QQId('mobile')
-```
-#### Arguments
-```
-username: your username.
-password: your password.
-version: pc/mobile.
 ```
 
 # More
