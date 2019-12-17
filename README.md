@@ -38,9 +38,10 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 # Usage
 #### Arguments
 ```
-username: your username.
-password: your password.
-version: pc/mobile.
+Specific Loginning Arguments:
+--username: your username.
+--password: your password.
+--version: pc/mobile.
 ```
 #### Examples
 ```python
