@@ -474,7 +474,7 @@ Detail:
 class zhihu():
 	def __init__(self, **kwargs):
 		self.info = 'zhihu'
-    self.cur_path = os.getcwd()
+		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, version='pc'):
