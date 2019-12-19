@@ -21,6 +21,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |  QQ空间        |
 |  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
 |  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
+|  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                        |  知乎          |
 
 # Install
 #### Use setup.py
@@ -55,6 +56,7 @@ username, session = lg.zt12306(username[telephone], password, 'pc')
 username, session = lg.QQZone('mobile')
 username, session = lg.QQQun('mobile')
 username, session = lg.QQId('mobile')
+username, session = lg.zhihu(username, password, 'pc')
 ```
 
 # More

@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-07
+	2019-12-19
 '''
 from .platforms import *
 
@@ -34,13 +34,16 @@ class Login():
 		return zt12306.zt12306().login(username, password, version)
 	'''QQ空间'''
 	def QQZone(self, username='', password='', version='mobile'):
-		return QQZone.QQZone().login(username, password)
+		return QQZone.QQZone().login(username, password, version)
 	'''QQ群'''
 	def QQQun(self, username='', password='', version='mobile'):
-		return QQQun.QQQun().login(username, password)
+		return QQQun.QQQun().login(username, password, version)
 	'''QQ安全中心'''
 	def QQId(self, username='', password='', version='mobile'):
-		return QQId.QQId().login(username, password)
+		return QQId.QQId().login(username, password, version)
+	'''知乎'''
+	def zhihu(self, username, password, version='pc'):
+		return zhihu.zhihu().login(username, password, version)
 	'''Info'''
 	def __repr__(self):
 		return self.info
