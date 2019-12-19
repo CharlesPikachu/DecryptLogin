@@ -28,7 +28,7 @@ setup(
 	author_email='charlesjzc@qq.com',
 	license='MIT',
 	include_package_data=True,
-	install_requires=['requests', 'pycryptodome', 'rsa'],
+	install_requires=['requests', 'pycryptodome', 'rsa', 'execjs'],
 	zip_safe=True,
 	packages=find_packages()
 )
