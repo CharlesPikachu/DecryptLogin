@@ -527,10 +527,10 @@ class zhihu():
 			res = self.session.post(self.login_url, data=data)
 			if 'user_id' in res.json():
 				print('[INFO]: Account -> %s, login successfully...' % username)
+				removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
 				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-			removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
 		else:
 			raise ValueError('Unsupport argument in zhihu.login -> version %s, expect <mobile> or <pc>...' % version)
 	'''初始化PC端'''
