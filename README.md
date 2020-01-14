@@ -22,7 +22,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
 |  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
 |  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                        |  知乎          |
-|  Bilibili		   | [Yes](./DecryptLogin/platforms/Bilibili.py)  |  No                                        |  B站           |
+|  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                        |  B站           |
 
 # Install
 #### Use setup.py
