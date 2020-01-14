@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-06
+	2020-01-14
 '''
 import os
 import time
@@ -26,7 +26,7 @@ Detail:
 		Input:
 			--username: 用户名
 			--password: 密码
-			--version: mobile/pc
+			--mode: mobile/pc
 		Return:
 			--session: 登录后的requests.Session()
 '''
@@ -36,10 +36,10 @@ class zt12306():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, version='pc'):
-		if version == 'mobile':
+	def login(self, username, password, mode='pc'):
+		if mode == 'mobile':
 			return None
-		elif version == 'pc':
+		elif mode == 'pc':
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
@@ -58,7 +58,7 @@ class zt12306():
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:
-			raise ValueError('Unsupport argument in zt12306.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in zt12306.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''下载验证码'''
 	def __downloadVcode(self):
 		res = self.session.get(self.vcode_url, headers=self.headers)

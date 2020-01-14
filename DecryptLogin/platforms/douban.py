@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-08
+	2020-01-14
 '''
 import requests
 
@@ -23,7 +23,7 @@ Detail:
 		Input:
 			--username: 用户名
 			--password: 密码
-			--version: mobile/pc
+			--mode: mobile/pc
 		Return:
 			--session: 登录后的requests.Session()
 '''
@@ -32,10 +32,10 @@ class douban():
 		self.info = 'douban'
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, version='pc'):
-		if version == 'mobile':
+	def login(self, username, password, mode='pc'):
+		if mode == 'mobile':
 			return None
-		elif version == 'pc':
+		elif mode == 'pc':
 			self.__initializePC()
 			data = {
 					'ck': '20FY',
@@ -52,7 +52,7 @@ class douban():
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:
-			raise ValueError('Unsupport argument in douban.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in douban.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
 	def __initializePC(self):
 		self.login_headers = {

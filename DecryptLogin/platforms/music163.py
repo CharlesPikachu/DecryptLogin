@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-08
+	2020-01-14
 '''
 import os
 import json
@@ -68,7 +68,7 @@ Detail:
 		Input:
 			--username: 用户名
 			--password: 密码
-			--version: mobile/pc
+			--mode: mobile/pc
 		Return:
 			--session: 登录后的requests.Session()
 '''
@@ -77,10 +77,10 @@ class music163():
 		self.info = 'music163'
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, version='pc'):
-		if version == 'mobile':
+	def login(self, username, password, mode='pc'):
+		if mode == 'mobile':
 			return None
-		elif version == 'pc':
+		elif mode == 'pc':
 			self.__initializePC()
 			account_type = self.__getAccountType(username)
 			md5 = hashlib.md5()
@@ -104,7 +104,7 @@ class music163():
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:
-			raise ValueError('Unsupport argument in music163.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in music163.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获取账号类型(手机号/邮箱)'''
 	def __getAccountType(self, username):
 		try:

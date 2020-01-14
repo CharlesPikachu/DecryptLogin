@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-09
+	2020-01-14
 '''
 import re
 import rsa
@@ -31,7 +31,7 @@ Detail:
 		Input:
 			--username: 用户名
 			--password: 密码
-			--version: mobile/pc
+			--mode: mobile/pc
 		Return:
 			--session: 登录后的requests.Session()
 '''
@@ -40,8 +40,8 @@ class weibo():
 		self.info = 'weibo'
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, version='mobile'):
-		if version == 'mobile':
+	def login(self, username, password, mode='mobile'):
+		if mode == 'mobile':
 			self.__initializeMobile()
 			data = {
 					'username': username,
@@ -66,7 +66,7 @@ class weibo():
 				return username, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-		elif version == 'pc':
+		elif mode == 'pc':
 			self.__initializePC()
 			# 请求prelogin_url
 			su = base64.b64encode(username.encode())
@@ -133,7 +133,7 @@ class weibo():
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:
-			raise ValueError('Unsupport argument in weibo.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in weibo.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
 	def __initializePC(self):
 		self.headers = {

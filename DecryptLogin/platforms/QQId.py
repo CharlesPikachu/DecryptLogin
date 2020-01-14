@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-12-08
+	2020-01-14
 '''
 import os
 import re
@@ -30,7 +30,7 @@ Detail:
 		Input:
 			--username: 用户名
 			--password: 密码
-			--version: mobile/pc
+			--mode: mobile/pc
 		Return:
 			--session: 登录后的requests.Session()
 '''
@@ -40,8 +40,8 @@ class QQId():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username='', password='', version='mobile'):
-		if version == 'mobile':
+	def login(self, username='', password='', mode='mobile'):
+		if mode == 'mobile':
 			all_cookies = {}
 			self.__initializeMobile()
 			# 获取pt_login_sig
@@ -113,10 +113,10 @@ class QQId():
 			self.session.cookies.update(all_cookies)
 			removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
 			return qq_number, self.session
-		elif version == 'pc':
+		elif mode == 'pc':
 			return None
 		else:
-			raise ValueError('Unsupport argument in QQId.login -> version %s, expect <mobile> or <pc>...' % version)
+			raise ValueError('Unsupport argument in QQId.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
 	def __initializePC(self):
 		pass
