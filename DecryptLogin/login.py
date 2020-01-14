@@ -44,6 +44,9 @@ class Login():
 	'''知乎'''
 	def zhihu(self, username, password, mode='pc'):
 		return zhihu.zhihu().login(username, password, mode)
+	'''B站'''
+	def bilibili(self, username, password, mode='pc'):
+		return bilibili.bilibili().login(username, password, mode)
 	'''Info'''
 	def __repr__(self):
 		return self.info

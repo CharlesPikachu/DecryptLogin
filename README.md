@@ -22,6 +22,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
 |  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
 |  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                        |  知乎          |
+|  Bilibili		   | [Yes](./DecryptLogin/platforms/Bilibili.py)  |  No                                        |  B站           |
 
 # Install
 #### Use setup.py
@@ -42,7 +43,7 @@ pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 Specific Loginning Arguments:
 --username: your username.
 --password: your password.
---version: pc/mobile.
+--mode: pc/mobile.
 ```
 #### Examples
 ```python
@@ -57,6 +58,7 @@ username, session = lg.QQZone('mobile')
 username, session = lg.QQQun('mobile')
 username, session = lg.QQId('mobile')
 username, session = lg.zhihu(username, password, 'pc')
+username, session = lg.bilibili(username, password, 'pc')
 ```
 
 # More
