@@ -33,7 +33,7 @@ Detail:
 '''
 class bilibili():
 	def __init__(self, **kwargs):
-		self.info = 'Bilibili'
+		self.info = 'bilibili'
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, mode='pc'):
@@ -41,7 +41,6 @@ class bilibili():
 			pass
 		elif mode == 'pc':
 			self.__initializePC()
-			captcha_img = self.session.get(self.captcha_url, headers=self.captcha_headers).content
 			# 获得key值
 			appkey = '1d8b6e7d45233436'
 			data = {
