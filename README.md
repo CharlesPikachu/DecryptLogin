@@ -9,7 +9,7 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 #### Some Cases by using DecryptLogin
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
 - QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
-- bilibiliDownloadUserVideos: 
+- bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
 
 # Support List
 |  Websites        | support PC API?                              |  support mobile API?                       |  in Chinese    |
