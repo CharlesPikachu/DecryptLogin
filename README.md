@@ -4,13 +4,6 @@ APIs for loginning some websites using <requests>.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
 ```
 
-# Introduction in Chinese
-https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
-#### Some Cases by using DecryptLogin
-- weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
-- QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
-- bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
-
 # Support List
 |  Websites        | support PC API?                              |  support mobile API?                       |  in Chinese    |
 |  :----:          | :----:                                       |  :----:                                    |  :----:        |
@@ -24,6 +17,11 @@ https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
 |  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
 |  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                        |  知乎          |
 |  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                        |  B站           |
+
+# Some Cases by using DecryptLogin
+- weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
+- QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
+- bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
 
 # Install
 #### Use setup.py
@@ -45,8 +43,9 @@ Specific Loginning Arguments:
 --username: your username.
 --password: your password.
 --mode: pc/mobile.
+--crackvc_func: an user-defined function used to crack the verification code.
 ```
-#### Examples
+#### Quick Start
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -61,6 +60,9 @@ username, session = lg.QQId('mobile')
 username, session = lg.zhihu(username, password, 'pc')
 username, session = lg.bilibili(username, password, 'pc')
 ```
+#### Detailed documentation
+Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
+The detailed documentation is still on the way...
 
 # More
 #### WeChat Official Accounts

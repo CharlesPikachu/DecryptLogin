@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-14
+	2020-01-19
 '''
 import os
 import time
@@ -27,7 +27,9 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
+			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
+			--username: 用户名
 			--session: 登录后的requests.Session()
 '''
 class zt12306():
@@ -36,14 +38,14 @@ class zt12306():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='pc'):
+	def login(self, username, password, mode='pc', crackvc_func=None, **kwargs):
 		if mode == 'mobile':
 			return None
 		elif mode == 'pc':
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
-			res = self.__verifyVcode()
+			res = self.__verifyVcode(crackvc_func)
 			if not res:
 				raise RuntimeError('verification code error...')
 			data = {
@@ -65,17 +67,20 @@ class zt12306():
 		saveImage(res.content, os.path.join(self.cur_path, 'vcode.jpg'))
 		return True
 	'''验证码验证'''
-	def __verifyVcode(self):
+	def __verifyVcode(self, crackvc_func):
 		img_path = os.path.join(self.cur_path, 'vcode.jpg')
-		showImage(img_path)
-		user_enter = input('Enter the positions of verification code, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
-		verify_list = []
-		for each in user_enter.split(','):
-			each = each.strip()
-			try:
-				verify_list.append(self.positions[int(each)-1])
-			except:
-				raise RuntimeError('verification code error...')
+		if crackvc_func is None:
+			showImage(img_path)
+			user_enter = input('Enter the positions of verification code, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
+			verify_list = []
+			for each in user_enter.split(','):
+				each = each.strip()
+				try:
+					verify_list.append(self.positions[int(each)-1])
+				except:
+					raise RuntimeError('verification code error...')
+		else:
+			verify_list = crackvc_func(img_path)
 		data = {
 				'answer': ','.join(verify_list),
 				'login_site': 'E',

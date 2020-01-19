@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-14
+	2020-01-19
 '''
 import os
 import time
@@ -468,7 +468,9 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
+			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
+			--username: 用户名
 			--session: 登录后的requests.Session()
 '''
 class zhihu():
@@ -477,7 +479,7 @@ class zhihu():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='pc'):
+	def login(self, username, password, mode='pc', crackvc_func=None, **kwargs):
 		if mode == 'mobile':
 			return None
 		elif mode == 'pc':
@@ -490,8 +492,11 @@ class zhihu():
 				res = self.session.put(self.captcha_url)
 				img_base64 = res.json()['img_base64'].replace('\\n', '')
 				saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
-				showImage(os.path.join(self.cur_path, 'captcha.jpg'))
-				captcha = input('Input the Verification Code:')
+				if crackvc_func is None:
+					showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+					captcha = input('Input the Verification Code:')
+				else:
+					captcha = crackvc_func(os.path.join(self.cur_path, 'captcha.jpg'))
 				self.session.post(self.captcha_url, data={'input_text': captcha})
 			# 获取_xsrf
 			_xsrf = ''

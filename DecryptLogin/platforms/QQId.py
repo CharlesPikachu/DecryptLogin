@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-14
+	2020-01-19
 '''
 import os
 import re
@@ -31,7 +31,9 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
+			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
+			--username: 用户名
 			--session: 登录后的requests.Session()
 '''
 class QQId():
@@ -40,7 +42,7 @@ class QQId():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username='', password='', mode='mobile'):
+	def login(self, username='', password='', mode='mobile', crackvc_func=None, **kwargs):
 		if mode == 'mobile':
 			all_cookies = {}
 			self.__initializeMobile()
