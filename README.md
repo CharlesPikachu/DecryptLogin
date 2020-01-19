@@ -61,7 +61,7 @@ username, session = lg.zhihu(username, password, 'pc')
 username, session = lg.bilibili(username, password, 'pc')
 ```
 #### Detailed documentation
-Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ
+Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ  
 The detailed documentation is still on the way...
 
 # More
