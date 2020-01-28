@@ -102,7 +102,7 @@ class music163():
 				res = self.session.post(self.login_url_email, headers=self.login_headers, data=data)
 			if res.json()['code'] == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				infos_return = {'username': username}
+				infos_return = {'username': username, 'token': res.json()['token'], 'userid': res.json()['profile']['userId']}
 				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
