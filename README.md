@@ -43,26 +43,28 @@ Specific Loginning Arguments:
 --username: your username.
 --password: your password.
 --mode: pc/mobile.
---crackvc_func: an user-defined function used to crack the verification code.
+--crackvc_func: an user-defined function used to crack the verification code (usage: crackvc_func(verification_code_path)).
 ```
 #### Quick Start
 ```python
 from DecryptLogin import login
 lg = login.Login()
-username, session = lg.douban(username[telephone], password, 'pc')
-username, session = lg.github(username[email], password, 'pc')
-username, session = lg.weibo(username[telephone], password, 'mobile')
-username, session = lg.music163(username[telephone/email], password, 'pc')
-username, session = lg.zt12306(username[telephone], password, 'pc')
-username, session = lg.QQZone('mobile')
-username, session = lg.QQQun('mobile')
-username, session = lg.QQId('mobile')
-username, session = lg.zhihu(username, password, 'pc')
-username, session = lg.bilibili(username, password, 'pc')
+infos_return, session = lg.douban(username[telephone], password, 'pc')
+infos_return, session = lg.github(username[email], password, 'pc')
+infos_return, session = lg.weibo(username[telephone], password, 'mobile')
+infos_return, session = lg.music163(username[telephone/email], password, 'pc')
+infos_return, session = lg.zt12306(username[telephone], password, 'pc')
+infos_return, session = lg.QQZone('mobile')
+infos_return, session = lg.QQQun('mobile')
+infos_return, session = lg.QQId('mobile')
+infos_return, session = lg.zhihu(username, password, 'pc')
+infos_return, session = lg.bilibili(username, password, 'pc')
 ```
 #### Detailed documentation
+```
 Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ  
 The detailed documentation is still on the way...
+```
 
 # More
 #### WeChat Official Accounts

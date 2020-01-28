@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-19
+	2020-01-28
 '''
 import os
 import re
@@ -33,7 +33,7 @@ Detail:
 			--mode: mobile/pc
 			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
-			--username: 用户名
+			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
 '''
 class QQQun():
@@ -106,7 +106,8 @@ class QQQun():
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			self.session.cookies.update(all_cookies)
 			removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
-			return qq_number, self.session
+			infos_return = {'username': qq_number}
+			return infos_return, self.session
 		elif mode == 'pc':
 			return None
 		else:

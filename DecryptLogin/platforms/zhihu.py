@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-19
+	2020-01-28
 '''
 import os
 import time
@@ -470,7 +470,7 @@ Detail:
 			--mode: mobile/pc
 			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
-			--username: 用户名
+			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
 '''
 class zhihu():
@@ -498,6 +498,7 @@ class zhihu():
 				else:
 					captcha = crackvc_func(os.path.join(self.cur_path, 'captcha.jpg'))
 				self.session.post(self.captcha_url, data={'input_text': captcha})
+			removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
 			# 获取_xsrf
 			_xsrf = ''
 			self.session.get(self.homepage_url, allow_redirects=False)
@@ -532,8 +533,8 @@ class zhihu():
 			res = self.session.post(self.login_url, data=data)
 			if 'user_id' in res.json():
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
-				return username, self.session
+				infos_return = {'username': username}
+				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:

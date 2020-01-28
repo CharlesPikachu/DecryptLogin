@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-19
+	2020-01-28
 '''
 import re
 import rsa
@@ -34,7 +34,7 @@ Detail:
 			--mode: mobile/pc
 			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
-			--username: 用户名
+			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
 '''
 class weibo():
@@ -65,7 +65,8 @@ class weibo():
 			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
 			if res.json()['retcode'] == 20000000:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return username, self.session
+				infos_return = {'username': username}
+				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		elif mode == 'pc':
@@ -131,7 +132,8 @@ class weibo():
 			res = self.session.get(self.home_url % uid, headers=self.headers, verify=False)
 			if '我的首页' in res.text:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				return username, self.session
+				infos_return = {'username': username}
+				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
 		else:
