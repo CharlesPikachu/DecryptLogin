@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-19
+	2020-01-29
 '''
 from .platforms import *
 
@@ -47,6 +47,9 @@ class Login():
 	'''B站'''
 	def bilibili(self, username, password, mode='pc', crackvc_func=None, **kwargs):
 		return bilibili.bilibili().login(username, password, mode, crackvc_func, **kwargs)
+	'''今日头条'''
+	def toutiao(self, username, password, mode='mobile', crackvc_func=None, **kwargs):
+		return toutiao.toutiao().login(username, password, mode, crackvc_func, **kwargs)
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -86,6 +89,9 @@ class Loginer():
 	'''B站'''
 	def bilibili(self):
 		return bilibili.bilibili()
+	'''今日头条'''
+	def toutiao(self, username, password, mode='mobile', crackvc_func=None, **kwargs):
+		return toutiao.toutiao()
 	'''Info'''
 	def __repr__(self):
 		return self.info

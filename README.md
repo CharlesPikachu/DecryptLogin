@@ -5,18 +5,19 @@ You can star this repository to keep track of the project if it's helpful for yo
 ```
 
 # Support List
-|  Websites        | support PC API?                              |  support mobile API?                       |  in Chinese    |
-|  :----:          | :----:                                       |  :----:                                    |  :----:        |
-|  weibo           | [Yes](./DecryptLogin/platforms/weibo.py)     |  [Yes](./DecryptLogin/platforms/weibo.py)  |  新浪微博      |
-|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                        |  豆瓣          |
-|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                        |  Github        |
-|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                        |  网易云音乐    |
-|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                        |  中国铁路12306 |
-|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py) |  QQ空间        |
-|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)  |  QQ群          |
-|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)   |  我的QQ中心    |
-|  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                        |  知乎          |
-|  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                        |  B站           |
+|  Websites        | support PC API?                              |  support mobile API?                         |  in Chinese    |
+|  :----:          | :----:                                       |  :----:                                      |  :----:        |
+|  weibo           | [Yes](./DecryptLogin/platforms/weibo.py)     |  [Yes](./DecryptLogin/platforms/weibo.py)    |  新浪微博      |
+|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                          |  豆瓣          |
+|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                          |  Github        |
+|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                          |  网易云音乐    |
+|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                          |  中国铁路12306 |
+|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py)   |  QQ空间        |
+|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)    |  QQ群          |
+|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)     |  我的QQ中心    |
+|  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                          |  知乎          |
+|  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                          |  B站           |
+|  toutiao		   | No                                           |  [Yes](./DecryptLogin/platforms/toutiao.py)  |  今日头条      |
 
 # Some Cases by using DecryptLogin
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
@@ -60,6 +61,7 @@ infos_return, session = lg.QQQun('mobile')
 infos_return, session = lg.QQId('mobile')
 infos_return, session = lg.zhihu(username, password, 'pc')
 infos_return, session = lg.bilibili(username, password, 'pc')
+infos_return, session = lg.toutiao(username, password, 'mobile')
 ```
 #### Detailed documentation
 ```
