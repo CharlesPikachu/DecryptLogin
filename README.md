@@ -22,6 +22,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
 - QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
 - bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
+- NeteaseSongListDownloader: https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew
 
 # Install
 #### Use setup.py
