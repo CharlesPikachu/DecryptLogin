@@ -531,9 +531,12 @@ class zhihu():
 			self.headers.update({'x-zse-83': '3_1.1', 'x-xsrftoken': _xsrf, 'content-type': 'application/x-www-form-urlencoded'})
 			self.session.headers.update(self.headers)
 			res = self.session.post(self.login_url, data=data)
-			if 'user_id' in res.json():
+			res_json = res.json()
+			if 'user_id' in res_json:
+				self.session.cookies.update(res_json['cookie'])
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				infos_return = {'username': username}
+				infos_return.update(res_json)
 				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
