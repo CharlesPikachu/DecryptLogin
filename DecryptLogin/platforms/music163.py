@@ -100,12 +100,18 @@ class music163():
 				data['username'] = username
 				data = self.cracker.get(data)
 				res = self.session.post(self.login_url_email, headers=self.login_headers, data=data)
-			if res.json()['code'] == 200:
+			res_json = res.json()
+			# 登录成功
+			if res_json['code'] == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
-				infos_return = {'username': username, 'token': res.json()['token'], 'userid': res.json()['profile']['userId']}
+				infos_return = {'username': username, 'token': res_json['token'], 'userid': res_json['profile']['userId']}
 				return infos_return, self.session
-			else:
+			# 账户名/密码错误
+			elif (res_json['code'] == 400) or (res_json['code'] == 502):
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+			# 其他错误
+			else:
+				raise RuntimeError(res_json.get('msg')) if 'msg' in res_json else RuntimeError(res_json.get('message'))
 		else:
 			raise ValueError('Unsupport argument in music163.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获取账号类型(手机号/邮箱)'''
