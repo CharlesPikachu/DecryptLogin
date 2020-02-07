@@ -24,6 +24,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 - QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
 - bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
 - NeteaseSongListDownloader: https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew
+- NeteaseListenLeaderboard: https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q
 
 # Install
 #### Use setup.py
