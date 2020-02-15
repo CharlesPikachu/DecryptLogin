@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-28
+	2020-02-15
 '''
 import requests
 
@@ -47,13 +47,19 @@ class douban():
 					'ticket': ''
 					}
 			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
-			res.encoding = 'gbk'
-			if res.json()['status'] == 'success':
+			res_json = res.json()
+			# 登录成功
+			if res_json['status'] == 'success':
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				infos_return = {'username': username}
+				infos_return.update(res_json)
 				return infos_return, self.session
-			else:
+			# 账号或密码错误
+			elif res_json['status'] == 'failed' and res_json['message'] == 'unmatch_name_password':
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+			# 其他错误
+			else:
+				raise RuntimeError(res_json.get('description'))
 		else:
 			raise ValueError('Unsupport argument in douban.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

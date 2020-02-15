@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-28
+	2020-02-15
 '''
 import os
 import time
@@ -532,14 +532,22 @@ class zhihu():
 			self.session.headers.update(self.headers)
 			res = self.session.post(self.login_url, data=data)
 			res_json = res.json()
+			# 登录成功
 			if 'user_id' in res_json:
 				self.session.cookies.update(res_json['cookie'])
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				infos_return = {'username': username}
 				infos_return.update(res_json)
 				return infos_return, self.session
-			else:
+			# 账号密码错误
+			elif 'error' in res_json and res_json.get('error').get('code') == 100005:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+			# 验证码错误
+			elif 'error' in res_json and res_json.get('error').get('code') == 120005:
+				raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
+			# 其他错误
+			else:
+				raise RuntimeError(res_json.get('error').get('message'))
 		else:
 			raise ValueError('Unsupport argument in zhihu.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
