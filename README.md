@@ -71,9 +71,9 @@ The detailed documentation is still on the way...
 ```
 
 # Thanks List
-|  Author                                            |           Time            |   Contribution                                    |
-|  :----:                                            |           :----:          |   :----:                                          |
-|  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processingin (weibo, pc)  |
+|  Author                                            |           Time            |   Contribution                                     |
+|  :----:                                            |           :----:          |   :----:                                           |
+|  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processing in (weibo, pc)  |
 
 # More
 #### WeChat Official Accounts
