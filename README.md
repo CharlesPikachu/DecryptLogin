@@ -46,7 +46,7 @@ Specific Loginning Arguments:
 --username: your username.
 --password: your password.
 --mode: pc/mobile.
---crackvc_func: an user-defined function used to crack the verification code (usage: crackvc_func(verification_code_path)).
+--crackvcFunc: an user-defined function used to crack the verification code (usage: crackvcFunc(verification_code_path)).
 ```
 #### Quick Start
 ```python
@@ -69,6 +69,11 @@ infos_return, session = lg.toutiao(username, password, 'mobile')
 Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ  
 The detailed documentation is still on the way...
 ```
+
+# Thanks List
+|  Author                                            |           Time            |   Contribution                                    |
+|  :----:                                            |           :----:          |   :----:                                          |
+|  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processingin (weibo, pc)  |
 
 # More
 #### WeChat Official Accounts

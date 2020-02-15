@@ -27,7 +27,7 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
-			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
 			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
@@ -38,7 +38,7 @@ class toutiao():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='mobile', crackvc_func=None, **kwargs):
+	def login(self, username, password, mode='mobile', crackvcFunc=None, **kwargs):
 		if mode == 'mobile':
 			self.__initializeMobile()
 			# 先访问头条主页
@@ -62,11 +62,11 @@ class toutiao():
 			elif res_json.get('error_code') in [1101, 1102] and res_json.get('captcha'):
 				image = base64.b64decode(res_json.get('captcha'))
 				saveImage(image, os.path.join(self.cur_path, 'captcha.jpg'))
-				if crackvc_func is None:
+				if crackvcFunc is None:
 					showImage(os.path.join(self.cur_path, 'captcha.jpg'))
 					captcha = input('Input the Verification Code:')
 				else:
-					captcha = crackvc_func(os.path.join(self.cur_path, 'captcha.jpg'))
+					captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
 				data['captcha'] = captcha
 				res = self.session.post(url=self.login_url, data=data, headers=self.headers)
 				res_json = res.json()

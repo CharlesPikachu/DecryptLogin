@@ -33,7 +33,7 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
-			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
 			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
@@ -44,7 +44,7 @@ class weibo():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='mobile', crackvc_func=None, **kwargs):
+	def login(self, username, password, mode='mobile', crackvcFunc=None, **kwargs):
 		if mode == 'mobile':
 			self.__initializeMobile()
 			data = {
@@ -91,11 +91,11 @@ class weibo():
 							}
 					res = self.session.get(self.pin_url, headers=self.headers, params=params)
 					saveImage(res.content, os.path.join(self.cur_path, 'captcha.jpg'))
-					if crackvc_func is None:
+					if crackvcFunc is None:
 						showImage(os.path.join(self.cur_path, 'captcha.jpg'))
 						captcha = input('Input the Verification Code:')
 					else:
-						captcha = crackvc_func(os.path.join(self.cur_path, 'captcha.jpg'))
+						captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
 					removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
 				# --请求prelogin_url
 				su = base64.b64encode(username.encode())

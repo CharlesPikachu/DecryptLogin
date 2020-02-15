@@ -27,7 +27,7 @@ Detail:
 			--username: 用户名
 			--password: 密码
 			--mode: mobile/pc
-			--crackvc_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
 		Return:
 			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
@@ -38,14 +38,14 @@ class zt12306():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='pc', crackvc_func=None, **kwargs):
+	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
 		if mode == 'mobile':
 			return None
 		elif mode == 'pc':
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
-			res = self.__verifyVcode(crackvc_func)
+			res = self.__verifyVcode(crackvcFunc)
 			if not res:
 				raise RuntimeError('verification code error...')
 			data = {
@@ -68,9 +68,9 @@ class zt12306():
 		saveImage(res.content, os.path.join(self.cur_path, 'vcode.jpg'))
 		return True
 	'''验证码验证'''
-	def __verifyVcode(self, crackvc_func):
+	def __verifyVcode(self, crackvcFunc):
 		img_path = os.path.join(self.cur_path, 'vcode.jpg')
-		if crackvc_func is None:
+		if crackvcFunc is None:
 			showImage(img_path)
 			user_enter = input('Enter the positions of verification code, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
 			verify_list = []
@@ -81,7 +81,7 @@ class zt12306():
 				except:
 					raise RuntimeError('verification code error...')
 		else:
-			verify_list = crackvc_func(img_path)
+			verify_list = crackvcFunc(img_path)
 		data = {
 				'answer': ','.join(verify_list),
 				'login_site': 'E',
