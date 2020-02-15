@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-28
+	2020-02-15
 '''
 import rsa
 import base64
@@ -88,13 +88,24 @@ class bilibili():
 						self.session.cookies.set(cookie['name'], cookie['value'], domain='.bilibili')
 				else:
 					raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
-			else:
+			# 账号密码错误
+			elif res_json['code'] == -629:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+			# 其他错误
+			else:
+				raise RuntimeError(res_json.get('message'))
 			print('[INFO]: Account -> %s, login successfully...' % username)
 			infos_return = {'username': username}
+			infos_return.update(res_json)
 			return infos_return, self.session
 		else:
 			raise ValueError('Unsupport argument in Bilibili.login -> mode %s, expect <mobile> or <pc>...' % mode)
+	'''计算sign值'''
+	def __calcSign(self, param):
+		salt = "560c52ccd288fed045859ed18bffd973"
+		sign_hash = hashlib.md5()
+		sign_hash.update(f'{param}{salt}'.encode())
+		return sign_hash.hexdigest()
 	'''初始化PC端'''
 	def __initializePC(self):
 		self.login_headers = {
@@ -112,14 +123,8 @@ class bilibili():
 	'''初始化移动端'''
 	def __initializeMobile(self):
 		pass
-	'''计算sign值'''
-	def __calcSign(self, param):
-		salt = "560c52ccd288fed045859ed18bffd973"
-		sign_hash = hashlib.md5()
-		sign_hash.update(f'{param}{salt}'.encode())
-		return sign_hash.hexdigest()
 
 
 '''test'''
 if __name__ == '__main__':
-	Bilibili().login('', '')
+	bilibili().login('', '')

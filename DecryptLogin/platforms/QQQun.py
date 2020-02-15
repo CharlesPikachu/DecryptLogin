@@ -112,6 +112,12 @@ class QQQun():
 			return None
 		else:
 			raise ValueError('Unsupport argument in QQQun.login -> mode %s, expect <mobile> or <pc>...' % mode)
+	'''qrsig转ptqrtoken, hash33函数'''
+	def __decryptQrsig(self, qrsig):
+		e = 0
+		for c in qrsig:
+			e += (e << 5) + ord(c)
+		return 2147483647 & e
 	'''初始化PC端'''
 	def __initializePC(self):
 		pass
@@ -123,12 +129,6 @@ class QQQun():
 		self.login_url = 'http://ui.ptlogin2.qq.com/cgi-bin/login?'
 		self.qrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
 		self.qrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
-	'''qrsig转ptqrtoken, hash33函数'''
-	def __decryptQrsig(self, qrsig):
-		e = 0
-		for c in qrsig:
-			e += (e << 5) + ord(c)
-		return 2147483647 & e
 
 
 '''test'''
