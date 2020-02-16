@@ -105,15 +105,16 @@ class QQId():
 				elif '二维码已经失效' in res.text:
 					raise RuntimeError('Fail to login, qrcode has expired...')
 				time.sleep(2)
+			# 登录成功
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			qq_number = re.findall(r'&uin=(.+?)&service', res.text)[0]
-			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			url_refresh = res.text[res.text.find('http'): res.text.find('pt_3rd_aid=0')] + 'pt_3rd_aid=0'
 			self.session.cookies.update(all_cookies)
 			res = self.session.get(url_refresh, allow_redirects=False, verify=False)
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			self.session.cookies.update(all_cookies)
 			removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			infos_return = {'username': qq_number}
 			return infos_return, self.session
 		elif mode == 'pc':

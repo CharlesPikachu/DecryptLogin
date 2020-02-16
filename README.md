@@ -18,6 +18,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                          |  知乎          |
 |  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                          |  B站           |
 |  toutiao		   | No                                           |  [Yes](./DecryptLogin/platforms/toutiao.py)  |  今日头条      |
+|  taobao          | [Yes](./DecryptLogin/platforms/taobao.py)    |  No                                          |  淘宝          |
 
 # Some Cases by using DecryptLogin
 - weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
@@ -63,6 +64,7 @@ infos_return, session = lg.QQId('mobile')
 infos_return, session = lg.zhihu(username, password, 'pc')
 infos_return, session = lg.bilibili(username, password, 'pc')
 infos_return, session = lg.toutiao(username, password, 'mobile')
+infos_return, session = lg.taobao('pc')
 ```
 #### Detailed documentation
 ```
