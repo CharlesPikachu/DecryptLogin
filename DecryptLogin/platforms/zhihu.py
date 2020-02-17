@@ -25,7 +25,7 @@ from urllib.parse import urlencode
 
 '''js code'''
 encrypt_js_code = '''
-// I borrowed the codes from https://github.com/zkqiang/zhihu-login/blob/master/encrypt.js
+// I borrowed the codes from https://github.com/zkqiang/zhihu-login/blob/master/encrypt.js, and make some changes for compatibility
 function s(e) {
 	return (s = "function" == typeof Symbol && "symbol" == typeof Symbol.t ? function(e) {
 			return typeof e
@@ -399,16 +399,34 @@ g.prototype.M = function(e) {
 }
 ,
 G.prototype.v = function(e) {
-	for (var t = Buffer.from(e, 'base64').toString('binary'), n = [], r = 0; r < t.length - 1; r += 2)
-			n.push(t.charCodeAt(r) << 8 | t.charCodeAt(r + 1));
-	this.b = n
+	if (typeof Buffer.from == "function")
+	{
+		for (var t = Buffer.from(e, 'base64').toString('binary'), n = [], r = 0; r < t.length - 1; r += 2)
+				n.push(t.charCodeAt(r) << 8 | t.charCodeAt(r + 1));
+		this.b = n
+	} else 
+	{
+		for (var t = new Buffer(e, 'base64').toString('binary'), n = [], r = 0; r < t.length - 1; r += 2)
+				n.push(t.charCodeAt(r) << 8 | t.charCodeAt(r + 1));
+		this.b = n
+	}
 }
 ,
 G.prototype.y = function(e) {
-	for (var t = Buffer.from(e, 'base64').toString('binary'), n = 66, r = [], o = 0; o < t.length; o++) {
-			var i = 24 ^ t.charCodeAt(o) ^ n;
-			r.push(String.fromCharCode(i)),
-			n = i
+	if (typeof Buffer.from == "function")
+	{
+		for (var t = Buffer.from(e, 'base64').toString('binary'), n = 66, r = [], o = 0; o < t.length; o++) {
+				var i = 24 ^ t.charCodeAt(o) ^ n;
+				r.push(String.fromCharCode(i)),
+				n = i
+		}
+	} else
+	{
+		for (var t = new Buffer(e, 'base64').toString('binary'), n = 66, r = [], o = 0; o < t.length; o++) {
+				var i = 24 ^ t.charCodeAt(o) ^ n;
+				r.push(String.fromCharCode(i)),
+				n = i
+		}
 	}
 	return r.join("")
 }
