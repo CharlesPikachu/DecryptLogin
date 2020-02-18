@@ -20,12 +20,14 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  toutiao		   | No                                           |  [Yes](./DecryptLogin/platforms/toutiao.py)  |  今日头条      |
 |  taobao          | [Yes](./DecryptLogin/platforms/taobao.py)    |  No                                          |  淘宝          |
 
-# Some Cases by using DecryptLogin
-- weiboMonitor: https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg
-- QQReport: https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw
-- bilibiliDownloadUserVideos: https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA
-- NeteaseSongListDownloader: https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew
-- NeteaseListenLeaderboard: https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q
+# Some Cases by Using DecryptLogin
+|  Name                       |   Introduction                                                   |   code                                             |  in Chinese                 |
+|  :----:                     |   :----:                                                         |   :----:                                           |  :----:                     |
+|  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](./Examples/weiboMonitor)                 |  微博监控                   |
+|  QQReport                   |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](./Examples/QQReport)                     |  生成QQ个人专属报告         |
+|  bilibiliDownloadUserVideos |   [click](https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA)     |   [click](./Examples/bilibiliDownloadUserVideos)   |  下载B站指定UP主的所有视频  |
+|  NeteaseSongListDownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](./Examples/NeteaseSongListDownloader)    |  网易云个人歌单下载器       |
+|  NeteaseListenLeaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](./Examples/NeteaseListenLeaderboard)     |  网易云个人听歌排行榜       |
 
 # Install
 #### Use setup.py
