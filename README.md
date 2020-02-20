@@ -19,6 +19,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                          |  B站           |
 |  toutiao		   | No                                           |  [Yes](./DecryptLogin/platforms/toutiao.py)  |  今日头条      |
 |  taobao          | [Yes](./DecryptLogin/platforms/taobao.py)    |  No                                          |  淘宝          |
+|  jingdong        | [Yes](./DecryptLogin/platforms/jingdong.py)  |  No                                          |  京东          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                             |  in Chinese                 |
@@ -67,6 +68,7 @@ infos_return, session = lg.zhihu(username, password, 'pc')
 infos_return, session = lg.bilibili(username, password, 'pc')
 infos_return, session = lg.toutiao(username, password, 'mobile')
 infos_return, session = lg.taobao('pc')
+infos_return, session = lg.jingdong('pc')
 ```
 #### Detailed documentation
 ```
