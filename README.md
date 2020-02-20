@@ -5,42 +5,43 @@ You can star this repository to keep track of the project if it's helpful for yo
 ```
 
 # Support List
-|  Websites        | support PC API?                              |  support mobile API?                         |  in Chinese    |
-|  :----:          | :----:                                       |  :----:                                      |  :----:        |
-|  weibo           | [Yes](./DecryptLogin/platforms/weibo.py)     |  [Yes](./DecryptLogin/platforms/weibo.py)    |  新浪微博      |
-|  douban          | [Yes](./DecryptLogin/platforms/douban.py)    |  No                                          |  豆瓣          |
-|  GitHub          | [Yes](./DecryptLogin/platforms/github.py)    |  No                                          |  Github        |
-|  Music163        | [Yes](./DecryptLogin/platforms/music163.py)  |  No                                          |  网易云音乐    |
-|  12306           | [Yes](./DecryptLogin/platforms/zt12306.py)   |  No                                          |  中国铁路12306 |
-|  QQZone          | No                                           |  [Yes](./DecryptLogin/platforms/QQZone.py)   |  QQ空间        |
-|  QQQun           | No                                           |  [Yes](./DecryptLogin/platforms/QQQun.py)    |  QQ群          |
-|  QQId			   | No                                           |  [Yes](./DecryptLogin/platforms/QQId.py)     |  我的QQ中心    |
-|  zhihu		   | [Yes](./DecryptLogin/platforms/zhihu.py)     |  No                                          |  知乎          |
-|  Bilibili		   | [Yes](./DecryptLogin/platforms/bilibili.py)  |  No                                          |  B站           |
-|  toutiao		   | No                                           |  [Yes](./DecryptLogin/platforms/toutiao.py)  |  今日头条      |
-|  taobao          | [Yes](./DecryptLogin/platforms/taobao.py)    |  No                                          |  淘宝          |
-|  jingdong        | [Yes](./DecryptLogin/platforms/jingdong.py)  |  No                                          |  京东          |
+|  Websites        | support PC API?    |  support mobile API?     |  in Chinese    |
+|  :----:          | :----:             |  :----:                  |  :----:        |
+|  weibo           | √                  |  √                       |  新浪微博      |
+|  douban          | √                  |  ×                       |  豆瓣          |
+|  GitHub          | √                  |  ×                       |  Github        |
+|  Music163        | √                  |  ×                       |  网易云音乐    |
+|  12306           | √                  |  ×                       |  中国铁路12306 |
+|  QQZone          | ×                  |  √                       |  QQ空间        |
+|  QQQun           | ×                  |  √                       |  QQ群          |
+|  QQId			   | ×                  |  √                       |  我的QQ中心    |
+|  zhihu		   | √                  |  ×                       |  知乎          |
+|  Bilibili		   | √                  |  ×                       |  B站           |
+|  toutiao		   | ×                  |  √                       |  今日头条      |
+|  taobao          | √                  |  ×                       |  淘宝          |
+|  jingdong        | √                  |  ×                       |  京东          |
 
 # Some Cases by Using DecryptLogin
-|  Name                       |   Introduction                                                   |   code                                             |  in Chinese                 |
-|  :----:                     |   :----:                                                         |   :----:                                           |  :----:                     |
-|  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](./Examples/weiboMonitor)                 |  微博监控                   |
-|  QQReport                   |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](./Examples/QQReport)                     |  生成QQ个人专属报告         |
-|  bilibiliDownloadUserVideos |   [click](https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA)     |   [click](./Examples/bilibiliDownloadUserVideos)   |  下载B站指定UP主的所有视频  |
-|  NeteaseSongListDownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](./Examples/NeteaseSongListDownloader)    |  网易云个人歌单下载器       |
-|  NeteaseListenLeaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](./Examples/NeteaseListenLeaderboard)     |  网易云个人听歌排行榜       |
+|  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                 |
+|  :----:                     |   :----:                                                         |   :----:                                                                                                     |  :----:                     |
+|  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/Examples/weiboMonitor)                  |  微博监控                   |
+|  QQReport                   |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/Examples/QQReport)                      |  生成QQ个人专属报告         |
+|  bilibiliDownloadUserVideos |   [click](https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/Examples/bilibiliDownloadUserVideos)    |  下载B站指定UP主的所有视频  |
+|  NeteaseSongListDownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/Examples/NeteaseSongListDownloader)     |  网易云个人歌单下载器       |
+|  NeteaseListenLeaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/Examples/NeteaseListenLeaderboard)      |  网易云个人听歌排行榜       |
 
 # Install
-#### Use setup.py
-```sh
-Step1:
-git clone https://github.com/CharlesPikachu/DecryptLogin.git
-Step2:
-cd DecryptLogin -> run "python setup.py install"
+#### Pip install
 ```
-#### Use pip
+run "pip install DecryptLogin"
+```
+#### Source code install
 ```sh
-pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
+(1) Offline
+Step1: git clone https://github.com/CharlesPikachu/DecryptLogin.git
+Step2: cd DecryptLogin -> run "python setup.py install"
+(2) Online
+run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 ```
 
 # Usage
