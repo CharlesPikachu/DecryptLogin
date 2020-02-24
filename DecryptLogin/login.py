@@ -48,6 +48,8 @@ class Login():
 		self.jingdong = jingdong.jingdong().login
 		# 凤凰网
 		self.ifeng = ifeng.ifeng().login
+		# 搜狐
+		self.sohu = sohu.sohu().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -88,6 +90,8 @@ class Loginer():
 		self.jingdong = jingdong.jingdong
 		# 凤凰网
 		self.ifeng = ifeng.ifeng
+		# 搜狐
+		self.sohu = sohu.sohu
 	'''Info'''
 	def __repr__(self):
 		return self.info
