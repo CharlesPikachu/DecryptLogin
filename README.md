@@ -8,18 +8,19 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  Websites        | support PC API?    |  support mobile API?     |  in Chinese    |
 |  :----:          | :----:             |  :----:                  |  :----:        |
 |  weibo           | √                  |  √                       |  新浪微博      |
-|  douban          | √                  |  ×                       |  豆瓣          |
-|  GitHub          | √                  |  ×                       |  Github        |
-|  Music163        | √                  |  ×                       |  网易云音乐    |
-|  12306           | √                  |  ×                       |  中国铁路12306 |
-|  QQZone          | ×                  |  √                       |  QQ空间        |
-|  QQQun           | ×                  |  √                       |  QQ群          |
-|  QQId			   | ×                  |  √                       |  我的QQ中心    |
-|  zhihu		   | √                  |  ×                       |  知乎          |
-|  Bilibili		   | √                  |  ×                       |  B站           |
-|  toutiao		   | ×                  |  √                       |  今日头条      |
-|  taobao          | √                  |  ×                       |  淘宝          |
-|  jingdong        | √                  |  ×                       |  京东          |
+|  douban          | √                  |  ✗                       |  豆瓣          |
+|  GitHub          | √                  |  ✗                       |  Github        |
+|  Music163        | √                  |  ✗                       |  网易云音乐    |
+|  12306           | √                  |  ✗                       |  中国铁路12306 |
+|  QQZone          | ✗                  |  √                       |  QQ空间        |
+|  QQQun           | ✗                  |  √                       |  QQ群          |
+|  QQId			   | ✗                  |  √                       |  我的QQ中心    |
+|  zhihu		   | √                  |  ✗                       |  知乎          |
+|  Bilibili		   | √                  |  ✗                       |  B站           |
+|  toutiao		   | ✗                  |  √                       |  今日头条      |
+|  taobao          | √                  |  ✗                       |  淘宝          |
+|  jingdong        | √                  |  ✗                       |  京东          |
+|  ifeng           | √                  |  ✗                       |  凤凰网        |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                 |
@@ -70,6 +71,7 @@ infos_return, session = lg.bilibili(username, password, 'pc')
 infos_return, session = lg.toutiao(username, password, 'mobile')
 infos_return, session = lg.taobao('pc')
 infos_return, session = lg.jingdong('pc')
+infos_return, session = lg.ifeng(username, password, 'pc')
 ```
 #### Detailed documentation
 ```

@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-02-20
+	2020-02-24
 '''
 from .platforms import *
 
@@ -46,6 +46,8 @@ class Login():
 		self.taobao = taobao.taobao().login
 		# 京东
 		self.jingdong = jingdong.jingdong().login
+		# 凤凰网
+		self.ifeng = ifeng.ifeng().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -84,6 +86,8 @@ class Loginer():
 		self.taobao = taobao.taobao
 		# 京东
 		self.jingdong = jingdong.jingdong
+		# 凤凰网
+		self.ifeng = ifeng.ifeng
 	'''Info'''
 	def __repr__(self):
 		return self.info
