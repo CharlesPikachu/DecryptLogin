@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-02-24
+	2020-02-25
 '''
 from .platforms import *
 
@@ -50,6 +50,8 @@ class Login():
 		self.ifeng = ifeng.ifeng().login
 		# 搜狐
 		self.sohu = sohu.sohu().login
+		# 中关村在线
+		self.zgconline = zgconline.zgconline().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -92,6 +94,8 @@ class Loginer():
 		self.ifeng = ifeng.ifeng
 		# 搜狐
 		self.sohu = sohu.sohu
+		# 中关村在线
+		self.zgconline = zgconline.zgconline
 	'''Info'''
 	def __repr__(self):
 		return self.info

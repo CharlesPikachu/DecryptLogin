@@ -7,21 +7,22 @@ You can star this repository to keep track of the project if it's helpful for yo
 # Support List
 |  Websites        | support PC API?    |  support mobile API?     |  in Chinese    |
 |  :----:          | :----:             |  :----:                  |  :----:        |
-|  weibo           | √                  |  √                       |  新浪微博      |
-|  douban          | √                  |  ✗                       |  豆瓣          |
-|  GitHub          | √                  |  ✗                       |  Github        |
-|  Music163        | √                  |  ✗                       |  网易云音乐    |
-|  12306           | √                  |  ✗                       |  中国铁路12306 |
-|  QQZone          | ✗                  |  √                       |  QQ空间        |
-|  QQQun           | ✗                  |  √                       |  QQ群          |
-|  QQId			   | ✗                  |  √                       |  我的QQ中心    |
-|  zhihu		   | √                  |  ✗                       |  知乎          |
-|  Bilibili		   | √                  |  ✗                       |  B站           |
-|  toutiao		   | ✗                  |  √                       |  今日头条      |
-|  taobao          | √                  |  ✗                       |  淘宝          |
-|  jingdong        | √                  |  ✗                       |  京东          |
-|  ifeng           | √                  |  ✗                       |  凤凰网        |
-|  sohu            | √                  |  √                       |  搜狐          |
+|  weibo           | ✓                  |  ✓                       |  新浪微博      |
+|  douban          | ✓                  |  ✗                       |  豆瓣          |
+|  gitHub          | ✓                  |  ✗                       |  Github        |
+|  music163        | ✓                  |  ✗                       |  网易云音乐    |
+|  zt12306         | ✓                  |  ✗                       |  中国铁路12306 |
+|  QQZone          | ✗                  |  ✓                       |  QQ空间        |
+|  QQQun           | ✗                  |  ✓                       |  QQ群          |
+|  QQId			   | ✗                  |  ✓                       |  我的QQ中心    |
+|  zhihu		   | ✓                  |  ✗                       |  知乎          |
+|  bilibili		   | ✓                  |  ✗                       |  B站           |
+|  toutiao		   | ✗                  |  ✓                       |  今日头条      |
+|  taobao          | ✓                  |  ✗                       |  淘宝          |
+|  jingdong        | ✓                  |  ✗                       |  京东          |
+|  ifeng           | ✓                  |  ✗                       |  凤凰网        |
+|  sohu            | ✓                  |  ✓                       |  搜狐          |
+|  zgconline       | ✓                  |  ✗                       |  中关村在线    |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                 |
@@ -74,6 +75,7 @@ infos_return, session = lg.taobao('pc')
 infos_return, session = lg.jingdong('pc')
 infos_return, session = lg.ifeng(username, password, 'pc')
 infos_return, session = lg.sohu(username, password, 'mobile')
+infos_return, session = lg.zgconline(username, password, 'pc')
 ```
 #### Detailed documentation
 ```
