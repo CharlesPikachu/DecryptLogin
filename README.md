@@ -23,6 +23,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  ifeng           | ✓                  |  ✗                       |  凤凰网        |
 |  sohu            | ✓                  |  ✓                       |  搜狐          |
 |  zgconline       | ✓                  |  ✗                       |  中关村在线    |
+|  lagou           | ✓                  |  ✗                       |  拉勾网        |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                 |
@@ -76,6 +77,7 @@ infos_return, session = lg.jingdong('pc')
 infos_return, session = lg.ifeng(username, password, 'pc')
 infos_return, session = lg.sohu(username, password, 'mobile')
 infos_return, session = lg.zgconline(username, password, 'pc')
+infos_return, session = lg.lagou(username, password, 'pc')
 ```
 #### Detailed documentation
 ```

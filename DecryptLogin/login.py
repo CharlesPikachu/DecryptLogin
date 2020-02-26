@@ -52,6 +52,8 @@ class Login():
 		self.sohu = sohu.sohu().login
 		# 中关村在线
 		self.zgconline = zgconline.zgconline().login
+		# 拉勾网
+		self.lagou = lagou.lagou().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -96,6 +98,8 @@ class Loginer():
 		self.sohu = sohu.sohu
 		# 中关村在线
 		self.zgconline = zgconline.zgconline
+		# 拉勾网
+		self.lagou = lagou.lagou
 	'''Info'''
 	def __repr__(self):
 		return self.info
