@@ -17,7 +17,7 @@ import re
 import time
 import hashlib
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 
 
 '''

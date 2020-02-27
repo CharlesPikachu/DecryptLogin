@@ -2,7 +2,7 @@
 Function:
 	QQ中心模拟登录
 		--PC端暂不支持
-		--https://id.qq.com/index.html(移动端)
+		--移动端: https://id.qq.com/index.html
 Author:
 	Charles
 微信公众号:
@@ -18,7 +18,7 @@ import time
 import random
 import warnings
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 warnings.filterwarnings('ignore')
 
 

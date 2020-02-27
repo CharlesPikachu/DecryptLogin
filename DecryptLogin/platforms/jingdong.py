@@ -16,7 +16,7 @@ import os
 import time
 import json
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 from urllib.parse import unquote
 
 

@@ -14,7 +14,7 @@ GitHub:
 '''
 import os
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 
 
 '''

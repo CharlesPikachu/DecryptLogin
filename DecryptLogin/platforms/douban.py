@@ -1,7 +1,7 @@
 '''
 Function:
 	豆瓣模拟登录
-		--https://www.douban.com/(PC端)
+		--PC端: https://www.douban.com/
 		--移动端暂不支持
 Author:
 	Charles

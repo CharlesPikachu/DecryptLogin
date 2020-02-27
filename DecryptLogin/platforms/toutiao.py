@@ -2,7 +2,7 @@
 Function:
 	今日头条模拟登录:
 		--PC端暂不支持
-		--https://m.toutiao.com/(移动端)
+		--移动端: https://m.toutiao.com/
 Author:
 	Charles
 微信公众号:
@@ -16,7 +16,7 @@ import os
 import re
 import base64
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 
 
 '''

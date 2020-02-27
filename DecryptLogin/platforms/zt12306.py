@@ -1,7 +1,7 @@
 '''
 Function:
 	12306模拟登录
-		--https://www.12306.cn/index/(PC端)
+		--PC端: https://www.12306.cn/index/
 		--移动端暂不支持
 Author:
 	Charles
@@ -15,7 +15,7 @@ GitHub:
 import os
 import time
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 
 
 '''

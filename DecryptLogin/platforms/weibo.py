@@ -1,8 +1,8 @@
 '''
 Function:
 	微博模拟登录:
-		--https://login.sina.com.cn/signup/signin.php(PC端)
-		--https://m.weibo.cn/(移动端)
+		--PC端: https://login.sina.com.cn/signup/signin.php
+		--移动端: https://m.weibo.cn/
 Author:
 	Charles
 微信公众号:
@@ -19,7 +19,7 @@ import random
 import base64
 import requests
 import warnings
-from ..utils.utils import *
+from ..utils.misc import *
 from binascii import b2a_hex
 warnings.filterwarnings('ignore')
 

@@ -1,7 +1,7 @@
 '''
 Function:
 	GitHub模拟登录
-		--https://github.com/(PC端)
+		--PC端: https://github.com/
 		--移动端暂不支持
 Author:
 	Charles

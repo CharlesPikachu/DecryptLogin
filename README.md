@@ -16,7 +16,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  QQQun           | ✗                  |  ✓                       |  QQ群          |
 |  QQId			   | ✗                  |  ✓                       |  我的QQ中心    |
 |  zhihu		   | ✓                  |  ✗                       |  知乎          |
-|  bilibili		   | ✓                  |  ✗                       |  B站           |
+|  bilibili		   | ✓                  |  ✓                       |  B站           |
 |  toutiao		   | ✗                  |  ✓                       |  今日头条      |
 |  taobao          | ✓                  |  ✗                       |  淘宝          |
 |  jingdong        | ✓                  |  ✗                       |  京东          |

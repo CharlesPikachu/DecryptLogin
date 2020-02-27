@@ -2,7 +2,7 @@
 Function:
 	QQ空间模拟登录
 		--PC端暂不支持
-		--https://z.qzone.com/download.html(移动端)
+		--移动端: https://z.qzone.com/download.html
 Author:
 	Charles
 微信公众号:
@@ -18,7 +18,7 @@ import time
 import random
 import warnings
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 warnings.filterwarnings('ignore')
 
 

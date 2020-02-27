@@ -1,7 +1,7 @@
 '''
 Function:
 	知乎模拟登录
-		--https://www.zhihu.com/(PC端)
+		--PC端: https://www.zhihu.com/
 		--移动端暂不支持
 Author:
 	Charles
@@ -19,7 +19,7 @@ import base64
 import execjs
 import hashlib
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 from urllib.parse import urlencode
 
 

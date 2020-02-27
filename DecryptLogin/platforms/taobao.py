@@ -16,7 +16,7 @@ import re
 import time
 import random
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 from urllib.parse import unquote
 
 

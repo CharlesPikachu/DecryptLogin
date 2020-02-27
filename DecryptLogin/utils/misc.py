@@ -1,6 +1,6 @@
 '''
 Function:
-	工具函数
+	其他工具函数
 Author:
 	Charles
 微信公众号:
@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2019-03-09
+	2020-02-27
 '''
 import os
 import sys
@@ -37,6 +37,6 @@ def removeImage(img_path):
 def saveImage(img, img_path):
 	if os.path.isfile(img_path):
 		os.remove(img_path)
-	with open(img_path, 'wb') as f:
-		f.write(img)
-		f.close()
+	f = open(img_path, 'wb')
+	f.write(img)
+	f.close()

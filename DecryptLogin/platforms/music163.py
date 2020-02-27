@@ -1,7 +1,7 @@
 '''
 Function:
 	网易云音乐模拟登录
-		--https://music.163.com/(PC端)
+		--PC端: https://music.163.com/
 		--移动端暂不支持
 Author:
 	Charles

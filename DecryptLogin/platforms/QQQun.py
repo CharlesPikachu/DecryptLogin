@@ -2,7 +2,7 @@
 Function:
 	QQ群模拟登录
 		--PC端暂不支持
-		--http://qun.qq.com/member.html(移动端)
+		--移动端: http://qun.qq.com/member.html
 Author:
 	Charles
 微信公众号:
@@ -18,7 +18,7 @@ import time
 import random
 import warnings
 import requests
-from ..utils.utils import *
+from ..utils.misc import *
 warnings.filterwarnings('ignore')
 
 
