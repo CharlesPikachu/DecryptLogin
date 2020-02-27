@@ -93,4 +93,4 @@ The detailed documentation is still on the way...
 # More
 #### WeChat Official Accounts
 *Charles_pikachu*  
-![img](https://github.com/CharlesPikachu/Games/tree/master/.github/pictures/pikachu.jpg)
+![img](https://github.com/CharlesPikachu/DecryptLogin/tree/master/.github/pictures/pikachu.jpg)
