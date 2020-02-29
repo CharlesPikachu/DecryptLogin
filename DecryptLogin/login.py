@@ -54,6 +54,8 @@ class Login():
 		self.zgconline = zgconline.zgconline().login
 		# 拉勾网
 		self.lagou = lagou.lagou().login
+		# 推特
+		self.twitter = twitter.twitter().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -100,6 +102,8 @@ class Loginer():
 		self.zgconline = zgconline.zgconline
 		# 拉勾网
 		self.lagou = lagou.lagou
+		# 推特
+		self.twitter = twitter.twitter
 	'''Info'''
 	def __repr__(self):
 		return self.info
