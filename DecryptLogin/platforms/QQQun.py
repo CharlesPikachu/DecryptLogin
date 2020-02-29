@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-01-28
+	2020-02-29
 '''
 import os
 import re
@@ -32,6 +32,7 @@ Detail:
 			--password: 密码
 			--mode: mobile/pc
 			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+			--proxies: 为requests.Session()设置代理
 		Return:
 			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
@@ -43,6 +44,9 @@ class QQQun():
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username='', password='', mode='mobile', crackvcFunc=None, **kwargs):
+		# 设置代理
+		self.session.proxies.update(kwargs.get('proxies', {}))
+		# 移动端接口
 		if mode == 'mobile':
 			all_cookies = {}
 			self.__initializeMobile()
@@ -109,8 +113,9 @@ class QQQun():
 			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			infos_return = {'username': qq_number}
 			return infos_return, self.session
+		# PC端接口
 		elif mode == 'pc':
-			return None
+			raise NotImplementedError
 		else:
 			raise ValueError('Unsupport argument in QQQun.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''qrsig转ptqrtoken, hash33函数'''

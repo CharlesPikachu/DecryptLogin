@@ -57,6 +57,7 @@ Specific Loginning Arguments:
 --password: your password.
 --mode: pc/mobile.
 --crackvcFunc: an user-defined function used to crack the verification code (usage: crackvcFunc(verification_code_path)).
+--proxies: adopt specified proxies to login the website.
 ```
 #### Quick Start
 ```python

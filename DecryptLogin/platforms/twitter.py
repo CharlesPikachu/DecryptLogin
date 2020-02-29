@@ -26,6 +26,7 @@ Detail:
 			--password: 密码
 			--mode: mobile/pc
 			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+			--proxies: 为requests.Session()设置代理
 		Return:
 			--infos_return: 用户名等信息
 			--session: 登录后的requests.Session()
@@ -36,8 +37,12 @@ class twitter():
 		self.session = requests.Session()
 	'''登录函数'''
 	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
+		# 设置代理
+		self.session.proxies.update(kwargs.get('proxies', {}))
+		# 移动端接口
 		if mode == 'mobile':
-			pass
+			raise NotImplementedError
+		# PC端接口
 		elif mode == 'pc':
 			self.__initializePC()
 			# 访问home_url
