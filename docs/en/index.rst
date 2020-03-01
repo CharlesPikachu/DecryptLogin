@@ -12,6 +12,4 @@ Welcome to DecryptLogin's Document
 	STATEMENTS.md
 	SUPPORTLIST.md
 	INSTALL.md
-	QUICKSTART.md
-	LOGIN.md
 	AUTHOR.md

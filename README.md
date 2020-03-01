@@ -4,6 +4,9 @@ APIs for loginning some websites using <requests>.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
 ```
 
+# Document
+https://decryptlogin.readthedocs.io/
+
 # Support List
 |  Websites        | support PC API?    |  support mobile API?     |  in Chinese    |
 |  :----:          | :----:             |  :----:                  |  :----:        |
@@ -84,8 +87,8 @@ infos_return, session = lg.twitter(username, password, 'pc')
 ```
 #### Detailed documentation
 ```
-Here is a brief and incomplete introduction: https://mp.weixin.qq.com/s/lctw2dGjOesXrfvkNhzYfQ  
-The detailed documentation is still on the way...
+The detailed documentation for DecryptLogin is here:
+https://decryptlogin.readthedocs.io/
 ```
 
 # Thanks List

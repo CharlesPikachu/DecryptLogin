@@ -27,7 +27,7 @@ pip install DecryptLogin --upgrade
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
 #### 离线安装
-运行如下命令下载DecryptLogin源代码:
+利用如下命令下载DecryptLogin源代码到本地:
 ```sh
 git clone https://github.com/CharlesPikachu/DecryptLogin.git
 ```
