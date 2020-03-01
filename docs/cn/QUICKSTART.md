@@ -33,6 +33,7 @@ infos_return, session = lg.zhihu(username='Your Username', password='Your Passwo
 若您想利用代理服务器来实现网站模拟登录, 则需传入proxies参数。以模拟登录推特为例:
 ```
 from DecryptLogin import login
+
 lg = login.Login()
 proxies = {'https': '127.0.0.1:1080'}
 infos_return, session = lg.zhihu(username='Your Username', password='Your Password', proxies=proxies)
