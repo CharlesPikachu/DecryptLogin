@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to DecryptLogin's Document
+DecryptLogin中文文档
 ========================================
 
 .. toctree::
@@ -14,4 +14,5 @@ Welcome to DecryptLogin's Document
 	INSTALL.md
 	QUICKSTART.md
 	LOGIN.md
+	EXAMPLES.md
 	AUTHOR.md
