@@ -15,7 +15,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  :----:          | :----:             |  :----:                  |  :----:        |
 |  weibo           | ✓                  |  ✓                       |  新浪微博      |
 |  douban          | ✓                  |  ✗                       |  豆瓣          |
-|  gitHub          | ✓                  |  ✗                       |  Github        |
+|  github          | ✓                  |  ✗                       |  Github        |
 |  music163        | ✓                  |  ✗                       |  网易云音乐    |
 |  zt12306         | ✓                  |  ✗                       |  中国铁路12306 |
 |  QQZone          | ✗                  |  ✓                       |  QQ空间        |

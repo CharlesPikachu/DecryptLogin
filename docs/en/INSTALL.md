@@ -1,4 +1,4 @@
-# Install DecryptLogin
+# Install
 
 ## Environment
 The environment I used is:
