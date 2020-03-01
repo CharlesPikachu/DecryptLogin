@@ -191,6 +191,7 @@ infos_return, session = lg.bilibili(username, password, 'mobile')
 - pc: 暂不支持, 直接调用了https://github.com/Hsury/Bilibili-Toolkit作者提供的接口进行验证码识别
 
 ### 今日头条
+#### 支持的登录mode
 今日头条目前支持的登录mode包括:
 - mobile
 #### 示例代码
