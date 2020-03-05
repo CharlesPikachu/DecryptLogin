@@ -308,6 +308,19 @@ infos_return, session = lg.twitter(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 暂不支持登录时需要验证码的情况处理
 
+### Vultr
+#### 支持的登录mode
+Vultr目前支持的登录mode包括:
+- pc
+#### 示例代码
+```
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.vultr(username, password, 'pc')
+```
+#### 验证码识别结果格式
+- mobile: 暂不支持登录时需要验证码的情况处理
+- pc: 对于无法访问谷歌的用户, Vultr使用数字验证码, 返回对应的数字识别结果即可; 对于可以访问谷歌的用户, Vultr使用谷歌的点击验证码, 暂不支持出现该种验证码时的情况处理
 
 ## 一些工具函数
 ### Cookies
@@ -318,7 +331,7 @@ from DecryptLogin.utils.cookies import *
 
 session = requests.Session()
 session.get(url)
-infos_return = saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES')
+infos_return = saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES (e.g., cookies.pkl)')
 ```
 函数参数详解:
 ```
@@ -332,7 +345,7 @@ Return:
 	--infos_return: 是否保存成功的flag, 以及错误原因
 ```
 #### Cookies导入
-您可以利用如下方法为session对象导入cookies:
+您可以利用如下方法为requests.Session对象导入cookies:
 ```python
 from DecryptLogin.utils.cookies import *
 

@@ -56,6 +56,8 @@ class Login():
 		self.lagou = lagou.lagou().login
 		# 推特
 		self.twitter = twitter.twitter().login
+		# vultr
+		self.vultr = vultr.vultr().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -104,6 +106,8 @@ class Loginer():
 		self.lagou = lagou.lagou
 		# 推特
 		self.twitter = twitter.twitter
+		# vultr
+		self.vultr = vultr.vultr
 	'''Info'''
 	def __repr__(self):
 		return self.info

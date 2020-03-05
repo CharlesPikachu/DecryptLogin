@@ -20,3 +20,4 @@
 |  zgconline       | ✓                  |  ✗                       |
 |  lagou           | ✓                  |  ✗                       |
 |  twitter         | ✓                  |  ✗                       |
+|  Vultr           | ✓                  |  ✗                       |

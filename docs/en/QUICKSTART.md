@@ -50,5 +50,14 @@ from DecryptLogin.utils.cookies import *
 
 session = requests.Session()
 session.get(url)
-saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES')
+saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES (e.g., cookies.pkl)')
+```
+
+## Load cookies
+You can load the cookies into a requests.Session as following example:
+```python
+from DecryptLogin.utils.cookies import *
+
+session = requests.Session()
+infos_return, session = loadSessionCookies(session=session, cookiespath='COOKIES PATH to be LOADED')
 ```

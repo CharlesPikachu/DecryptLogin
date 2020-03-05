@@ -48,6 +48,15 @@ from DecryptLogin.utils.cookies import *
 
 session = requests.Session()
 session.get(url)
-saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES')
+saveSessionCookies(session=session, cookiespath='PATH to SAVE COOKIES (e.g., cookies.pkl)')
 ```
 对于验证cookies有效性, 实现并不难, 有需要的用户可自行实现。
+
+## 导入cookies
+将之前保存的cookies重新导入到一个requests.Session对象, 您可以利用如下方法:
+```python
+from DecryptLogin.utils.cookies import *
+
+session = requests.Session()
+infos_return, session = loadSessionCookies(session=session, cookiespath='COOKIES PATH to be LOADED')
+```
