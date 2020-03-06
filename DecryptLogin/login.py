@@ -58,6 +58,8 @@ class Login():
 		self.twitter = twitter.twitter().login
 		# vultr
 		self.vultr = vultr.vultr().login
+		# 天翼
+		self.eSurfing = eSurfing.eSurfing().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -108,6 +110,8 @@ class Loginer():
 		self.twitter = twitter.twitter
 		# vultr
 		self.vultr = vultr.vultr
+		# 天翼
+		self.eSurfing = eSurfing.eSurfing
 	'''Info'''
 	def __repr__(self):
 		return self.info

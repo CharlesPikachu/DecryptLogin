@@ -32,6 +32,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  lagou           | ✓                  |  ✗                       |  拉勾网        |
 |  twitter         | ✓                  |  ✗                       |  推特          |
 |  Vultr           | ✓                  |  ✗                       |  Vultr         |
+|  eSurfing        | ✓                  |  ✗                       |  天翼          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -90,6 +91,7 @@ infos_return, session = lg.zgconline(username, password, 'pc')
 infos_return, session = lg.lagou(username, password, 'pc')
 infos_return, session = lg.twitter(username, password, 'pc')
 infos_return, session = lg.vultr(username, password, 'pc')
+infos_return, session = lg.eSurfing(username, password, 'pc')
 ```
 #### Detailed documentation
 ```
