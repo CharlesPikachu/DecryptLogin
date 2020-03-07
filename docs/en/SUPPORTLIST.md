@@ -22,3 +22,4 @@
 |  twitter         | ✓                  |  ✗                       |
 |  Vultr           | ✓                  |  ✗                       |
 |  eSurfing        | ✓                  |  ✗                       |
+|  renren          | ✓                  |  ✗                       |

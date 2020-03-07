@@ -81,9 +81,8 @@ class vultr():
 			if ('Log In - Vultr.com' in res.text) or 'My Subscriptions - Vultr.com' not in res.text:
 				raise RuntimeError('Account -> %s, fail to login, username or password or captcha error. Noted, if your network could visit google.com, maybe you are detected as a robot rather than username or password error...' % username)
 			# 登录成功
-			useremail = username
-			username = re.findall(r'Hello, (.*?)!', res.text)[0]
-			infos_return = {'username': username, 'useremail': useremail}
+			name = re.findall(r'Hello, (.*?)!', res.text)[0]
+			infos_return = {'username': username, 'name': name}
 			print('[INFO]: Account -> %s, login successfully...' % username)
 			return infos_return, self.session
 		else:

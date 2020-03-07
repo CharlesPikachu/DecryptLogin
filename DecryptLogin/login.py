@@ -60,6 +60,8 @@ class Login():
 		self.vultr = vultr.vultr().login
 		# 天翼
 		self.eSurfing = eSurfing.eSurfing().login
+		# 人人网
+		self.renren = renren.renren().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -112,6 +114,8 @@ class Loginer():
 		self.vultr = vultr.vultr
 		# 天翼
 		self.eSurfing = eSurfing.eSurfing
+		# 人人网
+		self.renren = renren.renren
 	'''Info'''
 	def __repr__(self):
 		return self.info
