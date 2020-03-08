@@ -350,7 +350,7 @@ infos_return, session = lg.renren(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 为数字验证码, 返回对应的数字识别结果即可
 
-# W3Cschool(编程狮)
+### W3Cschool(编程狮)
 #### 支持的登录mode
 W3Cschool(编程狮)目前支持的登录mode包括:
 - pc
