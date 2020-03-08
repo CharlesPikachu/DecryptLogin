@@ -11,29 +11,30 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/
 https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 
 # Support List
-|  Websites        | support PC API?    |  support mobile API?     |  in Chinese    |
-|  :----:          | :----:             |  :----:                  |  :----:        |
-|  weibo           | ✓                  |  ✓                       |  新浪微博      |
-|  douban          | ✓                  |  ✗                       |  豆瓣          |
-|  github          | ✓                  |  ✗                       |  Github        |
-|  music163        | ✓                  |  ✗                       |  网易云音乐    |
-|  zt12306         | ✓                  |  ✗                       |  中国铁路12306 |
-|  QQZone          | ✗                  |  ✓                       |  QQ空间        |
-|  QQQun           | ✗                  |  ✓                       |  QQ群          |
-|  QQId			   | ✗                  |  ✓                       |  我的QQ中心    |
-|  zhihu		   | ✓                  |  ✗                       |  知乎          |
-|  bilibili		   | ✓                  |  ✓                       |  B站           |
-|  toutiao		   | ✗                  |  ✓                       |  今日头条      |
-|  taobao          | ✓                  |  ✗                       |  淘宝          |
-|  jingdong        | ✓                  |  ✗                       |  京东          |
-|  ifeng           | ✓                  |  ✗                       |  凤凰网        |
-|  sohu            | ✓                  |  ✓                       |  搜狐          |
-|  zgconline       | ✓                  |  ✗                       |  中关村在线    |
-|  lagou           | ✓                  |  ✗                       |  拉勾网        |
-|  twitter         | ✓                  |  ✗                       |  推特          |
-|  Vultr           | ✓                  |  ✗                       |  Vultr         |
-|  eSurfing        | ✓                  |  ✗                       |  天翼          |
-|  renren          | ✓                  |  ✗                       |  人人网        |
+|  Websites        | support PC API?    |  support mobile API?     |  in Chinese        |
+|  :----:          | :----:             |  :----:                  |  :----:            |
+|  weibo           | ✓                  |  ✓                       |  新浪微博          |
+|  douban          | ✓                  |  ✗                       |  豆瓣              |
+|  github          | ✓                  |  ✗                       |  Github            |
+|  music163        | ✓                  |  ✗                       |  网易云音乐        |
+|  zt12306         | ✓                  |  ✗                       |  中国铁路12306     |
+|  QQZone          | ✗                  |  ✓                       |  QQ空间            |
+|  QQQun           | ✗                  |  ✓                       |  QQ群              |
+|  QQId			   | ✗                  |  ✓                       |  我的QQ中心        |
+|  zhihu		   | ✓                  |  ✗                       |  知乎         	    |
+|  bilibili		   | ✓                  |  ✓                       |  B站               |
+|  toutiao		   | ✗                  |  ✓                       |  今日头条          |
+|  taobao          | ✓                  |  ✗                       |  淘宝              |
+|  jingdong        | ✓                  |  ✗                       |  京东              |
+|  ifeng           | ✓                  |  ✗                       |  凤凰网            |
+|  sohu            | ✓                  |  ✓                       |  搜狐              |
+|  zgconline       | ✓                  |  ✗                       |  中关村在线        |
+|  lagou           | ✓                  |  ✗                       |  拉勾网            |
+|  twitter         | ✓                  |  ✗                       |  推特              |
+|  Vultr           | ✓                  |  ✗                       |  Vultr             |
+|  eSurfing        | ✓                  |  ✗                       |  天翼              |
+|  renren          | ✓                  |  ✗                       |  人人网            |
+|  w3cshool        | ✓                  |  ✗                       |  W3Cschool(编程狮) |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -59,17 +60,7 @@ Step2: cd DecryptLogin -> run "python setup.py install"
 run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 ```
 
-# Usage
-#### Arguments
-```
-Specific Loginning Arguments:
---username: your username.
---password: your password.
---mode: pc/mobile.
---crackvcFunc: an user-defined function used to crack the verification code (usage: crackvcFunc(verification_code_path)).
---proxies: adopt specified proxies to login the website.
-```
-#### Quick Start
+# Quick Start
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -94,12 +85,7 @@ infos_return, session = lg.twitter(username, password, 'pc')
 infos_return, session = lg.vultr(username, password, 'pc')
 infos_return, session = lg.eSurfing(username, password, 'pc')
 infos_return, session = lg.renren(username, password, 'pc')
-```
-#### Detailed documentation
-```
-The detailed documentation for DecryptLogin is here:
-https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/ (In Chinese)
-https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/ (In English)
+infos_return, session = lg.w3cshool(username, password, 'pc')
 ```
 
 # Thanks List

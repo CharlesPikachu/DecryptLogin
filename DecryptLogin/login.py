@@ -62,6 +62,8 @@ class Login():
 		self.eSurfing = eSurfing.eSurfing().login
 		# 人人网
 		self.renren = renren.renren().login
+		# w3cshool
+		self.w3cshool = w3cshool.w3cshool().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -116,6 +118,8 @@ class Loginer():
 		self.eSurfing = eSurfing.eSurfing
 		# 人人网
 		self.renren = renren.renren
+		# w3cshool
+		self.w3cshool = w3cshool.w3cshool
 	'''Info'''
 	def __repr__(self):
 		return self.info
