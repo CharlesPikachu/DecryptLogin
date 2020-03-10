@@ -1,6 +1,6 @@
 '''
 Function:
-	w3cshool模拟登录
+	w3cschool模拟登录
 		--PC端: https://www.w3cschool.cn/login?refer=/
 		--移动端暂不支持
 Author:
@@ -17,7 +17,7 @@ import requests
 
 '''
 Function:
-	w3cshool模拟登录
+	w3cschool模拟登录
 Detail:
 	-login:
 		Input:
