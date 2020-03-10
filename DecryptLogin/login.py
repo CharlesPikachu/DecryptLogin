@@ -66,6 +66,8 @@ class Login():
 		self.w3cshool = w3cshool.w3cshool().login
 		# 鱼C论坛
 		self.fishc = fishc.fishc().login
+		# 有道
+		self.youdao = youdao.youdao().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -124,6 +126,8 @@ class Loginer():
 		self.w3cshool = w3cshool.w3cshool
 		# 鱼C论坛
 		self.fishc = fishc.fishc
+		# 有道
+		self.youdao = youdao.youdao
 	'''Info'''
 	def __repr__(self):
 		return self.info

@@ -87,6 +87,7 @@ class toutiao():
 			# 其他问题
 			else:
 				raise RuntimeError(res_json.get('description'))
+			print('[INFO]: Account -> %s, login successfully...' % username)
 			infos_return = {'username': username, 'userid': res_json.get('user_id'), 'ticket': ticket}
 			return infos_return, self.session
 		# PC端接口

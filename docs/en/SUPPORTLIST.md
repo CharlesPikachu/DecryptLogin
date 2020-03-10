@@ -25,3 +25,4 @@
 |  renren          | ✓                  |  ✗                       |
 |  w3cshool        | ✓                  |  ✗                       |
 |  fishc           | ✓                  |  ✗                       |
+|  youdao          | ✓                  |  ✗                       |

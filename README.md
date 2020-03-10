@@ -36,6 +36,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  renren          | ✓                  |  ✗                       |  人人网            |
 |  w3cshool        | ✓                  |  ✗                       |  W3Cschool(编程狮) |
 |  fishc           | ✓                  |  ✗                       |  鱼C论坛           |
+|  youdao          | ✓                  |  ✗                       |  有道              |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -89,6 +90,7 @@ infos_return, session = lg.eSurfing(username, password, 'pc')
 infos_return, session = lg.renren(username, password, 'pc')
 infos_return, session = lg.w3cshool(username, password, 'pc')
 infos_return, session = lg.fishc(username, password, 'pc')
+infos_return, session = lg.youdao(username, password, 'pc')
 ```
 
 # Thanks List
