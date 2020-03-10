@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-02-25
+	2020-03-10
 '''
 from .platforms import *
 
@@ -68,6 +68,8 @@ class Login():
 		self.fishc = fishc.fishc().login
 		# 有道
 		self.youdao = youdao.youdao().login
+		# 百度网盘
+		self.baidupan = baidupan.baidupan().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -128,6 +130,8 @@ class Loginer():
 		self.fishc = fishc.fishc
 		# 有道
 		self.youdao = youdao.youdao
+		# 百度网盘
+		self.baidupan = baidupan.baidupan
 	'''Info'''
 	def __repr__(self):
 		return self.info

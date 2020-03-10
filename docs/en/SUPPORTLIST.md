@@ -26,3 +26,4 @@
 |  w3cshool        | ✓                  |  ✗                       |
 |  fishc           | ✓                  |  ✗                       |
 |  youdao          | ✓                  |  ✗                       |
+|  baidupan        | ✓                  |  ✗                       |

@@ -12,7 +12,6 @@ GitHub:
 更新日期:
 	2020-03-10
 '''
-import re
 import requests
 from hashlib import md5
 
