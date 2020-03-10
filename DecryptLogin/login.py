@@ -62,8 +62,8 @@ class Login():
 		self.eSurfing = eSurfing.eSurfing().login
 		# 人人网
 		self.renren = renren.renren().login
-		# w3cshool
-		self.w3cshool = w3cshool.w3cshool().login
+		# w3cschool
+		self.w3cschool = w3cschool.w3cschool().login
 		# 鱼C论坛
 		self.fishc = fishc.fishc().login
 		# 有道
@@ -124,8 +124,8 @@ class Loginer():
 		self.eSurfing = eSurfing.eSurfing
 		# 人人网
 		self.renren = renren.renren
-		# w3cshool
-		self.w3cshool = w3cshool.w3cshool
+		# w3cschool
+		self.w3cschool = w3cschool.w3cschool
 		# 鱼C论坛
 		self.fishc = fishc.fishc
 		# 有道
