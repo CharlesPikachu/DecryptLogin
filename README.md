@@ -34,7 +34,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Vultr           | ✓                  |  ✗                       |  Vultr             |
 |  eSurfing        | ✓                  |  ✗                       |  天翼              |
 |  renren          | ✓                  |  ✗                       |  人人网            |
-|  w3cshool        | ✓                  |  ✗                       |  W3Cschool(编程狮) |
+|  w3cschool       | ✓                  |  ✗                       |  W3Cschool(编程狮) |
 |  fishc           | ✓                  |  ✗                       |  鱼C论坛           |
 |  youdao          | ✓                  |  ✗                       |  有道              |
 |  baidupan        | ✓                  |  ✗                       |  百度网盘          |
@@ -89,7 +89,7 @@ infos_return, session = lg.twitter(username, password, 'pc')
 infos_return, session = lg.vultr(username, password, 'pc')
 infos_return, session = lg.eSurfing(username, password, 'pc')
 infos_return, session = lg.renren(username, password, 'pc')
-infos_return, session = lg.w3cshool(username, password, 'pc')
+infos_return, session = lg.w3cschool(username, password, 'pc')
 infos_return, session = lg.fishc(username, password, 'pc')
 infos_return, session = lg.youdao(username, password, 'pc')
 infos_return, session = lg.baidupan(username, password, 'pc')
