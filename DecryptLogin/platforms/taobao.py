@@ -83,7 +83,7 @@ class taobao():
 				# --扫码成功
 				if res_json['code'] == '10006':
 					# ----检查是否需要安全验证
-					res = self.session.get(res_json.get('url', '') + f'&umid_token={umid_token}')
+					res = self.session.get(res_json.get('url', '') + '&umid_token={}'.format(umid_token))
 					if res.url.find('login_unusual.htm') > -1:
 						raise RuntimeError('Fail to login, your account requires security verification...')
 					uid, token = re.findall(r'uid=(.*?)&token=(.*?)&', res_json.get('url'))[0]
