@@ -129,10 +129,10 @@ class bilibili():
 				pub_key = rsa.PublicKey.load_pkcs1_openssl_pem(res_json['data']['key'].encode())
 				# 模拟登录
 				if need_verification_code:
-					data = f"appkey={appkey}&captcha={captcha}&password={urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key)))}&username={urllib.parse.quote_plus(username)}"
+					data = "appkey={}&captcha={}&password={}&username={}".format(appkey, captcha, urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key))), urllib.parse.quote_plus(username))
 				else:
-					data = f"appkey={appkey}&password={urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key)))}&username={urllib.parse.quote_plus(username)}"
-				data = f"{data}&sign={self.__calcSign(data)}"
+					data = "appkey={}&password={}&username={}".format(appkey, urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key))), urllib.parse.quote_plus(username))
+				data = "{}&sign={}".format(data, self.__calcSign(data))
 				res = self.session.post(self.login_url, data=data, headers=self.login_headers)
 				res_json = res.json()
 				# 不需要验证码, 登录成功
