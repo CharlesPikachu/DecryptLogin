@@ -10,7 +10,7 @@ lg = login.Login()
 infos_return, session = lg.twitter(username='Your Username', password='Your Password')
 ```
 where infos_return is a dict object, which contains some user information(e.g. userid) that may be useful. The session is a 
-requests.Session object after login in the target website.
+requests.Session object which has logined in the target website.
 
 ## Deal with captcha
 By default, the users have to handle the captcha by themselves. 
@@ -21,19 +21,19 @@ from DecryptLogin import login
 
 '''the captcha identification function'''
 def crackvcFunc(imagepath):
-	# open captcha
-	img = Image.open(imagepath)
-	# identify captcha
-	result = IdentifyAPI(img)
-	# return the identification result
-	return result
+    # open captcha
+    img = Image.open(imagepath)
+    # identify captcha
+    result = IdentifyAPI(img)
+    # return the identification result
+    return result
 
 lg = login.Login()
 infos_return, session = lg.zhihu(username='Your Username', password='Your Password', crackvcFunc=crackvcFunc)
 ```
 
 ## Add proxies
-If you want to add proxies when implement simulated login, you can pass the proxies into login api as following example:
+If you want to add proxies for the simulated login operation, you can pass the proxies into login api as following example:
 ```python
 from DecryptLogin import login
 

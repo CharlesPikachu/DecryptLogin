@@ -27,7 +27,7 @@ Just run the following command:
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
 #### Offline
-First, clone the project
+First, clone the project:
 ```sh
 git clone https://github.com/CharlesPikachu/DecryptLogin.git
 ```

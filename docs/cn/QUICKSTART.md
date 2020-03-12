@@ -18,12 +18,12 @@ from DecryptLogin import login
 
 '''定义验证码识别函数'''
 def crackvcFunc(imagepath):
-	# 打开验证码图片
-	img = Image.open(imagepath)
-	# 识别验证码图片
-	result = IdentifyAPI(img)
-	# 返回识别结果(知乎为数字验证码)
-	return result
+    # 打开验证码图片
+    img = Image.open(imagepath)
+    # 识别验证码图片
+    result = IdentifyAPI(img)
+    # 返回识别结果(知乎为数字验证码)
+    return result
 
 lg = login.Login()
 infos_return, session = lg.zhihu(username='Your Username', password='Your Password', crackvcFunc=crackvcFunc)

@@ -45,7 +45,7 @@ login函数支持的参数与上面利用Login类对象实现模拟登录支持�
 - pc
 #### 示例代码
 新浪微博模拟登录的示例代码如下:
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # PC端
@@ -62,7 +62,7 @@ infos_return, session = lg.weibo(username[telephone], password, 'mobile')
 豆瓣目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.douban(username[telephone], password, 'pc')
@@ -76,7 +76,7 @@ infos_return, session = lg.douban(username[telephone], password, 'pc')
 Github目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.github(username[email], password, 'pc')
@@ -90,7 +90,7 @@ infos_return, session = lg.github(username[email], password, 'pc')
 网易云音乐目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.music163(username[telephone/email], password, 'pc')
@@ -104,7 +104,7 @@ infos_return, session = lg.music163(username[telephone/email], password, 'pc')
 中国铁路12306目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.zt12306(username[telephone], password, 'pc')
@@ -118,7 +118,7 @@ infos_return, session = lg.zt12306(username[telephone], password, 'pc')
 QQ空间目前支持的登录mode包括:
 - mobile
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
@@ -133,7 +133,7 @@ infos_return, session = lg.QQZone('mobile')
 QQ群目前支持的登录mode包括:
 - mobile
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
@@ -148,7 +148,7 @@ infos_return, session = lg.QQQun('mobile')
 我的QQ中心目前支持的登录mode包括:
 - mobile
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
@@ -163,7 +163,7 @@ infos_return, session = lg.QQId('mobile')
 知乎目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.zhihu(username, password, 'pc')
@@ -178,7 +178,7 @@ B站目前支持的登录mode包括:
 - mobile
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # PC端
@@ -195,7 +195,7 @@ infos_return, session = lg.bilibili(username, password, 'mobile')
 今日头条目前支持的登录mode包括:
 - mobile
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.toutiao(username, password, 'mobile')
@@ -209,7 +209,7 @@ infos_return, session = lg.toutiao(username, password, 'mobile')
 淘宝目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
@@ -224,7 +224,7 @@ infos_return, session = lg.taobao('pc')
 京东目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
@@ -239,7 +239,7 @@ infos_return, session = lg.jingdong('pc')
 凤凰网目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.ifeng(username, password, 'pc')
@@ -251,10 +251,10 @@ infos_return, session = lg.ifeng(username, password, 'pc')
 ### 搜狐
 #### 支持的登录mode
 搜狐目前支持的登录mode包括:
-- pc
 - mobile
+- pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 # PC端
@@ -271,7 +271,7 @@ infos_return, session = lg.sohu(username, password, 'mobile')
 中关村在线目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.zgconline(username, password, 'pc')
@@ -285,7 +285,7 @@ infos_return, session = lg.zgconline(username, password, 'pc')
 拉勾网目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.lagou(username, password, 'pc')
@@ -299,7 +299,7 @@ infos_return, session = lg.lagou(username, password, 'pc')
 推特目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.twitter(username, password, 'pc')
@@ -313,7 +313,7 @@ infos_return, session = lg.twitter(username, password, 'pc')
 Vultr目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.vultr(username, password, 'pc')
@@ -327,7 +327,7 @@ infos_return, session = lg.vultr(username, password, 'pc')
 天翼目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.eSurfing(username, password, 'pc')
@@ -341,7 +341,7 @@ infos_return, session = lg.eSurfing(username, password, 'pc')
 人人网目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.renren(username, password, 'pc')
@@ -355,7 +355,7 @@ infos_return, session = lg.renren(username, password, 'pc')
 W3Cschool(编程狮)目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.w3cschool(username, password, 'pc')
@@ -369,7 +369,7 @@ infos_return, session = lg.w3cschool(username, password, 'pc')
 鱼C论坛目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.fishc(username, password, 'pc')
@@ -383,7 +383,7 @@ infos_return, session = lg.fishc(username, password, 'pc')
 有道目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.youdao(username, password, 'pc')
@@ -397,7 +397,7 @@ infos_return, session = lg.youdao(username, password, 'pc')
 百度网盘目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.baidupan(username, password, 'pc')
@@ -411,7 +411,7 @@ infos_return, session = lg.baidupan(username, password, 'pc')
 stackoverflow目前支持的登录mode包括:
 - pc
 #### 示例代码
-```
+```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.stackoverflow(username, password, 'pc')
@@ -422,6 +422,7 @@ infos_return, session = lg.stackoverflow(username, password, 'pc')
 
 
 ## 一些工具函数
+
 ### Cookies
 #### Cookies保存
 您可以利用如下方法保存登录后的session中的cookies:
