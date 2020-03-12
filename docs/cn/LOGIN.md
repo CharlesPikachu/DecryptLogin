@@ -406,6 +406,20 @@ infos_return, session = lg.baidupan(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 为数字验证码, 返回对应的数字识别结果即可
 
+### stackoverflow
+#### 支持的登录mode
+stackoverflow目前支持的登录mode包括:
+- pc
+#### 示例代码
+```
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.stackoverflow(username, password, 'pc')
+```
+#### 验证码识别结果格式
+- mobile: 暂不支持登录时需要验证码的情况处理
+- pc: 暂不支持登录时需要验证码的情况处理
+
 
 ## 一些工具函数
 ### Cookies

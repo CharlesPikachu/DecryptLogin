@@ -70,6 +70,8 @@ class Login():
 		self.youdao = youdao.youdao().login
 		# 百度网盘
 		self.baidupan = baidupan.baidupan().login
+		# stackoverflow
+		self.stackoverflow = stackoverflow.stackoverflow().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -132,6 +134,8 @@ class Loginer():
 		self.youdao = youdao.youdao
 		# 百度网盘
 		self.baidupan = baidupan.baidupan
+		# stackoverflow
+		self.stackoverflow = stackoverflow.stackoverflow
 	'''Info'''
 	def __repr__(self):
 		return self.info

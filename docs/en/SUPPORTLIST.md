@@ -27,3 +27,4 @@
 |  fishc           | ✓                  |  ✗                       |
 |  youdao          | ✓                  |  ✗                       |
 |  baidupan        | ✓                  |  ✗                       |
+|  stackoverflow   | ✓                  |  ✗                       |

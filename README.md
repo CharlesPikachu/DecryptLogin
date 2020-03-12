@@ -38,6 +38,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  fishc           | ✓                  |  ✗                       |  鱼C论坛           |
 |  youdao          | ✓                  |  ✗                       |  有道              |
 |  baidupan        | ✓                  |  ✗                       |  百度网盘          |
+|  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     | 
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -94,6 +95,7 @@ infos_return, session = lg.w3cschool(username, password, 'pc')
 infos_return, session = lg.fishc(username, password, 'pc')
 infos_return, session = lg.youdao(username, password, 'pc')
 infos_return, session = lg.baidupan(username, password, 'pc')
+infos_return, session = lg.stackoverflow(username, password, 'pc')
 ```
 
 # Thanks List
