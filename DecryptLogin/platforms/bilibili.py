@@ -121,7 +121,7 @@ class bilibili():
 				appkey = '1d8b6e7d45233436'
 				data = {
 							'appkey': appkey,
-							'sign': self.__calcSign('appkey={}'.fromat(appkey))
+							'sign': self.__calcSign('appkey={}'.format(appkey))
 						}
 				res = self.session.post(self.getkey_url, data=data)
 				res_json = res.json()

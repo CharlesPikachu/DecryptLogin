@@ -464,7 +464,7 @@ class baidupan():
 		verify_type = input('Your account has to be verified by using binded phone or email, please choose phone(enter 0, by default) or email(enter 1):')
 		verify_type = 'email' if verify_type == '1' else 'mobile'
 		# 发送验证码
-		url = 'https://wappass.baidu.com/passport/authwidget?action=send&tpl=&type={}&token={}&from=&skin=&clientfrom=&adapter=2&updatessn=&bindToSmsLogin=&upsms=&finance='.format((verify_type, token))
+		url = 'https://wappass.baidu.com/passport/authwidget?action=send&tpl=&type={}&token={}&from=&skin=&clientfrom=&adapter=2&updatessn=&bindToSmsLogin=&upsms=&finance='.format(verify_type, token)
 		res = self.session.get(url)
 		# 输入验证码
 		vcodestr = input('Please enter the verify code you have accepted:')
@@ -525,5 +525,5 @@ class baidupan():
 
 '''test'''
 if __name__ == '__main__':
-	s = baidupan().login('落枫飘煞', 'jzc19960108???')
+	s = baidupan().login('', '')
 	print(s)
