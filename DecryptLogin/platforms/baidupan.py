@@ -525,5 +525,4 @@ class baidupan():
 
 '''test'''
 if __name__ == '__main__':
-	s = baidupan().login('', '')
-	print(s)
+	baidupan().login('', '')
