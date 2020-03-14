@@ -24,7 +24,7 @@ from urllib.parse import urlencode
 
 
 '''js code'''
-encrypt_js_code = '''
+encrypt_js_code = r'''
 // I borrowed the codes from https://github.com/zkqiang/zhihu-login/blob/master/encrypt.js, and make some changes for compatibility
 function s(e) {
 	return (s = "function" == typeof Symbol && "symbol" == typeof Symbol.t ? function(e) {
