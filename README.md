@@ -51,6 +51,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  userWeiboSpider            |   [click](https://mp.weixin.qq.com/s/-3BDTZAE1x7nfCLNq2mFBw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/userWeiboSpider)               |  下载指定微博用户的所有微博数据 |
 |  NeteaseSignin              |   [click](https://mp.weixin.qq.com/s/8d7smUSzW2ds1ypZq-yeFw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseSignin)                 |  网易云音乐自动签到             |  
 |  weiboEmoji                 |   [click](https://mp.weixin.qq.com/s/QiPm4gyE8i5amR5gB3IbBA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboEmoji)                    |  微博表情包爬取                 |
+|  weiboSender                |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboSender)                   |  大吼一声发微博                 |
 
 # Install
 #### Pip install
