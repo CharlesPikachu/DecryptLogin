@@ -98,6 +98,7 @@ infos_return, session = lg.fishc(username, password, 'pc')
 infos_return, session = lg.youdao(username, password, 'pc')
 infos_return, session = lg.baidupan(username, password, 'pc')
 infos_return, session = lg.stackoverflow(username, password, 'pc')
+infos_return, session = lg.codalab(username, password, 'pc')
 ```
 
 # Thanks List
