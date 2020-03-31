@@ -57,7 +57,7 @@ infos_return, session = lg.weibo(username[telephone], password, 'pc')
 infos_return, session = lg.weibo(username[telephone], password, 'mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### douban
@@ -72,8 +72,8 @@ lg = login.Login()
 infos_return, session = lg.douban(username[telephone], password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### github
 #### Supported modes
@@ -87,8 +87,8 @@ lg = login.Login()
 infos_return, session = lg.github(username[email], password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### music163
 #### Supported modes
@@ -102,8 +102,8 @@ lg = login.Login()
 infos_return, session = lg.music163(username[telephone/email], password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### zt12306
 #### Supported modes
@@ -117,7 +117,7 @@ lg = login.Login()
 infos_return, session = lg.zt12306(username[telephone], password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a click captcha, just return the index of target images (e.g., return '1,6' means the target images are in <the first row, the first column> and <the second row, the second column>)
 
 ### QQZone
@@ -133,8 +133,8 @@ lg = login.Login()
 infos_return, session = lg.QQZone('mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### QQQun
 #### Supported modes
@@ -149,8 +149,8 @@ lg = login.Login()
 infos_return, session = lg.QQQun('mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### QQId
 #### Supported modes
@@ -165,8 +165,8 @@ lg = login.Login()
 infos_return, session = lg.QQId('mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### zhihu
 #### Supported modes
@@ -180,7 +180,7 @@ lg = login.Login()
 infos_return, session = lg.zhihu(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### bilibili
@@ -199,8 +199,8 @@ infos_return, session = lg.bilibili(username, password, 'pc')
 infos_return, session = lg.bilibili(username, password, 'mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
-- pc: unsupport processing the situation of having captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
+- mobile: unsupport processing the situation of appearing captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
+- pc: unsupport processing the situation of appearing captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
 
 ### toutiao
 #### Supported modes
@@ -215,7 +215,7 @@ infos_return, session = lg.toutiao(username, password, 'mobile')
 ```
 #### The returned values in crackvcFunc
 - mobile: it is a digital captcha, just return the corresponding digital recognition result
-- pc: unsupport processing the situation of having captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### taobao
 #### Supported modes
@@ -230,8 +230,8 @@ lg = login.Login()
 infos_return, session = lg.taobao('pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### jingdong
 #### Supported modes
@@ -246,8 +246,8 @@ lg = login.Login()
 infos_return, session = lg.jingdong('pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### ifeng
 #### Supported modes
@@ -261,7 +261,7 @@ lg = login.Login()
 infos_return, session = lg.ifeng(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### sohu
@@ -280,8 +280,8 @@ infos_return, session = lg.sohu(username, password, 'pc')
 infos_return, session = lg.sohu(username, password, 'mobile')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### zgconline
 #### Supported modes
@@ -295,8 +295,8 @@ lg = login.Login()
 infos_return, session = lg.zgconline(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### lagou
 #### Supported modes
@@ -310,7 +310,7 @@ lg = login.Login()
 infos_return, session = lg.lagou(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### twitter
@@ -325,8 +325,8 @@ lg = login.Login()
 infos_return, session = lg.twitter(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### vultr
 #### Supported modes
@@ -340,8 +340,8 @@ lg = login.Login()
 infos_return, session = lg.vultr(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### eSurfing
 #### Supported modes
@@ -355,8 +355,8 @@ lg = login.Login()
 infos_return, session = lg.eSurfing(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### renren
 #### Supported modes
@@ -370,7 +370,7 @@ lg = login.Login()
 infos_return, session = lg.renren(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### w3cschool
@@ -385,8 +385,8 @@ lg = login.Login()
 infos_return, session = lg.w3cschool(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### fishc
 #### Supported modes
@@ -400,8 +400,8 @@ lg = login.Login()
 infos_return, session = lg.fishc(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### youdao
 #### Supported modes
@@ -415,8 +415,8 @@ lg = login.Login()
 infos_return, session = lg.youdao(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ### baidupan
 #### Supported modes
@@ -430,7 +430,7 @@ lg = login.Login()
 infos_return, session = lg.baidupan(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
 ### stackoverflow
@@ -445,26 +445,42 @@ lg = login.Login()
 infos_return, session = lg.stackoverflow(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
-### codalab
+### CodaLab
 #### Supported modes
-The supported modes of codalab include:
+The supported modes of CodaLab include:
 - pc
 #### Example
-Here is an example to login in codalab:
+Here is an example to login in CodaLab:
 ```python
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.codalab(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
-- mobile: unsupport processing the situation of having captcha
-- pc: unsupport processing the situation of having captcha
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
+### PyPi
+#### Supported modes
+The supported modes of PyPi include:
+- pc
+#### Example
+Here is an example to login in PyPi:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.pypi(username, password, 'pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 
 ## Util functions
+
 ### cookies
 #### save cookies
 You can save the cookies in requests.Session as follows:

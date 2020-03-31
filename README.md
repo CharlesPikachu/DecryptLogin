@@ -39,7 +39,8 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  youdao          | ✓                  |  ✗                       |  有道              |
 |  baidupan        | ✓                  |  ✗                       |  百度网盘          |
 |  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     |
-|  codalab         | ✓                  |  ✗                       |  codalab           |
+|  CodaLab         | ✓                  |  ✗                       |  CodaLab           |
+|  PyPi            | ✓                  |  ✗                       |  PyPi              | 
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -99,6 +100,7 @@ infos_return, session = lg.youdao(username, password, 'pc')
 infos_return, session = lg.baidupan(username, password, 'pc')
 infos_return, session = lg.stackoverflow(username, password, 'pc')
 infos_return, session = lg.codalab(username, password, 'pc')
+infos_return, session = lg.pypi(username, password, 'pc')
 ```
 
 # Thanks List

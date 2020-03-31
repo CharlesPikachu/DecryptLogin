@@ -74,6 +74,8 @@ class Login():
 		self.stackoverflow = stackoverflow.stackoverflow().login
 		# codalab
 		self.codalab = codalab.codalab().login
+		# pypi
+		self.pypi = pypi.pypi().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -140,6 +142,8 @@ class Loginer():
 		self.stackoverflow = stackoverflow.stackoverflow
 		# codalab
 		self.codalab = codalab.codalab
+		# pypi
+		self.pypi = pypi.pypi
 	'''Info'''
 	def __repr__(self):
 		return self.info
