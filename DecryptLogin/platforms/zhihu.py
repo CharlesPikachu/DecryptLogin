@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-02-29
+	2020-03-31
 '''
 import os
 import time
@@ -21,459 +21,445 @@ import hashlib
 import requests
 from ..utils.misc import *
 from urllib.parse import urlencode
+from requests_toolbelt import MultipartEncoder
 
 
 '''js code'''
 encrypt_js_code = r'''
-// I borrowed the codes from https://github.com/zkqiang/zhihu-login/blob/master/encrypt.js, and make some changes for compatibility
-function s(e) {
-	return (s = "function" == typeof Symbol && "symbol" == typeof Symbol.t ? function(e) {
-			return typeof e
-	}
-	: function(e) {
-			return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
-	}
-	)(e)
+window = {
+    navigator: {
+        userAgent: "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+    }
 }
-function i() {}
-function h(e) {
-	this.s = (2048 & e) >> 11,
-	this.i = (1536 & e) >> 9,
-	this.h = 511 & e,
-	this.A = 511 & e
+function atob(str) {
+  return Buffer.from(str, 'base64').toString('binary');
 }
-function A(e) {
-	this.i = (3072 & e) >> 10,
-	this.A = 1023 & e
+function f(module, exports, __webpack_require__) {
+    "use strict";
+    function t(e) {
+        return (t = "function" == typeof Symbol && "symbol" == typeof Symbol.A ? function(e) {
+            return typeof e
+        }
+        : function(e) {
+            return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+        }
+        )(e)
+    }
+    exports['__esModule'] = !0
+    var A = "2.0"
+      , __g = {};
+    function s() {}
+    function i(e) {
+        this.t = (2048 & e) >> 11,
+        this.s = (1536 & e) >> 9,
+        this.i = 511 & e,
+        this.h = 511 & e
+    }
+    function h(e) {
+        this.s = (3072 & e) >> 10,
+        this.h = 1023 & e
+    }
+    function a(e) {
+        this.a = (3072 & e) >> 10,
+        this.c = (768 & e) >> 8,
+        this.n = (192 & e) >> 6,
+        this.t = 63 & e
+    }
+    function c(e) {
+        this.s = e >> 10 & 3,
+        this.i = 1023 & e
+    }
+    function n() {}
+    function e(e) {
+        this.a = (3072 & e) >> 10,
+        this.c = (768 & e) >> 8,
+        this.n = (192 & e) >> 6,
+        this.t = 63 & e
+    }
+    function o(e) {
+        this.h = (4095 & e) >> 2,
+        this.t = 3 & e
+    }
+    function r(e) {
+        this.s = e >> 10 & 3,
+        this.i = e >> 2 & 255,
+        this.t = 3 & e
+    }
+    s.prototype.e = function(e) {
+        e.o = !1
+    }
+    ,
+    i.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            e.r[this.s] = this.i;
+            break;
+        case 1:
+            e.r[this.s] = e.k[this.h]
+        }
+    }
+    ,
+    h.prototype.e = function(e) {
+        e.k[this.h] = e.r[this.s]
+    }
+    ,
+    a.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            e.r[this.a] = e.r[this.c] + e.r[this.n];
+            break;
+        case 1:
+            e.r[this.a] = e.r[this.c] - e.r[this.n];
+            break;
+        case 2:
+            e.r[this.a] = e.r[this.c] * e.r[this.n];
+            break;
+        case 3:
+            e.r[this.a] = e.r[this.c] / e.r[this.n];
+            break;
+        case 4:
+            e.r[this.a] = e.r[this.c] % e.r[this.n];
+            break;
+        case 5:
+            e.r[this.a] = e.r[this.c] == e.r[this.n];
+            break;
+        case 6:
+            e.r[this.a] = e.r[this.c] >= e.r[this.n];
+            break;
+        case 7:
+            e.r[this.a] = e.r[this.c] || e.r[this.n];
+            break;
+        case 8:
+            e.r[this.a] = e.r[this.c] && e.r[this.n];
+            break;
+        case 9:
+            e.r[this.a] = e.r[this.c] !== e.r[this.n];
+            break;
+        case 10:
+            e.r[this.a] = t(e.r[this.c]);
+            break;
+        case 11:
+            e.r[this.a] = e.r[this.c]in e.r[this.n];
+            break;
+        case 12:
+            e.r[this.a] = e.r[this.c] > e.r[this.n];
+            break;
+        case 13:
+            e.r[this.a] = -e.r[this.c];
+            break;
+        case 14:
+            e.r[this.a] = e.r[this.c] < e.r[this.n];
+            break;
+        case 15:
+            e.r[this.a] = e.r[this.c] & e.r[this.n];
+            break;
+        case 16:
+            e.r[this.a] = e.r[this.c] ^ e.r[this.n];
+            break;
+        case 17:
+            e.r[this.a] = e.r[this.c] << e.r[this.n];
+            break;
+        case 18:
+            e.r[this.a] = e.r[this.c] >>> e.r[this.n];
+            break;
+        case 19:
+            e.r[this.a] = e.r[this.c] | e.r[this.n];
+            break;
+        case 20:
+            e.r[this.a] = !e.r[this.c]
+        }
+    }
+    ,
+    c.prototype.e = function(e) {
+        e.Q.push(e.C),
+        e.B.push(e.k),
+        e.C = e.r[this.s],
+        e.k = [];
+        for (var t = 0; t < this.i; t++)
+            e.k.unshift(e.f.pop());
+        e.g.push(e.f),
+        e.f = []
+    }
+    ,
+    n.prototype.e = function(e) {
+        e.C = e.Q.pop(),
+        e.k = e.B.pop(),
+        e.f = e.g.pop()
+    }
+    ,
+    e.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            e.u = e.r[this.a] >= e.r[this.c];
+            break;
+        case 1:
+            e.u = e.r[this.a] <= e.r[this.c];
+            break;
+        case 2:
+            e.u = e.r[this.a] > e.r[this.c];
+            break;
+        case 3:
+            e.u = e.r[this.a] < e.r[this.c];
+            break;
+        case 4:
+            e.u = e.r[this.a] == e.r[this.c];
+            break;
+        case 5:
+            e.u = e.r[this.a] != e.r[this.c];
+            break;
+        case 6:
+            e.u = e.r[this.a];
+            break;
+        case 7:
+            e.u = !e.r[this.a]
+        }
+    }
+    ,
+    o.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            e.C = this.h;
+            break;
+        case 1:
+            e.u && (e.C = this.h);
+            break;
+        case 2:
+            e.u || (e.C = this.h);
+            break;
+        case 3:
+            e.C = this.h,
+            e.w = null
+        }
+        e.u = !1
+    }
+    ,
+    r.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            for (var t = [], n = 0; n < this.i; n++)
+                t.unshift(e.f.pop());
+            e.r[3] = e.r[this.s](t[0], t[1]);
+            break;
+        case 1:
+            for (var r = e.f.pop(), i = [], o = 0; o < this.i; o++)
+                i.unshift(e.f.pop());
+            e.r[3] = e.r[this.s][r](i[0], i[1]);
+            break;
+        case 2:
+            for (var a = [], s = 0; s < this.i; s++)
+                a.unshift(e.f.pop());
+            e.r[3] = new e.r[this.s](a[0],a[1])
+        }
+    }
+    ;
+    var k = function(e) {
+        for (var t = 66, n = [], r = 0; r < e.length; r++) {
+            var i = 24 ^ e.charCodeAt(r) ^ t;
+            n.push(String.fromCharCode(i)),
+            t = i
+        }
+        return n.join("")
+    };
+    function Q(e) {
+        this.t = (4095 & e) >> 10,
+        this.s = (1023 & e) >> 8,
+        this.i = 1023 & e,
+        this.h = 63 & e
+    }
+    function C(e) {
+        this.t = (4095 & e) >> 10,
+        this.a = (1023 & e) >> 8,
+        this.c = (255 & e) >> 6
+    }
+    function B(e) {
+        this.s = (3072 & e) >> 10,
+        this.h = 1023 & e
+    }
+    function f(e) {
+        this.h = 4095 & e
+    }
+    function g(e) {
+        this.s = (3072 & e) >> 10
+    }
+    function u(e) {
+        this.h = 4095 & e
+    }
+    function w(e) {
+        this.t = (3840 & e) >> 8,
+        this.s = (192 & e) >> 6,
+        this.i = 63 & e
+    }
+    function G() {
+        this.r = [0, 0, 0, 0],
+        this.C = 0,
+        this.Q = [],
+        this.k = [],
+        this.B = [],
+        this.f = [],
+        this.g = [],
+        this.u = !1,
+        this.G = [],
+        this.b = [],
+        this.o = !1,
+        this.w = null,
+        this.U = null,
+        this.F = [],
+        this.R = 0,
+        this.J = {
+            0: s,
+            1: i,
+            2: h,
+            3: a,
+            4: c,
+            5: n,
+            6: e,
+            7: o,
+            8: r,
+            9: Q,
+            10: C,
+            11: B,
+            12: f,
+            13: g,
+            14: u,
+            15: w
+        }
+    }
+    Q.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            e.f.push(e.r[this.s]);
+            break;
+        case 1:
+            e.f.push(this.i);
+            break;
+        case 2:
+            e.f.push(e.k[this.h]);
+            break;
+        case 3:
+            e.f.push(k(e.b[this.h]))
+        }
+    }
+    ,
+    C.prototype.e = function(A) {
+        switch (this.t) {
+        case 0:
+            var t = A.f.pop();
+            A.r[this.a] = A.r[this.c][t];
+            break;
+        case 1:
+            var s = A.f.pop()
+              , i = A.f.pop();
+            A.r[this.c][s] = i;
+            break;
+        case 2:
+            var h = A.f.pop();
+            A.r[this.a] = eval(h)
+        }
+    }
+    ,
+    B.prototype.e = function(e) {
+        e.r[this.s] = k(e.b[this.h])
+    }
+    ,
+    f.prototype.e = function(e) {
+        e.w = this.h
+    }
+    ,
+    g.prototype.e = function(e) {
+        throw e.r[this.s]
+    }
+    ,
+    u.prototype.e = function(e) {
+        var t = this
+          , n = [0];
+        e.k.forEach(function(e) {
+            n.push(e)
+        });
+        var r = function(r) {
+            var i = new G;
+            return i.k = n,
+            i.k[0] = r,
+            i.v(e.G, t.h, e.b, e.F),
+            i.r[3]
+        };
+        r.toString = function() {
+            return "() { [native code] }"
+        }
+        ,
+        e.r[3] = r
+    }
+    ,
+    w.prototype.e = function(e) {
+        switch (this.t) {
+        case 0:
+            for (var t = {}, n = 0; n < this.i; n++) {
+                var r = e.f.pop();
+                t[e.f.pop()] = r
+            }
+            e.r[this.s] = t;
+            break;
+        case 1:
+            for (var i = [], o = 0; o < this.i; o++)
+                i.unshift(e.f.pop());
+            e.r[this.s] = i
+        }
+    }
+    ,
+    G.prototype.D = function(e) {
+        for (var t = atob(e), n = t.charCodeAt(0) << 8 | t.charCodeAt(1), r = [], i = 2; i < n + 2; i += 2)
+            r.push(t.charCodeAt(i) << 8 | t.charCodeAt(i + 1));
+        this.G = r;
+        for (var o = [], a = n + 2; a < t.length; ) {
+            var s = t.charCodeAt(a) << 8 | t.charCodeAt(a + 1)
+              , c = t.slice(a + 2, a + 2 + s);
+            o.push(c),
+            a += s + 2
+        }
+        this.b = o
+    }
+    ,
+    G.prototype.v = function(e, t, n) {
+        for (t = t || 0,
+        n = n || [],
+        this.C = t,
+        "string" == typeof e ? this.D(e) : (this.G = e,
+        this.b = n),
+        this.o = !0,
+        this.R = Date.now(); this.o; ) {
+            var r = this.G[this.C++];
+            if ("number" != typeof r)
+                break;
+            var i = Date.now();
+            if (500 < i - this.R)
+                return;
+            this.R = i;
+            try {
+                this.e(r)
+            } catch (e) {
+                this.U = e,
+                this.w && (this.C = this.w)
+            }
+        }
+    }
+    ,
+    G.prototype.e = function(e) {
+        var t = (61440 & e) >> 12;
+        new this.J[t](e).e(this)
+    }
+    ,
+    (new G).v("AxjgB5MAnACoAJwBpAAAABAAIAKcAqgAMAq0AzRJZAZwUpwCqACQACACGAKcBKAAIAOcBagAIAQYAjAUGgKcBqFAuAc5hTSHZAZwqrAIGgA0QJEAJAAYAzAUGgOcCaFANRQ0R2QGcOKwChoANECRACQAsAuQABgDnAmgAJwMgAGcDYwFEAAzBmAGcSqwDhoANECRACQAGAKcD6AAGgKcEKFANEcYApwRoAAxB2AGcXKwEhoANECRACQAGAKcE6AAGgKcFKFANEdkBnGqsBUaADRAkQAkABgCnBagAGAGcdKwFxoANECRACQAGAKcGKAAYAZx+rAZGgA0QJEAJAAYA5waoABgBnIisBsaADRAkQAkABgCnBygABoCnB2hQDRHZAZyWrAeGgA0QJEAJAAYBJwfoAAwFGAGcoawIBoANECRACQAGAOQALAJkAAYBJwfgAlsBnK+sCEaADRAkQAkABgDkACwGpAAGAScH4AJbAZy9rAiGgA0QJEAJACwI5AAGAScH6AAkACcJKgAnCWgAJwmoACcJ4AFnA2MBRAAMw5gBnNasCgaADRAkQAkABgBEio0R5EAJAGwKSAFGACcKqAAEgM0RCQGGAYSATRFZAZzshgAtCs0QCQAGAYSAjRFZAZz1hgAtCw0QCQAEAAgB7AtIAgYAJwqoAASATRBJAkYCRIANEZkBnYqEAgaBxQBOYAoBxQEOYQ0giQKGAmQABgAnC6ABRgBGgo0UhD/MQ8zECALEAgaBxQBOYAoBxQEOYQ0gpEAJAoYARoKNFIQ/zEPkAAgChgLGgkUATmBkgAaAJwuhAUaCjdQFAg5kTSTJAsQCBoHFAE5gCgHFAQ5hDSCkQAkChgBGgo0UhD/MQ+QACAKGAsaCRQCOYGSABoAnC6EBRoKN1AUEDmRNJMkCxgFGgsUPzmPkgAaCJwvhAU0wCQFGAUaCxQGOZISPzZPkQAaCJwvhAU0wCQFGAUaCxQMOZISPzZPkQAaCJwvhAU0wCQFGAUaCxQSOZISPzZPkQAaCJwvhAU0wCQFGAkSAzRBJAlz/B4FUAAAAwUYIAAIBSITFQkTERwABi0GHxITAAAJLwMSGRsXHxMZAAk0Fw8HFh4NAwUABhU1EBceDwAENBcUEAAGNBkTGRcBAAFKAAkvHg4PKz4aEwIAAUsACDIVHB0QEQ4YAAsuAzs7AAoPKToKDgAHMx8SGQUvMQABSAALORoVGCQgERcCAxoACAU3ABEXAgMaAAsFGDcAERcCAxoUCgABSQAGOA8LGBsPAAYYLwsYGw8AAU4ABD8QHAUAAU8ABSkbCQ4BAAFMAAktCh8eDgMHCw8AAU0ADT4TGjQsGQMaFA0FHhkAFz4TGjQsGQMaFA0FHhk1NBkCHgUbGBEPAAFCABg9GgkjIAEmOgUHDQ8eFSU5DggJAwEcAwUAAUMAAUAAAUEADQEtFw0FBwtdWxQTGSAACBwrAxUPBR4ZAAkqGgUDAwMVEQ0ACC4DJD8eAx8RAAQ5GhUYAAFGAAAABjYRExELBAACWhgAAVoAQAg/PTw0NxcQPCQ5C3JZEBs9fkcnDRcUAXZia0Q4EhQgXHojMBY3MWVCNT0uDhMXcGQ7AUFPHigkQUwQFkhaAkEACjkTEQspNBMZPC0ABjkTEQsrLQ==");
+    var b = function(e) {
+        return __g._encrypt(encodeURIComponent(e))
+    };
+    exports.ENCRYPT_VERSION = A,
+    exports.default = b
 }
-function n(e) {
-	this.n = (3072 & e) >> 10,
-	this.e = (768 & e) >> 8,
-	this.a = (192 & e) >> 6,
-	this.s = 63 & e
+
+function encrypt(data) {
+    const r = {exports: {}, i: 452, l: false}
+    const o = f(r, r.exports)
+    return r.exports.default(data)
 }
-function e(e) {
-	this.i = e >> 10 & 3,
-	this.h = 1023 & e
-}
-function a() {}
-function c(e) {
-	this.n = (3072 & e) >> 10,
-	this.e = (768 & e) >> 8,
-	this.a = (192 & e) >> 6,
-	this.s = 63 & e
-}
-function o(e) {
-	this.A = (4095 & e) >> 2,
-	this.s = 3 & e
-}
-function r(e) {
-	this.i = e >> 10 & 3,
-	this.h = e >> 2 & 255,
-	this.s = 3 & e
-}
-function k(e) {
-	this.s = (4095 & e) >> 10,
-	this.i = (1023 & e) >> 8,
-	this.h = 1023 & e,
-	this.A = 63 & e
-}
-function B(e) {
-	this.s = (4095 & e) >> 10,
-	this.n = (1023 & e) >> 8,
-	this.e = (255 & e) >> 6
-}
-function f(e) {
-	this.i = (3072 & e) >> 10,
-	this.A = 1023 & e
-}
-function u(e) {
-	this.A = 4095 & e
-}
-function C(e) {
-	this.i = (3072 & e) >> 10
-}
-function b(e) {
-	this.A = 4095 & e
-}
-function g(e) {
-	this.s = (3840 & e) >> 8,
-	this.i = (192 & e) >> 6,
-	this.h = 63 & e
-}
-function G() {
-	this.c = [0, 0, 0, 0],
-	this.o = 0,
-	this.r = [],
-	this.k = [],
-	this.B = [],
-	this.f = [],
-	this.u = [],
-	this.C = !1,
-	this.b = [],
-	this.g = [],
-	this.G = !1,
-	this.Q = null,
-	this.R = null,
-	this.w = [],
-	this.x = 0,
-	this.D = {
-			0: i,
-			1: h,
-			2: A,
-			3: n,
-			4: e,
-			5: a,
-			6: c,
-			7: o,
-			8: r,
-			9: k,
-			10: B,
-			11: f,
-			12: u,
-			13: C,
-			14: b,
-			15: g
-	}
-}
-Object.defineProperty(exports, "__esModule", {
-	value: !0
-});
-var t = "1.1"
-, __g = {};
-i.prototype.M = function(e) {
-	e.G = !1
-}
-,
-h.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			e.c[this.i] = this.h;
-			break;
-	case 1:
-			e.c[this.i] = e.k[this.A]
-	}
-}
-,
-A.prototype.M = function(e) {
-	e.k[this.A] = e.c[this.i]
-}
-,
-n.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			e.c[this.n] = e.c[this.e] + e.c[this.a];
-			break;
-	case 1:
-			e.c[this.n] = e.c[this.e] - e.c[this.a];
-			break;
-	case 2:
-			e.c[this.n] = e.c[this.e] * e.c[this.a];
-			break;
-	case 3:
-			e.c[this.n] = e.c[this.e] / e.c[this.a];
-			break;
-	case 4:
-			e.c[this.n] = e.c[this.e] % e.c[this.a];
-			break;
-	case 5:
-			e.c[this.n] = e.c[this.e] == e.c[this.a];
-			break;
-	case 6:
-			e.c[this.n] = e.c[this.e] >= e.c[this.a];
-			break;
-	case 7:
-			e.c[this.n] = e.c[this.e] || e.c[this.a];
-			break;
-	case 8:
-			e.c[this.n] = e.c[this.e] && e.c[this.a];
-			break;
-	case 9:
-			e.c[this.n] = e.c[this.e] !== e.c[this.a];
-			break;
-	case 10:
-			e.c[this.n] = s(e.c[this.e]);
-			break;
-	case 11:
-			e.c[this.n] = e.c[this.e]in e.c[this.a];
-			break;
-	case 12:
-			e.c[this.n] = e.c[this.e] > e.c[this.a];
-			break;
-	case 13:
-			e.c[this.n] = -e.c[this.e];
-			break;
-	case 14:
-			e.c[this.n] = e.c[this.e] < e.c[this.a];
-			break;
-	case 15:
-			e.c[this.n] = e.c[this.e] & e.c[this.a];
-			break;
-	case 16:
-			e.c[this.n] = e.c[this.e] ^ e.c[this.a];
-			break;
-	case 17:
-			e.c[this.n] = e.c[this.e] << e.c[this.a];
-			break;
-	case 18:
-			e.c[this.n] = e.c[this.e] >>> e.c[this.a];
-			break;
-	case 19:
-			e.c[this.n] = e.c[this.e] | e.c[this.a]
-	}
-}
-,
-e.prototype.M = function(e) {
-	e.r.push(e.o),
-	e.B.push(e.k),
-	e.o = e.c[this.i],
-	e.k = [];
-	for (var t = 0; t < this.h; t++)
-			e.k.unshift(e.f.pop());
-	e.u.push(e.f),
-	e.f = []
-}
-,
-a.prototype.M = function(e) {
-	e.o = e.r.pop(),
-	e.k = e.B.pop(),
-	e.f = e.u.pop()
-}
-,
-c.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			e.C = e.c[this.n] >= e.c[this.e];
-			break;
-	case 1:
-			e.C = e.c[this.n] <= e.c[this.e];
-			break;
-	case 2:
-			e.C = e.c[this.n] > e.c[this.e];
-			break;
-	case 3:
-			e.C = e.c[this.n] < e.c[this.e];
-			break;
-	case 4:
-			e.C = e.c[this.n] == e.c[this.e];
-			break;
-	case 5:
-			e.C = e.c[this.n] != e.c[this.e];
-			break;
-	case 6:
-			e.C = e.c[this.n];
-			break;
-	case 7:
-			e.C = !e.c[this.n]
-	}
-}
-,
-o.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			e.o = this.A;
-			break;
-	case 1:
-			e.C && (e.o = this.A);
-			break;
-	case 2:
-			e.C || (e.o = this.A);
-			break;
-	case 3:
-			e.o = this.A,
-			e.Q = null
-	}
-	e.C = !1
-}
-,
-r.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			for (var t = [], n = 0; n < this.h; n++)
-					t.unshift(e.f.pop());
-			e.c[3] = e.c[this.i](t[0], t[1]);
-			break;
-	case 1:
-			for (var r = e.f.pop(), o = [], i = 0; i < this.h; i++)
-					o.unshift(e.f.pop());
-			e.c[3] = e.c[this.i][r](o[0], o[1]);
-			break;
-	case 2:
-			for (var a = [], c = 0; c < this.h; c++)
-					a.unshift(e.f.pop());
-			e.c[3] = new e.c[this.i](a[0],a[1])
-	}
-}
-,
-k.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			e.f.push(e.c[this.i]);
-			break;
-	case 1:
-			e.f.push(this.h);
-			break;
-	case 2:
-			e.f.push(e.k[this.A]);
-			break;
-	case 3:
-			e.f.push(e.g[this.A])
-	}
-}
-,
-B.prototype.M = function(t) {
-	switch (this.s) {
-	case 0:
-			var s = t.f.pop();
-			t.c[this.n] = t.c[this.e][s];
-			break;
-	case 1:
-			var i = t.f.pop()
-				, h = t.f.pop();
-			t.c[this.e][i] = h;
-			break;
-	case 2:
-			var A = t.f.pop();
-			if(A === 'window') {
-					A = {
-							encodeURIComponent: function (url) {
-									return encodeURIComponent(url)
-							}
-					}
-			} else if (A === 'navigator') {
-					A = {
-							'userAgent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-									'(KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
-					}
-			}
-			t.c[this.n] = eval(A)
-	}
-}
-,
-f.prototype.M = function(e) {
-	e.c[this.i] = e.g[this.A]
-}
-,
-u.prototype.M = function(e) {
-	e.Q = this.A
-}
-,
-C.prototype.M = function(e) {
-	throw e.c[this.i]
-}
-,
-b.prototype.M = function(e) {
-	var t = this
-		, n = [0];
-	e.k.forEach(function(e) {
-			n.push(e)
-	});
-	var r = function(r) {
-			var o = new G;
-			return o.k = n,
-			o.k[0] = r,
-			o.J(e.b, t.A, e.g, e.w),
-			o.c[3]
-	};
-	r.toString = function() {
-			return "() { [native code] }"
-	}
-	,
-	e.c[3] = r
-}
-,
-g.prototype.M = function(e) {
-	switch (this.s) {
-	case 0:
-			for (var t = {}, n = 0; n < this.h; n++) {
-					var r = e.f.pop();
-					t[e.f.pop()] = r
-			}
-			e.c[this.i] = t;
-			break;
-	case 1:
-			for (var o = [], i = 0; i < this.h; i++)
-					o.unshift(e.f.pop());
-			e.c[this.i] = o
-	}
-}
-,
-G.prototype.v = function(e) {
-	if (typeof Buffer.from == "function")
-	{
-		for (var t = Buffer.from(e, 'base64').toString('binary'), n = [], r = 0; r < t.length - 1; r += 2)
-				n.push(t.charCodeAt(r) << 8 | t.charCodeAt(r + 1));
-		this.b = n
-	} else 
-	{
-		for (var t = new Buffer(e, 'base64').toString('binary'), n = [], r = 0; r < t.length - 1; r += 2)
-				n.push(t.charCodeAt(r) << 8 | t.charCodeAt(r + 1));
-		this.b = n
-	}
-}
-,
-G.prototype.y = function(e) {
-	if (typeof Buffer.from == "function")
-	{
-		for (var t = Buffer.from(e, 'base64').toString('binary'), n = 66, r = [], o = 0; o < t.length; o++) {
-				var i = 24 ^ t.charCodeAt(o) ^ n;
-				r.push(String.fromCharCode(i)),
-				n = i
-		}
-	} else
-	{
-		for (var t = new Buffer(e, 'base64').toString('binary'), n = 66, r = [], o = 0; o < t.length; o++) {
-				var i = 24 ^ t.charCodeAt(o) ^ n;
-				r.push(String.fromCharCode(i)),
-				n = i
-		}
-	}
-	return r.join("")
-}
-,
-G.prototype.F = function(e) {
-	var t = this;
-	this.g = e.map(function(e) {
-			return "string" == typeof e ? t.y(e) : e
-	})
-}
-,
-G.prototype.J = function(e, t, n) {
-	for (t = t || 0,
-	n = n || [],
-	this.o = t,
-	"string" == typeof e ? (this.F(n),
-	this.v(e)) : (this.b = e,
-	this.g = n),
-	this.G = !0,
-	this.x = Date.now(); this.G; ) {
-			var r = this.b[this.o++];
-			if ("number" != typeof r)
-					break;
-			var o = Date.now();
-			if (500 < o - this.x)
-					return;
-			this.x = o;
-			try {
-					this.M(r)
-			} catch (e) {
-					if (this.R = e,
-					!this.Q)
-							throw "execption at " + this.o + ": " + e;
-					this.o = this.Q
-			}
-	}
-}
-,
-G.prototype.M = function(e) {
-	var t = (61440 & e) >> 12;
-	new this.D[t](e).M(this)
-}
-,
-(new G).J("4AeTAJwAqACcAaQAAAAYAJAAnAKoAJwDgAWTACwAnAKoACACGAESOTRHkQAkAbAEIAMYAJwFoAASAzREJAQYBBIBNEVkBnCiGAC0BjRAJAAYBBICNEVkBnDGGAC0BzRAJACwCJAAnAmoAJwKoACcC4ABnAyMBRAAMwZgBnESsA0aADRAkQAkABgCnA6gABoCnA+hQDRHGAKcEKAAMQdgBnFasBEaADRAkQAkABgCnBKgABoCnBOhQDRHZAZxkrAUGgA0QJEAJAAYApwVoABgBnG6sBYaADRAkQAkABgCnBegAGAGceKwGBoANECRACQAnAmoAJwZoABgBnIOsBoaADRAkQAkABgCnBugABoCnByhQDRHZAZyRrAdGgA0QJEAJAAQACAFsB4gBhgAnAWgABIBNEEkBxgHEgA0RmQGdJoQCBoFFAE5gCgFFAQ5hDSCJAgYB5AAGACcH4AFGAEaCDRSEP8xDzMQIAkQCBoFFAE5gCgFFAQ5hDSCkQAkCBgBGgg0UhD/MQ+QACAIGAkaBxQBOYGSABoAnB+EBRoIN1AUCDmRNJMkCRAIGgUUATmAKAUUBDmENIKRACQIGAEaCDRSEP8xD5AAIAgYCRoHFAI5gZIAGgCcH4QFGgg3UBQQOZE0kyQJGAMaCRQ/OY+SABoGnCCEBTTAJAMYAxoJFAY5khI/Nk+RABoGnCCEBTTAJAMYAxoJFAw5khI/Nk+RABoGnCCEBTTAJAMYAxoJFBI5khI/Nk+RABoGnCCEBTTAJAMYBxIDNEEkB3JsHgNQAA==", 0, ["BRgg", "BSITFQkTERw=", "LQYfEhMA", "PxMVFBMZKB8DEjQaBQcZExMC", "", "NhETEQsE", "Whg=", "Wg==", "MhUcHRARDhg=", "NBcPBxYeDQMF", "Lx4ODys+GhMC", "LgM7OwAKDyk6Cg4=", "Mx8SGQUvMQ==", "SA==", "ORoVGCQgERcCAxo=", "BTcAERcCAxo=", "BRg3ABEXAgMaFAo=", "SQ==", "OA8LGBsP", "GC8LGBsP", "Tg==", "PxAcBQ==", "Tw==", "KRsJDgE=", "TA==", "LQofHg4DBwsP", "TQ==", "PhMaNCwZAxoUDQUeGQ==", "PhMaNCwZAxoUDQUeGTU0GQIeBRsYEQ8=", "Qg==", "BWpUGxkfGRsZFxkbGR8ZGxkHGRsZHxkbGRcZG1MbGR8ZGxkXGRFpGxkfGRsZFxkbGR8ZGxkHGRsZHxkbGRcZGw==", "ORMRCyk0Exk8LQ==", "ORMRCyst"]);
-var Q = function(e) {
-	return __g._encrypt(e)
-};
 '''
 
 
@@ -507,12 +493,13 @@ class zhihu():
 		# PC端接口
 		elif mode == 'pc':
 			self.__initializePC()
-			# 验证码验证
-			self.session.headers.update(self.headers)
-			res = self.session.get(self.captcha_url)
-			captcha = ''
+			# 初始化
+			self.session.get(self.signin_url)
+			# 验证码处理
+			res = self.session.get(self.captcha_url, headers=self.captcha_headers)
 			if 'true' in res.text:
-				res = self.session.put(self.captcha_url)
+				self.captcha_headers.update({'origin': 'https://www.zhihu.com'})
+				res = self.session.put(self.captcha_url, headers=self.captcha_headers)
 				img_base64 = res.json()['img_base64'].replace('\\n', '')
 				saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
 				if crackvcFunc is None:
@@ -520,40 +507,40 @@ class zhihu():
 					captcha = input('Input the Verification Code:')
 				else:
 					captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
-				self.session.post(self.captcha_url, data={'input_text': captcha})
+				data = {'input_text': captcha}
+				data = MultipartEncoder(fields=data, boundary='----WebKitFormBoundary')
+				headers = {
+							'content-type': data.content_type,
+							'origin': 'https://www.zhihu.com',
+							'referer': 'https://www.zhihu.com/signin',
+							'x-requested-with': 'fetch'
+						}
+				self.session.post(self.captcha_url, data=data, headers=headers)
 			removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
-			# 获取_xsrf
-			_xsrf = ''
-			self.session.get(self.homepage_url, allow_redirects=False)
-			for c in self.session.cookies:
-				if c.name == '_xsrf':
-					_xsrf = c.value
-			# 获取signature
-			signature = hmac.new(b'd1b964811afb40118a12068ff74a12f4', digestmod=hashlib.sha1)
-			grant_type = 'password'
+			# 构造登录请求
 			client_id = 'c3cef7c66a1843f8b3a9e6a1e3160e20'
-			source = 'com.zhihu.web'
 			timestamp = str(int(time.time() * 1000))
+			grant_type = 'password'
+			source = 'com.zhihu.web'
+			signature = hmac.new(b'd1b964811afb40118a12068ff74a12f4', digestmod=hashlib.sha1)
 			signature.update(bytes((grant_type+client_id+source+timestamp), 'utf-8'))
 			signature = signature.hexdigest()
 			data = {
 					'client_id': client_id,
 					'grant_type': grant_type,
 					'source': source,
-					'username': username,
+					'username': '+86'+username,
 					'password': password,
 					'lang': 'en',
-					'ref_source': 'homepage',
+					'ref_source': 'other_https://www.zhihu.com/signin',
 					'utm_source': '',
-					'captcha': captcha,
+					'captcha': '',
 					'timestamp': timestamp,
 					'signature': signature
 					}
 			js = execjs.compile(encrypt_js_code)
-			data = js.call('Q', urlencode(data))
-			self.headers.update({'x-zse-83': '3_1.1', 'x-xsrftoken': _xsrf, 'content-type': 'application/x-www-form-urlencoded'})
-			self.session.headers.update(self.headers)
-			res = self.session.post(self.login_url, data=data)
+			data = js.call('encrypt', urlencode(data))
+			res = self.session.post(self.login_url, data=data, headers=self.login_headers)
 			res_json = res.json()
 			# 登录成功
 			if 'user_id' in res_json:
@@ -576,14 +563,29 @@ class zhihu():
 	'''初始化PC端'''
 	def __initializePC(self):
 		self.headers = {
-							'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-							'Referer': 'https://www.zhihu.com/',
-							'Host': 'www.zhihu.com',
-							'accept-encoding': 'gzip, deflate, br'
+							'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+							'referer': 'https://www.zhihu.com/',
+							'host': 'www.zhihu.com',
+							'accept-encoding': 'gzip, deflate, br',
+							'accept-language': 'zh-CN,zh;q=0.9',
+							'accept': '*/*'
 						}
+		self.captcha_headers = {
+									'referer': 'https://www.zhihu.com/signin',
+									'x-requested-with': 'fetch',
+									'x-zse-83': '3_2.0'
+								}
+		self.login_headers = {
+								'content-type': 'application/x-www-form-urlencoded',
+								'origin': 'https://www.zhihu.com',
+								'referer': 'https://www.zhihu.com/signin',
+								'x-requested-with': 'fetch',
+								'x-zse-83': '3_2.0'
+							}
 		self.captcha_url = 'https://www.zhihu.com/api/v3/oauth/captcha?lang=en'
-		self.homepage_url = 'https://www.zhihu.com/'
+		self.signin_url = 'https://www.zhihu.com/signin'
 		self.login_url = 'https://www.zhihu.com/api/v3/oauth/sign_in'
+		self.session.headers.update(self.headers)
 	'''初始化移动端'''
 	def __initializeMobile(self):
 		pass
