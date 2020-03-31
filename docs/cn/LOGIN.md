@@ -420,6 +420,20 @@ infos_return, session = lg.stackoverflow(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 暂不支持登录时需要验证码的情况处理
 
+### codalab
+#### 支持的登录mode
+codalab目前支持的登录mode包括:
+- pc
+#### 示例代码
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.codalab(username, password, 'pc')
+```
+#### 验证码识别结果格式
+- mobile: 暂不支持登录时需要验证码的情况处理
+- pc: 暂不支持登录时需要验证码的情况处理
+
 
 ## 一些工具函数
 

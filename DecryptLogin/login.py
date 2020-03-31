@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-03-10
+	2020-03-31
 '''
 from .platforms import *
 
@@ -72,6 +72,8 @@ class Login():
 		self.baidupan = baidupan.baidupan().login
 		# stackoverflow
 		self.stackoverflow = stackoverflow.stackoverflow().login
+		# codalab
+		self.codalab = codalab.codalab().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -136,6 +138,8 @@ class Loginer():
 		self.baidupan = baidupan.baidupan
 		# stackoverflow
 		self.stackoverflow = stackoverflow.stackoverflow
+		# codalab
+		self.codalab = codalab.codalab
 	'''Info'''
 	def __repr__(self):
 		return self.info

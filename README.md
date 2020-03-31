@@ -38,7 +38,8 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  fishc           | ✓                  |  ✗                       |  鱼C论坛           |
 |  youdao          | ✓                  |  ✗                       |  有道              |
 |  baidupan        | ✓                  |  ✗                       |  百度网盘          |
-|  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     | 
+|  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     |
+|  codalab         | ✓                  |  ✗                       |  codalab           |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |

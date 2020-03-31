@@ -448,6 +448,21 @@ infos_return, session = lg.stackoverflow(username, password, 'pc')
 - mobile: unsupport processing the situation of having captcha
 - pc: unsupport processing the situation of having captcha
 
+### codalab
+#### Supported modes
+The supported modes of codalab include:
+- pc
+#### Example
+Here is an example to login in codalab:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.codalab(username, password, 'pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of having captcha
+- pc: unsupport processing the situation of having captcha
+
 
 ## Util functions
 ### cookies
