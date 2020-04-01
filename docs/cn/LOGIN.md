@@ -448,6 +448,19 @@ infos_return, session = lg.pypi(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 暂不支持登录时需要验证码的情况处理
 
+### Instagram
+#### 支持的登录mode
+Instagram:
+- pc
+#### 示例代码
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.instagram(username, password)
+```
+#### 验证码识别结果格式
+- mobile: 暂不支持登录时需要验证码的情况处理
+- pc: 暂不支持登录时需要验证码的情况处理
 
 ## 一些工具函数
 

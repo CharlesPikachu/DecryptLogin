@@ -40,7 +40,8 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  baidupan        | ✓                  |  ✗                       |  百度网盘          |
 |  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     |
 |  CodaLab         | ✓                  |  ✗                       |  CodaLab           |
-|  PyPi            | ✓                  |  ✗                       |  PyPi              | 
+|  PyPi            | ✓                  |  ✗                       |  PyPi              |
+|  Instagram       | ✓                  |  ✗                       |  Instagram         |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |

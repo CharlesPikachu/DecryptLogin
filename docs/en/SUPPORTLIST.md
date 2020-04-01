@@ -30,3 +30,4 @@
 |  stackoverflow   | ✓                  |  ✗                       |
 |  CodaLab         | ✓                  |  ✗                       |
 |  Pypi            | ✓                  |  ✗                       |
+|  Instagram       | ✓                  |  ✗                       |
