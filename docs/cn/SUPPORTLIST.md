@@ -27,6 +27,7 @@
 |  鱼C论坛           | ✓                  |  ✗                       |
 |  有道              | ✓                  |  ✗                       |
 |  百度网盘          | ✓                  |  ✗                       |
-|  stackoverflow     | ✓                  |  ✗                       |
+|  Stackoverflow     | ✓                  |  ✗                       |
 |  CodaLab           | ✓                  |  ✗                       |
-|  Pypi              | ✓                  |  ✗                       |
+|  PyPi              | ✓                  |  ✗                       |
+|  虾米音乐          | ✓                  |  ✗                       |

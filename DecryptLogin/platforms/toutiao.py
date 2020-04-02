@@ -80,7 +80,7 @@ class toutiao():
 					self.session.get(redirect_url, timeout=3)
 					ticket = re.findall("ticket=(.*)", redirect_url)[0]
 				else:
-					raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
+					raise RuntimeError(res_json.get('description'))
 			# 账号密码错误
 			elif res_json.get('error_code') in [1009, 1003]:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)

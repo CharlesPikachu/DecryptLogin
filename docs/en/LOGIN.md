@@ -41,13 +41,13 @@ The advantage of this scheme is that it is easier to call other useful functions
 
 ## Introduction of supported websites
 
-### weibo
+### Weibo
 #### Supported modes
-The supported modes of weibo include:
+The supported modes of Weibo include:
 - mobile
 - pc
 #### Example
-Here is an example to login in weibo:
+Here is an example to login in Weibo:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -60,12 +60,12 @@ infos_return, session = lg.weibo(username[telephone], password, 'mobile')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### douban
+### Douban
 #### Supported modes
-The supported modes of douban include:
+The supported modes of Douban include:
 - pc
 #### Example
-Here is an example to login in douban:
+Here is an example to login in Douban:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -75,12 +75,12 @@ infos_return, session = lg.douban(username[telephone], password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### github
+### Github
 #### Supported modes
-The supported modes of github include:
+The supported modes of Github include:
 - pc
 #### Example
-Here is an example to login in github:
+Here is an example to login in Github:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -90,12 +90,12 @@ infos_return, session = lg.github(username[email], password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### music163
+### Music163
 #### Supported modes
-The supported modes of music163 include:
+The supported modes of Music163 include:
 - pc
 #### Example
-Here is an example to login in music163:
+Here is an example to login in Music163:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -105,12 +105,12 @@ infos_return, session = lg.music163(username[telephone/email], password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### zt12306
+### Zt12306
 #### Supported modes
-The supported modes of zt12306 include:
+The supported modes of Zt12306 include:
 - pc
 #### Example
-Here is an example to login in zt12306:
+Here is an example to login in Zt12306:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -168,12 +168,12 @@ infos_return, session = lg.QQId('mobile')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### zhihu
+### Zhihu
 #### Supported modes
-The supported modes of zhihu include:
+The supported modes of Zhihu include:
 - pc
 #### Example
-Here is an example to login in zhihu:
+Here is an example to login in Zhihu:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -183,13 +183,13 @@ infos_return, session = lg.zhihu(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### bilibili
+### Bilibili
 #### Supported modes
-The supported modes of bilibili include:
+The supported modes of Bilibili include:
 - mobile
 - pc
 #### Example
-Here is an example to login in bilibili:
+Here is an example to login in Bilibili:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -202,12 +202,12 @@ infos_return, session = lg.bilibili(username, password, 'mobile')
 - mobile: unsupport processing the situation of appearing captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
 - pc: unsupport processing the situation of appearing captcha, use the recognition api from https://github.com/Hsury/Bilibili-Toolkit
 
-### toutiao
+### Toutiao
 #### Supported modes
-The supported modes of toutiao include:
+The supported modes of Toutiao include:
 - mobile
 #### Example
-Here is an example to login in toutiao:
+Here is an example to login in Toutiao:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -217,12 +217,12 @@ infos_return, session = lg.toutiao(username, password, 'mobile')
 - mobile: it is a digital captcha, just return the corresponding digital recognition result
 - pc: unsupport processing the situation of appearing captcha
 
-### taobao
+### Taobao
 #### Supported modes
-The supported modes of taobao include:
+The supported modes of Taobao include:
 - pc
 #### Example
-Here is an example to login in taobao:
+Here is an example to login in Taobao:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -233,12 +233,12 @@ infos_return, session = lg.taobao('pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### jingdong
+### Jingdong
 #### Supported modes
-The supported modes of jingdong include:
+The supported modes of Jingdong include:
 - pc
 #### Example
-Here is an example to login in jingdong:
+Here is an example to login in Jingdong:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -249,12 +249,12 @@ infos_return, session = lg.jingdong('pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### ifeng
+### Ifeng
 #### Supported modes
-The supported modes of ifeng include:
+The supported modes of Ifeng include:
 - pc
 #### Example
-Here is an example to login in ifeng:
+Here is an example to login in Ifeng:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -264,13 +264,13 @@ infos_return, session = lg.ifeng(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### sohu
+### Sohu
 #### Supported modes
-The supported modes of sohu include:
+The supported modes of Sohu include:
 - mobile
 - pc
 #### Example
-Here is an example to login in sohu:
+Here is an example to login in Sohu:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -283,12 +283,12 @@ infos_return, session = lg.sohu(username, password, 'mobile')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### zgconline
+### Zgconline
 #### Supported modes
-The supported modes of zgconline include:
+The supported modes of Zgconline include:
 - pc
 #### Example
-Here is an example to login in zgconline:
+Here is an example to login in Zgconline:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -298,12 +298,12 @@ infos_return, session = lg.zgconline(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### lagou
+### Lagou
 #### Supported modes
-The supported modes of lagou include:
+The supported modes of Lagou include:
 - pc
 #### Example
-Here is an example to login in lagou:
+Here is an example to login in Lagou:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -313,12 +313,12 @@ infos_return, session = lg.lagou(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### twitter
+### Twitter
 #### Supported modes
-The supported modes of twitter include:
+The supported modes of Twitter include:
 - pc
 #### Example
-Here is an example to login in twitter:
+Here is an example to login in Twitter:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -328,12 +328,12 @@ infos_return, session = lg.twitter(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### vultr
+### Vultr
 #### Supported modes
-The supported modes of vultr include:
+The supported modes of Vultr include:
 - pc
 #### Example
-Here is an example to login in vultr:
+Here is an example to login in Vultr:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -358,12 +358,12 @@ infos_return, session = lg.eSurfing(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### renren
+### Renren
 #### Supported modes
-The supported modes of renren include:
+The supported modes of Renren include:
 - pc
 #### Example
-Here is an example to login in renren:
+Here is an example to login in Renren:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -373,12 +373,12 @@ infos_return, session = lg.renren(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### w3cschool
+### W3Cschool
 #### Supported modes
-The supported modes of w3cschool include:
+The supported modes of W3Cschool include:
 - pc
 #### Example
-Here is an example to login in w3cschool:
+Here is an example to login in W3Cschool:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -388,12 +388,12 @@ infos_return, session = lg.w3cschool(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### fishc
+### Fishc
 #### Supported modes
-The supported modes of fishc include:
+The supported modes of Fishc include:
 - pc
 #### Example
-Here is an example to login in fishc:
+Here is an example to login in Fishc:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -403,12 +403,12 @@ infos_return, session = lg.fishc(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### youdao
+### Youdao
 #### Supported modes
-The supported modes of youdao include:
+The supported modes of Youdao include:
 - pc
 #### Example
-Here is an example to login in youdao:
+Here is an example to login in Youdao:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -418,12 +418,12 @@ infos_return, session = lg.youdao(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
-### baidupan
+### Baidupan
 #### Supported modes
-The supported modes of baidupan include:
+The supported modes of Baidupan include:
 - pc
 #### Example
-Here is an example to login in baidupan:
+Here is an example to login in Baidupan:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -433,12 +433,12 @@ infos_return, session = lg.baidupan(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
-### stackoverflow
+### Stackoverflow
 #### Supported modes
-The supported modes of stackoverflow include:
+The supported modes of Stackoverflow include:
 - pc
 #### Example
-Here is an example to login in stackoverflow:
+Here is an example to login in Stackoverflow:
 ```python
 from DecryptLogin import login
 lg = login.Login()
@@ -473,6 +473,21 @@ Here is an example to login in PyPi:
 from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.pypi(username, password, 'pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
+### Xiami
+#### Supported modes
+The supported modes of Xiami include:
+- pc
+#### Example
+Here is an example to login in Xiami:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.xiami(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha

@@ -13,34 +13,35 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 # Support List
 |  Websites        | support PC API?    |  support mobile API?     |  in Chinese        |
 |  :----:          | :----:             |  :----:                  |  :----:            |
-|  weibo           | ✓                  |  ✓                       |  新浪微博          |
-|  douban          | ✓                  |  ✗                       |  豆瓣              |
-|  github          | ✓                  |  ✗                       |  Github            |
-|  music163        | ✓                  |  ✗                       |  网易云音乐        |
-|  zt12306         | ✓                  |  ✗                       |  中国铁路12306     |
+|  Weibo           | ✓                  |  ✓                       |  新浪微博          |
+|  Douban          | ✓                  |  ✗                       |  豆瓣              |
+|  Github          | ✓                  |  ✗                       |  Github            |
+|  Music163        | ✓                  |  ✗                       |  网易云音乐        |
+|  Zt12306         | ✓                  |  ✗                       |  中国铁路12306     |
 |  QQZone          | ✗                  |  ✓                       |  QQ空间            |
 |  QQQun           | ✗                  |  ✓                       |  QQ群              |
 |  QQId			   | ✗                  |  ✓                       |  我的QQ中心        |
-|  zhihu		   | ✓                  |  ✗                       |  知乎         	    |
-|  bilibili		   | ✓                  |  ✓                       |  B站               |
-|  toutiao		   | ✗                  |  ✓                       |  今日头条          |
-|  taobao          | ✓                  |  ✗                       |  淘宝              |
-|  jingdong        | ✓                  |  ✗                       |  京东              |
-|  ifeng           | ✓                  |  ✗                       |  凤凰网            |
-|  sohu            | ✓                  |  ✓                       |  搜狐              |
-|  zgconline       | ✓                  |  ✗                       |  中关村在线        |
-|  lagou           | ✓                  |  ✗                       |  拉勾网            |
-|  twitter         | ✓                  |  ✗                       |  推特              |
+|  Zhihu		   | ✓                  |  ✗                       |  知乎         	    |
+|  Bilibili		   | ✓                  |  ✓                       |  B站               |
+|  Toutiao		   | ✗                  |  ✓                       |  今日头条          |
+|  Taobao          | ✓                  |  ✗                       |  淘宝              |
+|  Jingdong        | ✓                  |  ✗                       |  京东              |
+|  Ifeng           | ✓                  |  ✗                       |  凤凰网            |
+|  Sohu            | ✓                  |  ✓                       |  搜狐              |
+|  Zgconline       | ✓                  |  ✗                       |  中关村在线        |
+|  Lagou           | ✓                  |  ✗                       |  拉勾网            |
+|  Twitter         | ✓                  |  ✗                       |  推特              |
 |  Vultr           | ✓                  |  ✗                       |  Vultr             |
 |  eSurfing        | ✓                  |  ✗                       |  天翼              |
-|  renren          | ✓                  |  ✗                       |  人人网            |
-|  w3cschool       | ✓                  |  ✗                       |  W3Cschool(编程狮) |
-|  fishc           | ✓                  |  ✗                       |  鱼C论坛           |
-|  youdao          | ✓                  |  ✗                       |  有道              |
-|  baidupan        | ✓                  |  ✗                       |  百度网盘          |
-|  stackoverflow   | ✓                  |  ✗                       |  stackoverflow     |
+|  Renren          | ✓                  |  ✗                       |  人人网            |
+|  W3Cschool       | ✓                  |  ✗                       |  W3Cschool(编程狮) |
+|  Fishc           | ✓                  |  ✗                       |  鱼C论坛           |
+|  Youdao          | ✓                  |  ✗                       |  有道              |
+|  Baidupan        | ✓                  |  ✗                       |  百度网盘          |
+|  Stackoverflow   | ✓                  |  ✗                       |  Stackoverflow     |
 |  CodaLab         | ✓                  |  ✗                       |  CodaLab           |
 |  PyPi            | ✓                  |  ✗                       |  PyPi              | 
+|  Xiami           | ✓                  |  ✗                       |  虾米音乐          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -101,6 +102,7 @@ infos_return, session = lg.baidupan(username, password, 'pc')
 infos_return, session = lg.stackoverflow(username, password, 'pc')
 infos_return, session = lg.codalab(username, password, 'pc')
 infos_return, session = lg.pypi(username, password, 'pc')
+infos_return, session = lg.xiami(username, password, 'pc')
 ```
 
 # Thanks List

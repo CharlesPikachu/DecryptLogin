@@ -76,6 +76,8 @@ class Login():
 		self.codalab = codalab.codalab().login
 		# pypi
 		self.pypi = pypi.pypi().login
+		# 虾米音乐
+		self.xiami = xiami.xiami().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -144,6 +146,8 @@ class Loginer():
 		self.codalab = codalab.codalab
 		# pypi
 		self.pypi = pypi.pypi
+		# 虾米音乐
+		self.xiami = xiami.xiami
 	'''Info'''
 	def __repr__(self):
 		return self.info
