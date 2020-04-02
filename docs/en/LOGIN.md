@@ -478,6 +478,20 @@ infos_return, session = lg.pypi(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
+### Instagram
+#### Supported modes
+The supported modes of Instagram include:
+- pc
+#### Example
+Here is an example to login in Instagram:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.instagram(username, password)
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
 
 ## Util functions
 
