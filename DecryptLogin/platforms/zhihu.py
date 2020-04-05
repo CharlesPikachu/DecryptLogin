@@ -529,7 +529,7 @@ class zhihu():
 					'client_id': client_id,
 					'grant_type': grant_type,
 					'source': source,
-					'username': '+86'+username,
+					'username': username,
 					'password': password,
 					'lang': 'en',
 					'ref_source': 'other_https://www.zhihu.com/signin',
