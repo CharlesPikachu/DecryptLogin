@@ -93,8 +93,11 @@ class douyu():
 				time.sleep(0.5)
 			# 登录成功
 			removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+			res = self.session.get(self.member_url)
+			username = re.findall(r'uname_con clearfix" title="(.*?)"', res.text)[0]
 			print('[INFO]: Account -> %s, login successfully...' % username)
-			infos_return = res_json.copy()
+			infos_return = {'username': username}
+			infos_return = infos_return.update(res_json)
 			return infos_return, self.session
 		else:
 			raise ValueError('Unsupport argument in douyu.login -> mode %s, expect <mobile> or <pc>...' % mode)
@@ -106,6 +109,7 @@ class douyu():
 					}
 		self.gen_qrcode_url = 'https://passport.douyu.com/scan/generateCode'
 		self.check_url = 'https://passport.douyu.com/lapi/passport/qrcode/check?time={timestamp}&code={code}'
+		self.member_url = 'https://www.douyu.com/member'
 		self.session.headers.update(self.headers)
 	'''初始化移动端'''
 	def __initializeMobile(self):
