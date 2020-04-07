@@ -9,6 +9,7 @@ The environment I used is:
 Dependencies requirement:
 ```
 rsa >= 4.0
+qrcode >= 6.1
 requests >= 2.22.0
 pycryptodome >= 3.8.1
 PyExecJS >= 1.5.1 (The version of Node.js is v10.15.3)

@@ -9,6 +9,7 @@
 DecryptLogin相关依赖包需求如下:
 ```
 rsa >= 4.0
+qrcode >= 6.1
 requests >= 2.22.0
 pycryptodome >= 3.8.1
 PyExecJS >= 1.5.1 (测试时使用的Node.js版本为v10.15.3)
