@@ -31,3 +31,4 @@
 |  CodaLab         | ✓                  |  ✗                       |
 |  PyPi            | ✓                  |  ✗                       |
 |  Xiami           | ✓                  |  ✗                       |
+|  Douyu           | ✓                  |  ✗                       |

@@ -493,6 +493,22 @@ infos_return, session = lg.xiami(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
+### Douyu
+#### Supported modes
+The supported modes of Douyu include:
+- pc
+#### Example
+Here is an example to login in Douyu:
+```python
+from DecryptLogin import login
+lg = login.Login()
+# scan the qr code to login in douyu
+infos_return, session = lg.douyu('pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
 
 ## Util functions
 

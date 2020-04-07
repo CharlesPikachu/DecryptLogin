@@ -42,6 +42,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  CodaLab         | ✓                  |  ✗                       |  CodaLab           |
 |  PyPi            | ✓                  |  ✗                       |  PyPi              | 
 |  Xiami           | ✓                  |  ✗                       |  虾米音乐          |
+|  Douyu           | ✓                  |  ✗                       |  斗鱼直播          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -103,6 +104,7 @@ infos_return, session = lg.stackoverflow(username, password, 'pc')
 infos_return, session = lg.codalab(username, password, 'pc')
 infos_return, session = lg.pypi(username, password, 'pc')
 infos_return, session = lg.xiami(username, password, 'pc')
+infos_return, session = lg.douyu('pc')
 ```
 
 # Thanks List

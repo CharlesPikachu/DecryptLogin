@@ -72,7 +72,7 @@ class QQQun():
 			res = self.session.get(self.qrshow_url, headers=self.headers, verify=False, params=params)
 			all_cookies.update(requests.utils.dict_from_cookiejar(res.cookies))
 			ptqrtoken = self.__decryptQrsig(all_cookies['qrsig'])
-			# 保存验证码图片
+			# 保存二维码图片
 			saveImage(res.content, os.path.join(self.cur_path, 'qrcode.jpg'))
 			showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
 			self.session.cookies.update(all_cookies)
