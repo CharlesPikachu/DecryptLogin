@@ -97,7 +97,7 @@ class douyu():
 			username = re.findall(r'uname_con clearfix" title="(.*?)"', res.text)[0]
 			print('[INFO]: Account -> %s, login successfully...' % username)
 			infos_return = {'username': username}
-			infos_return = infos_return.update(res_json)
+			infos_return.update(res_json)
 			return infos_return, self.session
 		else:
 			raise ValueError('Unsupport argument in douyu.login -> mode %s, expect <mobile> or <pc>...' % mode)
