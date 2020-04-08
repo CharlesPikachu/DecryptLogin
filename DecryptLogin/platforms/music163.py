@@ -95,7 +95,7 @@ class music163():
 			password = md5.hexdigest()
 			data = {
 						'password': password,
-						'rememberLogin': True
+						'rememberLogin': 'True'
 					}
 			if account_type == 'phone':
 				data['phone'] = username
