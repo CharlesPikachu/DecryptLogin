@@ -128,7 +128,7 @@ class NeteaseSongListDownloader():
 			res = self.session.post(playlist_url+self.csrf, headers=self.headers, data=self.cracker.get(data))
 			playlists += res.json()['playlist']
 			offset += 1
-			if not res.json()['more'] == 'false':
+			if res.json()['more'] == False:
 				break
 		all_playlists = {}
 		for item in playlists:
