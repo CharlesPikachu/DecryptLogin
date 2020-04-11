@@ -502,8 +502,23 @@ Here is an example to login in Douyu:
 ```python
 from DecryptLogin import login
 lg = login.Login()
-# scan the qr code to login in douyu
+# scan the qr code to login in Douyu
 infos_return, session = lg.douyu('pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
+### Migu
+#### Supported modes
+The supported modes of Migu include:
+- pc
+#### Example
+Here is an example to login in Migu:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.migu(username, password, 'pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha

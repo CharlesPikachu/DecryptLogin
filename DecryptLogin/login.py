@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-04-07
+	2020-04-11
 '''
 from .platforms import *
 
@@ -80,6 +80,8 @@ class Login():
 		self.xiami = xiami.xiami().login
 		# 斗鱼直播
 		self.douyu = douyu.douyu().login
+		# 咪咕音乐
+		self.migu = migu.migu().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -152,6 +154,8 @@ class Loginer():
 		self.xiami = xiami.xiami
 		# 斗鱼直播
 		self.douyu = douyu.douyu
+		# 咪咕音乐
+		self.migu = migu.migu
 	'''Info'''
 	def __repr__(self):
 		return self.info

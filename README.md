@@ -43,6 +43,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  PyPi            | ✓                  |  ✗                       |  PyPi              | 
 |  Xiami           | ✓                  |  ✗                       |  虾米音乐          |
 |  Douyu           | ✓                  |  ✗                       |  斗鱼直播          |
+|  Migu            | ✓                  |  ✗                       |  咪咕音乐          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -80,9 +81,9 @@ infos_return, session = lg.github(username[email], password, 'pc')
 infos_return, session = lg.weibo(username[telephone], password, 'mobile')
 infos_return, session = lg.music163(username[telephone/email], password, 'pc')
 infos_return, session = lg.zt12306(username[telephone], password, 'pc')
-infos_return, session = lg.QQZone('mobile')
-infos_return, session = lg.QQQun('mobile')
-infos_return, session = lg.QQId('mobile')
+infos_return, session = lg.QQZone('pc')
+infos_return, session = lg.QQQun('pc')
+infos_return, session = lg.QQId('pc')
 infos_return, session = lg.zhihu(username, password, 'pc')
 infos_return, session = lg.bilibili(username, password, 'pc')
 infos_return, session = lg.toutiao(username, password, 'mobile')
@@ -105,6 +106,7 @@ infos_return, session = lg.codalab(username, password, 'pc')
 infos_return, session = lg.pypi(username, password, 'pc')
 infos_return, session = lg.xiami(username, password, 'pc')
 infos_return, session = lg.douyu('pc')
+infos_return, session = lg.migu(username, password, 'pc')
 ```
 
 # Thanks List

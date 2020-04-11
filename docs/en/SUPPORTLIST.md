@@ -32,3 +32,4 @@
 |  PyPi            | ✓                  |  ✗                       |
 |  Xiami           | ✓                  |  ✗                       |
 |  Douyu           | ✓                  |  ✗                       |
+|  Migu            | ✓                  |  ✗                       |
