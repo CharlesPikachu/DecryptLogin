@@ -123,14 +123,14 @@ infos_return, session = lg.zt12306(username[telephone], password, 'pc')
 ### QQZone
 #### Supported modes
 The supported modes of QQZone include:
-- mobile
+- pc
 #### Example
 Here is an example to login in QQZone:
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # scan the qr code to login in QQZone
-infos_return, session = lg.QQZone('mobile')
+infos_return, session = lg.QQZone('pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha
@@ -139,14 +139,14 @@ infos_return, session = lg.QQZone('mobile')
 ### QQQun
 #### Supported modes
 The supported modes of QQQun include:
-- mobile
+- pc
 #### Example
 Here is an example to login in QQQun:
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # scan the qr code to login in QQQun
-infos_return, session = lg.QQQun('mobile')
+infos_return, session = lg.QQQun('pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha
@@ -155,14 +155,14 @@ infos_return, session = lg.QQQun('mobile')
 ### QQId
 #### Supported modes
 The supported modes of QQId include:
-- mobile
+- pc
 #### Example
 Here is an example to login in QQId:
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # scan the qr code to login in QQId
-infos_return, session = lg.QQId('mobile')
+infos_return, session = lg.QQId('pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha

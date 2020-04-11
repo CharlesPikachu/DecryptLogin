@@ -1,8 +1,8 @@
 '''
 Function:
 	QQ空间模拟登录
-		--PC端暂不支持
-		--移动端: https://z.qzone.com/download.html
+		--PC端: https://z.qzone.com/download.html
+		--移动端暂不支持
 Author:
 	Charles
 微信公众号:
@@ -43,13 +43,16 @@ class QQZone():
 		self.cur_path = os.getcwd()
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username='', password='', mode='mobile', crackvcFunc=None, **kwargs):
+	def login(self, username='', password='', mode='pc', crackvcFunc=None, **kwargs):
 		# 设置代理
 		self.session.proxies.update(kwargs.get('proxies', {}))
 		# 移动端接口
 		if mode == 'mobile':
+			raise NotImplementedError
+		# PC端接口
+		elif mode == 'pc':
 			all_cookies = {}
-			self.__initializeMobile()
+			self.__initializePC()
 			# 获取pt_login_sig
 			params = {
 						'proxy_url': 'https://qzs.qq.com/qzone/v6/portal/proxy.html',
@@ -130,9 +133,6 @@ class QQZone():
 			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			infos_return = {'username': qq_number}
 			return infos_return, self.session
-		# PC端接口
-		elif mode == 'pc':
-			raise NotImplementedError
 		else:
 			raise ValueError('Unsupport argument in QQZone.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''qrsig转ptqrtoken, hash33函数'''
@@ -143,15 +143,15 @@ class QQZone():
 		return 2147483647 & e
 	'''初始化PC端'''
 	def __initializePC(self):
-		pass
-	'''初始化移动端'''
-	def __initializeMobile(self):
 		self.headers = {
 						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
 						}
 		self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
 		self.qrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
 		self.qrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
+	'''初始化移动端'''
+	def __initializeMobile(self):
+		pass
 
 
 '''test'''

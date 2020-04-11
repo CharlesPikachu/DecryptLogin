@@ -116,13 +116,13 @@ infos_return, session = lg.zt12306(username[telephone], password, 'pc')
 ### QQ空间
 #### 支持的登录mode
 QQ空间目前支持的登录mode包括:
-- mobile
+- pc
 #### 示例代码
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
-infos_return, session = lg.QQZone('mobile')
+infos_return, session = lg.QQZone('pc')
 ```
 #### 验证码识别结果格式
 - mobile: 暂不支持登录时需要验证码的情况处理
@@ -131,13 +131,13 @@ infos_return, session = lg.QQZone('mobile')
 ### QQ群
 #### 支持的登录mode
 QQ群目前支持的登录mode包括:
-- mobile
+- pc
 #### 示例代码
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
-infos_return, session = lg.QQQun('mobile')
+infos_return, session = lg.QQQun('pc')
 ```
 #### 验证码识别结果格式
 - mobile: 暂不支持登录时需要验证码的情况处理
@@ -146,13 +146,13 @@ infos_return, session = lg.QQQun('mobile')
 ### 我的QQ中心
 #### 支持的登录mode
 我的QQ中心目前支持的登录mode包括:
-- mobile
+- pc
 #### 示例代码
 ```python
 from DecryptLogin import login
 lg = login.Login()
 # 因为使用扫码登录, 无需输入用户名密码
-infos_return, session = lg.QQId('mobile')
+infos_return, session = lg.QQId('pc')
 ```
 #### 验证码识别结果格式
 - mobile: 暂不支持登录时需要验证码的情况处理

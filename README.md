@@ -18,9 +18,9 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Github          | ✓                  |  ✗                       |  Github            |
 |  Music163        | ✓                  |  ✗                       |  网易云音乐        |
 |  Zt12306         | ✓                  |  ✗                       |  中国铁路12306     |
-|  QQZone          | ✗                  |  ✓                       |  QQ空间            |
-|  QQQun           | ✗                  |  ✓                       |  QQ群              |
-|  QQId			   | ✗                  |  ✓                       |  我的QQ中心        |
+|  QQZone          | ✓                  |  ✗                       |  QQ空间            |
+|  QQQun           | ✓                  |  ✗                       |  QQ群              |
+|  QQId			   | ✓                  |  ✗                       |  我的QQ中心        |
 |  Zhihu		   | ✓                  |  ✗                       |  知乎         	    |
 |  Bilibili		   | ✓                  |  ✓                       |  B站               |
 |  Toutiao		   | ✗                  |  ✓                       |  今日头条          |

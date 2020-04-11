@@ -7,9 +7,9 @@
 |  Github          | ✓                  |  ✗                       |
 |  Music163        | ✓                  |  ✗                       |
 |  Zt12306         | ✓                  |  ✗                       |
-|  QQZone          | ✗                  |  ✓                       |
-|  QQQun           | ✗                  |  ✓                       |
-|  QQId			   | ✗                  |  ✓                       |
+|  QQZone          | ✓                  |  ✗                       |
+|  QQQun           | ✓                  |  ✗                       |
+|  QQId			   | ✓                  |  ✗                       |
 |  Zhihu		   | ✓                  |  ✗                       |
 |  Bilibili		   | ✓                  |  ✓                       |
 |  Toutiao		   | ✗                  |  ✓                       |

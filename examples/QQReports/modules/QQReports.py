@@ -21,14 +21,14 @@ class QQReports():
 	def __init__(self, dirpath='qqdata', **kwargs):
 		lg = login.Login()
 		# QQ空间
-		infos_return, self.session_zone = lg.QQZone('mobile')
+		infos_return, self.session_zone = lg.QQZone()
 		self.username = infos_return.get('username')
 		self.session_zone_all_cookies = requests.utils.dict_from_cookiejar(self.session_zone.cookies)
 		# QQ安全中心
-		_, self.session_id = lg.QQId('mobile')
+		_, self.session_id = lg.QQId()
 		self.session_id_all_cookies = requests.utils.dict_from_cookiejar(self.session_id.cookies)
 		# QQ群
-		_, self.session_qun = lg.QQQun('mobile')
+		_, self.session_qun = lg.QQQun()
 		self.session_qun_all_cookies = requests.utils.dict_from_cookiejar(self.session_qun.cookies)
 		# 数据保存的文件夹(方便后续的可视化操作)
 		self.dirpath = dirpath
