@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/vintage.js"></script>
+
+</head>
+<body>
+    <div id="7f1043b9fad440e69d2a04215d9ae16f" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_7f1043b9fad440e69d2a04215d9ae16f = echarts.init(
+            document.getElementById('7f1043b9fad440e69d2a04215d9ae16f'), 'vintage', {renderer: 'canvas'});
+        var option_7f1043b9fad440e69d2a04215d9ae16f = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u539f\u521b\u5fae\u535a\u6570\u91cf",
+                    "value": 685
+                },
+                {
+                    "name": "\u975e\u539f\u521b\u5fae\u535a\u6570\u91cf",
+                    "value": 437
+                }
+            ],
+            "radius": [
+                "30%",
+                "75%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "roseType": "radius",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u539f\u521b\u5fae\u535a\u6570\u91cf",
+                "\u975e\u539f\u521b\u5fae\u535a\u6570\u91cf"
+            ],
+            "selected": {},
+            "show": true,
+            "left": "2%",
+            "top": "5%",
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u539f\u521b\u4e0e\u975e\u539f\u521b\u5fae\u535a\u6570\u91cf\u5bf9\u6bd4",
+            "left": "center"
+        }
+    ]
+};
+        chart_7f1043b9fad440e69d2a04215d9ae16f.setOption(option_7f1043b9fad440e69d2a04215d9ae16f);
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-04-07
+	2020-04-12
 '''
 import DecryptLogin
 from setuptools import setup, find_packages
@@ -36,13 +36,7 @@ setup(
 	author_email='charlesjzc@qq.com',
 	license='MIT',
 	include_package_data=True,
-	install_requires=['rsa >= 4.0',
-					  'qrcode >= 6.1',
-					  'pillow >= 6.0.0',
-					  'PyExecJS >= 1.5.1',
-					  'requests >= 2.22.0',
-					  'pycryptodome >= 3.8.1',
-					  'requests_toolbelt >= 0.9.1'],
+	install_requires=['rsa >= 4.0', 'qrcode >= 6.1', 'pillow >= 6.0.0', 'PyExecJS >= 1.5.1', 'requests >= 2.22.0', 'pycryptodome >= 3.8.1', 'requests_toolbelt >= 0.9.1'],
 	zip_safe=True,
 	packages=find_packages()
 )

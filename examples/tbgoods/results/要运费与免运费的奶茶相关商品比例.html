@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/vintage.js"></script>
+
+</head>
+<body>
+    <div id="c1ad9d85dda44f59941a7188eb022b68" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_c1ad9d85dda44f59941a7188eb022b68 = echarts.init(
+            document.getElementById('c1ad9d85dda44f59941a7188eb022b68'), 'vintage', {renderer: 'canvas'});
+        var option_c1ad9d85dda44f59941a7188eb022b68 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "fee",
+                    "value": 301
+                },
+                {
+                    "name": "no_fee",
+                    "value": 1902
+                }
+            ],
+            "radius": [
+                "30%",
+                "75%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "roseType": "radius",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "fee",
+                "no_fee"
+            ],
+            "selected": {},
+            "show": true,
+            "left": "2%",
+            "top": "5%",
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u8981\u8fd0\u8d39\u4e0e\u514d\u8fd0\u8d39\u7684\u5976\u8336\u76f8\u5173\u5546\u54c1\u6bd4\u4f8b",
+            "left": "center"
+        }
+    ]
+};
+        chart_c1ad9d85dda44f59941a7188eb022b68.setOption(option_c1ad9d85dda44f59941a7188eb022b68);
+    </script>
+</body>
+</html>
