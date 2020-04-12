@@ -43,7 +43,7 @@ def drawBar(title, data, savepath='./results'):
 	bar.render(os.path.join(savepath, title+'.html'))
 
 
-'''漏斗图'''
+'''画漏斗图'''
 def drawFunnel(title, data, savepath='./results'):
 	checkDir(savepath)
 	funnel = (Funnel(init_opts=options.InitOpts(theme=ThemeType.MACARONS))

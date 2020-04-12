@@ -36,7 +36,13 @@ setup(
 	author_email='charlesjzc@qq.com',
 	license='MIT',
 	include_package_data=True,
-	install_requires=['requests >= 2.22.0', 'pycryptodome >= 3.8.1', 'rsa >= 4.0', 'PyExecJS >= 1.5.1', 'qrcode >= 6.1'],
+	install_requires=['rsa >= 4.0',
+					  'qrcode >= 6.1',
+					  'pillow >= 6.0.0',
+					  'PyExecJS >= 1.5.1',
+					  'requests >= 2.22.0',
+					  'pycryptodome >= 3.8.1',
+					  'requests_toolbelt >= 0.9.1'],
 	zip_safe=True,
 	packages=find_packages()
 )
