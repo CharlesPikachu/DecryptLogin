@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/macarons.js"></script>
+
+</head>
+<body>
+    <div id="9ba7c9ebc6de436397db8bedd1eb1298" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_9ba7c9ebc6de436397db8bedd1eb1298 = echarts.init(
+            document.getElementById('9ba7c9ebc6de436397db8bedd1eb1298'), 'macarons', {renderer: 'canvas'});
+        var option_9ba7c9ebc6de436397db8bedd1eb1298 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "funnel",
+            "data": [
+                {
+                    "name": "100\u5143\u4ee5\u5185",
+                    "value": 47
+                },
+                {
+                    "name": "100-300\u5143",
+                    "value": 103
+                },
+                {
+                    "name": "300-500\u5143",
+                    "value": 41
+                },
+                {
+                    "name": "500-1000\u5143",
+                    "value": 27
+                },
+                {
+                    "name": "1000-2000\u5143",
+                    "value": 33
+                },
+                {
+                    "name": "2000\u5143\u4ee5\u4e0a",
+                    "value": 34
+                }
+            ],
+            "sort": "descending",
+            "gap": 0,
+            "label": {
+                "show": true,
+                "position": "inside",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "300-500\u5143",
+                "100\u5143\u4ee5\u5185",
+                "1000-2000\u5143",
+                "100-300\u5143",
+                "500-1000\u5143",
+                "2000\u5143\u4ee5\u4e0a"
+            ],
+            "selected": {
+                "100\u5143\u4ee5\u5185": true,
+                "100-300\u5143": true,
+                "300-500\u5143": true,
+                "500-1000\u5143": true,
+                "1000-2000\u5143": true,
+                "2000\u5143\u4ee5\u4e0a": true
+            },
+            "show": true,
+            "left": "2%",
+            "top": "15%",
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u65e0\u4eba\u673a\u76f8\u5173\u5546\u54c1\u7684\u4ef7\u683c\u5206\u5e03",
+            "left": "center"
+        }
+    ]
+};
+        chart_9ba7c9ebc6de436397db8bedd1eb1298.setOption(option_9ba7c9ebc6de436397db8bedd1eb1298);
+    </script>
+</body>
+</html>

@@ -18,6 +18,7 @@ class TBGoodsCrawler():
     def __init__(self, **kwargs):
         if os.path.isfile('session.pkl'):
             self.session = pickle.load(open('session.pkl', 'rb'))
+            print('[INFO]: 检测到已有会话文件session.pkl, 将直接导入该文件...')
         else:
             self.session = TBGoodsCrawler.login()
             f = open('session.pkl', 'wb')

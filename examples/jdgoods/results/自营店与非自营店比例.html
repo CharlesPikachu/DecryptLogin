@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+        <script type="text/javascript" src="https://assets.pyecharts.org/assets/themes/vintage.js"></script>
+
+</head>
+<body>
+    <div id="97ebf908fea5462681ae6e33b86165e3" class="chart-container" style="width:900px; height:500px;"></div>
+    <script>
+        var chart_97ebf908fea5462681ae6e33b86165e3 = echarts.init(
+            document.getElementById('97ebf908fea5462681ae6e33b86165e3'), 'vintage', {renderer: 'canvas'});
+        var option_97ebf908fea5462681ae6e33b86165e3 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "series": [
+        {
+            "type": "pie",
+            "clockwise": true,
+            "data": [
+                {
+                    "name": "\u81ea\u8425\u5e97",
+                    "value": 26
+                },
+                {
+                    "name": "\u975e\u81ea\u8425\u5e97",
+                    "value": 259
+                }
+            ],
+            "radius": [
+                "30%",
+                "75%"
+            ],
+            "center": [
+                "50%",
+                "50%"
+            ],
+            "roseType": "radius",
+            "label": {
+                "show": true,
+                "position": "top",
+                "margin": 8
+            }
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "\u81ea\u8425\u5e97",
+                "\u975e\u81ea\u8425\u5e97"
+            ],
+            "selected": {},
+            "show": true,
+            "left": "2%",
+            "top": "5%",
+            "orient": "vertical"
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0
+    },
+    "title": [
+        {
+            "text": "\u81ea\u8425\u5e97\u4e0e\u975e\u81ea\u8425\u5e97\u6bd4\u4f8b",
+            "left": "center"
+        }
+    ]
+};
+        chart_97ebf908fea5462681ae6e33b86165e3.setOption(option_97ebf908fea5462681ae6e33b86165e3);
+    </script>
+</body>
+</html>
