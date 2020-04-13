@@ -33,3 +33,4 @@
 |  Xiami           | ✓                  |  ✗                       |
 |  Douyu           | ✓                  |  ✗                       |
 |  Migu            | ✓                  |  ✗                       |
+|  Qunar           | ✓                  |  ✗                       |

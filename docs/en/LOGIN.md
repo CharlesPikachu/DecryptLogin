@@ -524,6 +524,21 @@ infos_return, session = lg.migu(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
+### Qunar
+#### Supported modes
+The supported modes of Qunar include:
+- pc
+#### Example
+Here is an example to login in Qunar:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.qunar(username, password, 'pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: it is a digital captcha, just return the corresponding digital recognition result
+
 
 ## Util functions
 

@@ -82,6 +82,8 @@ class Login():
 		self.douyu = douyu.douyu().login
 		# 咪咕音乐
 		self.migu = migu.migu().login
+		# 去哪儿旅行
+		self.qunar = qunar.qunar().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -156,6 +158,8 @@ class Loginer():
 		self.douyu = douyu.douyu
 		# 咪咕音乐
 		self.migu = migu.migu
+		# 去哪儿旅行
+		self.qunar = qunar.qunar
 	'''Info'''
 	def __repr__(self):
 		return self.info

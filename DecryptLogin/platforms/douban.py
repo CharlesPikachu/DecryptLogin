@@ -44,14 +44,15 @@ class douban():
 		# PC端接口
 		elif mode == 'pc':
 			self.__initializePC()
+			# 模拟登录
 			data = {
 					'ck': '20FY',
 					'name': username,
 					'password': password,
-					'remember': 'false',
+					'remember': 'true',
 					'ticket': ''
 					}
-			res = self.session.post(self.login_url, headers=self.login_headers, data=data)
+			res = self.session.post(self.login_url, data=data)
 			res_json = res.json()
 			# 登录成功
 			if res_json['status'] == 'success':
@@ -69,10 +70,11 @@ class douban():
 			raise ValueError('Unsupport argument in douban.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
 	def __initializePC(self):
-		self.login_headers = {
-								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-							}
+		self.headers = {
+							'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+						}
 		self.login_url = 'https://accounts.douban.com/j/mobile/login/basic'
+		self.session.headers.update(self.headers)
 	'''初始化移动端'''
 	def __initializeMobile(self):
 		pass
