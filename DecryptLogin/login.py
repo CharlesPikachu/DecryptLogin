@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-04-11
+	2020-04-18
 '''
 from .platforms import *
 
@@ -21,69 +21,69 @@ class Login():
 	'''初始化所有平台'''
 	def __initializeAll(self):
 		# 豆瓣
-		self.douban = douban.douban().login
+		self.douban = douban().login
 		# 微博
-		self.weibo = weibo.weibo().login
+		self.weibo = weibo().login
 		# github
-		self.github = github.github().login
+		self.github = github().login
 		# 网易云音乐
-		self.music163 = music163.music163().login
+		self.music163 = music163().login
 		# 中国铁路12306
-		self.zt12306 = zt12306.zt12306().login
+		self.zt12306 = zt12306().login
 		# QQ空间
-		self.QQZone = QQZone.QQZone().login
+		self.QQZone = QQZone().login
 		# QQ群
-		self.QQQun = QQQun.QQQun().login
+		self.QQQun = QQQun().login
 		# QQ安全中心
-		self.QQId = QQId.QQId().login
+		self.QQId = QQId().login
 		# 知乎
-		self.zhihu = zhihu.zhihu().login
+		self.zhihu = zhihu().login
 		# B站
-		self.bilibili = bilibili.bilibili().login
+		self.bilibili = bilibili().login
 		# 今日头条
-		self.toutiao = toutiao.toutiao().login
+		self.toutiao = toutiao().login
 		# 淘宝
-		self.taobao = taobao.taobao().login
+		self.taobao = taobao().login
 		# 京东
-		self.jingdong = jingdong.jingdong().login
+		self.jingdong = jingdong().login
 		# 凤凰网
-		self.ifeng = ifeng.ifeng().login
+		self.ifeng = ifeng().login
 		# 搜狐
-		self.sohu = sohu.sohu().login
+		self.sohu = sohu().login
 		# 中关村在线
-		self.zgconline = zgconline.zgconline().login
+		self.zgconline = zgconline().login
 		# 拉勾网
-		self.lagou = lagou.lagou().login
+		self.lagou = lagou().login
 		# 推特
-		self.twitter = twitter.twitter().login
+		self.twitter = twitter().login
 		# vultr
-		self.vultr = vultr.vultr().login
+		self.vultr = vultr().login
 		# 天翼
-		self.eSurfing = eSurfing.eSurfing().login
+		self.eSurfing = eSurfing().login
 		# 人人网
-		self.renren = renren.renren().login
+		self.renren = renren().login
 		# w3cschool
-		self.w3cschool = w3cschool.w3cschool().login
+		self.w3cschool = w3cschool().login
 		# 鱼C论坛
-		self.fishc = fishc.fishc().login
+		self.fishc = fishc().login
 		# 有道
-		self.youdao = youdao.youdao().login
+		self.youdao = youdao().login
 		# 百度网盘
-		self.baidupan = baidupan.baidupan().login
+		self.baidupan = baidupan().login
 		# stackoverflow
-		self.stackoverflow = stackoverflow.stackoverflow().login
+		self.stackoverflow = stackoverflow().login
 		# codalab
-		self.codalab = codalab.codalab().login
+		self.codalab = codalab().login
 		# pypi
-		self.pypi = pypi.pypi().login
+		self.pypi = pypi().login
 		# 虾米音乐
-		self.xiami = xiami.xiami().login
+		self.xiami = xiami().login
 		# 斗鱼直播
-		self.douyu = douyu.douyu().login
+		self.douyu = douyu().login
 		# 咪咕音乐
-		self.migu = migu.migu().login
+		self.migu = migu().login
 		# 去哪儿旅行
-		self.qunar = qunar.qunar().login
+		self.qunar = qunar().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -97,69 +97,69 @@ class Loginer():
 	'''初始化所有平台'''
 	def __initializeAll(self):
 		# 豆瓣
-		self.douban = douban.douban
+		self.douban = douban
 		# 微博
-		self.weibo = weibo.weibo
+		self.weibo = weibo
 		# github
-		self.github = github.github
+		self.github = github
 		# 网易云音乐
-		self.music163 = music163.music163
+		self.music163 = music163
 		# 中国铁路12306
-		self.zt12306 = zt12306.zt12306
+		self.zt12306 = zt12306
 		# QQ空间
-		self.QQZone = QQZone.QQZone
+		self.QQZone = QQZone
 		# QQ群
-		self.QQQun = QQQun.QQQun
+		self.QQQun = QQQun
 		# QQ安全中心
-		self.QQId = QQId.QQId
+		self.QQId = QQId
 		# 知乎
-		self.zhihu = zhihu.zhihu
+		self.zhihu = zhihu
 		# B站
-		self.bilibili = bilibili.bilibili
+		self.bilibili = bilibili
 		# 今日头条
-		self.toutiao = toutiao.toutiao
+		self.toutiao = toutiao
 		# 淘宝
-		self.taobao = taobao.taobao
+		self.taobao = taobao
 		# 京东
-		self.jingdong = jingdong.jingdong
+		self.jingdong = jingdong
 		# 凤凰网
-		self.ifeng = ifeng.ifeng
+		self.ifeng = ifeng
 		# 搜狐
-		self.sohu = sohu.sohu
+		self.sohu = sohu
 		# 中关村在线
-		self.zgconline = zgconline.zgconline
+		self.zgconline = zgconline
 		# 拉勾网
-		self.lagou = lagou.lagou
+		self.lagou = lagou
 		# 推特
-		self.twitter = twitter.twitter
+		self.twitter = twitter
 		# vultr
-		self.vultr = vultr.vultr
+		self.vultr = vultr
 		# 天翼
-		self.eSurfing = eSurfing.eSurfing
+		self.eSurfing = eSurfing
 		# 人人网
-		self.renren = renren.renren
+		self.renren = renren
 		# w3cschool
-		self.w3cschool = w3cschool.w3cschool
+		self.w3cschool = w3cschool
 		# 鱼C论坛
-		self.fishc = fishc.fishc
+		self.fishc = fishc
 		# 有道
-		self.youdao = youdao.youdao
+		self.youdao = youdao
 		# 百度网盘
-		self.baidupan = baidupan.baidupan
+		self.baidupan = baidupan
 		# stackoverflow
-		self.stackoverflow = stackoverflow.stackoverflow
+		self.stackoverflow = stackoverflow
 		# codalab
-		self.codalab = codalab.codalab
+		self.codalab = codalab
 		# pypi
-		self.pypi = pypi.pypi
+		self.pypi = pypi
 		# 虾米音乐
-		self.xiami = xiami.xiami
+		self.xiami = xiami
 		# 斗鱼直播
-		self.douyu = douyu.douyu
+		self.douyu = douyu
 		# 咪咕音乐
-		self.migu = migu.migu
+		self.migu = migu
 		# 去哪儿旅行
-		self.qunar = qunar.qunar
+		self.qunar = qunar
 	'''Info'''
 	def __repr__(self):
 		return self.info
