@@ -35,3 +35,4 @@
 |  Migu            | ✓                  |  ✗                       |
 |  Qunar           | ✓                  |  ✗                       |
 |  Mieshop         | ✓                  |  ✗                       |
+|  Mpweixin        | ✓                  |  ✗                       |

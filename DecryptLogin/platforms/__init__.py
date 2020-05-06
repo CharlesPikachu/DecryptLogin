@@ -29,6 +29,7 @@ from .bilibili import bilibili
 from .eSurfing import eSurfing
 from .baidupan import baidupan
 from .music163 import music163
+from .mpweixin import mpweixin
 from .w3cschool import w3cschool
 from .zgconline import zgconline
 from .stackoverflow import stackoverflow
@@ -36,4 +37,5 @@ from .stackoverflow import stackoverflow
 
 '''all platforms'''
 __all__ = ['douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 
-		   'twitter', 'vultr', 'eSurfing', 'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 'migu', 'qunar', 'mieshop']
+		   'twitter', 'vultr', 'eSurfing', 'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 'migu', 'qunar', 'mieshop',
+		   'mpweixin']

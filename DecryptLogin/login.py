@@ -86,6 +86,8 @@ class Login():
 		self.qunar = qunar().login
 		# 小米商城
 		self.mieshop = mieshop().login
+		# 微信公众号
+		self.mpweixin = mpweixin().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -164,6 +166,8 @@ class Loginer():
 		self.qunar = qunar
 		# 小米商城
 		self.mieshop = mieshop
+		# 微信公众号
+		self.mpweixin = mpweixin
 	'''Info'''
 	def __repr__(self):
 		return self.info
