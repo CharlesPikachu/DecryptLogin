@@ -45,6 +45,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Douyu           | ✓                  |  ✗                       |  斗鱼直播          |
 |  Migu            | ✓                  |  ✗                       |  咪咕音乐          |
 |  Qunar           | ✓                  |  ✗                       |  去哪儿旅行        |
+|  Mieshop         | ✓                  |  ✗                       |  小米商城          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -111,6 +112,7 @@ infos_return, session = lg.xiami(username, password, 'pc')
 infos_return, session = lg.douyu('pc')
 infos_return, session = lg.migu(username, password, 'pc')
 infos_return, session = lg.qunar(username, password, 'pc')
+infos_return, session = lg.mieshop(username, password, 'pc')
 ```
 
 # Thanks List

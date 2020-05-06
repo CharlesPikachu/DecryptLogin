@@ -34,3 +34,4 @@
 |  Douyu           | ✓                  |  ✗                       |
 |  Migu            | ✓                  |  ✗                       |
 |  Qunar           | ✓                  |  ✗                       |
+|  Mieshop         | ✓                  |  ✗                       |

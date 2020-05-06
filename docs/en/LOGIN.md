@@ -539,6 +539,21 @@ infos_return, session = lg.qunar(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: it is a digital captcha, just return the corresponding digital recognition result
 
+### Mieshop
+#### Supported modes
+The supported modes of Mieshop include:
+- pc
+#### Example
+Here is an example to login in Mieshop:
+```python
+from DecryptLogin import login
+lg = login.Login()
+infos_return, session = lg.mieshop(username, password, 'pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
 
 ## Util functions
 

@@ -84,6 +84,8 @@ class Login():
 		self.migu = migu().login
 		# 去哪儿旅行
 		self.qunar = qunar().login
+		# 小米商城
+		self.mieshop = mieshop().login
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -160,6 +162,8 @@ class Loginer():
 		self.migu = migu
 		# 去哪儿旅行
 		self.qunar = qunar
+		# 小米商城
+		self.mieshop = mieshop
 	'''Info'''
 	def __repr__(self):
 		return self.info
