@@ -50,9 +50,9 @@ class zt12306():
 			self.__initializePC()
 			self.__downloadVcode()
 			time.sleep(0.1)
-			res = self.__verifyVcode(crackvcFunc)
+			res = self.__verifyCaptcha(crackvcFunc)
 			if not res:
-				raise RuntimeError('verification code error...')
+				raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
 			data = {
 					'username': username,
 					'password': password,
@@ -73,18 +73,18 @@ class zt12306():
 		saveImage(res.content, os.path.join(self.cur_path, 'vcode.jpg'))
 		return True
 	'''验证码验证'''
-	def __verifyVcode(self, crackvcFunc):
-		img_path = os.path.join(self.cur_path, 'vcode.jpg')
+	def __verifyCaptcha(self, crackvcFunc):
+		img_path = os.path.join(self.cur_path, 'captcha.jpg')
 		if crackvcFunc is None:
 			showImage(img_path)
-			user_enter = input('Enter the positions of verification code, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
+			user_enter = input('Enter the positions of captcha, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
 			verify_list = []
 			for each in user_enter.split(','):
 				each = each.strip()
 				try:
 					verify_list.append(self.positions[int(each)-1])
 				except:
-					raise RuntimeError('verification code error...')
+					raise RuntimeError('captcha format error...')
 		else:
 			verify_list = crackvcFunc(img_path)
 		data = {

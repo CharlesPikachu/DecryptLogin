@@ -98,7 +98,7 @@ class weibo():
 					saveImage(res.content, os.path.join(self.cur_path, 'captcha.jpg'))
 					if crackvcFunc is None:
 						showImage(os.path.join(self.cur_path, 'captcha.jpg'))
-						captcha = input('Input the Verification Code:')
+						captcha = input('Input the captcha:')
 					else:
 						captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
 					removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
