@@ -78,15 +78,15 @@ class zt12306():
 		if crackvcFunc is None:
 			showImage(img_path)
 			user_enter = input('Enter the positions of captcha, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8):')
-			digital_list = []
-			for each in user_enter.split(','):
-				each = each.strip()
-				try:
-					digital_list.append(self.positions[int(each)-1])
-				except:
-					raise RuntimeError('captcha format error...')
 		else:
-			digital_list = crackvcFunc(img_path)
+			user_enter = crackvcFunc(img_path)
+		digital_list = []
+		for each in user_enter.split(','):
+			each = each.strip()
+			try:
+				digital_list.append(self.positions[int(each)-1])
+			except:
+				raise RuntimeError('captcha format error...')
 		data = {
 				'answer': ','.join(digital_list),
 				'login_site': 'E',
