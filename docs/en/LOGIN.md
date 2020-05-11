@@ -118,7 +118,7 @@ infos_return, session = lg.zt12306(username[telephone], password, 'pc')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha
-- pc: it is a click captcha, just return the index of target images (e.g., return '1,6' means the target images are in <the first row, the first column> and <the second row, the second column>)
+- pc: it is a click captcha, just return the index of target images (e.g., return [1, 6] means the target images are in <the first row, the first column> and <the second row, the second column>)
 
 ### QQZone
 #### Supported modes
