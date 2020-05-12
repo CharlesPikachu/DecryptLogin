@@ -86,10 +86,10 @@ class weibo():
 		elif mode == 'pc':
 			self.__initializePC()
 			# 进行模拟登录
-			add_verification_code = False
+			is_need_captcha = False
 			while True:
 				# --是否需要验证码
-				if add_verification_code:
+				if is_need_captcha:
 					params = {
 								'r': str(int(random.random()*100000000)),
 								's': '0'
@@ -145,7 +145,7 @@ class weibo():
 								'prelt': '95',
 								'returntype': 'TEXT'
 							}
-				if add_verification_code:
+				if is_need_captcha:
 					data_post['door'] = captcha
 				res = self.session.post(self.ssologin_url, headers=self.headers, data=data_post, allow_redirects=False, verify=False)
 				res_json = res.json()
@@ -160,7 +160,7 @@ class weibo():
 					raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
 				# --需要验证码
 				elif res_json['retcode'] == '4049':
-					add_verification_code = True
+					is_need_captcha = True
 				# --其他错误
 				else:
 					raise RuntimeError(res_json.get('reason', ''))
