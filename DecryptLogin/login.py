@@ -8,7 +8,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-04-18
+	2020-05-13
 '''
 from .platforms import *
 
@@ -20,74 +20,16 @@ class Login():
 		self.__initializeAll()
 	'''初始化所有平台'''
 	def __initializeAll(self):
-		# 豆瓣
-		self.douban = douban().login
-		# 微博
-		self.weibo = weibo().login
-		# github
-		self.github = github().login
-		# 网易云音乐
-		self.music163 = music163().login
-		# 中国铁路12306
-		self.zt12306 = zt12306().login
-		# QQ空间
-		self.QQZone = QQZone().login
-		# QQ群
-		self.QQQun = QQQun().login
-		# QQ安全中心
-		self.QQId = QQId().login
-		# 知乎
-		self.zhihu = zhihu().login
-		# B站
-		self.bilibili = bilibili().login
-		# 今日头条
-		self.toutiao = toutiao().login
-		# 淘宝
-		self.taobao = taobao().login
-		# 京东
-		self.jingdong = jingdong().login
-		# 凤凰网
-		self.ifeng = ifeng().login
-		# 搜狐
-		self.sohu = sohu().login
-		# 中关村在线
-		self.zgconline = zgconline().login
-		# 拉勾网
-		self.lagou = lagou().login
-		# 推特
-		self.twitter = twitter().login
-		# vultr
-		self.vultr = vultr().login
-		# 天翼
-		self.eSurfing = eSurfing().login
-		# 人人网
-		self.renren = renren().login
-		# w3cschool
-		self.w3cschool = w3cschool().login
-		# 鱼C论坛
-		self.fishc = fishc().login
-		# 有道
-		self.youdao = youdao().login
-		# 百度网盘
-		self.baidupan = baidupan().login
-		# stackoverflow
-		self.stackoverflow = stackoverflow().login
-		# codalab
-		self.codalab = codalab().login
-		# pypi
-		self.pypi = pypi().login
-		# 虾米音乐
-		self.xiami = xiami().login
-		# 斗鱼直播
-		self.douyu = douyu().login
-		# 咪咕音乐
-		self.migu = migu().login
-		# 去哪儿旅行
-		self.qunar = qunar().login
-		# 小米商城
-		self.mieshop = mieshop().login
-		# 微信公众号
-		self.mpweixin = mpweixin().login
+		for key, value in {'douban': douban().login, 'weibo': weibo().login, 'github': github().login, 'music163': music163().login, 
+						   'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
+						   'zhihu': zhihu().login, 'bilibili': bilibili().login, 'toutiao': toutiao().login, 'taobao': taobao().login, 
+						   'jingdong': jingdong().login, 'ifeng': ifeng().login, 'sohu': sohu().login, 'zgconline': zgconline().login, 
+						   'lagou': lagou().login, 'twitter': twitter().login, 'vultr': vultr().login, 'eSurfing': eSurfing().login, 
+						   'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
+						   'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
+						   'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
+						   'mieshop': mieshop().login, 'mpweixin': mpweixin().login}.items():
+			setattr(Login, key, value)
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -100,74 +42,16 @@ class Loginer():
 		self.__initializeAll()
 	'''初始化所有平台'''
 	def __initializeAll(self):
-		# 豆瓣
-		self.douban = douban
-		# 微博
-		self.weibo = weibo
-		# github
-		self.github = github
-		# 网易云音乐
-		self.music163 = music163
-		# 中国铁路12306
-		self.zt12306 = zt12306
-		# QQ空间
-		self.QQZone = QQZone
-		# QQ群
-		self.QQQun = QQQun
-		# QQ安全中心
-		self.QQId = QQId
-		# 知乎
-		self.zhihu = zhihu
-		# B站
-		self.bilibili = bilibili
-		# 今日头条
-		self.toutiao = toutiao
-		# 淘宝
-		self.taobao = taobao
-		# 京东
-		self.jingdong = jingdong
-		# 凤凰网
-		self.ifeng = ifeng
-		# 搜狐
-		self.sohu = sohu
-		# 中关村在线
-		self.zgconline = zgconline
-		# 拉勾网
-		self.lagou = lagou
-		# 推特
-		self.twitter = twitter
-		# vultr
-		self.vultr = vultr
-		# 天翼
-		self.eSurfing = eSurfing
-		# 人人网
-		self.renren = renren
-		# w3cschool
-		self.w3cschool = w3cschool
-		# 鱼C论坛
-		self.fishc = fishc
-		# 有道
-		self.youdao = youdao
-		# 百度网盘
-		self.baidupan = baidupan
-		# stackoverflow
-		self.stackoverflow = stackoverflow
-		# codalab
-		self.codalab = codalab
-		# pypi
-		self.pypi = pypi
-		# 虾米音乐
-		self.xiami = xiami
-		# 斗鱼直播
-		self.douyu = douyu
-		# 咪咕音乐
-		self.migu = migu
-		# 去哪儿旅行
-		self.qunar = qunar
-		# 小米商城
-		self.mieshop = mieshop
-		# 微信公众号
-		self.mpweixin = mpweixin
+		for key, value in {'douban': douban, 'weibo': weibo, 'github': github, 'music163': music163, 
+						   'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
+						   'zhihu': zhihu, 'bilibili': bilibili, 'toutiao': toutiao, 'taobao': taobao, 
+						   'jingdong': jingdong, 'ifeng': ifeng, 'sohu': sohu, 'zgconline': zgconline, 
+						   'lagou': lagou, 'twitter': twitter, 'vultr': vultr, 'eSurfing': eSurfing, 
+						   'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao, 
+						   'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
+						   'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
+						   'mieshop': mieshop, 'mpweixin': mpweixin}.items():
+			setattr(Loginer, key, value)
 	'''Info'''
 	def __repr__(self):
 		return self.info
