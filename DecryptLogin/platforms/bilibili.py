@@ -147,7 +147,7 @@ class bilibili():
 				else:
 					raise RuntimeError(res_json.get('message'))
 		else:
-			raise ValueError('Unsupport argument in Bilibili.login -> mode %s, expect <mobile> or <pc>...' % mode)
+			raise ValueError('Unsupport argument in bilibili.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''计算sign值'''
 	def __calcSign(self, param, salt="560c52ccd288fed045859ed18bffd973"):
 		sign = hashlib.md5('{}{}'.format(param, salt).encode('utf-8'))
