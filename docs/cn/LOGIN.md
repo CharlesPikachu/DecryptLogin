@@ -533,6 +533,21 @@ infos_return, session = lg.mpweixin(username, password, 'pc')
 - mobile: 暂不支持登录时需要验证码的情况处理
 - pc: 暂不支持登录时需要验证码的情况处理
 
+### 百度贴吧
+#### 支持的登录mode
+百度贴吧目前支持的登录mode包括:
+- pc
+#### 示例代码
+```python
+from DecryptLogin import login
+lg = login.Login()
+# 因为使用扫码登录, 无需输入用户名密码
+infos_return, session = lg.baidutieba('pc')
+```
+#### 验证码识别结果格式
+- mobile: 暂不支持登录时需要验证码的情况处理
+- pc: 暂不支持登录时需要验证码的情况处理
+
 
 ## 一些工具函数
 

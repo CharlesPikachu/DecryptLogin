@@ -569,6 +569,22 @@ infos_return, session = lg.mpweixin(username, password, 'pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
+### Baidutieba
+#### Supported modes
+The supported modes of Baidutieba include:
+- pc
+#### Example
+Here is an example to login in Baidutieba:
+```python
+from DecryptLogin import login
+lg = login.Login()
+# scan the qr code to login in Baidutieba
+infos_return, session = lg.baidutieba('pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
 
 ## Util functions
 

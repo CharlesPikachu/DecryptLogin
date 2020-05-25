@@ -28,8 +28,8 @@ class Login():
 						   'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
 						   'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
 						   'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
-						   'mieshop': mieshop().login, 'mpweixin': mpweixin().login}.items():
-			setattr(Login, key, value)
+						   'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 'baidutieba': baidutieba().login}.items():
+			setattr(self, key, value)
 	'''Info'''
 	def __repr__(self):
 		return self.info
@@ -50,8 +50,8 @@ class Loginer():
 						   'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao, 
 						   'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
 						   'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
-						   'mieshop': mieshop, 'mpweixin': mpweixin}.items():
-			setattr(Loginer, key, value)
+						   'mieshop': mieshop, 'mpweixin': mpweixin, 'baidutieba': baidutieba}.items():
+			setattr(self, key, value)
 	'''Info'''
 	def __repr__(self):
 		return self.info

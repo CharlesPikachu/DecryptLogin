@@ -36,3 +36,4 @@
 |  Qunar           | ✓                  |  ✗                       |
 |  Mieshop         | ✓                  |  ✗                       |
 |  Mpweixin        | ✓                  |  ✗                       |
+|  Baidutieba      | ✓                  |  ✗                       |
