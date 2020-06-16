@@ -136,7 +136,7 @@ class music163():
 								'Content-Type':'application/x-www-form-urlencoded',
 								'Referer':'http://music.163.com',
 								'Host':'music.163.com',
-								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
 							}
 		self.login_url_email = 'http://music.163.com/weapi/login?csrf_token='
 		self.login_url_phone = 'http://music.163.com/weapi/login/cellphone?csrf_token='
