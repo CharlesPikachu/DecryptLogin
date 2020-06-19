@@ -65,6 +65,7 @@ class zt12306():
 				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in zt12306.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''下载验证码'''

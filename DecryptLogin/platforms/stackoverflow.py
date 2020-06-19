@@ -73,6 +73,7 @@ class stackoverflow():
 			# 登录失败
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in stackoverflow.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获得fkey值'''

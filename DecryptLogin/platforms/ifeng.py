@@ -89,6 +89,7 @@ class ifeng():
 			# 其他错误
 			else:
 				raise RuntimeError(res_json.get('message'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in ifeng.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

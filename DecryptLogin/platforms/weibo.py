@@ -185,6 +185,7 @@ class weibo():
 				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, visit %s error...' % (username, self.home_url % uid))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in weibo.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

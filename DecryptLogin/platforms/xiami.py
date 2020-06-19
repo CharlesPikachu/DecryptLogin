@@ -70,6 +70,7 @@ class xiami():
 			# 其他原因
 			else:
 				raise RuntimeError(msg)
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in xiami.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''虾米签名'''

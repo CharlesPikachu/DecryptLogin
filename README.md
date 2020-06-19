@@ -30,7 +30,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Sohu            | ✓                  |  ✓                       |  搜狐              |
 |  Zgconline       | ✓                  |  ✗                       |  中关村在线        |
 |  Lagou           | ✓                  |  ✗                       |  拉勾网            |
-|  Twitter         | ✓                  |  ✗                       |  推特              |
+|  Twitter         | ✗                  |  ✓                       |  推特              |
 |  Vultr           | ✓                  |  ✗                       |  Vultr             |
 |  eSurfing        | ✓                  |  ✗                       |  天翼              |
 |  Renren          | ✓                  |  ✗                       |  人人网            |
@@ -102,7 +102,7 @@ infos_return, session = lg.ifeng(username, password, 'pc')
 infos_return, session = lg.sohu(username, password, 'mobile')
 infos_return, session = lg.zgconline(username, password, 'pc')
 infos_return, session = lg.lagou(username, password, 'pc')
-infos_return, session = lg.twitter(username, password, 'pc')
+infos_return, session = lg.twitter(username, password, 'mobile')
 infos_return, session = lg.vultr(username, password, 'pc')
 infos_return, session = lg.eSurfing(username, password, 'pc')
 infos_return, session = lg.renren(username, password, 'pc')

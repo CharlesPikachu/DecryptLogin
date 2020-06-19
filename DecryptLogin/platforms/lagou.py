@@ -100,6 +100,7 @@ class lagou():
 				# 其他原因
 				else:
 					raise RuntimeError(res_json.get('message'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in lagou.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获得X-Anit-Forge-Code和X-Anit-Forge-Token参数'''

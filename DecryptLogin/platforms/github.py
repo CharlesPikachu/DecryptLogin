@@ -60,6 +60,7 @@ class github():
 				return infos_return, self.session
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in github.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获取authenticity_token参数'''

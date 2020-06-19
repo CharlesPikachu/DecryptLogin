@@ -113,6 +113,7 @@ class baidutieba():
 			infos_return = {'username': username}
 			infos_return.update(res_json)
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in baidutieba.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

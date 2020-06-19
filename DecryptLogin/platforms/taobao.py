@@ -102,6 +102,7 @@ class taobao():
 			infos_return = {'username': username, 'uid': uid, 'token': token}
 			infos_return.update(res_json)
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in taobao.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''生成umidToken'''

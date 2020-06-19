@@ -85,6 +85,7 @@ class vultr():
 			infos_return = {'username': username, 'name': name}
 			print('[INFO]: Account -> %s, login successfully...' % username)
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in vultr.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''计算token'''

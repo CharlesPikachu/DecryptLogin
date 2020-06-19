@@ -117,6 +117,7 @@ class music163():
 			# 其他错误
 			else:
 				raise RuntimeError(res_json.get('msg')) if 'msg' in res_json else RuntimeError(res_json.get('message'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in music163.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获取账号类型(手机号/邮箱)'''

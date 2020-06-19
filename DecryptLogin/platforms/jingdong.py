@@ -84,6 +84,7 @@ class jingdong():
 			print('[INFO]: Account -> %s, login successfully...' % nickname)
 			infos_return = {'username': username, 'nickname': nickname}
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in alipay.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

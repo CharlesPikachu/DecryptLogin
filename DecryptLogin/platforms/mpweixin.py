@@ -105,6 +105,7 @@ class mpweixin():
 			# 其他
 			else:
 				raise RuntimeError(res_json['base_resp']['err_msg'])
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in mpweixin.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

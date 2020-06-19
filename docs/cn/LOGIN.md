@@ -302,7 +302,7 @@ infos_return, session = lg.lagou(username, password, 'pc')
 ```python
 from DecryptLogin import login
 lg = login.Login()
-infos_return, session = lg.twitter(username, password, 'pc')
+infos_return, session = lg.twitter(username, password, 'mobile')
 ```
 #### 验证码识别结果格式
 - mobile: 暂不支持登录时需要验证码的情况处理

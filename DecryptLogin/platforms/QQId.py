@@ -124,6 +124,7 @@ class QQId():
 			print('[INFO]: Account -> %s, login successfully...' % qq_number)
 			infos_return = {'username': qq_number}
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in QQId.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''qrsig转ptqrtoken, hash33函数'''

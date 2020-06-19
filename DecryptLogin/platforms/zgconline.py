@@ -71,6 +71,7 @@ class zgconline():
 			# 其他原因
 			else:
 				raise RuntimeError(res_json.get('msg'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in zgconline.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''获得ipck'''

@@ -129,6 +129,7 @@ class baidupan():
 				# --其他原因
 				else:
 					raise RuntimeError(res_json['errInfo'].get('msg'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in baidupan.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''手机/邮箱验证'''

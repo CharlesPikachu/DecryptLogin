@@ -93,6 +93,7 @@ class renren():
 							'privacy': privacy[0], 'requestToken': request_token[0],
 							'_rtk': _rtk[0], 'isvip': is_vip[0]}
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in renren.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

@@ -782,6 +782,7 @@ class migu():
 			# 其他错误
 			else:
 				raise ValueError(res_json['message'])
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in migu.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

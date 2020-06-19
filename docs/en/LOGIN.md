@@ -322,7 +322,7 @@ Here is an example to login in Twitter:
 ```python
 from DecryptLogin import login
 lg = login.Login()
-infos_return, session = lg.twitter(username, password, 'pc')
+infos_return, session = lg.twitter(username, password, 'mobile')
 ```
 #### The returned values in crackvcFunc
 - mobile: unsupport processing the situation of appearing captcha

@@ -64,6 +64,7 @@ class fishc():
 			print('[INFO]: Account -> %s, login successfully...' % username)
 			infos_return = {'username': username, 'nickname': nickname, 'uid': uid}
 			return infos_return, self.session
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in fishc.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

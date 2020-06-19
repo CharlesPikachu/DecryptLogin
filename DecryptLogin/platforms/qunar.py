@@ -90,6 +90,7 @@ class qunar():
 			# 其他原因
 			else:
 				raise RuntimeError(res_json.get('errmsg'))
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in qunar.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''

@@ -10,7 +10,7 @@ Author:
 GitHub:
 	https://github.com/CharlesPikachu
 更新日期:
-	2020-02-29
+	2020-06-19
 '''
 import re
 import requests
@@ -36,64 +36,74 @@ class twitter():
 		self.info = 'twitter'
 		self.session = requests.Session()
 	'''登录函数'''
-	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
+	def login(self, username, password, mode='mobile', crackvcFunc=None, **kwargs):
 		# 设置代理
 		self.session.proxies.update(kwargs.get('proxies', {}))
 		# 移动端接口
 		if mode == 'mobile':
-			raise NotImplementedError
-		# PC端接口
-		elif mode == 'pc':
-			self.__initializePC()
-			# 访问home_url
-			res = self.session.get(self.home_url)
-			pattern = re.compile(r'<input type="hidden" value="(.*?)" name="authenticity_token">')
-			authenticity_token = re.findall(pattern, res.text)[0]
+			self.__initializeMobile()
+			# 访问home_url获取authenticity_token
+			res = self.session.get(self.home_url, headers=self.headers)
+			authenticity_token = re.findall(r'<input name="authenticity_token" type="hidden" value="(.*?)"', res.text)[0]
 			# 访问login_url进行模拟登录
 			data = {
-						'redirect_after_login': '/',
 						'authenticity_token': authenticity_token,
-						'scribe_log': '',
-						'return_to_ssl': 'true',
 						'session[username_or_email]': username,
-						'session[password]': password
+						'session[password]': password,
+						'remember_me': '1',
+						'wfa': '1',
+						'commit': 'Log in',
+						'ui_metrics': ''
 					}
-			res = self.session.post(self.login_url, data=data, headers=self.headers)
-			res_text = res.text.replace('&quot', '').replace(';', '')
-			# 登录过于频繁时, 需要验证是否为机器人
-			if 'Pass a Google reCAPTCHA challenge' in res_text:
-				raise RuntimeError('Account -> %s, fail to login, you are suspected of being a robot and have to Pass a Google reCAPTCHA challenge in browser...' % username)
-			# 在返回信息中提取有用的信息
-			pattern = re.compile(r'<input type="hidden" id="init-data" class="json-data" value="(.*?)"')
-			res_text = re.findall(pattern, res_text)[0]
-			token, logged_in, screen_name, full_name, user_id, guest_id = re.findall(r'formAuthenticityToken:(.*?),loggedIn:(.*?),screenName:(.*?),fullName:(.*?),userId:(.*?),guestId:(.*?),', res_text)[0]
-			res_json = {'formAuthenticityToken': token, 'screenName': screen_name, 'fullName': full_name, 'userId': user_id, 'guestId': guest_id}
+			res = self.session.post(self.login_url, headers=self.login_headers, data=data, allow_redirects=True)
+			res_text = res.text
+			# 需要安全验证
+			if '/account/login_challenge?challenge_id' in res_text:
+				challenge_response = input('This login is detected as suspicious activity, input the verify code sended to your binded email:')
+				enc_user_id = re.findall(r'enc_user_id=(.*?)">', res_text)[0]
+				challenge_id = re.findall(r'challenge_id=(.*?)&amp;', res_text)[0]
+				data = {
+							'authenticity_token': authenticity_token,
+							'challenge_id': challenge_id,
+							'enc_user_id': enc_user_id,
+							'challenge_type': 'TemporaryPassword',
+							'platform': 'web',
+							'redirect_after_login': '/',
+							'remember_me': 'true',
+							'challenge_response': challenge_response
+						}
+				res = self.session.post(self.challenge_url, headers=self.login_headers, data=data, allow_redirects=True)
+				res_text = res.text.replace('&quot', '').replace(';', '')
 			# 登录成功
-			if logged_in == 'true':
+			if res.status_code == 200:
 				print('[INFO]: Account -> %s, login successfully...' % username)
 				infos_return = {'username': username}
-				infos_return.update(res_json)
 				return infos_return, self.session
 			# 登录失败
 			else:
 				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+		# PC端接口
+		elif mode == 'pc':
+			raise NotImplementedError
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in twitter.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''初始化PC端'''
 	def __initializePC(self):
-		self.headers = {
-						'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-						'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
-						'Content-Type': 'application/x-www-form-urlencoded',
-						'Origin': 'https://twitter.com',
-						'Referer': 'https://twitter.com/login'
-					}
-		self.home_url = 'https://twitter.com/'
-		self.login_url = 'https://twitter.com/sessions'
-		self.session.headers.update(self.headers)
+		pass
 	'''初始化移动端'''
 	def __initializeMobile(self):
-		pass
+		self.headers = {
+						'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10'
+					}
+		self.login_headers = {
+								'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10',
+								'origin': 'https://mobile.twitter.com',
+								'referer': 'https://mobile.twitter.com/login'
+							}
+		self.home_url = 'https://mobile.twitter.com/session/new'
+		self.login_url = 'https://mobile.twitter.com/sessions'
+		self.challenge_url = 'https://mobile.twitter.com/account/login_challenge'
 
 
 '''test'''

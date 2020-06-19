@@ -227,6 +227,7 @@ class toutiao():
 		# PC端接口
 		elif mode == 'pc':
 			raise NotImplementedError
+		# mode输入有误
 		else:
 			raise ValueError('Unsupport argument in toutiao.login -> mode %s, expect <mobile> or <pc>...' % mode)
 	'''加密'''
