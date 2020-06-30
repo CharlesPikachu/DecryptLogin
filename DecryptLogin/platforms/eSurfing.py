@@ -1,16 +1,16 @@
 ﻿'''
 Function:
-	天翼模拟登录:
-		--PC端: https://e.189.cn/index.do
-		--移动端暂不支持
+    天翼模拟登录:
+        --PC端: https://e.189.cn/index.do
+        --移动端暂不支持
 Author:
-	Charles
+    Charles
 微信公众号:
-	Charles的皮卡丘
+    Charles的皮卡丘
 GitHub:
-	https://github.com/CharlesPikachu
+    https://github.com/CharlesPikachu
 更新日期:
-	2020-03-06
+    2020-03-06
 '''
 import re
 import execjs
@@ -2205,102 +2205,102 @@ ASN1 = window.ASN1;
 
 '''
 Function:
-	天翼模拟登录
+    天翼模拟登录
 Detail:
-	-login:
-		Input:
-			--username: 用户名
-			--password: 密码
-			--mode: mobile/pc
-			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
-			--proxies: 为requests.Session()设置代理
-		Return:
-			--infos_return: 用户名等信息
-			--session: 登录后的requests.Session()
+    -login:
+        Input:
+            --username: 用户名
+            --password: 密码
+            --mode: mobile/pc
+            --crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+            --proxies: 为requests.Session()设置代理
+        Return:
+            --infos_return: 用户名等信息
+            --session: 登录后的requests.Session()
 '''
 class eSurfing():
-	def __init__(self, **kwargs):
-		self.info = 'eSurfing'
-		self.session = requests.Session()
-	'''登录函数'''
-	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
-		# 设置代理
-		self.session.proxies.update(kwargs.get('proxies', {}))
-		# 移动端接口
-		if mode == 'mobile':
-			raise NotImplementedError
-		# PC端接口
-		elif mode == 'pc':
-			self.__initializePC()
-			# 请求home_url, 从网页提取请求unifyAccountLogin_url所需的参数
-			res = self.session.get(self.home_url)
-			sign, app_id, paras, format_, client_type, version = re.findall(r'sign=(.*?)&appId=(.*?)&paras=(.*?)&format=(.*?)&clientType=(.*?)&version=(.*?)">', res.text)[0]
-			self.unifyAccountLogin_url = self.unifyAccountLogin_url.format(sign, app_id, paras, format_, client_type, version)
-			# 请求unifyAccountLogin_url, 从网页提取登录所需的参数
-			res = self.session.get(self.unifyAccountLogin_url)
-			captcha_token = re.search(r"captchaToken' value='(.*?)'>", res.text).group(1)
-			client_type, account_type, app_key = re.findall(r"clientType = '(.*?)'[\s\S]*?accountType = '(.*?)'[\s\S]*?appKey = '(.*?)'", res.text)[0]
-			param_id = re.search(r'paramId = "(.*?)"', res.text).group(1)
-			req_id = re.search(r'reqId = "(.*?)"', res.text).group(1)
-			lt = re.search(r'lt = "(.*?)"', res.text).group(1)
-			# 请求loginSubmit_url进行模拟登录
-			js = execjs.compile(encrypt_js_code)
-			self.login_headers.update({'Referer': self.unifyAccountLogin_url, 'REQID': req_id, 'lt': lt})
-			data = {
-						'appKey': app_key,
-						'accountType': account_type,
-						'validateCode': '',
-						'captchaToken': captcha_token,
-						'returnUrl': 'https://e.189.cn/user/loginMiddle.do?returnUrlMid=https://e.189.cn/user/index.do',
-						'mailSuffix': '',
-						'dynamicCheck': 'FALSE',
-						'clientType': client_type,
-						'cb_SaveName': '1',
-						'isOauth2': 'false',
-						'state': '',
-						'paramId': param_id,
-						'userName': js.call('make', username),
-						'password': js.call('make', password)
-					}
-			res = self.session.post(self.loginSubmit_url, headers=self.login_headers, data=data)
-			res_json = res.json()
-			# 登录成功
-			if res_json['msg'] == u'登录成功' and res_json['result'] == 0:
-				print('[INFO]: Account -> %s, login successfully...' % username)
-				infos_return = {'username': username}
-				infos_return.update(res_json)
-				return infos_return, self.session
-			# 账号或密码错误
-			elif res_json['result'] in [-51002, -17]:
-				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-			# 其他错误
-			else:
-				raise RuntimeError(res_json.get('msg'))
-		# mode输入有误
-		else:
-			raise ValueError('Unsupport argument in eSurfing.login -> mode %s, expect <mobile> or <pc>...' % mode)
-	'''初始化PC端'''
-	def __initializePC(self):
-		self.headers = {
-						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
-						}
-		self.login_headers = {
-								'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-								'Host': 'open.e.189.cn',
-								'Origin': 'https://open.e.189.cn',
-								'Referer': '',
-								'REQID': '',
-								'lt': ''
-							}
-		self.home_url = 'https://e.189.cn/index.do'
-		self.loginSubmit_url = 'https://open.e.189.cn/api/logbox/oauth2/loginSubmit.do'
-		self.unifyAccountLogin_url = 'https://open.e.189.cn/api/logbox/oauth2/unifyAccountLogin.do?sign={}&appId={}&paras={}&format={}&clientType={}&version={}'
-		self.session.headers.update(self.headers)
-	'''初始化移动端'''
-	def __initializeMobile(self):
-		pass
+    def __init__(self, **kwargs):
+        self.info = 'eSurfing'
+        self.session = requests.Session()
+    '''登录函数'''
+    def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 移动端接口
+        if mode == 'mobile':
+            raise NotImplementedError
+        # PC端接口
+        elif mode == 'pc':
+            self.__initializePC()
+            # 请求home_url, 从网页提取请求unifyAccountLogin_url所需的参数
+            res = self.session.get(self.home_url)
+            sign, app_id, paras, format_, client_type, version = re.findall(r'sign=(.*?)&appId=(.*?)&paras=(.*?)&format=(.*?)&clientType=(.*?)&version=(.*?)">', res.text)[0]
+            self.unifyAccountLogin_url = self.unifyAccountLogin_url.format(sign, app_id, paras, format_, client_type, version)
+            # 请求unifyAccountLogin_url, 从网页提取登录所需的参数
+            res = self.session.get(self.unifyAccountLogin_url)
+            captcha_token = re.search(r"captchaToken' value='(.*?)'>", res.text).group(1)
+            client_type, account_type, app_key = re.findall(r"clientType = '(.*?)'[\s\S]*?accountType = '(.*?)'[\s\S]*?appKey = '(.*?)'", res.text)[0]
+            param_id = re.search(r'paramId = "(.*?)"', res.text).group(1)
+            req_id = re.search(r'reqId = "(.*?)"', res.text).group(1)
+            lt = re.search(r'lt = "(.*?)"', res.text).group(1)
+            # 请求loginSubmit_url进行模拟登录
+            js = execjs.compile(encrypt_js_code)
+            self.login_headers.update({'Referer': self.unifyAccountLogin_url, 'REQID': req_id, 'lt': lt})
+            data = {
+                        'appKey': app_key,
+                        'accountType': account_type,
+                        'validateCode': '',
+                        'captchaToken': captcha_token,
+                        'returnUrl': 'https://e.189.cn/user/loginMiddle.do?returnUrlMid=https://e.189.cn/user/index.do',
+                        'mailSuffix': '',
+                        'dynamicCheck': 'FALSE',
+                        'clientType': client_type,
+                        'cb_SaveName': '1',
+                        'isOauth2': 'false',
+                        'state': '',
+                        'paramId': param_id,
+                        'userName': js.call('make', username),
+                        'password': js.call('make', password)
+                    }
+            res = self.session.post(self.loginSubmit_url, headers=self.login_headers, data=data)
+            res_json = res.json()
+            # 登录成功
+            if res_json['msg'] == u'登录成功' and res_json['result'] == 0:
+                print('[INFO]: Account -> %s, login successfully...' % username)
+                infos_return = {'username': username}
+                infos_return.update(res_json)
+                return infos_return, self.session
+            # 账号或密码错误
+            elif res_json['result'] in [-51002, -17]:
+                raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+            # 其他错误
+            else:
+                raise RuntimeError(res_json.get('msg'))
+        # mode输入有误
+        else:
+            raise ValueError('Unsupport argument in eSurfing.login -> mode %s, expect <mobile> or <pc>...' % mode)
+    '''初始化PC端'''
+    def __initializePC(self):
+        self.headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+                        }
+        self.login_headers = {
+                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+                                'Host': 'open.e.189.cn',
+                                'Origin': 'https://open.e.189.cn',
+                                'Referer': '',
+                                'REQID': '',
+                                'lt': ''
+                            }
+        self.home_url = 'https://e.189.cn/index.do'
+        self.loginSubmit_url = 'https://open.e.189.cn/api/logbox/oauth2/loginSubmit.do'
+        self.unifyAccountLogin_url = 'https://open.e.189.cn/api/logbox/oauth2/unifyAccountLogin.do?sign={}&appId={}&paras={}&format={}&clientType={}&version={}'
+        self.session.headers.update(self.headers)
+    '''初始化移动端'''
+    def __initializeMobile(self):
+        pass
 
 
 '''test'''
 if __name__ == '__main__':
-	eSurfing().login('', '')
+    eSurfing().login('', '')

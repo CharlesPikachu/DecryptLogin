@@ -1,16 +1,16 @@
 '''
 Function:
-	知乎模拟登录
-		--PC端: https://www.zhihu.com/
-		--移动端暂不支持
+    知乎模拟登录
+        --PC端: https://www.zhihu.com/
+        --移动端暂不支持
 Author:
-	Charles
+    Charles
 微信公众号:
-	Charles的皮卡丘
+    Charles的皮卡丘
 GitHub:
-	https://github.com/CharlesPikachu
+    https://github.com/CharlesPikachu
 更新日期:
-	2020-03-31
+    2020-03-31
 '''
 import os
 import time
@@ -32,7 +32,7 @@ window = {
     }
 }
 function atob(str) {
-  return Buffer.from(str, 'base64').toString('binary');
+return Buffer.from(str, 'base64').toString('binary');
 }
 function f(module, exports, __webpack_require__) {
     "use strict";
@@ -47,7 +47,7 @@ function f(module, exports, __webpack_require__) {
     }
     exports['__esModule'] = !0
     var A = "2.0"
-      , __g = {};
+    , __g = {};
     function s() {}
     function i(e) {
         this.t = (2048 & e) >> 11,
@@ -348,7 +348,7 @@ function f(module, exports, __webpack_require__) {
             break;
         case 1:
             var s = A.f.pop()
-              , i = A.f.pop();
+            , i = A.f.pop();
             A.r[this.c][s] = i;
             break;
         case 2:
@@ -371,7 +371,7 @@ function f(module, exports, __webpack_require__) {
     ,
     u.prototype.e = function(e) {
         var t = this
-          , n = [0];
+        , n = [0];
         e.k.forEach(function(e) {
             n.push(e)
         });
@@ -411,7 +411,7 @@ function f(module, exports, __webpack_require__) {
         this.G = r;
         for (var o = [], a = n + 2; a < t.length; ) {
             var s = t.charCodeAt(a) << 8 | t.charCodeAt(a + 1)
-              , c = t.slice(a + 2, a + 2 + s);
+            , c = t.slice(a + 2, a + 2 + s);
             o.push(c),
             a += s + 2
         }
@@ -465,133 +465,133 @@ function encrypt(data) {
 
 '''
 Function:
-	知乎模拟登录
+    知乎模拟登录
 Detail:
-	-login:
-		Input:
-			--username: 用户名
-			--password: 密码
-			--mode: mobile/pc
-			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
-			--proxies: 为requests.Session()设置代理
-		Return:
-			--infos_return: 用户名等信息
-			--session: 登录后的requests.Session()
+    -login:
+        Input:
+            --username: 用户名
+            --password: 密码
+            --mode: mobile/pc
+            --crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+            --proxies: 为requests.Session()设置代理
+        Return:
+            --infos_return: 用户名等信息
+            --session: 登录后的requests.Session()
 '''
 class zhihu():
-	def __init__(self, **kwargs):
-		self.info = 'zhihu'
-		self.cur_path = os.getcwd()
-		self.session = requests.Session()
-	'''登录函数'''
-	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
-		# 设置代理
-		self.session.proxies.update(kwargs.get('proxies', {}))
-		# 移动端接口
-		if mode == 'mobile':
-			raise NotImplementedError
-		# PC端接口
-		elif mode == 'pc':
-			self.__initializePC()
-			# 初始化
-			self.session.get(self.signin_url)
-			# 验证码处理
-			res = self.session.get(self.captcha_url, headers=self.captcha_headers)
-			if 'true' in res.text:
-				self.captcha_headers.update({'origin': 'https://www.zhihu.com'})
-				res = self.session.put(self.captcha_url, headers=self.captcha_headers)
-				img_base64 = res.json()['img_base64'].replace('\\n', '')
-				saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
-				if crackvcFunc is None:
-					showImage(os.path.join(self.cur_path, 'captcha.jpg'))
-					captcha = input('Input the captcha:')
-				else:
-					captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
-				data = {'input_text': captcha}
-				data = MultipartEncoder(fields=data, boundary='----WebKitFormBoundary')
-				headers = {
-							'content-type': data.content_type,
-							'origin': 'https://www.zhihu.com',
-							'referer': 'https://www.zhihu.com/signin',
-							'x-requested-with': 'fetch'
-						}
-				self.session.post(self.captcha_url, data=data, headers=headers)
-			removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
-			# 构造登录请求
-			client_id = 'c3cef7c66a1843f8b3a9e6a1e3160e20'
-			timestamp = str(int(time.time() * 1000))
-			grant_type = 'password'
-			source = 'com.zhihu.web'
-			signature = hmac.new(b'd1b964811afb40118a12068ff74a12f4', digestmod=hashlib.sha1)
-			signature.update(bytes((grant_type+client_id+source+timestamp), 'utf-8'))
-			signature = signature.hexdigest()
-			data = {
-					'client_id': client_id,
-					'grant_type': grant_type,
-					'source': source,
-					'username': username,
-					'password': password,
-					'lang': 'en',
-					'ref_source': 'other_https://www.zhihu.com/signin',
-					'utm_source': '',
-					'captcha': '',
-					'timestamp': timestamp,
-					'signature': signature
-					}
-			js = execjs.compile(encrypt_js_code)
-			data = js.call('encrypt', urlencode(data))
-			res = self.session.post(self.login_url, data=data, headers=self.login_headers)
-			res_json = res.json()
-			# 登录成功
-			if 'user_id' in res_json:
-				self.session.cookies.update(res_json['cookie'])
-				print('[INFO]: Account -> %s, login successfully...' % username)
-				infos_return = {'username': username}
-				infos_return.update(res_json)
-				return infos_return, self.session
-			# 账号密码错误
-			elif 'error' in res_json and res_json.get('error').get('code') == 100005:
-				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-			# 验证码错误
-			elif 'error' in res_json and res_json.get('error').get('code') == 120005:
-				raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
-			# 其他错误
-			else:
-				raise RuntimeError(res_json.get('error').get('message'))
-		# mode输入有误
-		else:
-			raise ValueError('Unsupport argument in zhihu.login -> mode %s, expect <mobile> or <pc>...' % mode)
-	'''初始化PC端'''
-	def __initializePC(self):
-		self.headers = {
-							'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-							'referer': 'https://www.zhihu.com/',
-							'host': 'www.zhihu.com',
-							'accept-encoding': 'gzip, deflate, br',
-							'accept-language': 'zh-CN,zh;q=0.9',
-							'accept': '*/*'
-						}
-		self.captcha_headers = {
-									'referer': 'https://www.zhihu.com/signin',
-									'x-requested-with': 'fetch',
-									'x-zse-83': '3_2.0'
-								}
-		self.login_headers = {
-								'content-type': 'application/x-www-form-urlencoded',
-								'origin': 'https://www.zhihu.com',
-								'referer': 'https://www.zhihu.com/signin',
-								'x-requested-with': 'fetch',
-								'x-zse-83': '3_2.0'
-							}
-		self.captcha_url = 'https://www.zhihu.com/api/v3/oauth/captcha?lang=en'
-		self.signin_url = 'https://www.zhihu.com/signin'
-		self.login_url = 'https://www.zhihu.com/api/v3/oauth/sign_in'
-		self.session.headers.update(self.headers)
-	'''初始化移动端'''
-	def __initializeMobile(self):
-		pass
+    def __init__(self, **kwargs):
+        self.info = 'zhihu'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+    '''登录函数'''
+    def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 移动端接口
+        if mode == 'mobile':
+            raise NotImplementedError
+        # PC端接口
+        elif mode == 'pc':
+            self.__initializePC()
+            # 初始化
+            self.session.get(self.signin_url)
+            # 验证码处理
+            res = self.session.get(self.captcha_url, headers=self.captcha_headers)
+            if 'true' in res.text:
+                self.captcha_headers.update({'origin': 'https://www.zhihu.com'})
+                res = self.session.put(self.captcha_url, headers=self.captcha_headers)
+                img_base64 = res.json()['img_base64'].replace('\\n', '')
+                saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
+                if crackvcFunc is None:
+                    showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                    captcha = input('Input the captcha:')
+                else:
+                    captcha = crackvcFunc(os.path.join(self.cur_path, 'captcha.jpg'))
+                data = {'input_text': captcha}
+                data = MultipartEncoder(fields=data, boundary='----WebKitFormBoundary')
+                headers = {
+                            'content-type': data.content_type,
+                            'origin': 'https://www.zhihu.com',
+                            'referer': 'https://www.zhihu.com/signin',
+                            'x-requested-with': 'fetch'
+                        }
+                self.session.post(self.captcha_url, data=data, headers=headers)
+            removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+            # 构造登录请求
+            client_id = 'c3cef7c66a1843f8b3a9e6a1e3160e20'
+            timestamp = str(int(time.time() * 1000))
+            grant_type = 'password'
+            source = 'com.zhihu.web'
+            signature = hmac.new(b'd1b964811afb40118a12068ff74a12f4', digestmod=hashlib.sha1)
+            signature.update(bytes((grant_type+client_id+source+timestamp), 'utf-8'))
+            signature = signature.hexdigest()
+            data = {
+                    'client_id': client_id,
+                    'grant_type': grant_type,
+                    'source': source,
+                    'username': username,
+                    'password': password,
+                    'lang': 'en',
+                    'ref_source': 'other_https://www.zhihu.com/signin',
+                    'utm_source': '',
+                    'captcha': '',
+                    'timestamp': timestamp,
+                    'signature': signature
+                    }
+            js = execjs.compile(encrypt_js_code)
+            data = js.call('encrypt', urlencode(data))
+            res = self.session.post(self.login_url, data=data, headers=self.login_headers)
+            res_json = res.json()
+            # 登录成功
+            if 'user_id' in res_json:
+                self.session.cookies.update(res_json['cookie'])
+                print('[INFO]: Account -> %s, login successfully...' % username)
+                infos_return = {'username': username}
+                infos_return.update(res_json)
+                return infos_return, self.session
+            # 账号密码错误
+            elif 'error' in res_json and res_json.get('error').get('code') == 100005:
+                raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+            # 验证码错误
+            elif 'error' in res_json and res_json.get('error').get('code') == 120005:
+                raise RuntimeError('Account -> %s, fail to login, crack captcha error...' % username)
+            # 其他错误
+            else:
+                raise RuntimeError(res_json.get('error').get('message'))
+        # mode输入有误
+        else:
+            raise ValueError('Unsupport argument in zhihu.login -> mode %s, expect <mobile> or <pc>...' % mode)
+    '''初始化PC端'''
+    def __initializePC(self):
+        self.headers = {
+                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+                            'referer': 'https://www.zhihu.com/',
+                            'host': 'www.zhihu.com',
+                            'accept-encoding': 'gzip, deflate, br',
+                            'accept-language': 'zh-CN,zh;q=0.9',
+                            'accept': '*/*'
+                        }
+        self.captcha_headers = {
+                                    'referer': 'https://www.zhihu.com/signin',
+                                    'x-requested-with': 'fetch',
+                                    'x-zse-83': '3_2.0'
+                                }
+        self.login_headers = {
+                                'content-type': 'application/x-www-form-urlencoded',
+                                'origin': 'https://www.zhihu.com',
+                                'referer': 'https://www.zhihu.com/signin',
+                                'x-requested-with': 'fetch',
+                                'x-zse-83': '3_2.0'
+                            }
+        self.captcha_url = 'https://www.zhihu.com/api/v3/oauth/captcha?lang=en'
+        self.signin_url = 'https://www.zhihu.com/signin'
+        self.login_url = 'https://www.zhihu.com/api/v3/oauth/sign_in'
+        self.session.headers.update(self.headers)
+    '''初始化移动端'''
+    def __initializeMobile(self):
+        pass
 
 
 '''test'''
 if __name__ == '__main__':
-	zhihu().login('', '')
+    zhihu().login('', '')

@@ -1,16 +1,16 @@
 '''
 Function:
-	咪咕音乐模拟登录
-		--PC端: http://www.migu.cn/
-		--移动端暂不支持
+    咪咕音乐模拟登录
+        --PC端: http://www.migu.cn/
+        --移动端暂不支持
 Author:
-	Charles
+    Charles
 微信公众号:
-	Charles的皮卡丘
+    Charles的皮卡丘
 GitHub:
-	https://github.com/CharlesPikachu
+    https://github.com/CharlesPikachu
 更新日期:
-	2020-04-11
+    2020-04-11
 '''
 import execjs
 import requests
@@ -325,16 +325,16 @@ function C(a, b, c) {
                 , s = r - l
                 , u = null == b ? e() : b;
             for (h.dlShiftTo(s, u),
-                 c.compareTo(u) >= 0 && (c[c.t++] = 1,
-                     c.subTo(u, c)),
-                     d.ONE.dlShiftTo(l, u),
-                     u.subTo(h, h); h.t < l;)
+                c.compareTo(u) >= 0 && (c[c.t++] = 1,
+                    c.subTo(u, c)),
+                    d.ONE.dlShiftTo(l, u),
+                    u.subTo(h, h); h.t < l;)
                 h[h.t++] = 0;
             for (; --s >= 0;) {
                 var v = c[--r] == m ? this.DM : Math.floor(c[r] * o + (c[r - 1] + q) * p);
                 if ((c[r] += h.am(0, v, c, s, 0, l)) < v)
                     for (h.dlShiftTo(s, u),
-                             c.subTo(u, c); c[r] < --v;)
+                            c.subTo(u, c); c[r] < --v;)
                         c.subTo(u, c)
             }
             null != b && (c.drShiftTo(l, b),
@@ -425,7 +425,7 @@ function O(a) {
         var c = 32767 & a[b]
             , d = c * this.mpl + ((c * this.mph + (a[b] >> 15) * this.mpl & this.um) << 15) & a.DM;
         for (c = b + this.m.t,
-                 a[c] += this.m.am(0, d, a, b, 0, this.m.t); a[c] >= a.DV;)
+                a[c] += this.m.am(0, d, a, b, 0, this.m.t); a[c] >= a.DV;)
             a[c] -= a.DV,
                 a[++c]++
     }
@@ -484,7 +484,7 @@ function V(a) {
     for (b = 0; 256 > b; ++b)
         this.S[b] = b;
     for (c = 0,
-             b = 0; 256 > b; ++b)
+            b = 0; 256 > b; ++b)
         c = c + this.S[b] + a[b % a.length] & 255,
             d = this.S[b],
             this.S[b] = this.S[c],
@@ -522,9 +522,9 @@ function Z() {
 function $() {
     if (null == pb) {
         for (Z(),
-                 pb = X(),
-                 pb.init(qb),
-                 rb = 0; rb < qb.length; ++rb)
+                pb = X(),
+                pb.init(qb),
+                rb = 0; rb < qb.length; ++rb)
             qb[rb] = 0;
         rb = 0
     }
@@ -611,13 +611,13 @@ d.prototype.FV = Math.pow(2, kb),
     d.prototype.F2 = 2 * hb - kb;
 var lb, mb, nb = "0123456789abcdefghijklmnopqrstuvwxyz", ob = new Array;
 for (lb = "0".charCodeAt(0),
-         mb = 0; 9 >= mb; ++mb)
+        mb = 0; 9 >= mb; ++mb)
     ob[lb++] = mb;
 for (lb = "a".charCodeAt(0),
-         mb = 10; 36 > mb; ++mb)
+        mb = 10; 36 > mb; ++mb)
     ob[lb++] = mb;
 for (lb = "A".charCodeAt(0),
-         mb = 10; 36 > mb; ++mb)
+        mb = 10; 36 > mb; ++mb)
     ob[lb++] = mb;
 E.prototype.convert = F,
     E.prototype.revert = G,
@@ -663,7 +663,7 @@ if (null == qb) {
     if (window.crypto && window.crypto.getRandomValues) {
         var ub = new Uint8Array(32);
         for (window.crypto.getRandomValues(ub),
-                 tb = 0; 32 > tb; ++tb)
+                tb = 0; 32 > tb; ++tb)
             qb[rb++] = ub[tb]
     }
     if ("Netscape" == navigator.appName && navigator.appVersion < "5" && window.crypto) {
@@ -720,85 +720,85 @@ function getRsaAccout(account, pk) {
 
 '''
 Function:
-	咪咕音乐模拟登录
+    咪咕音乐模拟登录
 Detail:
-	-login:
-		Input:
-			--username: 用户名
-			--password: 密码
-			--mode: mobile/pc
-			--crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
-			--proxies: 为requests.Session()设置代理
-		Return:
-			--infos_return: 用户名等信息
-			--session: 登录后的requests.Session()
+    -login:
+        Input:
+            --username: 用户名
+            --password: 密码
+            --mode: mobile/pc
+            --crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+            --proxies: 为requests.Session()设置代理
+        Return:
+            --infos_return: 用户名等信息
+            --session: 登录后的requests.Session()
 '''
 class migu():
-	def __init__(self, **kwargs):
-		self.info = 'migu'
-		self.session = requests.Session()
-	'''登录函数'''
-	def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
-		# 设置代理
-		self.session.proxies.update(kwargs.get('proxies', {}))
-		# 移动端接口
-		if mode == 'mobile':
-			raise NotImplementedError
-		# PC端接口
-		elif mode == 'pc':
-			self.__initializePC()
-			# 编译js代码
-			js = execjs.compile(encrypt_js_code)
-			# 获得publickey
-			res = self.session.post(self.publickey_url)
-			publickey = res.json()
-			# 获得finger print
-			finger_print = js.call('getFingerPrint', publickey)
-			# 模拟登录
-			data = {
-						'sourceID': '208003',
-						'appType': '0',
-						'relayState': '',
-						'loginID': js.call('getRsaAccout', username, publickey),
-						'enpassword': js.call('getEnpassword', password, publickey),
-						'captcha': '',
-						'imgcodeType': '1',
-						'rememberMeBox': '1',
-						'fingerPrint': finger_print.get('details', ''),
-						'fingerPrintDetail': finger_print.get('details', ''),
-						'isAsync': 'true'
-					}
-			res = self.session.post(self.login_url, data=data)
-			res_json = res.json()
-			# 登录成功
-			if res_json['status'] == 2000:
-				print('[INFO]: Account -> %s, login successfully...' % username)
-				infos_return = {'username': username}
-				infos_return.update(res_json)
-				return infos_return, self.session
-			# 账户密码错误
-			elif res_json['status'] in [4001]:
-				raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-			# 其他错误
-			else:
-				raise ValueError(res_json['message'])
-		# mode输入有误
-		else:
-			raise ValueError('Unsupport argument in migu.login -> mode %s, expect <mobile> or <pc>...' % mode)
-	'''初始化PC端'''
-	def __initializePC(self):
-		self.headers = {
-						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-						'Origin': 'https://passport.migu.cn'
-					}
-		self.publickey_url = 'https://passport.migu.cn/password/publickey'
-		self.login_url = 'https://passport.migu.cn/authn'
-		self.session.headers.update(self.headers)
-	'''初始化移动端'''
-	def __initializeMobile(self):
-		pass
+    def __init__(self, **kwargs):
+        self.info = 'migu'
+        self.session = requests.Session()
+    '''登录函数'''
+    def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 移动端接口
+        if mode == 'mobile':
+            raise NotImplementedError
+        # PC端接口
+        elif mode == 'pc':
+            self.__initializePC()
+            # 编译js代码
+            js = execjs.compile(encrypt_js_code)
+            # 获得publickey
+            res = self.session.post(self.publickey_url)
+            publickey = res.json()
+            # 获得finger print
+            finger_print = js.call('getFingerPrint', publickey)
+            # 模拟登录
+            data = {
+                        'sourceID': '208003',
+                        'appType': '0',
+                        'relayState': '',
+                        'loginID': js.call('getRsaAccout', username, publickey),
+                        'enpassword': js.call('getEnpassword', password, publickey),
+                        'captcha': '',
+                        'imgcodeType': '1',
+                        'rememberMeBox': '1',
+                        'fingerPrint': finger_print.get('details', ''),
+                        'fingerPrintDetail': finger_print.get('details', ''),
+                        'isAsync': 'true'
+                    }
+            res = self.session.post(self.login_url, data=data)
+            res_json = res.json()
+            # 登录成功
+            if res_json['status'] == 2000:
+                print('[INFO]: Account -> %s, login successfully...' % username)
+                infos_return = {'username': username}
+                infos_return.update(res_json)
+                return infos_return, self.session
+            # 账户密码错误
+            elif res_json['status'] in [4001]:
+                raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
+            # 其他错误
+            else:
+                raise ValueError(res_json['message'])
+        # mode输入有误
+        else:
+            raise ValueError('Unsupport argument in migu.login -> mode %s, expect <mobile> or <pc>...' % mode)
+    '''初始化PC端'''
+    def __initializePC(self):
+        self.headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+                        'Origin': 'https://passport.migu.cn'
+                    }
+        self.publickey_url = 'https://passport.migu.cn/password/publickey'
+        self.login_url = 'https://passport.migu.cn/authn'
+        self.session.headers.update(self.headers)
+    '''初始化移动端'''
+    def __initializeMobile(self):
+        pass
 
 
 '''test'''
 if __name__ == '__main__':
-	migu().login('', '')
+    migu().login('', '')
