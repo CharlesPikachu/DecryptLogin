@@ -1,0 +1,4 @@
+numpy==1.19.0
+torchvision==0.4.0+cpu
+torch==1.2.0+cpu
+Pillow==7.2.0
