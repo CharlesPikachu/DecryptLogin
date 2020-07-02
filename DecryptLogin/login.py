@@ -21,14 +21,14 @@ class Login():
     '''初始化所有平台'''
     def __initializeAll(self):
         for key, value in {'douban': douban().login, 'weibo': weibo().login, 'github': github().login, 'music163': music163().login, 
-                            'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
-                            'zhihu': zhihu().login, 'bilibili': bilibili().login, 'toutiao': toutiao().login, 'taobao': taobao().login, 
-                            'jingdong': jingdong().login, 'ifeng': ifeng().login, 'sohu': sohu().login, 'zgconline': zgconline().login, 
-                            'lagou': lagou().login, 'twitter': twitter().login, 'vultr': vultr().login, 'eSurfing': eSurfing().login, 
-                            'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
-                            'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
-                            'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
-                            'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 'baidutieba': baidutieba().login}.items():
+                           'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
+                           'zhihu': zhihu().login, 'bilibili': bilibili().login, 'toutiao': toutiao().login, 'taobao': taobao().login, 
+                           'jingdong': jingdong().login, 'ifeng': ifeng().login, 'sohu': sohu().login, 'zgconline': zgconline().login, 
+                           'lagou': lagou().login, 'twitter': twitter().login, 'vultr': vultr().login, 'eSurfing': eSurfing().login, 
+                           'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
+                           'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
+                           'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
+                           'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 'baidutieba': baidutieba().login}.items():
             setattr(self, key, value)
     '''Info'''
     def __repr__(self):
@@ -43,14 +43,14 @@ class Loginer():
     '''初始化所有平台'''
     def __initializeAll(self):
         for key, value in {'douban': douban, 'weibo': weibo, 'github': github, 'music163': music163, 
-                            'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
-                            'zhihu': zhihu, 'bilibili': bilibili, 'toutiao': toutiao, 'taobao': taobao, 
-                            'jingdong': jingdong, 'ifeng': ifeng, 'sohu': sohu, 'zgconline': zgconline, 
-                            'lagou': lagou, 'twitter': twitter, 'vultr': vultr, 'eSurfing': eSurfing, 
-                            'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao, 
-                            'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
-                            'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
-                            'mieshop': mieshop, 'mpweixin': mpweixin, 'baidutieba': baidutieba}.items():
+                           'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
+                           'zhihu': zhihu, 'bilibili': bilibili, 'toutiao': toutiao, 'taobao': taobao, 
+                           'jingdong': jingdong, 'ifeng': ifeng, 'sohu': sohu, 'zgconline': zgconline, 
+                           'lagou': lagou, 'twitter': twitter, 'vultr': vultr, 'eSurfing': eSurfing, 
+                           'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao, 
+                           'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
+                           'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
+                           'mieshop': mieshop, 'mpweixin': mpweixin, 'baidutieba': baidutieba}.items():
             setattr(self, key, value)
     '''Info'''
     def __repr__(self):
