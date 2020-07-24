@@ -585,6 +585,22 @@ infos_return, session = lg.baidutieba('pc')
 - mobile: unsupport processing the situation of appearing captcha
 - pc: unsupport processing the situation of appearing captcha
 
+### Dazhongdianping
+#### Supported modes
+The supported modes of Dazhongdianping include:
+- pc
+#### Example
+Here is an example to login in Dazhongdianping:
+```python
+from DecryptLogin import login
+lg = login.Login()
+# scan the qr code to login in Dazhongdianping
+infos_return, session = lg.dazhongdianping('pc')
+```
+#### The returned values in crackvcFunc
+- mobile: unsupport processing the situation of appearing captcha
+- pc: unsupport processing the situation of appearing captcha
+
 
 ## Util functions
 

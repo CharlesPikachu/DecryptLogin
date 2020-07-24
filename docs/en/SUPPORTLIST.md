@@ -37,3 +37,4 @@
 |  Mieshop         | ✓                  |  ✗                       |
 |  Mpweixin        | ✓                  |  ✗                       |
 |  Baidutieba      | ✓                  |  ✗                       |
+|  Dazhongdianping | ✓                  |  ✗                       |

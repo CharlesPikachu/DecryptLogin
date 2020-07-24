@@ -48,6 +48,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Mieshop         | ✓                  |  ✗                       |  小米商城          |
 |  Mpweixin        | ✓                  |  ✗                       |  微信公众号        |
 |  Baidutieba      | ✓                  |  ✗                       |  百度贴吧          |
+|  Dazhongdianping | ✓                  |  ✗                       |  大众点评          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -120,6 +121,7 @@ infos_return, session = lg.qunar(username, password, 'pc')
 infos_return, session = lg.mieshop(username, password, 'pc')
 infos_return, session = lg.mpweixin(username, password, 'pc')
 infos_return, session = lg.baidutieba('pc')
+infos_return, session = lg.dazhongdianping('pc')
 ```
 
 # Thanks List
