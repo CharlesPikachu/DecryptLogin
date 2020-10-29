@@ -1,4 +1,4 @@
-'''define import all'''
+'''import all'''
 from .pypi import pypi
 from .sohu import sohu
 from .migu import migu
@@ -37,8 +37,10 @@ from .stackoverflow import stackoverflow
 from .dazhongdianping import dazhongdianping
 
 
-'''all platforms'''
-__all__ = ['douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
-           'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
-           'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 
-           'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping']
+'''define import all'''
+__all__ = [
+            'douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
+            'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
+            'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 
+            'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping'
+        ]

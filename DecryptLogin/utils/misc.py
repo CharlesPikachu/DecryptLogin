@@ -5,10 +5,8 @@ Author:
     Charles
 微信公众号:
     Charles的皮卡丘
-GitHub:
-    https://github.com/CharlesPikachu
 更新日期:
-    2020-04-12
+    2020-10-29
 '''
 import os
 import sys

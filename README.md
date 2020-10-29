@@ -1,6 +1,6 @@
-# DecryptLogin
+# Introduction
 ```
-APIs for loginning some websites using <requests>.
+APIs for loginning some websites using requests.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
 ```
 
@@ -10,45 +10,45 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/
 #### In English
 https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 
-# Support List
-|  Websites        | support PC API?    |  support mobile API?     |  in Chinese        |
-|  :----:          | :----:             |  :----:                  |  :----:            |
-|  Weibo           | ✓                  |  ✓                       |  新浪微博          |
-|  Douban          | ✓                  |  ✗                       |  豆瓣              |
-|  Github          | ✓                  |  ✗                       |  Github            |
-|  Music163        | ✓                  |  ✗                       |  网易云音乐        |
-|  Zt12306         | ✓                  |  ✗                       |  中国铁路12306     |
-|  QQZone          | ✓                  |  ✗                       |  QQ空间            |
-|  QQQun           | ✓                  |  ✗                       |  QQ群              |
-|  QQId			   | ✓                  |  ✗                       |  我的QQ中心        |
-|  Zhihu		   | ✓                  |  ✗                       |  知乎         	    |
-|  Bilibili		   | ✓                  |  ✓                       |  B站               |
-|  Toutiao		   | ✗                  |  ✓                       |  今日头条          |
-|  Taobao          | ✓                  |  ✗                       |  淘宝              |
-|  Jingdong        | ✓                  |  ✗                       |  京东              |
-|  Ifeng           | ✓                  |  ✗                       |  凤凰网            |
-|  Sohu            | ✓                  |  ✓                       |  搜狐              |
-|  Zgconline       | ✓                  |  ✗                       |  中关村在线        |
-|  Lagou           | ✓                  |  ✗                       |  拉勾网            |
-|  Twitter         | ✗                  |  ✓                       |  推特              |
-|  Vultr           | ✓                  |  ✗                       |  Vultr             |
-|  eSurfing        | ✓                  |  ✗                       |  天翼              |
-|  Renren          | ✓                  |  ✗                       |  人人网            |
-|  W3Cschool       | ✓                  |  ✗                       |  W3Cschool(编程狮) |
-|  Fishc           | ✓                  |  ✗                       |  鱼C论坛           |
-|  Youdao          | ✓                  |  ✗                       |  有道              |
-|  Baidupan        | ✓                  |  ✗                       |  百度网盘          |
-|  Stackoverflow   | ✓                  |  ✗                       |  Stackoverflow     |
-|  CodaLab         | ✓                  |  ✗                       |  CodaLab           |
-|  PyPi            | ✓                  |  ✗                       |  PyPi              | 
-|  Xiami           | ✓                  |  ✗                       |  虾米音乐          |
-|  Douyu           | ✓                  |  ✗                       |  斗鱼直播          |
-|  Migu            | ✓                  |  ✗                       |  咪咕音乐          |
-|  Qunar           | ✓                  |  ✗                       |  去哪儿旅行        |
-|  Mieshop         | ✓                  |  ✗                       |  小米商城          |
-|  Mpweixin        | ✓                  |  ✗                       |  微信公众号        |
-|  Baidutieba      | ✓                  |  ✗                       |  百度贴吧          |
-|  Dazhongdianping | ✓                  |  ✗                       |  大众点评          |
+# Supported
+|  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
+|  :----:          | :----:  | :----:      | :----:      | :----:            |
+|  Weibo           |         |             |             | 新浪微博          |
+|  Douban          | ✓       | ✗           | ✗           | 豆瓣              |
+|  Github          | ✓       | ✗           | ✗           | Github            |
+|  Music163        | ✓       | ✗           | ✗           | 网易云音乐        |
+|  Zt12306         | ✓       | ✗           | ✗           | 中国铁路12306     |
+|  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
+|  QQQun           | ✗       | ✗           | ✓           | QQ群              |
+|  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
+|  Zhihu		   |         |             |             | 知乎         	 |
+|  Bilibili		   | ✓       | ✓           | ✗           | B站               |
+|  Toutiao		   |         |             |             | 今日头条          |
+|  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
+|  Jingdong        | ✗       | ✗           | ✓           | 京东              |
+|  Ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
+|  Sohu            | ✓       | ✓           | ✗           | 搜狐              |
+|  Zgconline       |         |             |             | 中关村在线        |
+|  Lagou           |         |             |             | 拉勾网            |
+|  Twitter         | ✗       | ✓           | ✗           | 推特              |
+|  Vultr           | ✓       | ✗           | ✗           | Vultr             |
+|  eSurfing        |         |             |             | 天翼              |
+|  Renren          | ✓       | ✗           | ✗           | 人人网            |
+|  W3Cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
+|  Fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
+|  Youdao          | ✓       | ✗           | ✗           | 有道              |
+|  Baidupan        | ✓       | ✗           | ✗           | 百度网盘          |
+|  Stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
+|  CodaLab         | ✓       | ✗           | ✗           | CodaLab           |
+|  PyPi            | ✓       | ✗           | ✗           | PyPi              | 
+|  Xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
+|  Douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
+|  Migu            |         |             |             | 咪咕音乐          |
+|  Qunar           |         |             |             | 去哪儿旅行        |
+|  Mieshop         | ✓       | ✗           | ✗           | 小米商城          |
+|  Mpweixin        |         |             |             | 微信公众号        |
+|  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
+|  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -86,42 +86,42 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 ```python
 from DecryptLogin import login
 lg = login.Login()
-infos_return, session = lg.douban(username[telephone], password, 'pc')
-infos_return, session = lg.github(username[email], password, 'pc')
-infos_return, session = lg.weibo(username[telephone], password, 'mobile')
-infos_return, session = lg.music163(username[telephone/email], password, 'pc')
-infos_return, session = lg.zt12306(username[telephone], password, 'pc')
-infos_return, session = lg.QQZone('pc')
-infos_return, session = lg.QQQun('pc')
-infos_return, session = lg.QQId('pc')
-infos_return, session = lg.zhihu(username, password, 'pc')
-infos_return, session = lg.bilibili(username, password, 'pc')
-infos_return, session = lg.toutiao(username, password, 'mobile')
-infos_return, session = lg.taobao('pc')
-infos_return, session = lg.jingdong('pc')
-infos_return, session = lg.ifeng(username, password, 'pc')
-infos_return, session = lg.sohu(username, password, 'mobile')
-infos_return, session = lg.zgconline(username, password, 'pc')
-infos_return, session = lg.lagou(username, password, 'pc')
-infos_return, session = lg.twitter(username, password, 'mobile')
-infos_return, session = lg.vultr(username, password, 'pc')
-infos_return, session = lg.eSurfing(username, password, 'pc')
-infos_return, session = lg.renren(username, password, 'pc')
-infos_return, session = lg.w3cschool(username, password, 'pc')
-infos_return, session = lg.fishc(username, password, 'pc')
-infos_return, session = lg.youdao(username, password, 'pc')
-infos_return, session = lg.baidupan(username, password, 'pc')
-infos_return, session = lg.stackoverflow(username, password, 'pc')
-infos_return, session = lg.codalab(username, password, 'pc')
-infos_return, session = lg.pypi(username, password, 'pc')
-infos_return, session = lg.xiami(username, password, 'pc')
-infos_return, session = lg.douyu('pc')
-infos_return, session = lg.migu(username, password, 'pc')
-infos_return, session = lg.qunar(username, password, 'pc')
-infos_return, session = lg.mieshop(username, password, 'pc')
-infos_return, session = lg.mpweixin(username, password, 'pc')
-infos_return, session = lg.baidutieba('pc')
-infos_return, session = lg.dazhongdianping('pc')
+infos_return, session = lg.douban(username[telephone], password)
+infos_return, session = lg.github(username[email], password)
+infos_return, session = lg.weibo(username[telephone], password)
+infos_return, session = lg.music163(username[telephone/email], password)
+infos_return, session = lg.zt12306(username[telephone], password)
+infos_return, session = lg.QQZone()
+infos_return, session = lg.QQQun()
+infos_return, session = lg.QQId()
+infos_return, session = lg.zhihu(username, password)
+infos_return, session = lg.bilibili(username, password)
+infos_return, session = lg.toutiao(username, password)
+infos_return, session = lg.taobao()
+infos_return, session = lg.jingdong()
+infos_return, session = lg.ifeng(username, password)
+infos_return, session = lg.sohu(username, password)
+infos_return, session = lg.zgconline(username, password)
+infos_return, session = lg.lagou(username, password)
+infos_return, session = lg.twitter(username, password)
+infos_return, session = lg.vultr(username, password)
+infos_return, session = lg.eSurfing(username, password)
+infos_return, session = lg.renren(username, password)
+infos_return, session = lg.w3cschool(username, password)
+infos_return, session = lg.fishc(username, password)
+infos_return, session = lg.youdao(username, password)
+infos_return, session = lg.baidupan(username, password)
+infos_return, session = lg.stackoverflow(username, password)
+infos_return, session = lg.codalab(username, password)
+infos_return, session = lg.pypi(username, password)
+infos_return, session = lg.xiami(username, password)
+infos_return, session = lg.douyu()
+infos_return, session = lg.migu(username, password)
+infos_return, session = lg.qunar(username, password)
+infos_return, session = lg.mieshop(username, password)
+infos_return, session = lg.mpweixin(username, password)
+infos_return, session = lg.baidutieba()
+infos_return, session = lg.dazhongdianping()
 ```
 
 # Thanks List
