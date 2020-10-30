@@ -1,9 +1,9 @@
 # Install
 
 ## Environment
-The environment I used is:
-- OS: Win10
-- Python: 3.6.4
+The environment I have tested is:
+- OS: Win10 / Mac OS
+- Python: 3.6~3.8
 
 ## Dependency package 
 Dependencies requirement:

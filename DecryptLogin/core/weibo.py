@@ -281,20 +281,12 @@ class weiboScanqr():
             'domain': 'weibo.com',
             'alt': response_json['alt'],
             'savestate': '30',
-            'callback': 'STK_%s' % timestamp
         }
         response = self.session.get(self.login_url, params=params)
-        url_list = [item.replace('\/', '/') for item in response.text.split('"') if "http" in item]
-        response_json = {}
-        for url in url_list:
-            response = self.session.get(url)
-            response.encoding = 'gbk'
-            if 'userinfo' in response.text:
-                userinfo = re.findall(r'"userinfo":({.*?})', response.text)[0]
-                response_json.update(eval(userinfo))
-            time.sleep(0.5 + random.random())
+        response_json = response.json()
         # 登录成功
-        print('[INFO]: Account -> %s, login successfully' % response_json.get('displayname', username))
+        response = self.session.get(self.home_url % response_json['uid'])
+        print('[INFO]: Account -> %s, login successfully' % response_json.get('nick', username))
         infos_return = {'username': username}
         infos_return.update(response_json)
         return infos_return, self.session
@@ -303,6 +295,7 @@ class weiboScanqr():
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
         }
+        self.home_url = 'https://weibo.com/u/%s/home'
         self.qrcode_url = 'https://login.sina.com.cn/sso/qrcode/image?entry=homepage&size=128&callback=STK_{}'
         self.check_url = 'https://login.sina.com.cn/sso/qrcode/check'
         self.login_url = 'http://login.sina.com.cn/sso/login.php'

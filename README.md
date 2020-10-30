@@ -23,13 +23,13 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
 |  Zhihu		   | ✗       | ✗           | ✓           | 知乎         	 |
 |  Bilibili		   | ✓       | ✓           | ✗           | B站               |
-|  Toutiao		   |         |             |             | 今日头条          |
+|  Toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
 |  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  Jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  Ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
 |  Sohu            | ✗       | ✓           | ✗           | 搜狐              |
 |  Zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
-|  Lagou           |         |             |             | 拉勾网            |
+|  Lagou           | ✗       | ✗           | ✗           | 拉勾网            |
 |  Twitter         | ✗       | ✓           | ✗           | 推特              |
 |  Vultr           | ✓       | ✗           | ✗           | Vultr             |
 |  eSurfing        | ✓       | ✗           | ✗           | 天翼              |
@@ -44,7 +44,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
 |  Douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
 |  Migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
-|  Qunar           |         |             |             | 去哪儿旅行        |
+|  Qunar           | ✗       | ✗           | ✗           | 去哪儿旅行        |
 |  Mieshop         | ✓       | ✗           | ✗           | 小米商城          |
 |  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
@@ -88,13 +88,13 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.douban(username[telephone], password)
 infos_return, session = lg.github(username[email], password)
-infos_return, session = lg.weibo(username[telephone], password)
+infos_return, session = lg.weibo()
 infos_return, session = lg.music163(username[telephone/email], password)
 infos_return, session = lg.zt12306(username[telephone], password)
 infos_return, session = lg.QQZone()
 infos_return, session = lg.QQQun()
 infos_return, session = lg.QQId()
-infos_return, session = lg.zhihu(username, password)
+infos_return, session = lg.zhihu()
 infos_return, session = lg.bilibili(username, password)
 infos_return, session = lg.toutiao(username, password)
 infos_return, session = lg.taobao()
