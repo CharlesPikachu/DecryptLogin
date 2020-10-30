@@ -1,23 +1,19 @@
 '''
 Function:
     咪咕音乐模拟登录
-        --PC端: http://www.migu.cn/
-        --移动端暂不支持
 Author:
     Charles
 微信公众号:
     Charles的皮卡丘
-GitHub:
-    https://github.com/CharlesPikachu
 更新日期:
-    2020-04-11
+    2020-10-30
 '''
 import execjs
 import requests
 
 
-'''js code'''
-encrypt_js_code = r'''
+'''js code for pc mode'''
+encrypt_js_code_pc = r'''
 navigator = {};
 window = {};
 
@@ -718,6 +714,80 @@ function getRsaAccout(account, pk) {
 '''
 
 
+'''PC端登录咪咕音乐'''
+class miguPC():
+    is_callable = True
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items(): setattr(self, key, value)
+        self.info = 'login in migu in pc mode'
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username, password, crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 编译js代码
+        ctx = execjs.compile(encrypt_js_code_pc)
+        # 获得publickey
+        response = self.session.post(self.publickey_url)
+        publickey = response.json()
+        # 获得finger print
+        finger_print = ctx.call('getFingerPrint', publickey)
+        # 模拟登录
+        data = {
+                    'sourceID': '208003',
+                    'appType': '0',
+                    'relayState': '',
+                    'loginID': ctx.call('getRsaAccout', username, publickey),
+                    'enpassword': ctx.call('getEnpassword', password, publickey),
+                    'captcha': '',
+                    'imgcodeType': '1',
+                    'rememberMeBox': '1',
+                    'fingerPrint': finger_print.get('details', ''),
+                    'fingerPrintDetail': finger_print.get('details', ''),
+                    'isAsync': 'true'
+                }
+        response = self.session.post(self.login_url, data=data)
+        response_json = response.json()
+        # 登录成功
+        if response_json['status'] == 2000:
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username}
+            infos_return.update(response_json)
+            return infos_return, self.session
+        # 账户密码错误
+        elif response_json['status'] in [4001]:
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 其他错误
+        else:
+            raise ValueError(response_json['message'])
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+                        'Origin': 'https://passport.migu.cn'
+                    }
+        self.publickey_url = 'https://passport.migu.cn/password/publickey'
+        self.login_url = 'https://passport.migu.cn/authn'
+        self.session.headers.update(self.headers)
+
+
+'''移动端登录咪咕音乐'''
+class miguMobile():
+    is_callable = False
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items(): setattr(self, key, value)
+        self.info = 'login in migu in mobile mode'
+
+
+'''扫码登录咪咕音乐'''
+class miguScanqr():
+    is_callable = False
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items(): setattr(self, key, value)
+        self.info = 'login in migu in scanqr mode'
+
+
 '''
 Function:
     咪咕音乐模拟登录
@@ -726,8 +796,8 @@ Detail:
         Input:
             --username: 用户名
             --password: 密码
-            --mode: mobile/pc
-            --crackvcFunc: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
+            --mode: mobile/pc/scanqr
+            --crack_captcha_func: 若提供验证码接口, 则利用该接口来实现验证码的自动识别
             --proxies: 为requests.Session()设置代理
         Return:
             --infos_return: 用户名等信息
@@ -735,70 +805,21 @@ Detail:
 '''
 class migu():
     def __init__(self, **kwargs):
-        self.info = 'migu'
-        self.session = requests.Session()
+        self.info = 'login in migu'
+        self.supported_modes = {
+            'pc': miguPC(**kwargs),
+            'mobile': miguMobile(**kwargs),
+            'scanqr': miguScanqr(**kwargs),
+        }
     '''登录函数'''
-    def login(self, username, password, mode='pc', crackvcFunc=None, **kwargs):
-        # 设置代理
-        self.session.proxies.update(kwargs.get('proxies', {}))
-        # 移动端接口
-        if mode == 'mobile':
-            raise NotImplementedError
-        # PC端接口
-        elif mode == 'pc':
-            self.__initializePC()
-            # 编译js代码
-            js = execjs.compile(encrypt_js_code)
-            # 获得publickey
-            res = self.session.post(self.publickey_url)
-            publickey = res.json()
-            # 获得finger print
-            finger_print = js.call('getFingerPrint', publickey)
-            # 模拟登录
-            data = {
-                        'sourceID': '208003',
-                        'appType': '0',
-                        'relayState': '',
-                        'loginID': js.call('getRsaAccout', username, publickey),
-                        'enpassword': js.call('getEnpassword', password, publickey),
-                        'captcha': '',
-                        'imgcodeType': '1',
-                        'rememberMeBox': '1',
-                        'fingerPrint': finger_print.get('details', ''),
-                        'fingerPrintDetail': finger_print.get('details', ''),
-                        'isAsync': 'true'
-                    }
-            res = self.session.post(self.login_url, data=data)
-            res_json = res.json()
-            # 登录成功
-            if res_json['status'] == 2000:
-                print('[INFO]: Account -> %s, login successfully...' % username)
-                infos_return = {'username': username}
-                infos_return.update(res_json)
-                return infos_return, self.session
-            # 账户密码错误
-            elif res_json['status'] in [4001]:
-                raise RuntimeError('Account -> %s, fail to login, username or password error...' % username)
-            # 其他错误
-            else:
-                raise ValueError(res_json['message'])
-        # mode输入有误
-        else:
-            raise ValueError('Unsupport argument in migu.login -> mode %s, expect <mobile> or <pc>...' % mode)
-    '''初始化PC端'''
-    def __initializePC(self):
-        self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                        'Origin': 'https://passport.migu.cn'
-                    }
-        self.publickey_url = 'https://passport.migu.cn/password/publickey'
-        self.login_url = 'https://passport.migu.cn/authn'
-        self.session.headers.update(self.headers)
-    '''初始化移动端'''
-    def __initializeMobile(self):
-        pass
-
-
-'''test'''
-if __name__ == '__main__':
-    migu().login('', '')
+    def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
+        assert mode in self.supported_modes, 'unsupport mode %s in migu.login' % mode
+        selected_api = self.supported_modes[mode]
+        if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in migu.login' % mode)
+        args = {
+            'username': username,
+            'password': password,
+            'crack_captcha_func': crack_captcha_func,
+        }
+        args.update(kwargs)
+        return selected_api.login(**args)

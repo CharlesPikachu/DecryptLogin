@@ -27,7 +27,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  Jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  Ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
-|  Sohu            | ✓       | ✓           | ✗           | 搜狐              |
+|  Sohu            | ✗       | ✓           | ✗           | 搜狐              |
 |  Zgconline       |         |             |             | 中关村在线        |
 |  Lagou           |         |             |             | 拉勾网            |
 |  Twitter         | ✗       | ✓           | ✗           | 推特              |

@@ -15,7 +15,7 @@ from hashlib import md5
 
 '''PC端登录搜狐'''
 class sohuPC():
-    is_callable = True
+    is_callable = False
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in sohu in pc mode'
