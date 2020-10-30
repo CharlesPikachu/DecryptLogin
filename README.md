@@ -13,7 +13,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 # Supported
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
-|  Weibo           |         |             |             | 新浪微博          |
+|  Weibo           | ✓       | ✓           | ✓           | 新浪微博          |
 |  Douban          | ✓       | ✗           | ✗           | 豆瓣              |
 |  Github          | ✓       | ✗           | ✗           | Github            |
 |  Music163        | ✓       | ✗           | ✗           | 网易云音乐        |
@@ -21,18 +21,18 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |
 |  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
-|  Zhihu		   |         |             |             | 知乎         	 |
+|  Zhihu		   | ✗       | ✗           | ✓           | 知乎         	 |
 |  Bilibili		   | ✓       | ✓           | ✗           | B站               |
 |  Toutiao		   |         |             |             | 今日头条          |
 |  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  Jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  Ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
 |  Sohu            | ✗       | ✓           | ✗           | 搜狐              |
-|  Zgconline       |         |             |             | 中关村在线        |
+|  Zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
 |  Lagou           |         |             |             | 拉勾网            |
 |  Twitter         | ✗       | ✓           | ✗           | 推特              |
 |  Vultr           | ✓       | ✗           | ✗           | Vultr             |
-|  eSurfing        |         |             |             | 天翼              |
+|  eSurfing        | ✓       | ✗           | ✗           | 天翼              |
 |  Renren          | ✓       | ✗           | ✗           | 人人网            |
 |  W3Cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
 |  Fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
@@ -43,10 +43,10 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  PyPi            | ✓       | ✗           | ✗           | PyPi              | 
 |  Xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
 |  Douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
-|  Migu            |         |             |             | 咪咕音乐          |
+|  Migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
 |  Qunar           |         |             |             | 去哪儿旅行        |
 |  Mieshop         | ✓       | ✗           | ✗           | 小米商城          |
-|  Mpweixin        |         |             |             | 微信公众号        |
+|  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
 |  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
 
