@@ -10,7 +10,7 @@ import re
 import argparse
 import prettytable
 from DecryptLogin import login
-from DecryptLogin.platforms.music163 import Cracker
+from DecryptLogin.core.music163 import Cracker
 
 
 '''命令行参数解析'''

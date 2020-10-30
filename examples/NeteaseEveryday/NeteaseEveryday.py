@@ -13,7 +13,7 @@ import argparse
 from pick import pick
 from DecryptLogin import login
 from contextlib import closing
-from DecryptLogin.platforms.music163 import Cracker
+from DecryptLogin.core.music163 import Cracker
 
 
 '''命令行参数解析'''
