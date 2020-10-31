@@ -9,7 +9,7 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.twitter(username='Your Username', password='Your Password')
 ```
-where infos_return is a dict object, which contains some user information(e.g. userid) that may be useful. The session is a 
+where infos_return is a dict object, which contains some user information(e.g., userid) that may be useful. The session is a 
 requests.Session object which has logined in the target website.
 
 ## Deal with captcha
@@ -20,7 +20,7 @@ from PIL import Image
 from DecryptLogin import login
 
 '''the captcha identification function'''
-def crackvcFunc(imagepath):
+def cracker(imagepath):
     # open captcha
     img = Image.open(imagepath)
     # identify captcha
@@ -29,7 +29,7 @@ def crackvcFunc(imagepath):
     return result
 
 lg = login.Login()
-infos_return, session = lg.zhihu(username='Your Username', password='Your Password', crackvcFunc=crackvcFunc)
+infos_return, session = lg.baidupan(username='Your Username', password='Your Password', crack_captcha_func=cracker)
 ```
 
 ## Add proxies
@@ -39,7 +39,7 @@ from DecryptLogin import login
 
 lg = login.Login()
 proxies = {'https': '127.0.0.1:1080'}
-infos_return, session = lg.zhihu(username='Your Username', password='Your Password', proxies=proxies)
+infos_return, session = lg.bilibili(username='Your Username', password='Your Password', proxies=proxies)
 ```
 where the format of proxies is the same as [proxies for requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
