@@ -9,34 +9,40 @@ from DecryptLogin import login
 
 # the instanced Login class object
 lg = login.Login()
-# use the provided api function to login in the target website (e.g. twitter)
+# use the provided api function to login in the target website (e.g., twitter)
 infos_return, session = lg.twitter(username='Your Username', password='Your Password')
 ```
 All the api functions for logining in the corresponding websites support the following arguments:
 ```
 username: the username for login in the target website
 password: the password for login in the target website
-mode: pc/mobile, using the default setting is recommended
-crackvcFunc: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
+mode: pc/mobile/scanqr, using the default setting is recommended
+crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
 proxies: use proxies during the simulated login, the supported formats of proxies is the same as https://requests.readthedocs.io/en/master/user/advanced/#proxies
 ```
 
 
 ## Loginer class
-The DecryptLogin library also supports returning the instantiated simulated login class of the corresponding website before implementing the simulated login. 
+The DecryptLogin library also supports returning the instanced simulated login class of the corresponding website before implementing the simulated login. 
 Specifically, the code could be implemented as follows:
 ```python
 from DecryptLogin import login
 
 # the instanced Loginer class object
 loginer = login.Loginer()
-# obtain the simulated login class of the corresponding website (e.g. twitter)
+# obtain the instanced simulated login class of the corresponding website (e.g., twitter)
 twitter_loginer = loginer.twitter()
 # call login function to achieve simulated login
 infos_return, session = twitter_loginer.login(username='Your Username', password='Your Password')
 ```
-The arguments supported by the login function are the same as those used to implement simulated login support using the Login class object.
-The advantage of this scheme is that it is easier to call other useful functions in this class in order to achieve functions other than simulated login.
+All the loginer.login functions for logining in the corresponding websites support the following arguments:
+```
+username: the username for login in the target website
+password: the password for login in the target website
+mode: pc/mobile/scanqr, using the default setting is recommended
+crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
+proxies: use proxies during the simulated login, the supported formats of proxies is the same as https://requests.readthedocs.io/en/master/user/advanced/#proxies
+```
 
 
 ## Introduction of supported websites
