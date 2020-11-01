@@ -190,7 +190,18 @@ infos_return, session = lg.QQId('', '', 'scanqr')
 
 ### 知乎
 #### PC端登录
-暂不支持PC端登录。
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.zhihu(username, password, 'pc')
+```
+支持用户自定义crack_captcha_func识别PC端登录的数字字母验证码, 例如:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
+注意，如果提示"为了您的账号安全，请使用短信验证码登录", 可以尝试绑定邮箱后, 利用邮箱作为用户名登录。
 #### 移动端登录
 暂不支持移动端登录。
 #### 扫码登录
@@ -621,6 +632,25 @@ lg = login.Login()
 infos_return, session = lg.jianguoyun(username, password, 'pc')
 ```
 暂不支持crack_captcha_func。
+#### 移动端登录
+暂不支持移动端登录。
+#### 扫码登录
+暂不支持扫码登录。
+
+### 天翼云盘
+#### PC端登录
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.cloud189(username, password, 'pc')
+```
+支持用户自定义crack_captcha_func识别PC端登录的数字字母验证码, 例如:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
 #### 移动端登录
 暂不支持移动端登录。
 #### 扫码登录

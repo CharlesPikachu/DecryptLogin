@@ -24,6 +24,7 @@ from .twitter import twitter
 from .codalab import codalab
 from .zt12306 import zt12306
 from .toutiao import toutiao
+from .cloud189 import cloud189
 from .jingdong import jingdong
 from .bilibili import bilibili
 from .eSurfing import eSurfing
@@ -43,5 +44,5 @@ __all__ = [
             'douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
             'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
             'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 
-            'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun',
+            'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189'
         ]

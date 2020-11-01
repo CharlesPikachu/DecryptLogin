@@ -461,7 +461,7 @@ function encrypt(data) {
 
 '''PC端登录知乎'''
 class zhihuPC():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in zhihu in pc mode'
@@ -540,7 +540,7 @@ class zhihuPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
                             'referer': 'https://www.zhihu.com/',
                             'host': 'www.zhihu.com',
                             'accept-encoding': 'gzip, deflate, br',

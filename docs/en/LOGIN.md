@@ -192,7 +192,19 @@ Unsupport the user-defined crack_captcha_func.
 
 ### Zhihu
 #### PC Mode
-This mode is temporarily not supported.
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.zhihu(username, password, 'pc')
+```
+Support the user-defined crack_captcha_func to identify the digital/letter captcha automatically, for example:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
+Noted that, email is recommended as the input of username.
 #### Mobile Mode
 This mode is temporarily not supported.
 #### Scanqr Mode
@@ -623,6 +635,25 @@ lg = login.Login()
 infos_return, session = lg.jianguoyun(username, password, 'pc')
 ```
 Unsupport the user-defined crack_captcha_func.
+#### Mobile Mode
+This mode is temporarily not supported.
+#### Scanqr Mode
+This mode is temporarily not supported.
+
+### Cloud189
+#### PC Mode
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.cloud189(username, password, 'pc')
+```
+Support the user-defined crack_captcha_func to identify the digital/letter captcha automatically, for example:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
 #### Mobile Mode
 This mode is temporarily not supported.
 #### Scanqr Mode

@@ -21,7 +21,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |
 |  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
-|  Zhihu		   | ✗       | ✗           | ✓           | 知乎         	 |
+|  Zhihu		   | ✓       | ✗           | ✓           | 知乎         	 |
 |  Bilibili		   | ✓       | ✓           | ✗           | B站               |
 |  Toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
 |  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
@@ -49,7 +49,8 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
 |  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
-|  jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
+|  Jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
+|  Cloud189        | ✓       | ✗           | ✗           | 天翼云盘          |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -125,6 +126,7 @@ infos_return, session = lg.mpweixin(username, password)
 infos_return, session = lg.baidutieba()
 infos_return, session = lg.dazhongdianping()
 infos_return, session = lg.jianguoyun(username, password)
+infos_return, session = lg.cloud189(username, password)
 ```
 
 # Thanks List

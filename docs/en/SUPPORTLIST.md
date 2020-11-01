@@ -39,3 +39,4 @@
 |  Baidutieba      | ✗       | ✗           | ✓           |
 |  Dazhongdianping | ✗       | ✗           | ✓           |
 |  Jianguoyun      | ✓       | ✗           | ✗           |
+|  cloud189        | ✓       | ✗           | ✗           |
