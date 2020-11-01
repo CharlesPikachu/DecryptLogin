@@ -25,6 +25,7 @@ class Login():
             'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
             'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
             'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 'baidutieba': baidutieba().login, 'dazhongdianping': dazhongdianping().login,
+            'jianguoyun': jianguoyun().login
         }
         for key, value in self.supported_apis.items():
             setattr(self, key, value)
@@ -44,6 +45,7 @@ class Loginer():
             'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
             'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
             'mieshop': mieshop, 'mpweixin': mpweixin, 'baidutieba': baidutieba, 'dazhongdianping': dazhongdianping,
+            'jianguoyun': jianguoyun,
         }
         for key, value in self.supported_apis.items():
             setattr(self, key, value)

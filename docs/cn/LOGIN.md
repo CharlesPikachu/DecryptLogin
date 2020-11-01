@@ -611,6 +611,21 @@ infos_return, session = lg.dazhongdianping('', '', 'scanqr')
 ```
 暂不支持crack_captcha_func。
 
+### 坚果云
+#### PC端登录
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.jianguoyun(username, password, 'pc')
+```
+暂不支持crack_captcha_func。
+#### 移动端登录
+暂不支持移动端登录。
+#### 扫码登录
+暂不支持扫码登录。
+
 
 ## 一些工具函数
 

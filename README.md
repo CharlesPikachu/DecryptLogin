@@ -49,6 +49,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
 |  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
+|  jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -85,6 +86,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 # Quick Start
 ```python
 from DecryptLogin import login
+
 lg = login.Login()
 infos_return, session = lg.douban(username[telephone], password)
 infos_return, session = lg.github(username[email], password)
@@ -122,6 +124,7 @@ infos_return, session = lg.mieshop(username, password)
 infos_return, session = lg.mpweixin(username, password)
 infos_return, session = lg.baidutieba()
 infos_return, session = lg.dazhongdianping()
+infos_return, session = lg.jianguoyun(username, password)
 ```
 
 # Thanks List

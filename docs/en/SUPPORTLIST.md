@@ -38,3 +38,4 @@
 |  Mpweixin        | ✓       | ✗           | ✗           |
 |  Baidutieba      | ✗       | ✗           | ✓           |
 |  Dazhongdianping | ✗       | ✗           | ✓           |
+|  Jianguoyun      | ✓       | ✗           | ✗           |

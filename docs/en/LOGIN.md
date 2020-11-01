@@ -613,6 +613,21 @@ infos_return, session = lg.dazhongdianping('', '', 'scanqr')
 ```
 Unsupport the user-defined crack_captcha_func.
 
+### Jianguoyun
+#### PC Mode
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.jianguoyun(username, password, 'pc')
+```
+Unsupport the user-defined crack_captcha_func.
+#### Mobile Mode
+This mode is temporarily not supported.
+#### Scanqr Mode
+This mode is temporarily not supported.
+
 
 ## Util functions
 
