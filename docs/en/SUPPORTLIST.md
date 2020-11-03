@@ -39,4 +39,5 @@
 |  Baidutieba      | ✗       | ✗           | ✓           |
 |  Dazhongdianping | ✗       | ✗           | ✓           |
 |  Jianguoyun      | ✓       | ✗           | ✗           |
-|  cloud189        | ✓       | ✗           | ✗           |
+|  Cloud189        | ✓       | ✗           | ✗           |
+|  QQMusic         | ✗       | ✗           | ✓           |

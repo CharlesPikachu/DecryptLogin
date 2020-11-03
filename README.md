@@ -51,6 +51,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
 |  Jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
 |  Cloud189        | ✓       | ✗           | ✗           | 天翼云盘          |
+|  QQMusic         | ✗       | ✗           | ✓           | QQ音乐            |
 
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
@@ -127,6 +128,7 @@ infos_return, session = lg.baidutieba()
 infos_return, session = lg.dazhongdianping()
 infos_return, session = lg.jianguoyun(username, password)
 infos_return, session = lg.cloud189(username, password)
+infos_return, session = lg.qqmusic()
 ```
 
 # Thanks List

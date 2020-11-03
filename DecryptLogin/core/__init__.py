@@ -19,6 +19,7 @@ from .douban import douban
 from .taobao import taobao
 from .github import github
 from .QQZone import QQZone
+from .qqmusic import qqmusic
 from .mieshop import mieshop
 from .twitter import twitter
 from .codalab import codalab
@@ -44,5 +45,5 @@ __all__ = [
             'douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
             'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
             'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 
-            'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189'
+            'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189', 'qqmusic',
         ]
