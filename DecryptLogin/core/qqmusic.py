@@ -47,6 +47,21 @@ class qqmusicScanqr():
     def login(self, username='', password='', crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
+        # 获得pt_login_sig
+        params = {
+            'appid': '716027609',
+            'daid': '383',
+            'style': '33',
+            'login_text': '授权并登录',
+            'hide_title_bar': '1',
+            'hide_border': '1',
+            'target': 'self',
+            's_url': 'https://graph.qq.com/oauth2.0/login_jump',
+            'pt_3rd_aid': '100497308',
+            'pt_feedback_link': 'https://support.qq.com/products/77942?customInfo=.appid100497308',
+        }
+        response = self.session.get(self.xlogin_url, params=params)
+        pt_login_sig = self.session.cookies.get('pt_login_sig')
         # 获取二维码
         params = {
             'appid': '716027609',
@@ -62,8 +77,8 @@ class qqmusicScanqr():
         response = self.session.get(self.ptqrshow_url, params=params)
         saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
         showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
-        login_sig = self.session.cookies.get('qrsig')
-        ptqrtoken = self.__decryptQrsig(login_sig)
+        qrsig = self.session.cookies.get('qrsig')
+        ptqrtoken = self.__decryptQrsig(qrsig)
         # 检测二维码状态
         while True:
             params = {
@@ -75,10 +90,10 @@ class qqmusicScanqr():
                 'g': '1',
                 'from_ui': '1',
                 'ptlang': '2052',
-                'action': '0-0-1604420019415',
+                'action': '0-0-%s' % int(time.time() * 1000),
                 'js_ver': '20102616',
                 'js_type': '1',
-                'login_sig': login_sig,
+                'login_sig': pt_login_sig,
                 'pt_uistyle': '40',
                 'aid': '716027609',
                 'daid': '383',
@@ -110,10 +125,9 @@ class qqmusicScanqr():
     def __initialize(self):
         self.headers = {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
-                        'Host': 'ssl.ptlogin2.qq.com',
-                        'Referer': 'https://xui.ptlogin2.qq.com/'
                         }
         self.ptqrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
+        self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
         self.ptqrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
         self.session.headers.update(self.headers)
 
