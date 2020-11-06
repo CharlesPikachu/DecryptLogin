@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-30
+    2020-11-06
 '''
 import re
 import rsa
@@ -51,7 +51,7 @@ class weiboPC():
                     captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
                 removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
             # --请求prelogin_url
-            su = base64.b64encode(username.encode())
+            su = base64.b64encode(username.encode('utf-8'))
             params = {
                         'entry': 'weibo',
                         'su': su,
@@ -70,7 +70,7 @@ class weiboPC():
             servertime = response_json.get('servertime', '')
             # --请求ssologin_url
             publickey = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
-            sp = rsa.encrypt((str(servertime)+'\t'+nonce+'\n'+password).encode(), publickey)
+            sp = rsa.encrypt((str(servertime)+'\t'+nonce+'\n'+password).encode('utf-8'), publickey)
             sp = b2a_hex(sp)
             data_post = {
                             'entry': 'account',
@@ -191,13 +191,12 @@ class weiboMobile():
         # 安全验证
         elif response_json['retcode'] in [50050011]:
             response = self.session.get(response_json['data']['errurl'])
-            response = self.session.get(self.check_url)
             params = {
                 'number': '1',
                 'mask_mobile': username[:2] + '*******' + username[-2:],
                 'msg_type': 'sms'
             }
-            response = self.session.get(self.secondverify_url, params=params)
+            response = self.session.get(self.ajsend_url, params=params)
             response_json = response.json()
             if response_json['retcode'] not in [100000]:
                 raise RuntimeError(response_json.get('msg'))
@@ -206,35 +205,32 @@ class weiboMobile():
                 'code': code,
                 'msg_type': 'sms'
             }
-            response = self.session.get(self.secondverify_url, params=params)
+            response = self.session.get(self.ajcheck_url, params=params)
             response_json = response.json()
-            if response_json['retcode'] in [100000]:
-                print('[INFO]: Account -> %s, login successfully' % username)
-                infos_return = {'username': username}
-                infos_return.update(response_json)
-                return infos_return, self.session
-            else:
-                raise RuntimeError(response_json.get('msg', 'secondverify error'))
+            for url in response_json['crossDomainUrlList']:
+                response = self.session.get(url, verify=False)
+            response = self.session.get(self.home_url)
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username}
+            infos_return.update(response_json)
+            return infos_return, self.session
         # 其他错误
         else:
             raise RuntimeError(response_json['msg'])
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36',
         }
         self.login_headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
-            'Accept': '*/*',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-            'Connection': 'keep-alive',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36',
             'Origin': 'https://passport.weibo.cn',
-            'Referer': 'https://passport.weibo.cn/signin/login?entry=mweibo&r=https%3A%2F%2Fweibo.cn%2F&backTitle=%CE%A2%B2%A9&vt='
+            'Referer': 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F'
         }
+        self.home_url = 'https://weibo.com'
         self.login_url = 'https://passport.weibo.cn/sso/login'
-        self.check_url = 'https://passport.weibo.cn/signin/secondverify/check'
-        self.secondverify_url = 'https://passport.weibo.cn/signin/secondverify/ajsend'
+        self.ajsend_url = 'https://passport.weibo.cn/signin/secondverify/ajsend'
+        self.ajcheck_url = 'https://passport.weibo.cn/signin/secondverify/ajcheck'
         self.session.headers.update(self.headers)
 
 
@@ -252,8 +248,7 @@ class weiboScanqr():
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获取二维码
-        timestamp = int(time.time() * 10000)
-        response = self.session.get(self.qrcode_url.format(timestamp))
+        response = self.session.get(self.qrcode_url.format(int(time.time() * 10000)))
         imageurl = re.findall(r'"image":"(.*?)"', response.text)[0].replace('\\', '')
         qrid = re.findall(r'"qrid":"(.*?)"', response.text)[0]
         response = self.session.get(imageurl)
@@ -262,9 +257,9 @@ class weiboScanqr():
         # 检测二维码状态
         while True:
             params = {
-                'entry': 'homepage',
+                'entry': 'weibo',
                 'qrid': qrid,
-                'callback': 'STK_%s' % timestamp
+                'callback': 'STK_%s' % int(time.time() * 10000)
             }
             response = self.session.get(self.check_url, params=params)
             if 'succ' in response.text:
@@ -284,8 +279,10 @@ class weiboScanqr():
         }
         response = self.session.get(self.login_url, params=params)
         response_json = response.json()
+        for url in response_json['crossDomainUrlList']:
+            response = self.session.get(url, verify=False)
         # 登录成功
-        response = self.session.get(self.home_url % response_json['uid'])
+        response = self.session.get(self.home_url)
         print('[INFO]: Account -> %s, login successfully' % response_json.get('nick', username))
         infos_return = {'username': username}
         infos_return.update(response_json)
@@ -293,9 +290,9 @@ class weiboScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
         }
-        self.home_url = 'https://weibo.com/u/%s/home'
+        self.home_url = 'https://weibo.com'
         self.qrcode_url = 'https://login.sina.com.cn/sso/qrcode/image?entry=homepage&size=128&callback=STK_{}'
         self.check_url = 'https://login.sina.com.cn/sso/qrcode/check'
         self.login_url = 'http://login.sina.com.cn/sso/login.php'
