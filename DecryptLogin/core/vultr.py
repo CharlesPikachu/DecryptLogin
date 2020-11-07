@@ -31,13 +31,13 @@ class vultrPC():
         # 初始化cookies
         response = self.session.get(self.vultr_url)
         # 看看是否需要输入验证码(不支持处理谷歌的点击验证码)
-        is_need_verify_code = False
+        is_need_captcha = False
         s = re.findall(r'captcha\.php\?s=(.*?)"', response.text)
         action = re.findall(r'name="action" value="(.*?)"', response.text)[0]
         if s:
             s = s[0]
-            is_need_verify_code = True
-        if is_need_verify_code:
+            is_need_captcha = True
+        if is_need_captcha:
             response = self.session.get(self.captcha_url.format(s))
             saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
             if crack_captcha_func is None:
@@ -54,7 +54,7 @@ class vultrPC():
                 'username': username,
                 'password': password
                 }
-        if is_need_verify_code:
+        if is_need_captcha:
             data['captcha'] = captcha
         response = self.session.post(self.vultr_url, data=data, headers=self.login_headers)
         # 登录成功

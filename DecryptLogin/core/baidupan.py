@@ -126,7 +126,7 @@ class baidupanPC():
         url = 'https://wappass.baidu.com/passport/authwidget?action=send&tpl=&type={}&token={}&from=&skin=&clientfrom=&adapter=2&updatessn=&bindToSmsLogin=&upsms=&finance='.format(verify_type, token)
         response = self.session.get(url)
         # 输入验证码
-        vcode = input('Please enter the verify code you have accepted: ')
+        vcode = input('Please enter the verification code you have accepted: ')
         # 验证验证码
         headers = {
                     'Connection': 'keep-alive',

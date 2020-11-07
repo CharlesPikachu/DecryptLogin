@@ -30,10 +30,10 @@ class lagouPC():
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 是否需要验证码的flag
-        is_need_verify_code = False
+        is_need_captcha = False
         while True:
             # 需要验证码
-            if is_need_verify_code:
+            if is_need_captcha:
                 response = self.session.get(self.vcode_url.format(time.time()), headers=self.headers)
                 saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
                 if crack_captcha_func is None:
@@ -59,7 +59,7 @@ class lagouPC():
                         'submit': '',
                         'challenge': self.__getChallenge()
                     }
-            if is_need_verify_code:
+            if is_need_captcha:
                 data['request_form_verifyCode'] = captcha
             response = self.session.post(self.login_url, data=data, headers=login_headers)
             response_json = response.json()
@@ -72,7 +72,7 @@ class lagouPC():
                 return infos_return, self.session
             # 需要验证码
             elif response_json['state'] == 10010:
-                is_need_verify_code = True
+                is_need_captcha = True
             # 账号或密码错误
             elif response_json['state'] in [201, 203, 220, 240, 241, 400]:
                 raise RuntimeError('Account -> %s, fail to login, username or password error' % username)

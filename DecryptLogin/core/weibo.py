@@ -191,25 +191,26 @@ class weiboMobile():
         # 安全验证
         elif response_json['retcode'] in [50050011]:
             response = self.session.get(response_json['data']['errurl'])
-            params = {
-                'number': '1',
-                'mask_mobile': username[:2] + '*******' + username[-2:],
-                'msg_type': 'sms'
-            }
-            response = self.session.get(self.ajsend_url, params=params)
-            response_json = response.json()
-            if response_json['retcode'] not in [100000]:
-                raise RuntimeError(response_json.get('msg'))
-            code = input('You have to secondverify your account, please input the sms code your phone received: ')
+            msg_type, tip_content, num_times = 'sms', 'You have to secondverify your account, please input the sms code your phone received: ', 0
+            response_json = self.__sendverificationcode(username, msg_type=msg_type)
+            while response_json['retcode'] not in [100000]:
+                num_times += 1
+                if num_times > 1: raise RuntimeError(response_json.get('msg'))
+                if response_json['retcode'] in [8513]:
+                    msg_type, tip_content = 'private_msg', 'You have to secondverify your account, please input the verification code in your private message: '
+                    response_json = self.__sendverificationcode(username, msg_type=msg_type)
+                    break
+                else:
+                    raise RuntimeError(response_json.get('msg'))
+            code = input(tip_content)
             params = {
                 'code': code,
-                'msg_type': 'sms'
+                'msg_type': msg_type,
             }
             response = self.session.get(self.ajcheck_url, params=params)
             response_json = response.json()
-            for url in response_json['crossDomainUrlList']:
-                response = self.session.get(url, verify=False)
-            response = self.session.get(self.home_url)
+            if response_json['retcode'] not in [100000]:
+                raise RuntimeError(response_json.get('msg'))
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -217,6 +218,18 @@ class weiboMobile():
         # 其他错误
         else:
             raise RuntimeError(response_json['msg'])
+    '''安全验证, 发送验证码'''
+    def __sendverificationcode(self, username=None, msg_type='sms'):
+        assert msg_type in ['sms', 'private_msg']
+        params = {}
+        if msg_type == 'sms':
+            params = {
+                'number': '1',
+                'mask_mobile': username[:2] + '*******' + username[-2:],
+            }
+        params['msg_type'] = msg_type
+        response = self.session.get(self.ajsend_url, params=params)
+        return response.json()
     '''初始化'''
     def __initialize(self):
         self.headers = {
@@ -227,7 +240,6 @@ class weiboMobile():
             'Origin': 'https://passport.weibo.cn',
             'Referer': 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F'
         }
-        self.home_url = 'https://weibo.com'
         self.login_url = 'https://passport.weibo.cn/sso/login'
         self.ajsend_url = 'https://passport.weibo.cn/signin/secondverify/ajsend'
         self.ajcheck_url = 'https://passport.weibo.cn/signin/secondverify/ajcheck'

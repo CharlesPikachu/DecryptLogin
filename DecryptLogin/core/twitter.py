@@ -49,7 +49,7 @@ class twitterMobile():
         response_text = response.text
         # 需要安全验证
         if '/account/login_challenge?challenge_id' in response_text:
-            challenge_response = input('This login is detected as suspicious activity, input the verify code sended to your binded email: ')
+            challenge_response = input('This login is detected as suspicious activity, input the verification code sended to your binded email: ')
             enc_user_id = re.findall(r'enc_user_id=(.*?)">', response_text)[0]
             challenge_id = re.findall(r'challenge_id=(.*?)&amp;', response_text)[0]
             data = {

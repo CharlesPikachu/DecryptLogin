@@ -157,7 +157,7 @@ class toutiaoMobile():
                         }
                 response = self.session.post(url=self.send_code_url, data=data, params=params, headers=self.headers)
                 # ----提交手机验证码
-                code = input('This login is detected to be at risk, please enter the verify code you have accepted: ')
+                code = input('This login is detected to be at risk, please enter the sms code you have accepted: ')
                 params = {
                             'account_sdk_version': '341',
                             'device_id': str(random.randrange(10**10, 10**11)),
