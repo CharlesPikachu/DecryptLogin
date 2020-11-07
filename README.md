@@ -44,7 +44,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
 |  Douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
 |  Migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
-|  Qunar           | ✗       | ✗           | ✗           | 去哪儿旅行        |
+|  Qunar           | ✓       | ✗           | ✗           | 去哪儿旅行        |
 |  Mieshop         | ✓       | ✗           | ✗           | 小米商城          |
 |  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |

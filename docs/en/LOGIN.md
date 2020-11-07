@@ -559,7 +559,18 @@ This mode is temporarily not supported.
 
 ### Qunar
 #### PC Mode
-This mode is temporarily not supported.
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.qunar(username, password, 'pc')
+```
+Support the user-defined crack_captcha_func to identify the digital/letter captcha automatically, for example:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
 #### Mobile Mode
 This mode is temporarily not supported.
 #### Scanqr Mode

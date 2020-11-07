@@ -556,7 +556,18 @@ infos_return, session = lg.migu(username, password, 'pc')
 
 ### 去哪儿旅行
 #### PC端登录
-暂不支持PC端登录。
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.qunar(username, password, 'pc')
+```
+支持用户自定义crack_captcha_func识别PC端登录的数字字母验证码, 例如:
+```python
+def cracker(imagepath):
+    return 'LOVE'
+```
 #### 移动端登录
 暂不支持移动端登录。
 #### 扫码登录

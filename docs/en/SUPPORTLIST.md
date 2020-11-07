@@ -33,7 +33,7 @@
 |  Xiami           | ✓       | ✗           | ✗           |
 |  Douyu           | ✗       | ✗           | ✓           |
 |  Migu            | ✓       | ✗           | ✗           |
-|  Qunar           | ✗       | ✗           | ✗           |
+|  Qunar           | ✓       | ✗           | ✗           |
 |  Mieshop         | ✓       | ✗           | ✗           |
 |  Mpweixin        | ✓       | ✗           | ✗           |
 |  Baidutieba      | ✗       | ✗           | ✓           |
