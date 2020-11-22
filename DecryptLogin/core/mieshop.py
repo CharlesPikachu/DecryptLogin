@@ -36,17 +36,17 @@ class mieshopPC():
         callback = re.findall(r'callback:"(.*?)"', response.text)[0]
         # 模拟登录
         data = {
-                    '_json': 'true',
-                    'callback': callback,
-                    'sid': 'mi_eshop',
-                    'qs': qs,
-                    '_sign': sign,
-                    'serviceParam': '{"checkSafePhone":false}',
-                    'user': username,
-                    'hash': hashlib.md5(password.encode(encoding='utf-8')).hexdigest().upper(),
-                    'cc': '',
-                    'log': ''
-                }
+            '_json': 'true',
+            'callback': callback,
+            'sid': 'mi_eshop',
+            'qs': qs,
+            '_sign': sign,
+            'serviceParam': '{"checkSafePhone":false}',
+            'user': username,
+            'hash': hashlib.md5(password.encode(encoding='utf-8')).hexdigest().upper(),
+            'cc': '',
+            'log': ''
+        }
         response = self.session.post(self.login_url % (int(time.time()*1000)), headers=self.login_headers, data=data)
         response_json = json.loads(response.text.replace('&&&START&&&', ''))
         # 登录成功
@@ -64,16 +64,16 @@ class mieshopPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                        'Host': 'account.xiaomi.com'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'account.xiaomi.com'
+        }
         self.login_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                                'Host': 'account.xiaomi.com',
-                                'Origin': 'https://account.xiaomi.com',
-                                'Accept': '*/*',
-                                'Referer': 'https://account.xiaomi.com/pass/serviceLogin?sid=mi_eshop',
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'account.xiaomi.com',
+            'Origin': 'https://account.xiaomi.com',
+            'Accept': '*/*',
+            'Referer': 'https://account.xiaomi.com/pass/serviceLogin?sid=mi_eshop',
+        }
         self.sign_url = 'https://account.xiaomi.com/pass/serviceLogin?sid=mi_eshop'
         self.login_url = 'https://account.xiaomi.com/pass/serviceLoginAuth2?_dc=%s'
         self.session.headers.update(self.headers)

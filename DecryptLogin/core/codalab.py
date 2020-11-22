@@ -29,12 +29,12 @@ class codalabPC():
         csrfmiddlewaretoken = re.findall(r"name='csrfmiddlewaretoken' value='(.*?)'", response.text)[0]
         # 构造登录请求
         data = {
-                    'csrfmiddlewaretoken': csrfmiddlewaretoken,
-                    'login': username,
-                    'password': password,
-                    'remember': 'on',
-                    'next': '/'
-                }
+            'csrfmiddlewaretoken': csrfmiddlewaretoken,
+            'login': username,
+            'password': password,
+            'remember': 'on',
+            'next': '/'
+        }
         self.session.headers.update({'Referer': self.token_url})
         response = self.session.post(self.login_url, data=data, allow_redirects=False)
         response = self.session.get(self.home_url)
@@ -51,9 +51,9 @@ class codalabPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                            'Host': 'competitions.codalab.org'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'competitions.codalab.org'
+        }
         self.token_url = 'https://competitions.codalab.org/accounts/login/?next=/'
         self.home_url = 'https://competitions.codalab.org/'
         self.login_url = 'https://competitions.codalab.org/accounts/login/'

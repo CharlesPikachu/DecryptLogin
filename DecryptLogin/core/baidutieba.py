@@ -47,13 +47,13 @@ class baidutiebaScanQR():
         # 获得登录二维码
         timestamp = str(int(time.time() * 1000))
         params = {
-                    'lp': 'pc',
-                    'qrloginfrom': 'pc',
-                    'apiver': 'v3',
-                    'tt': timestamp,
-                    'tpl': 'tb',
-                    '_': timestamp
-                }
+            'lp': 'pc',
+            'qrloginfrom': 'pc',
+            'apiver': 'v3',
+            'tt': timestamp,
+            'tpl': 'tb',
+            '_': timestamp
+        }
         response = self.session.get(self.getqrcode_url, params=params)
         imgurl = response.json()['imgurl']
         sign = response.json()['sign']
@@ -64,13 +64,13 @@ class baidutiebaScanQR():
         while True:
             timestamp = str(int(time.time() * 1000))
             params = {
-                        'channel_id': sign,
-                        'tpl': 'tb',
-                        'apiver': 'v3',
-                        'callback': '',
-                        'tt': timestamp,
-                        '_': timestamp
-                    }
+                'channel_id': sign,
+                'tpl': 'tb',
+                'apiver': 'v3',
+                'callback': '',
+                'tt': timestamp,
+                '_': timestamp
+            }
             response = self.session.get(self.unicast_url, params=params)
             response_json = json.loads(response.text.replace('(', '').replace(')', ''))
             # --二维码失效或请求有误
@@ -84,17 +84,17 @@ class baidutiebaScanQR():
                 timestamp = str(int(time.time() * 1000))
                 response_json = json.loads(response_json['channel_v'])
                 params = {
-                            'v': timestamp,
-                            'bduss': response_json['v'],
-                            'u': 'https://tieba.baidu.com/index.html',
-                            'loginVersion': 'v4',
-                            'qrcode': '1',
-                            'tpl': 'tb',
-                            'apiver': 'v3',
-                            'tt': timestamp,
-                            'alg': 'v1',
-                            'time': timestamp[10:]
-                        }
+                    'v': timestamp,
+                    'bduss': response_json['v'],
+                    'u': 'https://tieba.baidu.com/index.html',
+                    'loginVersion': 'v4',
+                    'qrcode': '1',
+                    'tpl': 'tb',
+                    'apiver': 'v3',
+                    'tt': timestamp,
+                    'alg': 'v1',
+                    'time': timestamp[10:]
+                }
                 response = self.session.get(self.login_url, params=params)
                 response.encoding = 'utf-8'
                 print(response.text)
@@ -113,8 +113,8 @@ class baidutiebaScanQR():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
+        }
         self.getqrcode_url = 'https://passport.baidu.com/v2/api/getqrcode'
         self.unicast_url = 'https://passport.baidu.com/channel/unicast'
         self.login_url = 'https://passport.baidu.com/v3/login/main/qrbdusslogin'

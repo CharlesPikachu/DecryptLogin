@@ -5,6 +5,6 @@ from .cookies import saveSessionCookies, loadSessionCookies
 
 '''define import all'''
 __all__ = [
-            'showImage', 'removeImage', 'saveImage',
-            'saveSessionCookies', 'loadSessionCookies'
-        ]
+    'showImage', 'removeImage', 'saveImage',
+    'saveSessionCookies', 'loadSessionCookies',
+]

@@ -39,9 +39,9 @@ class bilibiliPC():
             # 获得key值
             appkey = '1d8b6e7d45233436'
             data = {
-                        'appkey': appkey,
-                        'sign': self.__calcSign('appkey={}'.format(appkey))
-                    }
+                'appkey': appkey,
+                'sign': self.__calcSign('appkey={}'.format(appkey))
+            }
             response = self.session.post(self.getkey_url, data=data)
             response_json = response.json()
             key_hash = response_json['data']['hash']
@@ -80,11 +80,11 @@ class bilibiliPC():
     '''初始化'''
     def __initialize(self):
         self.login_headers = {
-                                'Content-type': 'application/x-www-form-urlencoded'
-                            }
+            'Content-type': 'application/x-www-form-urlencoded'
+        }
         self.captcha_headers = {
-                                'Host': 'passport.bilibili.com'
-                            }
+            'Host': 'passport.bilibili.com'
+        }
         self.getkey_url = 'https://passport.bilibili.com/api/oauth2/getKey'
         self.login_url = 'https://passport.bilibili.com/api/v3/oauth2/login'
         self.captcha_url = 'https://passport.bilibili.com/captcha'
@@ -116,9 +116,9 @@ class bilibiliMobile():
             # 获得key值
             appkey = 'bca7e84c2d947ac6'
             data = {
-                        'appkey': appkey,
-                        'sign': self.__calcSign('appkey={}'.format(appkey))
-                    }
+                'appkey': appkey,
+                'sign': self.__calcSign('appkey={}'.format(appkey))
+            }
             response = self.session.post(self.getkey_url, data=data)
             response_json = response.json()
             key_hash = response_json['data']['hash']
@@ -157,11 +157,11 @@ class bilibiliMobile():
     '''初始化'''
     def __initialize(self):
         self.login_headers = {
-                                'Content-type': 'application/x-www-form-urlencoded'
-                            }
+            'Content-type': 'application/x-www-form-urlencoded'
+        }
         self.captcha_headers = {
-                                'Host': 'passport.bilibili.com'
-                            }
+            'Host': 'passport.bilibili.com'
+        }
         self.getkey_url = 'https://passport.bilibili.com/api/oauth2/getKey'
         self.login_url = 'https://passport.bilibili.com/api/v3/oauth2/login'
         self.captcha_url = 'https://passport.bilibili.com/captcha'

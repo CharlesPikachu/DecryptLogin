@@ -48,12 +48,12 @@ class vultrPC():
             removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
         # 模拟登录
         data = {
-                'action': action,
-                'login_type': 'normal',
-                'token': self.__calcToken(action),
-                'username': username,
-                'password': password
-                }
+            'action': action,
+            'login_type': 'normal',
+            'token': self.__calcToken(action),
+            'username': username,
+            'password': password
+        }
         if is_need_captcha:
             data['captcha'] = captcha
         response = self.session.post(self.vultr_url, data=data, headers=self.login_headers)
@@ -79,12 +79,12 @@ class vultrPC():
     def __initialize(self):
         self.headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'}
         self.login_headers = {
-                                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                                'referer': 'https://my.vultr.com/',
-                                'origin': 'https://my.vultr.com',
-                                'accept-language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
-                                'upgrade-insecure-requests': '1'
-                            }
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            'referer': 'https://my.vultr.com/',
+            'origin': 'https://my.vultr.com',
+            'accept-language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+            'upgrade-insecure-requests': '1'
+        }
         self.vultr_url = 'https://my.vultr.com/'
         self.captcha_url = 'https://my.vultr.com/_images/captcha.php?s={}'
         self.session.headers.update(self.headers)

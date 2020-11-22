@@ -37,14 +37,14 @@ class twitterMobile():
         authenticity_token = re.findall(r'<input name="authenticity_token" type="hidden" value="(.*?)"', response.text)[0]
         # 访问login_url进行模拟登录
         data = {
-                    'authenticity_token': authenticity_token,
-                    'session[username_or_email]': username,
-                    'session[password]': password,
-                    'remember_me': '1',
-                    'wfa': '1',
-                    'commit': 'Log in',
-                    'ui_metrics': ''
-                }
+            'authenticity_token': authenticity_token,
+            'session[username_or_email]': username,
+            'session[password]': password,
+            'remember_me': '1',
+            'wfa': '1',
+            'commit': 'Log in',
+            'ui_metrics': ''
+        }
         response = self.session.post(self.login_url, headers=self.login_headers, data=data, allow_redirects=True)
         response_text = response.text
         # 需要安全验证
@@ -53,15 +53,15 @@ class twitterMobile():
             enc_user_id = re.findall(r'enc_user_id=(.*?)">', response_text)[0]
             challenge_id = re.findall(r'challenge_id=(.*?)&amp;', response_text)[0]
             data = {
-                        'authenticity_token': authenticity_token,
-                        'challenge_id': challenge_id,
-                        'enc_user_id': enc_user_id,
-                        'challenge_type': 'TemporaryPassword',
-                        'platform': 'web',
-                        'redirect_after_login': '/',
-                        'remember_me': 'true',
-                        'challenge_response': challenge_response
-                    }
+                'authenticity_token': authenticity_token,
+                'challenge_id': challenge_id,
+                'enc_user_id': enc_user_id,
+                'challenge_type': 'TemporaryPassword',
+                'platform': 'web',
+                'redirect_after_login': '/',
+                'remember_me': 'true',
+                'challenge_response': challenge_response
+            }
             response = self.session.post(self.challenge_url, headers=self.login_headers, data=data, allow_redirects=True)
             response_text = response.text.replace('&quot', '').replace(';', '')
         # 登录成功
@@ -75,13 +75,13 @@ class twitterMobile():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10'
-                    }
+            'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10'
+        }
         self.login_headers = {
-                                'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10',
-                                'origin': 'https://mobile.twitter.com',
-                                'referer': 'https://mobile.twitter.com/login'
-                            }
+            'user-agent': 'Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.32052/29.3417; U; en) Presto/2.8.119 Version/11.10',
+            'origin': 'https://mobile.twitter.com',
+            'referer': 'https://mobile.twitter.com/login'
+        }
         self.home_url = 'https://mobile.twitter.com/session/new'
         self.login_url = 'https://mobile.twitter.com/sessions'
         self.challenge_url = 'https://mobile.twitter.com/account/login_challenge'

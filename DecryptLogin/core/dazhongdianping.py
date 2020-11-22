@@ -79,18 +79,18 @@ class dazhongdianpingScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+        }
         self.status_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
-                                'Accept':'*/*',
-                                'Accept-Encoding':'gzip, deflate, br',
-                                'Accept-Language':'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7'
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+            'Accept':'*/*',
+            'Accept-Encoding':'gzip, deflate, br',
+            'Accept-Language':'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7'
+        }
         self.qr_headers = {
-                            'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'
-                        }
+            'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'
+        }
         self.home_url = 'http://www.dianping.com/'
         self.getqrcodeimg_url = 'https://account.dianping.com/account/getqrcodeimg?'
         self.queryqrcodestatus_url = 'https://account.dianping.com/account/ajax/queryqrcodestatus'

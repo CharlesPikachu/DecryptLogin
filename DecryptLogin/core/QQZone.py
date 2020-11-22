@@ -51,38 +51,38 @@ class QQZoneScanqr():
         all_cookies = {}
         # 获取pt_login_sig
         params = {
-                    'proxy_url': 'https://qzs.qq.com/qzone/v6/portal/proxy.html',
-                    'daid': '5',
-                    'hide_title_bar': '1',
-                    'low_login': '0',
-                    'qlogin_auto_login': '1',
-                    'no_verifyimg': '1',
-                    'link_target': 'blank',
-                    'appid': '549000912',
-                    'style': '22',
-                    'target': 'self',
-                    's_url': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
-                    'pt_qr_app': '手机QQ空间',
-                    'pt_qr_link': 'https://z.qzone.com/download.html',
-                    'self_regurl': 'https://qzs.qq.com/qzone/v6/reg/index.html',
-                    'pt_qr_help_link': 'https://z.qzone.com/download.html',
-                    'pt_no_auth': '0'
-                }
+            'proxy_url': 'https://qzs.qq.com/qzone/v6/portal/proxy.html',
+            'daid': '5',
+            'hide_title_bar': '1',
+            'low_login': '0',
+            'qlogin_auto_login': '1',
+            'no_verifyimg': '1',
+            'link_target': 'blank',
+            'appid': '549000912',
+            'style': '22',
+            'target': 'self',
+            's_url': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
+            'pt_qr_app': '手机QQ空间',
+            'pt_qr_link': 'https://z.qzone.com/download.html',
+            'self_regurl': 'https://qzs.qq.com/qzone/v6/reg/index.html',
+            'pt_qr_help_link': 'https://z.qzone.com/download.html',
+            'pt_no_auth': '0'
+        }
         response = self.session.get(self.xlogin_url, headers=self.headers, verify=False, params=params)
         all_cookies.update(requests.utils.dict_from_cookiejar(response.cookies))
         pt_login_sig = all_cookies['pt_login_sig']
         # 获得ptqrtoken
         params = {
-                    'appid': '549000912',
-                    'e': '2',
-                    'l': 'M',
-                    's': '3',
-                    'd': '72',
-                    'v': '4',
-                    't': str(random.random()),
-                    'daid': '5',
-                    'pt_3rd_aid': '0'
-                }
+            'appid': '549000912',
+            'e': '2',
+            'l': 'M',
+            's': '3',
+            'd': '72',
+            'v': '4',
+            't': str(random.random()),
+            'daid': '5',
+            'pt_3rd_aid': '0'
+        }
         response = self.session.get(self.qrshow_url, headers=self.headers, verify=False, params=params)
         all_cookies.update(requests.utils.dict_from_cookiejar(response.cookies))
         ptqrtoken = self.__decryptQrsig(all_cookies['qrsig'])
@@ -93,24 +93,24 @@ class QQZoneScanqr():
         # 检测二维码状态
         while True:
             params = {
-                        'u1': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
-                        'ptqrtoken': ptqrtoken,
-                        'ptredirect': '0',
-                        'h': '1',
-                        't': '1',
-                        'g': '1',
-                        'from_ui': '1',
-                        'ptlang': '2052',
-                        'action': '0-0-' + str(int(time.time())),
-                        'js_ver': '19112817',
-                        'js_type': '1',
-                        'login_sig': pt_login_sig,
-                        'pt_uistyle': '40',
-                        'aid': '549000912',
-                        'daid': '5',
-                        'ptdrvs': 'AnyQUpMB2syC5zV6V4JDelrCvoAMh-HP6Xy5jvKJzHBIplMBK37jV1o3JjBWmY7j*U1eD8quewY_',
-                        'has_onekey': '1'
-                    }
+                'u1': 'https://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
+                'ptqrtoken': ptqrtoken,
+                'ptredirect': '0',
+                'h': '1',
+                't': '1',
+                'g': '1',
+                'from_ui': '1',
+                'ptlang': '2052',
+                'action': '0-0-' + str(int(time.time())),
+                'js_ver': '19112817',
+                'js_type': '1',
+                'login_sig': pt_login_sig,
+                'pt_uistyle': '40',
+                'aid': '549000912',
+                'daid': '5',
+                'ptdrvs': 'AnyQUpMB2syC5zV6V4JDelrCvoAMh-HP6Xy5jvKJzHBIplMBK37jV1o3JjBWmY7j*U1eD8quewY_',
+                'has_onekey': '1'
+            }
             response = self.session.get(self.qrlogin_url, headers=self.headers, verify=False, params=params)
             if '登录成功' in response.text:
                 break
@@ -138,8 +138,8 @@ class QQZoneScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+        }
         self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
         self.qrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
         self.qrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'

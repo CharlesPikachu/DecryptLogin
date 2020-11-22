@@ -33,11 +33,11 @@ class mpweixinPC():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 模拟登录
         data = {
-                    'username': username,
-                    'pwd': hashlib.md5(password.encode('utf-8')).hexdigest(),
-                    'imgcode': '',
-                    'f': 'json'
-            }
+            'username': username,
+            'pwd': hashlib.md5(password.encode('utf-8')).hexdigest(),
+            'imgcode': '',
+            'f': 'json'
+        }
         response = self.session.post(self.startlogin_url, data=data, verify=False)
         response_json = response.json()
         # 请求有误
@@ -69,10 +69,10 @@ class mpweixinPC():
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         # 模拟登录
         data = {
-                'f': 'json',
-                'ajax': '1',
-                'random': str(random.random())
-            }
+            'f': 'json',
+            'ajax': '1',
+            'random': str(random.random())
+        }
         response = self.session.post(self.login_url, data=data, verify=False)
         response_json = response.json()
         # 登录成功
@@ -87,9 +87,9 @@ class mpweixinPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                            'Referer': 'https://mp.weixin.qq.com/'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Referer': 'https://mp.weixin.qq.com/'
+        }
         self.startlogin_url = 'https://mp.weixin.qq.com/cgi-bin/bizlogin?action=startlogin'
         self.getqrcode_url = 'https://mp.weixin.qq.com/cgi-bin/loginqrcode?action=getqrcode&param=4300'
         self.ask_url = 'https://mp.weixin.qq.com/cgi-bin/loginqrcode?action=ask&token=&lang=zh_CN&f=json&ajax=1'

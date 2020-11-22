@@ -39,9 +39,9 @@ class weiboPC():
             # --是否需要验证码
             if is_need_captcha:
                 params = {
-                            'r': str(int(random.random()*100000000)),
-                            's': '0'
-                        }
+                    'r': str(int(random.random()*100000000)),
+                    's': '0'
+                }
                 response = self.session.get(self.pin_url, headers=self.headers, params=params)
                 saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
                 if crack_captcha_func is None:
@@ -53,13 +53,13 @@ class weiboPC():
             # --请求prelogin_url
             su = base64.b64encode(username.encode('utf-8'))
             params = {
-                        'entry': 'weibo',
-                        'su': su,
-                        'rsakt': 'mod',
-                        'checkpin': '1',
-                        'client': 'ssologin.js(v1.4.19)',
-                        '_': str(int(time.time()*1000))
-                    }
+                'entry': 'weibo',
+                'su': su,
+                'rsakt': 'mod',
+                'checkpin': '1',
+                'client': 'ssologin.js(v1.4.19)',
+                '_': str(int(time.time()*1000))
+            }
             response = self.session.get(self.prelogin_url, headers=self.headers, params=params, verify=False)
             response_json = response.json()
             if response_json.get('msg', '') == 'system error':
@@ -73,28 +73,28 @@ class weiboPC():
             sp = rsa.encrypt((str(servertime)+'\t'+nonce+'\n'+password).encode('utf-8'), publickey)
             sp = b2a_hex(sp)
             data_post = {
-                            'entry': 'account',
-                            'gateway': '1',
-                            'from': '',
-                            'savestate': '30',
-                            'useticket': '0',
-                            'useticket': '1',
-                            'pagerefer': '',
-                            'vsnf': '1',
-                            'su': su,
-                            'service': 'account',
-                            'servertime': str(int(servertime)+random.randint(1, 20)),
-                            'nonce': nonce,
-                            'pwencode': 'rsa2',
-                            'rsakv': rsakv,
-                            'sp': sp,
-                            'sr': '1536 * 864',
-                            'encoding': 'UTF - 8',
-                            'cdult': '3',
-                            'domain': 'sina.com.cn',
-                            'prelt': '95',
-                            'returntype': 'TEXT'
-                        }
+                'entry': 'account',
+                'gateway': '1',
+                'from': '',
+                'savestate': '30',
+                'useticket': '0',
+                'useticket': '1',
+                'pagerefer': '',
+                'vsnf': '1',
+                'su': su,
+                'service': 'account',
+                'servertime': str(int(servertime)+random.randint(1, 20)),
+                'nonce': nonce,
+                'pwencode': 'rsa2',
+                'rsakv': rsakv,
+                'sp': sp,
+                'sr': '1536 * 864',
+                'encoding': 'UTF - 8',
+                'cdult': '3',
+                'domain': 'sina.com.cn',
+                'prelt': '95',
+                'returntype': 'TEXT'
+            }
             if is_need_captcha:
                 data_post['door'] = captcha
             response = self.session.post(self.ssologin_url, headers=self.headers, data=data_post, allow_redirects=False, verify=False)
@@ -117,13 +117,13 @@ class weiboPC():
         ticket, ssosavestate = re.findall(r'ticket=(.*?)&ssosavestate=(.*?)"', response.text)[0]
         # 请求login_url和home_url, 进一步验证登录是否成功
         params = {
-                    'ticket': ticket,
-                    'ssosavestate': str(ssosavestate),
-                    'callback': 'sinaSSOController.doCrossDomainCallBack',
-                    'scriptId': 'ssoscript0',
-                    'client': 'ssologin.js(v1.4.19)',
-                    '_': str(int(time.time() * 1000))
-                }
+            'ticket': ticket,
+            'ssosavestate': str(ssosavestate),
+            'callback': 'sinaSSOController.doCrossDomainCallBack',
+            'scriptId': 'ssoscript0',
+            'client': 'ssologin.js(v1.4.19)',
+            '_': str(int(time.time() * 1000))
+        }
         params = '&'.join(['%s=%s' % (key, value) for key, value in params.items()])
         response = self.session.get(self.login_url+params, headers=self.headers, verify=False)
         uid = re.findall(r'"uniqueid":"(.*?)"', response.text)[0]
@@ -138,8 +138,8 @@ class weiboPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+        }
         self.pin_url = 'https://login.sina.com.cn/cgi/pin.php'
         self.prelogin_url = 'https://login.sina.com.cn/sso/prelogin.php?'
         self.ssologin_url = 'https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.19)'
@@ -161,22 +161,22 @@ class weiboMobile():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 模拟登录
         data = {
-                'username': username,
-                'password': password,
-                'savestate': '1',
-                'r': 'https://m.weibo.cn/',
-                'ec': '0',
-                'pagerefer': 'https://m.weibo.cn/',
-                'entry': 'mweibo',
-                'wentry': '',
-                'loginfrom': '',
-                'client_id': '',
-                'code': '',
-                'qq': '',
-                'mainpageflag': '1',
-                'hff': '',
-                'hfp': ''
-            }
+            'username': username,
+            'password': password,
+            'savestate': '1',
+            'r': 'https://m.weibo.cn/',
+            'ec': '0',
+            'pagerefer': 'https://m.weibo.cn/',
+            'entry': 'mweibo',
+            'wentry': '',
+            'loginfrom': '',
+            'client_id': '',
+            'code': '',
+            'qq': '',
+            'mainpageflag': '1',
+            'hff': '',
+            'hfp': ''
+        }
         response = self.session.post(self.login_url, headers=self.login_headers, data=data)
         response_json = response.json()
         # 登录成功

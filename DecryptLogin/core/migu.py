@@ -735,18 +735,18 @@ class miguPC():
         finger_print = ctx.call('getFingerPrint', publickey)
         # 模拟登录
         data = {
-                    'sourceID': '208003',
-                    'appType': '0',
-                    'relayState': '',
-                    'loginID': ctx.call('getRsaAccout', username, publickey),
-                    'enpassword': ctx.call('getEnpassword', password, publickey),
-                    'captcha': '',
-                    'imgcodeType': '1',
-                    'rememberMeBox': '1',
-                    'fingerPrint': finger_print.get('details', ''),
-                    'fingerPrintDetail': finger_print.get('details', ''),
-                    'isAsync': 'true'
-                }
+            'sourceID': '208003',
+            'appType': '0',
+            'relayState': '',
+            'loginID': ctx.call('getRsaAccout', username, publickey),
+            'enpassword': ctx.call('getEnpassword', password, publickey),
+            'captcha': '',
+            'imgcodeType': '1',
+            'rememberMeBox': '1',
+            'fingerPrint': finger_print.get('details', ''),
+            'fingerPrintDetail': finger_print.get('details', ''),
+            'isAsync': 'true'
+        }
         response = self.session.post(self.login_url, data=data)
         response_json = response.json()
         # 登录成功
@@ -764,9 +764,9 @@ class miguPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                        'Origin': 'https://passport.migu.cn'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            'Origin': 'https://passport.migu.cn'
+        }
         self.publickey_url = 'https://passport.migu.cn/password/publickey'
         self.login_url = 'https://passport.migu.cn/authn'
         self.session.headers.update(self.headers)

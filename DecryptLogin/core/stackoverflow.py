@@ -28,19 +28,19 @@ class stackoverflowPC():
         fkey = self.__getFkey()
         # 模拟登录
         data = {
-                'openid_identifier': '',
-                'password': password,
-                'fkey': fkey,
-                'email': username,
-                'oauth_server': '',
-                'oauth_version': '',
-                'openid_username': '',
-                'ssrc': 'head'
-            }
+            'openid_identifier': '',
+            'password': password,
+            'fkey': fkey,
+            'email': username,
+            'oauth_server': '',
+            'oauth_version': '',
+            'openid_username': '',
+            'ssrc': 'head'
+        }
         params = {
-                'ssrc': 'head',
-                'returnurl': 'https://stackoverflow.com/'
-            }
+            'ssrc': 'head',
+            'returnurl': 'https://stackoverflow.com/'
+        }
         response = self.session.post(self.login_url, data=data, params=params)
         # 登录成功
         if response.history:
@@ -55,18 +55,18 @@ class stackoverflowPC():
     '''获得fkey值'''
     def __getFkey(self):
         params = {
-                    'ssrc': 'head',
-                    'returnurl': 'https://stackoverflow.com/'
-                }
+            'ssrc': 'head',
+            'returnurl': 'https://stackoverflow.com/'
+        }
         response = self.session.get(self.login_url, params=params)
         fkey = re.findall(r'"fkey":"([^"]+)"', response.text)[0]
         return fkey
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
         self.login_url = 'https://stackoverflow.com/users/login'
         self.home_url = 'https://stackoverflow.com/'
         self.session.headers.update(self.headers)

@@ -124,9 +124,9 @@ class cloud189PC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
-                        'Referer': 'https://open.e.189.cn/',
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+            'Referer': 'https://open.e.189.cn/',
+        }
         self.udb_login_url = 'https://cloud.189.cn/udb/udb_login.jsp'
         self.needcaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/needcaptcha.do'
         self.picCaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/picCaptcha.do'

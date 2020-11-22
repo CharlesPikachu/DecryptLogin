@@ -41,21 +41,21 @@ class eSurfingPC():
         # 请求loginSubmit_url进行模拟登录
         self.login_headers.update({'Referer': self.unifyAccountLogin_url, 'REQID': req_id, 'lt': lt})
         data = {
-                    'appKey': app_key,
-                    'accountType': account_type,
-                    'validateCode': '',
-                    'captchaToken': captcha_token,
-                    'returnUrl': 'https://e.189.cn/user/loginMiddle.do?returnUrlMid=https://e.189.cn/user/index.do',
-                    'mailSuffix': '',
-                    'dynamicCheck': 'FALSE',
-                    'clientType': client_type,
-                    'cb_SaveName': '1',
-                    'isOauth2': 'false',
-                    'state': '',
-                    'paramId': param_id,
-                    'userName': self.__encrypt(j_rsakey, username),
-                    'password': self.__encrypt(j_rsakey, password)
-                }
+            'appKey': app_key,
+            'accountType': account_type,
+            'validateCode': '',
+            'captchaToken': captcha_token,
+            'returnUrl': 'https://e.189.cn/user/loginMiddle.do?returnUrlMid=https://e.189.cn/user/index.do',
+            'mailSuffix': '',
+            'dynamicCheck': 'FALSE',
+            'clientType': client_type,
+            'cb_SaveName': '1',
+            'isOauth2': 'false',
+            'state': '',
+            'paramId': param_id,
+            'userName': self.__encrypt(j_rsakey, username),
+            'password': self.__encrypt(j_rsakey, password)
+        }
         response = self.session.post(self.loginSubmit_url, headers=self.login_headers, data=data)
         response_json = response.json()
         # 登录成功
@@ -106,16 +106,16 @@ class eSurfingPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+        }
         self.login_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                                'Host': 'open.e.189.cn',
-                                'Origin': 'https://open.e.189.cn',
-                                'Referer': '',
-                                'REQID': '',
-                                'lt': ''
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Host': 'open.e.189.cn',
+            'Origin': 'https://open.e.189.cn',
+            'Referer': '',
+            'REQID': '',
+            'lt': ''
+        }
         self.home_url = 'https://e.189.cn/index.do'
         self.loginSubmit_url = 'https://open.e.189.cn/api/logbox/oauth2/loginSubmit.do'
         self.unifyAccountLogin_url = 'https://open.e.189.cn/api/logbox/oauth2/unifyAccountLogin.do?sign={}&appId={}&paras={}&format={}&clientType={}&version={}'

@@ -52,13 +52,13 @@ class lagouPC():
             password = hashlib.md5(password.encode('utf-8')).hexdigest()
             # 请求login_url
             data = {
-                        'isValidate': 'true',
-                        'username': username,
-                        'password': password,
-                        'request_form_verifyCode': '',
-                        'submit': '',
-                        'challenge': self.__getChallenge()
-                    }
+                'isValidate': 'true',
+                'username': username,
+                'password': password,
+                'request_form_verifyCode': '',
+                'submit': '',
+                'challenge': self.__getChallenge()
+            }
             if is_need_captcha:
                 data['request_form_verifyCode'] = captcha
             response = self.session.post(self.login_url, data=data, headers=login_headers)
@@ -85,9 +85,9 @@ class lagouPC():
         token = re.findall(r"window.X_Anti_Forge_Token = '(.*?)';", response.text)[0]
         code = re.findall(r"window.X_Anti_Forge_Code = '(.*?)';", response.text)[0]
         anit_forge = {
-                            'X-Anit-Forge-Code': code,
-                            'X-Anit-Forge-Token': token
-                        }
+            'X-Anit-Forge-Code': code,
+            'X-Anit-Forge-Token': token
+        }
         return anit_forge
     '''验证ticket'''
     def __verifyTicket(self):
@@ -110,17 +110,17 @@ class lagouPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                            'Referer': 'https://passport.lagou.com/login/login.html',
-                            'X-Requested-With': 'XMLHttpRequest',
-                            'Host': 'passport.lagou.com',
-                            'Origin': 'https://passport.lagou.com'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Referer': 'https://passport.lagou.com/login/login.html',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Host': 'passport.lagou.com',
+            'Origin': 'https://passport.lagou.com'
+        }
         self.verify_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                                'Host': 'passport.lagou.com',
-                                'Referer': 'https://passport.lagou.com/login/login.html'
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Host': 'passport.lagou.com',
+            'Referer': 'https://passport.lagou.com/login/login.html'
+        }
         self.home_url = 'https://passport.lagou.com/login/login.html'
         self.login_url = 'https://passport.lagou.com/login/login.json'
         self.challenge_url = 'https://api.geetest.com/gt_judgement'

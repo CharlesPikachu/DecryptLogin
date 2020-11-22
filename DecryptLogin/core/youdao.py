@@ -26,19 +26,19 @@ class youdaoPC():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 模拟登录
         data = {
-                'app': 'web',
-                'tp': 'urstoken',
-                'cf': '7',
-                'fr': '1',
-                'ru': 'http://www.youdao.com',
-                'product': 'DICT',
-                'type': '1',
-                'um': 'true',
-                'username': username,
-                'password': md5(password.encode('utf-8')).hexdigest(),
-                'agreePrRule': '1',
-                'savelogin': '1'
-            }
+            'app': 'web',
+            'tp': 'urstoken',
+            'cf': '7',
+            'fr': '1',
+            'ru': 'http://www.youdao.com',
+            'product': 'DICT',
+            'type': '1',
+            'um': 'true',
+            'username': username,
+            'password': md5(password.encode('utf-8')).hexdigest(),
+            'agreePrRule': '1',
+            'savelogin': '1'
+        }
         response = self.session.post(self.login_url, headers=self.login_headers, data=data, allow_redirects=False)
         # 访问主页
         self.session.get(self.home_url)
@@ -60,16 +60,16 @@ class youdaoPC():
     '''初始化'''
     def __initialize(self):
         self.info_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                                'Host': 'dict.youdao.com',
-                                'Referer': 'http://dict.youdao.com/wordbook/wordlist?keyfrom=dict2.index'
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'dict.youdao.com',
+            'Referer': 'http://dict.youdao.com/wordbook/wordlist?keyfrom=dict2.index'
+        }
         self.login_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                                'Host': 'logindict.youdao.com',
-                                'Origin': 'http://account.youdao.com',
-                                'Referer': 'http://account.youdao.com/login?service=dict'
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            'Host': 'logindict.youdao.com',
+            'Origin': 'http://account.youdao.com',
+            'Referer': 'http://account.youdao.com/login?service=dict'
+        }
         self.home_url = 'http://dict.youdao.com/'
         self.accountinfo_url = 'http://dict.youdao.com/login/acc/query/accountinfo'
         self.login_url = 'https://logindict.youdao.com/login/acc/login'

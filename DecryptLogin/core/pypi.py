@@ -29,10 +29,10 @@ class pypiPC():
         csrf_token = re.findall(r'name="csrf_token" type="hidden" value="(.*?)"', response.text)[0]
         # 构造登录请求
         data = {
-                    'csrf_token': csrf_token,
-                    'username': username,
-                    'password': password
-                }
+            'csrf_token': csrf_token,
+            'username': username,
+            'password': password
+        }
         self.session.headers.update({'Referer': self.login_url})
         response = self.session.post(self.login_url, data=data, allow_redirects=False)
         response = self.session.get(self.projects_url)
@@ -50,8 +50,8 @@ class pypiPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+        }
         self.login_url = 'https://pypi.org/account/login/'
         self.projects_url = 'https://pypi.org/manage/projects/'
         self.currentuser_url = 'https://pypi.org/_includes/current-user-indicator/'

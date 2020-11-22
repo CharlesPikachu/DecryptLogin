@@ -31,9 +31,9 @@ class xiamiPC():
         # 模拟登录
         login_url = self.base_url.format(action=self.actions['login'])
         params = {
-                    'account': username,
-                    'password': md5(password.encode('utf-8')).hexdigest()
-                }
+            'account': username,
+            'password': md5(password.encode('utf-8')).hexdigest()
+        }
         response = self.session.get(login_url, params=self.__xiamiSign(params, token))
         response_json = response.json()
         code, msg = response_json['ret'][0].split('::')
@@ -54,19 +54,19 @@ class xiamiPC():
         appkey = '23649156'
         t = str(int(time.time() * 1000))
         request_str = {
-                        'header': {'appId': '200', 'platformId': 'h5'},
-                        'model': params
-                    }
+            'header': {'appId': '200', 'platformId': 'h5'},
+            'model': params
+        }
         if access_token: request_str['header']['accessToken'] = access_token
         data = json.dumps({'requestStr': json.dumps(request_str)})
         sign = '%s&%s&%s&%s' % (token, t, appkey, data)
         sign = md5(sign.encode('utf-8')).hexdigest()
         params = {
-                    't': t,
-                    'appKey': appkey,
-                    'sign': sign,
-                    'data': data
-                }
+            't': t,
+            'appKey': appkey,
+            'sign': sign,
+            'data': data
+        }
         return params
     '''获得请求所需的token'''
     def __getToken(self):
@@ -79,19 +79,19 @@ class xiamiPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'Accept': '*/*',
-                        'Accept-Encoding': 'gzip,deflate,sdch',
-                        'Accept-Language': 'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
-                        'Connection': 'keep-alive',
-                        'Referer': 'http://h.xiami.com',
-                        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
-                    }
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip,deflate,sdch',
+            'Accept-Language': 'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
+            'Connection': 'keep-alive',
+            'Referer': 'http://h.xiami.com',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36'
+        }
         self.base_url = 'https://h5api.m.xiami.com/h5/{action}/1.0/'
         self.actions = {
-                        'getsongdetail': 'mtop.alimusic.music.songservice.getsongdetail',
-                        'login': 'mtop.alimusic.xuser.facade.xiamiuserservice.login',
-                        'getuserinfobyuserid': 'mtop.alimusic.xuser.facade.xiamiuserservice.getuserinfobyuserid'
-                    }
+            'getsongdetail': 'mtop.alimusic.music.songservice.getsongdetail',
+            'login': 'mtop.alimusic.xuser.facade.xiamiuserservice.login',
+            'getuserinfobyuserid': 'mtop.alimusic.xuser.facade.xiamiuserservice.getuserinfobyuserid'
+        }
         self.session.headers.update(self.headers)
 
 

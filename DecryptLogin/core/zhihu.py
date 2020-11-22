@@ -489,11 +489,11 @@ class zhihuPC():
             data = {'input_text': captcha}
             data = MultipartEncoder(fields=data, boundary='----WebKitFormBoundary')
             headers = {
-                        'content-type': data.content_type,
-                        'origin': 'https://www.zhihu.com',
-                        'referer': 'https://www.zhihu.com/signin',
-                        'x-requested-with': 'fetch'
-                    }
+                'content-type': data.content_type,
+                'origin': 'https://www.zhihu.com',
+                'referer': 'https://www.zhihu.com/signin',
+                'x-requested-with': 'fetch'
+            }
             self.session.post(self.captcha_url, data=data, headers=headers)
         removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
         # 构造登录请求
@@ -505,18 +505,18 @@ class zhihuPC():
         signature.update(bytes((grant_type+client_id+source+timestamp), 'utf-8'))
         signature = signature.hexdigest()
         data = {
-                'client_id': client_id,
-                'grant_type': grant_type,
-                'source': source,
-                'username': username,
-                'password': password,
-                'lang': 'en',
-                'ref_source': 'other_https://www.zhihu.com/signin',
-                'utm_source': '',
-                'captcha': '',
-                'timestamp': timestamp,
-                'signature': signature
-                }
+            'client_id': client_id,
+            'grant_type': grant_type,
+            'source': source,
+            'username': username,
+            'password': password,
+            'lang': 'en',
+            'ref_source': 'other_https://www.zhihu.com/signin',
+            'utm_source': '',
+            'captcha': '',
+            'timestamp': timestamp,
+            'signature': signature
+        }
         ctx = execjs.compile(encrypt_js_code_pc)
         data = ctx.call('encrypt', urlencode(data))
         response = self.session.post(self.login_url, data=data, headers=self.login_headers)
@@ -540,25 +540,25 @@ class zhihuPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
-                            'referer': 'https://www.zhihu.com/',
-                            'host': 'www.zhihu.com',
-                            'accept-encoding': 'gzip, deflate, br',
-                            'accept-language': 'zh-CN,zh;q=0.9',
-                            'accept': '*/*'
-                        }
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+            'referer': 'https://www.zhihu.com/',
+            'host': 'www.zhihu.com',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'zh-CN,zh;q=0.9',
+            'accept': '*/*'
+        }
         self.captcha_headers = {
-                                    'referer': 'https://www.zhihu.com/signin',
-                                    'x-requested-with': 'fetch',
-                                    'x-zse-83': '3_2.0'
-                                }
+            'referer': 'https://www.zhihu.com/signin',
+            'x-requested-with': 'fetch',
+            'x-zse-83': '3_2.0'
+        }
         self.login_headers = {
-                                'content-type': 'application/x-www-form-urlencoded',
-                                'origin': 'https://www.zhihu.com',
-                                'referer': 'https://www.zhihu.com/signin',
-                                'x-requested-with': 'fetch',
-                                'x-zse-83': '3_2.0',
-                            }
+            'content-type': 'application/x-www-form-urlencoded',
+            'origin': 'https://www.zhihu.com',
+            'referer': 'https://www.zhihu.com/signin',
+            'x-requested-with': 'fetch',
+            'x-zse-83': '3_2.0',
+        }
         self.captcha_url = 'https://www.zhihu.com/api/v3/oauth/captcha?lang=en'
         self.signin_url = 'https://www.zhihu.com/signin'
         self.login_url = 'https://www.zhihu.com/api/v3/oauth/sign_in'

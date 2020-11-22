@@ -68,9 +68,9 @@ class douyuScanqr():
             if response_json['error'] == 0:
                 login_url = 'https:' + response_json['data']['url']
                 params = {
-                            'callback': 'appClient_json_callback',
-                            '_': str(int(time.time()*1000))
-                        }
+                    'callback': 'appClient_json_callback',
+                    '_': str(int(time.time()*1000))
+                }
                 response = self.session.get(login_url, params=params)
                 response_json = json.loads(response.text.replace('appClient_json_callback(', '')[:-1])
                 if response_json['error'] != 0:
@@ -97,9 +97,9 @@ class douyuScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
-                        'Referer': 'https://passport.douyu.com/index/login?passport_reg_callback=PASSPORT_REG_SUCCESS_CALLBACK&passport_login_callback=PASSPORT_LOGIN_SUCCESS_CALLBACK&passport_close_callback=PASSPORT_CLOSE_CALLBACK&passport_dp_callback=PASSPORT_DP_CALLBACK&type=login&client_id=1&state=https%3A%2F%2Fwww.douyu.com%2F'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+            'Referer': 'https://passport.douyu.com/index/login?passport_reg_callback=PASSPORT_REG_SUCCESS_CALLBACK&passport_login_callback=PASSPORT_LOGIN_SUCCESS_CALLBACK&passport_close_callback=PASSPORT_CLOSE_CALLBACK&passport_dp_callback=PASSPORT_DP_CALLBACK&type=login&client_id=1&state=https%3A%2F%2Fwww.douyu.com%2F'
+        }
         self.gen_qrcode_url = 'https://passport.douyu.com/scan/generateCode'
         self.check_url = 'https://passport.douyu.com/lapi/passport/qrcode/check?time={timestamp}&code={code}'
         self.member_url = 'https://www.douyu.com/member'

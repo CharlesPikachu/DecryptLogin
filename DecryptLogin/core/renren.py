@@ -45,14 +45,14 @@ class renrenPC():
             removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
         # 进行登录
         data = {
-                    'email': username,
-                    'origURL': 'http://www.renren.com/home',
-                    'domain': 'renren.com',
-                    'key_id': 1,
-                    'captcha_type': 'web_login',
-                    'password': password,
-                    'f': ''
-                }
+            'email': username,
+            'origURL': 'http://www.renren.com/home',
+            'domain': 'renren.com',
+            'key_id': 1,
+            'captcha_type': 'web_login',
+            'password': password,
+            'f': ''
+        }
         if is_need_captcha: data.update({'icode': captcha})
         response = self.session.post(self.login_url, data=data)
         user_id = re.findall(r'id:"(.*?)",', response.text.replace('\n', '').replace(' ', ''))
@@ -67,16 +67,22 @@ class renrenPC():
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
         # 登录成功
         print('[INFO]: Account -> %s, login successfully' % username)
-        infos_return = {'username': username, 'id': user_id[0], 
-                        'ruid': user_ruid[0], 'name': name[0], 
-                        'privacy': privacy[0], 'requestToken': request_token[0],
-                        '_rtk': _rtk[0], 'isvip': is_vip[0]}
+        infos_return = {
+            'username': username, 
+            'id': user_id[0], 
+            'ruid': user_ruid[0], 
+            'name': name[0], 
+            'privacy': privacy[0], 
+            'requestToken': request_token[0],
+            '_rtk': _rtk[0], 
+            'isvip': is_vip[0]
+        }
         return infos_return, self.session
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
-                    }
+            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
+        }
         self.home_url = 'http://renren.com/'
         self.login_url = 'http://www.renren.com/PLogin.do'
         self.captcha_url = 'http://icode.renren.com/getcode.do?t=web_login&rnd={}'

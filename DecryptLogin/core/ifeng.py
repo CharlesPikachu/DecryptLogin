@@ -39,18 +39,18 @@ class ifengPC():
         removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
         # 请求登录接口api_login_url进行模拟登录
         self.session.headers.update({
-                                        'Upgrade-Insecure-Requests': '1',
-                                        'Content-Type': 'application/x-www-form-urlencoded',
-                                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                                        'Referer': 'http://id.ifeng.com/allsite/login'
-                                    })
+            'Upgrade-Insecure-Requests': '1',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Referer': 'http://id.ifeng.com/allsite/login'
+        })
         data = {
-                'u': username,
-                'k': password,
-                'auth': captcha,
-                'type': '3',
-                'confrom': ''
-            }
+            'u': username,
+            'k': password,
+            'auth': captcha,
+            'type': '3',
+            'confrom': ''
+        }
         response = self.session.post(self.api_login_url, data=data)
         response_json = response.json()
         # 登录成功
@@ -71,11 +71,11 @@ class ifengPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'Host': 'id.ifeng.com',
-                        'Origin': 'https://id.ifeng.com',
-                        'Referer': 'https://id.ifeng.com/user/login',
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
-                    }
+            'Host': 'id.ifeng.com',
+            'Origin': 'https://id.ifeng.com',
+            'Referer': 'https://id.ifeng.com/user/login',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+        }
         self.user_login_url = 'https://id.ifeng.com/user/login'
         self.api_login_url = 'https://id.ifeng.com/api/login'
         self.authcode_url = 'https://id.ifeng.com/public/authcode'

@@ -27,12 +27,12 @@ class doubanPC():
         self.session.get(self.home_url)
         # 模拟登录
         data = {
-                'ck': '',
-                'name': username,
-                'password': password,
-                'remember': 'true',
-                'ticket': ''
-                }
+            'ck': '',
+            'name': username,
+            'password': password,
+            'remember': 'true',
+            'ticket': ''
+        }
         response = self.session.post(self.login_url, data=data)
         response_json = response.json()
         # 登录成功
@@ -50,11 +50,11 @@ class doubanPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                            'Host': 'accounts.douban.com',
-                            'Origin': 'https://accounts.douban.com',
-                            'Referer': 'https://accounts.douban.com/passport/login_popup?login_source=anony'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'accounts.douban.com',
+            'Origin': 'https://accounts.douban.com',
+            'Referer': 'https://accounts.douban.com/passport/login_popup?login_source=anony'
+        }
         self.home_url = 'https://www.douban.com/'
         self.login_url = 'https://accounts.douban.com/j/mobile/login/basic'
         self.session.headers.update(self.headers)

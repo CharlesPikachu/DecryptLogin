@@ -36,10 +36,10 @@ class zt12306PC():
             raise RuntimeError('Account -> %s, fail to login, crack captcha error' % username)
         # 模拟登录
         data = {
-                'username': username,
-                'password': password,
-                'appid': 'otn'
-                }
+            'username': username,
+            'password': password,
+            'appid': 'otn'
+        }
         response = self.session.post(self.login_url, headers=self.headers, data=data)
         # 登录成功
         if response.status_code == 200:
@@ -70,10 +70,10 @@ class zt12306PC():
             except:
                 raise RuntimeError('captcha format error...')
         data = {
-                'answer': ','.join(digital_list),
-                'login_site': 'E',
-                'rand': 'sjrand'
-                }
+            'answer': ','.join(digital_list),
+            'login_site': 'E',
+            'rand': 'sjrand'
+        }
         response = self.session.post(url=self.captcha_check_url, headers=self.headers, data=data)
         removeImage(img_path)
         if response.json()['result_code'] == '4': return True
@@ -81,8 +81,8 @@ class zt12306PC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+        }
         self.positions = ['36,46', '109,44', '181,47', '254,44', '33,112', '105,116', '186,116', '253,115']
         self.captcha_url = 'https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&module=login&rand=sjrand&0.5579044251920726'
         self.captcha_check_url = 'https://kyfw.12306.cn/passport/captcha/captcha-check'

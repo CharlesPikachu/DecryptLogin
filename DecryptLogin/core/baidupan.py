@@ -66,25 +66,25 @@ class baidupanPC():
             # --不需要验证手机/邮箱, 直接构造并发送登录请求
             if not is_need_phone_email_verify:
                 data = {
-                        'username': username,
-                        'password': password,
-                        'verifycode': captcha,
-                        'vcodestr': codestring,
-                        'isphone': '0',
-                        'loginmerge': '1',
-                        'action': 'login',
-                        'uid': timestamp,
-                        'skin': 'default_v2',
-                        'connect': '0',
-                        'dv': 'tk0.0095975573224773571583831604201@aadbAkqLI24oCwthDIxGB4p0K-2RKwxRuKp-sZxYJmRY9V2ZGq__rd0tmpV6wAk2zomRZ9DBLI24oCwthDIxGB4p0K-2RKwx-sntgOKCTp-9YAk2Y9SR~9-6QA4ChD1sH0BwGKwhDB4T~94xGMv4-MQsiM3CTCmmOEmuldwJ5hudj9HRYAkFRBdbsvLRAVqRoDBWp-Bwp-9Y9V0Qp-9wp-2wok9z9-2Z9k0Y9k2_jdVOrClMr9cAYxQsQMju348JrBjuZxgAY~wP3CXJ3XjJn0_~db9mRRAk2w9D1L9VFlAk2w9-uLokulAk2w9-uL9DB-pSRz9V0_',
-                        'getpassUrl': '/passport/getpass?clientfrom=&adapter=0&ssid=&from=&authsite=&bd_page_type=&uid="+timestamp+"&pu=&tpl=wimn&u=https://m.baidu.com/usrprofile%3Fuid%3D"+timestamp+"%23logined&type=&bdcm=060d5ffd462309f7e5529822720e0cf3d7cad665&tn=&regist_mode=&login_share_strategy=&subpro=wimn&skin=default_v2&client=&connect=0&smsLoginLink=1&loginLink=&bindToSmsLogin=&overseas=&is_voice_sms=&subpro=wimn&hideSLogin=&forcesetpwd=&regdomestic=',
-                        'mobilenum': 'undefined',
-                        'servertime': servertime,
-                        'gid': 'DA7C3AE-AF1F-48C0-AF9C-F1882CA37CD5',
-                        'logLoginType': 'wap_loginTouch',
-                        'FP_UID': '0b58c206c9faa8349576163341ef1321',
-                        'traceid': traceid
-                    }
+                    'username': username,
+                    'password': password,
+                    'verifycode': captcha,
+                    'vcodestr': codestring,
+                    'isphone': '0',
+                    'loginmerge': '1',
+                    'action': 'login',
+                    'uid': timestamp,
+                    'skin': 'default_v2',
+                    'connect': '0',
+                    'dv': 'tk0.0095975573224773571583831604201@aadbAkqLI24oCwthDIxGB4p0K-2RKwxRuKp-sZxYJmRY9V2ZGq__rd0tmpV6wAk2zomRZ9DBLI24oCwthDIxGB4p0K-2RKwx-sntgOKCTp-9YAk2Y9SR~9-6QA4ChD1sH0BwGKwhDB4T~94xGMv4-MQsiM3CTCmmOEmuldwJ5hudj9HRYAkFRBdbsvLRAVqRoDBWp-Bwp-9Y9V0Qp-9wp-2wok9z9-2Z9k0Y9k2_jdVOrClMr9cAYxQsQMju348JrBjuZxgAY~wP3CXJ3XjJn0_~db9mRRAk2w9D1L9VFlAk2w9-uLokulAk2w9-uL9DB-pSRz9V0_',
+                    'getpassUrl': '/passport/getpass?clientfrom=&adapter=0&ssid=&from=&authsite=&bd_page_type=&uid="+timestamp+"&pu=&tpl=wimn&u=https://m.baidu.com/usrprofile%3Fuid%3D"+timestamp+"%23logined&type=&bdcm=060d5ffd462309f7e5529822720e0cf3d7cad665&tn=&regist_mode=&login_share_strategy=&subpro=wimn&skin=default_v2&client=&connect=0&smsLoginLink=1&loginLink=&bindToSmsLogin=&overseas=&is_voice_sms=&subpro=wimn&hideSLogin=&forcesetpwd=&regdomestic=',
+                    'mobilenum': 'undefined',
+                    'servertime': servertime,
+                    'gid': 'DA7C3AE-AF1F-48C0-AF9C-F1882CA37CD5',
+                    'logLoginType': 'wap_loginTouch',
+                    'FP_UID': '0b58c206c9faa8349576163341ef1321',
+                    'traceid': traceid
+                }
                 response = self.session.post(self.login_url, headers=self.login_headers, data=data)
                 response_json = response.json()
             # --登录成功
@@ -129,11 +129,11 @@ class baidupanPC():
         vcode = input('Please enter the verification code you have accepted: ')
         # 验证验证码
         headers = {
-                    'Connection': 'keep-alive',
-                    'Host': 'wappass.baidu.com',
-                    'Upgrade-Insecure-Requests': '1',
-                    'Pragma': 'no-cache'
-                }
+            'Connection': 'keep-alive',
+            'Host': 'wappass.baidu.com',
+            'Upgrade-Insecure-Requests': '1',
+            'Pragma': 'no-cache'
+        }
         timestamp = str(int(time.time())) + '773_357994'
         url = 'https://wappass.baidu.com/passport/authwidget?v={}&vcode={}&token={}&u={}&action=check&type={}&tpl=&skin=&clientfrom=&adapter=2&updatessn=&bindToSmsLogin=&isnew=&card_no=&finance=&callback=jsonp1'.format(timestamp, vcode, token, u, verify_type)
         response = self.session.get(url, headers=headers)
@@ -183,16 +183,16 @@ class baidupanPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
-                        'Referer': 'https://www.baidu.com/'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+            'Referer': 'https://www.baidu.com/'
+        }
         self.login_headers = {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                'Accept': 'application/json',
-                                'Referer': 'https://wappass.baidu.com/',
-                                'X-Requested-With': 'XMLHttpRequest',
-                                'Connection': 'keep-alive'
-                            }
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json',
+            'Referer': 'https://wappass.baidu.com/',
+            'X-Requested-With': 'XMLHttpRequest',
+            'Connection': 'keep-alive'
+        }
         self.home_url = 'https://www.baidu.com/'
         self.servertime_url = 'https://wappass.baidu.com/wp/api/security/antireplaytoken'
         self.publickkey_url = 'https://wappass.baidu.com/static/touch/js/login_d9bffc9.js'

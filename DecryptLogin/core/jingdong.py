@@ -82,9 +82,9 @@ class jingdongScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                        'Referer': 'https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F'
-                    }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Referer': 'https://passport.jd.com/new/login.aspx?ReturnUrl=https%3A%2F%2Fwww.jd.com%2F'
+        }
         self.qrshow_url = 'https://qr.m.jd.com/show?appid=133&size=147&t={}'
         self.token_url = 'https://qr.m.jd.com/check?callback=a&isNewVersion=1&_format_=json&appid=133&token={}'
         self.ticket_url = 'https://passport.jd.com/uc/qrCodeTicketValidation?t={}'

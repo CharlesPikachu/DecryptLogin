@@ -27,11 +27,11 @@ class fishcPC():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 模拟登录
         data = {
-                    'username': username,
-                    'password': md5(password.encode(encoding='utf-8')).hexdigest(),
-                    'quickforward': 'yes',
-                    'handlekey': 'ls'
-                }
+            'username': username,
+            'password': md5(password.encode(encoding='utf-8')).hexdigest(),
+            'quickforward': 'yes',
+            'handlekey': 'ls'
+        }
         response = self.session.post(self.login_url, headers=self.login_headers, data=data)
         # 登录失败
         if (u'登录失败' in response.text) or (u'密码错误次数过多' in response.text):
@@ -47,11 +47,11 @@ class fishcPC():
     def __initialize(self):
         self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'}
         self.login_headers = {
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-                                'Host': 'fishc.com.cn',
-                                'Origin': 'https://fishc.com.cn',
-                                'Referer': 'https://fishc.com.cn/'
-                            }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'Host': 'fishc.com.cn',
+            'Origin': 'https://fishc.com.cn',
+            'Referer': 'https://fishc.com.cn/'
+        }
         self.home_url = 'https://fishc.com.cn/'
         self.login_url = 'https://fishc.com.cn/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1'
         self.session.headers.update(self.headers)

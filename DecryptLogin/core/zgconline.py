@@ -33,11 +33,11 @@ class zgconlinePC():
         self.session.get(self.home_url)
         # 请求login_url
         data = {
-                    'userid': username,
-                    'pwd': md5((password+'zol').encode(encoding='utf-8')).hexdigest(),
-                    'is_auto': '1',
-                    'backUrl': 'http://www.zol.com.cn/'
-                }
+            'userid': username,
+            'pwd': md5((password+'zol').encode(encoding='utf-8')).hexdigest(),
+            'is_auto': '1',
+            'backUrl': 'http://www.zol.com.cn/'
+        }
         cookies = {'ip_ck': self.__getIPCK()}
         self.session.headers.update({'Content-type': 'application/x-www-form-urlencoded'})
         response = self.session.post(self.login_url, data=data, cookies=cookies)
@@ -83,10 +83,10 @@ class zgconlinePC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                            'Referer': 'http://service.zol.com.cn/user/login.php?backUrl=http://www.zol.com.cn/',
-                            'Origin': 'http://service.zol.com.cn'
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Referer': 'http://service.zol.com.cn/user/login.php?backUrl=http://www.zol.com.cn/',
+            'Origin': 'http://service.zol.com.cn'
+        }
         self.home_url = 'http://www.zol.com.cn/'
         self.login_url = 'http://service.zol.com.cn/user/ajax/login2014/login.php'
         self.ipck_url = 'http://js.zol.com.cn/pvn/pv.ht?&t={}&c={}'

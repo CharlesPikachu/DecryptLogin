@@ -33,9 +33,9 @@ class Cracker():
         encText = self.__aesEncrypt(self.__aesEncrypt(text, self.nonce), secKey)
         encSecKey = self.__rsaEncrypt(secKey, self.pubKey, self.modulus)
         post_data = {
-                    'params': encText,
-                    'encSecKey': encSecKey
-                    }
+            'params': encText,
+            'encSecKey': encSecKey
+        }
         return post_data
     def __aesEncrypt(self, text, secKey):
         pad = 16 - len(text) % 16
@@ -73,9 +73,9 @@ class music163PC():
         # 模拟登录
         password = hashlib.md5(password.encode('utf-8')).hexdigest()
         data = {
-                    'password': password,
-                    'rememberLogin': 'True'
-                }
+            'password': password,
+            'rememberLogin': 'True'
+        }
         if account_type == 'phone':
             data['phone'] = username
             data = self.cracker.get(data)
@@ -104,15 +104,15 @@ class music163PC():
     '''初始化'''
     def __initialize(self):
         self.login_headers = {
-                                'Accept':'*/*',
-                                'Accept-Language':'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
-                                'Connection':'keep-alive',
-                                'Content-Type':'application/x-www-form-urlencoded',
-                                'Referer':'http://music.163.com',
-                                'Host':'music.163.com',
-                                'Cookie': 'os=pc; osver=Microsoft-Windows-10-Professional-build-10586-64bit; appver=2.0.3.131777; channel=netease; __remember_me=true;',
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
-                            }
+            'Accept':'*/*',
+            'Accept-Language':'zh-CN,zh;q=0.8,gl;q=0.6,zh-TW;q=0.4',
+            'Connection':'keep-alive',
+            'Content-Type':'application/x-www-form-urlencoded',
+            'Referer':'http://music.163.com',
+            'Host':'music.163.com',
+            'Cookie': 'os=pc; osver=Microsoft-Windows-10-Professional-build-10586-64bit; appver=2.0.3.131777; channel=netease; __remember_me=true;',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+        }
         self.login_url_email = 'http://music.163.com/weapi/login?csrf_token='
         self.login_url_phone = 'http://music.163.com/weapi/login/cellphone?csrf_token='
         self.cracker = Cracker()

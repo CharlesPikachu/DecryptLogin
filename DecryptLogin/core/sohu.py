@@ -29,11 +29,11 @@ class sohuPC():
         self.session.get(self.home_url)
         # 请求login_url
         data = {
-                'userid': username,
-                'password': md5(password.encode(encoding='utf-8')).hexdigest(),
-                'persistentCookie': '1',
-                'appid': '116005',
-            }
+            'userid': username,
+            'password': md5(password.encode(encoding='utf-8')).hexdigest(),
+            'persistentCookie': '1',
+            'appid': '116005',
+        }
         response = self.session.post(self.login_url, data=data)
         response_json = response.json()
         # 登录成功
@@ -50,12 +50,12 @@ class sohuPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-                            'origin': 'https://www.sohu.com',
-                            'upgrade-insecure-requests': '1',
-                            'referer': 'https://www.sohu.com/',
-                            'origin': 'https://www.sohu.com'
-                        }
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'origin': 'https://www.sohu.com',
+            'upgrade-insecure-requests': '1',
+            'referer': 'https://www.sohu.com/',
+            'origin': 'https://www.sohu.com'
+        }
         self.home_url = 'http://www.sohu.com/'
         self.login_url = 'https://v4.passport.sohu.com/i/login/116005'
         self.session.headers.update(self.headers)
@@ -75,22 +75,22 @@ class sohuMobile():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 访问app_login_url
         params = {
-                    'appid': 116001,
-                    'r': 'https://m.sohu.com/ucenter?_from=passport'
-                }
+            'appid': 116001,
+            'r': 'https://m.sohu.com/ucenter?_from=passport'
+        }
         self.session.get(self.app_login_url, params=params)
         # 请求security_login_url
         data = {
-                'userid': username,
-                'password': md5(password.encode(encoding='utf-8')).hexdigest(),
-                'appid': 116001
-            }
+            'userid': username,
+            'password': md5(password.encode(encoding='utf-8')).hexdigest(),
+            'appid': 116001
+        }
         self.session.headers.update({
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/x-www-form-urlencoded',
-                                        'Origin': 'https://m.passport.sohu.com',
-                                        'Referer': 'https://m.passport.sohu.com/app/login?appid=116001&r=https%3A%2F%2Fm.sohu.com%2Fucenter%3F_from%3Dpassport'
-                                    })
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Origin': 'https://m.passport.sohu.com',
+            'Referer': 'https://m.passport.sohu.com/app/login?appid=116001&r=https%3A%2F%2Fm.sohu.com%2Fucenter%3F_from%3Dpassport'
+        })
         response = self.session.post(self.security_login_url.format(int(time.time()*1000)), data=data)
         response_json = response.json()
         # 登录成功
@@ -107,9 +107,9 @@ class sohuMobile():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'Upgrade-Insecure-Requests': '1',
-                        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
-                    }
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
+        }
         self.app_login_url = 'https://m.passport.sohu.com/app/login'
         self.security_login_url = 'https://m.passport.sohu.com/security/login?t={}'
         self.session.headers.update(self.headers)

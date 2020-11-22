@@ -124,8 +124,8 @@ class qqmusicScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
-                        }
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+        }
         self.ptqrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
         self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
         self.ptqrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'

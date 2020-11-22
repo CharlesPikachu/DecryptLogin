@@ -27,12 +27,12 @@ class w3cschoolPC():
         self.session.get(self.home_url)
         # 模拟登录
         data = {
-                'fromid': '',
-                'username': username,
-                'password': password,
-                'remember': '1',
-                'scode': ''
-            }
+            'fromid': '',
+            'username': username,
+            'password': password,
+            'remember': '1',
+            'scode': ''
+        }
         response = self.session.post(self.login_url, data=data)
         response_json = response.json()
         # 登录成功
@@ -50,8 +50,8 @@ class w3cschoolPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-                            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-                        }
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+        }
         self.home_url = 'https://www.w3cschool.cn/login?refer=/'
         self.login_url = 'https://www.w3cschool.cn/checklogin_1'
         self.session.headers.update(self.headers)

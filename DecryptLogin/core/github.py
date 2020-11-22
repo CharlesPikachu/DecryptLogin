@@ -28,12 +28,12 @@ class githubPC():
         token = self.__getToken()
         # 模拟登录
         data = {
-                'commit': 'Sign in',
-                'utf8': '✓',
-                'authenticity_token': token,
-                'login': username,
-                'password': password
-                }
+            'commit': 'Sign in',
+            'utf8': '✓',
+            'authenticity_token': token,
+            'login': username,
+            'password': password
+        }
         response = self.session.post(self.post_url, headers=self.login_headers, data=data)
         if response.status_code == 200 and 'Sign in to GitHub · GitHub' not in response.text:
             print('[INFO]: Account -> %s, login successfully' % username)
@@ -49,20 +49,20 @@ class githubPC():
     '''初始化'''
     def __initialize(self):
         self.login_headers = {
-                                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-                                'Accept-Encoding': 'gzip, deflate, br',
-                                'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-                                'Cache-Control': 'no-cache',
-                                'Connection': 'keep-alive',
-                                'Content-Length': '196',
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                'Host': 'github.com',
-                                'Origin': 'https://github.com',
-                                'Pragma': 'no-cache',
-                                'Referer': 'https://github.com/login',
-                                'Upgrade-Insecure-Requests': '1',
-                                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
-                            }
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Cache-Control': 'no-cache',
+            'Connection': 'keep-alive',
+            'Content-Length': '196',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Host': 'github.com',
+            'Origin': 'https://github.com',
+            'Pragma': 'no-cache',
+            'Referer': 'https://github.com/login',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+        }
         self.login_url = 'https://github.com/login'
         self.post_url = 'https://github.com/session'
 
