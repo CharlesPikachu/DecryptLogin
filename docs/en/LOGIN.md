@@ -685,6 +685,21 @@ infos_return, session = lg.qqmusic('', '', 'scanqr')
 ```
 Unsupport the user-defined crack_captcha_func.
 
+### Ximalaya
+#### PC Mode
+This mode is temporarily not supported.
+#### Mobile Mode
+This mode is temporarily not supported.
+#### Scanqr Mode
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.ximalaya('', '', 'scanqr')
+```
+Unsupport the user-defined crack_captcha_func.
+
 
 ## Util functions
 

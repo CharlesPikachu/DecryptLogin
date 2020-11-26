@@ -682,6 +682,21 @@ infos_return, session = lg.qqmusic('', '', 'scanqr')
 ```
 暂不支持crack_captcha_func。
 
+### 喜马拉雅
+#### PC端登录
+暂不支持PC端登录。
+#### 移动端登录
+暂不支持移动端登录。
+#### 扫码登录
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.ximalaya('', '', 'scanqr')
+```
+暂不支持crack_captcha_func。
+
 
 ## 一些工具函数
 

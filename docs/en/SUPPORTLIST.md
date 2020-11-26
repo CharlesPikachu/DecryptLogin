@@ -41,3 +41,4 @@
 |  Jianguoyun      | ✓       | ✗           | ✗           |
 |  Cloud189        | ✓       | ✗           | ✗           |
 |  QQMusic         | ✗       | ✗           | ✓           |
+|  Ximalaya        | ✗       | ✗           | ✓           |
