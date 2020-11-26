@@ -28,7 +28,7 @@ def saveSessionCookies(session, cookiespath, encoding='utf-8'):
     infos_return = {'is_success': False, 'error_info': ''}
     # session格式不对
     if not isinstance(session, requests.Session):
-        infos_return.update({'error_info': 'Expect requests.Session in saveSessionCookies.session, but get %s' % type(session)})
+        infos_return.update({'error_info': 'Expect requests.Session for session, but get %s' % type(session)})
         return infos_return
     # 以json格式保存
     if cookiespath.endswith('.json'):
@@ -44,7 +44,7 @@ def saveSessionCookies(session, cookiespath, encoding='utf-8'):
         infos_return.update({'is_success': True})
     # 格式错误
     else:
-        infos_return.update({'error_info': 'The format of saveSessionCookies.cookiespath is wrong, expect json or pkl'})
+        infos_return.update({'error_info': 'The format of cookiespath is wrong, expect json or pkl'})
     return infos_return
 
 
@@ -63,11 +63,11 @@ def loadSessionCookies(session, cookiespath=None, encoding='utf-8'):
     infos_return = {'is_success': False, 'error_info': ''}
     # cookiespath不存在
     if not os.path.isfile(cookiespath):
-        infos_return.update({'error_info': 'The loadSessionCookies.cookiespath %s does not exist' % cookiespath})
+        infos_return.update({'error_info': 'The cookiespath %s does not exist' % cookiespath})
         return infos_return, session
     # session格式不对
     if not isinstance(session, requests.Session):
-        infos_return.update({'error_info': 'Expect requests.Session in loadSessionCookies.session, but get %s' % type(session)})
+        infos_return.update({'error_info': 'Expect requests.Session for session, but get %s' % type(session)})
         return infos_return, session
     # 导入json格式的cookies
     if cookiespath.endswith('.json'):
@@ -83,5 +83,5 @@ def loadSessionCookies(session, cookiespath=None, encoding='utf-8'):
         infos_return.update({'is_success': True})
     # 格式错误
     else:
-        infos_return.update({'error_info': 'The format of loadSessionCookies.cookiespath is wrong, expect json or pkl'})
+        infos_return.update({'error_info': 'The format of cookiespath is wrong, expect json or pkl'})
     return infos_return, session

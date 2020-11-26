@@ -67,7 +67,7 @@ class dazhongdianpingScanqr():
             # --二维码已经失效
             elif response_json['msg']['status'] in [-1]:
                 raise RuntimeError('Fail to login, qrcode has expired')
-            # --正在扫码或其他原因
+            # --等待/正在扫码或其他原因
             elif response_json['msg']['status'] in [0, 1]:
                 pass
             time.sleep(0.5)
