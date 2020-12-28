@@ -71,6 +71,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  delallweibos               |   [click](https://mp.weixin.qq.com/s/E5Erg10FvyutEKaB_JGufA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/delallweibos)                  |  批量删除微博                   |
 |  ClearQzone                 |   [click](https://mp.weixin.qq.com/s/Fj9MQXXRZ8wuKiX3Tytx8A)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/ClearQzone)                    |  批量删除QQ空间说说             |
 |  NeteaseEveryday            |   [click](https://mp.weixin.qq.com/s/tliFa5CYVEirMEyUj0jPbg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseEveryday)               |  在终端看网易云每日歌曲推荐     |
+|  NeteaseClickPlaylist       |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |  网易云音乐刷歌曲播放量         |
 
 # Install
 #### Pip install

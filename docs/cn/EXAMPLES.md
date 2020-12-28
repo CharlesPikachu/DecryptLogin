@@ -16,3 +16,4 @@
 |  批量删除微博                   |   [click](https://mp.weixin.qq.com/s/E5Erg10FvyutEKaB_JGufA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/delallweibos)                  |
 |  批量删除QQ空间说说             |   [click](https://mp.weixin.qq.com/s/Fj9MQXXRZ8wuKiX3Tytx8A)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/ClearQzone)                    |
 |  在终端看网易云每日歌曲推荐     |   [click](https://mp.weixin.qq.com/s/tliFa5CYVEirMEyUj0jPbg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseEveryday)               |
+|  网易云音乐刷歌曲播放量         |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |
