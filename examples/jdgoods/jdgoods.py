@@ -36,15 +36,15 @@ class JDGoodsCrawler():
             page_pointer = 1
             while True:
                 params = {
-                            'area': '15',
-                            'enc': 'utf-8',
-                            'keyword': goods_name,
-                            'adType': '7',
-                            'page': str(page_count),
-                            'ad_ids': '291:19',
-                            'xtest': 'new_search',
-                            '_': str(int(time.time()*1000))
-                        }
+                    'area': '15',
+                    'enc': 'utf-8',
+                    'keyword': goods_name,
+                    'adType': '7',
+                    'page': str(page_count),
+                    'ad_ids': '291:19',
+                    'xtest': 'new_search',
+                    '_': str(int(time.time()*1000))
+                }
                 response = self.session.get(search_url, params=params)
                 if (response.status_code != 200):
                     break
@@ -53,19 +53,19 @@ class JDGoodsCrawler():
                 if len(all_items) == 0:
                     break
                 for item in all_items:
-                    goods_infos_dict.update({len(goods_infos_dict)+1: 
-                                                {
-                                                    'image_url': item.get('image_url', ''),
-                                                    'price': item.get('pc_price', ''),
-                                                    'shop_name': item.get('shop_link', {}).get('shop_name', ''),
-                                                    'num_comments': item.get('comment_num', ''),
-                                                    'link_url': item.get('link_url', ''),
-                                                    'color': item.get('color', ''),
-                                                    'title': item.get('ad_title', ''),
-                                                    'self_run': item.get('self_run', ''),
-                                                    'good_rate': item.get('good_rate', '')
-                                                }
-                                            })
+                    goods_infos_dict.update({
+                        len(goods_infos_dict)+1: {
+                            'image_url': item.get('image_url', ''),
+                            'price': item.get('pc_price', ''),
+                            'shop_name': item.get('shop_link', {}).get('shop_name', ''),
+                            'num_comments': item.get('comment_num', ''),
+                            'link_url': item.get('link_url', ''),
+                            'color': item.get('color', ''),
+                            'title': item.get('ad_title', ''),
+                            'self_run': item.get('self_run', ''),
+                            'good_rate': item.get('good_rate', '')
+                        }
+                    })
                 print(goods_infos_dict)
                 self.__save(goods_infos_dict, goods_name+'.pkl')
                 page_count += 1

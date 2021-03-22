@@ -15,10 +15,10 @@ from DecryptLogin.core.music163 import Cracker
 
 '''命令行参数解析'''
 def parseArgs():
-	parser = argparse.ArgumentParser(description='爬取目标用户的网易云听歌排行榜')
-	parser.add_argument('--username', dest='username', help='用户名', type=str, required=True)
-	parser.add_argument('--password', dest='password', help='密码', type=str, required=True)
-	return parser.parse_args()
+    parser = argparse.ArgumentParser(description='爬取目标用户的网易云听歌排行榜')
+    parser.add_argument('--username', dest='username', help='用户名', type=str, required=True)
+    parser.add_argument('--password', dest='password', help='密码', type=str, required=True)
+    return parser.parse_args()
 
 
 '''网易云个人听歌排行榜爬取'''
@@ -28,8 +28,8 @@ class NeteaseListenLeaderboard():
         self.csrf = re.findall('__csrf=(.*?) for', str(self.session.cookies))[0]
         self.cracker = Cracker()
         self.headers = {
-						'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
-					}
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
+        }
     def run(self):
         while True:
             userid = input('网易云个人听歌排行榜爬取, 请输入目标用户id(例如:268390054) ——> ')

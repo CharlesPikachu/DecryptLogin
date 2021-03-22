@@ -32,9 +32,9 @@ class NeteaseEveryday():
         self.csrf = re.findall('__csrf=(.*?) for', str(self.session.cookies))[0]
         self.cracker = Cracker()
         self.headers = {
-						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
-						'Accept': '*/*'
-					}
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'Accept': '*/*'
+        }
         os.system('cls')
     '''外部调用'''
     def run(self):
@@ -55,10 +55,10 @@ class NeteaseEveryday():
         print('正在下载 ——> %s' % songname)
         for br in brs:
             data = {
-                        'ids': [songid],
-                        'br': br,
-                        'csrf_token': self.csrf
-                    }
+                'ids': [songid],
+                'br': br,
+                'csrf_token': self.csrf
+            }
             res = self.session.post(play_url+self.csrf, headers=self.headers, data=self.cracker.get(data))
             if res.json()['code'] == 200:
                 download_url = res.json()['data'][0].get('url', '')
@@ -78,11 +78,11 @@ class NeteaseEveryday():
     def getdailyrecommend(self):
         url = 'http://music.163.com/weapi/v2/discovery/recommend/songs?csrf_token='
         data = {
-                'crsf_token': self.csrf,
-                'limit': '999',
-                'offset': '0',
-                'total': 'true'
-            }
+            'crsf_token': self.csrf,
+            'limit': '999',
+            'offset': '0',
+            'total': 'true'
+        }
         data = self.cracker.get(data)
         response = self.session.post(url, headers=self.headers, data=data)
         response_json = response.json()

@@ -21,8 +21,8 @@ class Bilibili():
 		self.password = password
 		self.session = Bilibili.login(username, password)
 		self.headers = {
-						'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
-					}
+			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36'
+		}
 		self.user_info_url = 'https://api.bilibili.com/x/space/acc/info'
 		self.submit_videos_url = 'https://space.bilibili.com/ajax/member/getSubmitVideos'
 		self.view_url = 'https://api.bilibili.com/x/web-interface/view'
@@ -46,12 +46,12 @@ class Bilibili():
 		res = self.session.get(self.user_info_url, params=params, headers=self.headers)
 		res_json = res.json()
 		user_info = {
-						'用户名': res_json['data']['name'],
-						'性别': res_json['data']['sex'],
-						'个性签名': res_json['data']['sign'],
-						'用户等级': res_json['data']['level'],
-						'生日': res_json['data']['birthday']
-					}
+			'用户名': res_json['data']['name'],
+			'性别': res_json['data']['sex'],
+			'个性签名': res_json['data']['sign'],
+			'用户等级': res_json['data']['level'],
+			'生日': res_json['data']['birthday']
+		}
 		return user_info
 	'''下载目标用户的所有视频'''
 	def __downloadVideos(self, userid):

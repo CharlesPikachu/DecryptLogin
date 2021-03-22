@@ -34,8 +34,8 @@ class delallweibos():
             return
         url = 'https://weibo.com/aj/mblog/del?ajwvr=6'
         headers = {
-                    'Referer': f'http://weibo.com/{self.user_id}/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1'
-                }
+            'Referer': f'http://weibo.com/{self.user_id}/profile?rightmod=1&wvr=6&mod=personnumber&is_all=1'
+        }
         del_count = 0
         total_count = 0
         while True:
@@ -55,23 +55,23 @@ class delallweibos():
     def __getweibolist(self):
         url = 'https://weibo.com/p/aj/v6/mblog/mbloglist'
         params = {
-                    'ajwvr': '6',
-                    'domain': '100505',
-                    'is_search': '0',
-                    'visible': '0',
-                    'is_all': '1',
-                    'is_tag': '0',
-                    'profile_ftype': '1',
-                    'page': '1',
-                    'pagebar': '1',
-                    'pl_name': 'Pl_Official_MyProfileFeed__19',
-                    'id': f'100505{self.user_id}',
-                    'script_uri': f'/{self.user_id}/profile',
-                    'feed_type': '0',
-                    'pre_page': '5',
-                    'domain_op': '100505',
-                    '__rnd': str(time.time()*1000)[:13]
-                }
+            'ajwvr': '6',
+            'domain': '100505',
+            'is_search': '0',
+            'visible': '0',
+            'is_all': '1',
+            'is_tag': '0',
+            'profile_ftype': '1',
+            'page': '1',
+            'pagebar': '1',
+            'pl_name': 'Pl_Official_MyProfileFeed__19',
+            'id': f'100505{self.user_id}',
+            'script_uri': f'/{self.user_id}/profile',
+            'feed_type': '0',
+            'pre_page': '5',
+            'domain_op': '100505',
+            '__rnd': str(time.time()*1000)[:13]
+        }
         response = self.session.get(url, params=params)
         data = response.json()['data']
         weibo_mids = re.findall(r'\s+mid="(\d+)"\s+', data)

@@ -49,17 +49,17 @@ class ClearQzone():
                     if user_input.lower() == 'n' or user_input.lower() == 'no':
                         continue
                 data = {
-                            'hostuin': self.uin,
-                            'tid': key,
-                            't1_source': '1',
-                            'code_version': '1',
-                            'format': 'fs',
-                            'qzreferrer': f'https://user.qzone.qq.com/{self.uin}/infocenter'
-                        }
+                    'hostuin': self.uin,
+                    'tid': key,
+                    't1_source': '1',
+                    'code_version': '1',
+                    'format': 'fs',
+                    'qzreferrer': f'https://user.qzone.qq.com/{self.uin}/infocenter'
+                }
                 params = {
-                            'qzonetoken': self.qzonetoken,
-                            'g_tk': self.g_tk
-                        }
+                    'qzonetoken': self.qzonetoken,
+                    'g_tk': self.g_tk
+                }
                 try:
                     response = self.session.post(url, data=data, params=params)
                     del_count += 1
@@ -72,19 +72,19 @@ class ClearQzone():
     def __getAllTwitters(self):
         url = 'https://user.qzone.qq.com/proxy/domain/taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6?'
         params = {
-                    'uin': self.uin,
-                    'ftype': '0',
-                    'sort': '0',
-                    'pos': '0',
-                    'num': '20',
-                    'replynum': '100',
-                    'g_tk': self.g_tk,
-                    'callback': '_preloadCallback',
-                    'code_version': '1',
-                    'format': 'jsonp',
-                    'need_private_comment': '1',
-                    'qzonetoken': self.qzonetoken
-                }
+            'uin': self.uin,
+            'ftype': '0',
+            'sort': '0',
+            'pos': '0',
+            'num': '20',
+            'replynum': '100',
+            'g_tk': self.g_tk,
+            'callback': '_preloadCallback',
+            'code_version': '1',
+            'format': 'jsonp',
+            'need_private_comment': '1',
+            'qzonetoken': self.qzonetoken
+        }
         response = self.session.get(url, params=params)
         response_json = response.content.decode('utf-8').replace('_preloadCallback(', '')[:-2]
         response_json = json.loads(response_json)
