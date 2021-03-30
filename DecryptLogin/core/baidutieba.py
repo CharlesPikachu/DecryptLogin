@@ -97,7 +97,6 @@ class baidutiebaScanQR():
                 }
                 response = self.session.get(self.login_url, params=params)
                 response.encoding = 'utf-8'
-                print(response.text)
                 response_json = json.loads(response.text.replace("'", '"').replace('\\', ''))
                 self.session.get(self.crossdomain_url+'?bdu=%s&t=%s' % (response_json['data']['hao123Param'], timestamp))
                 response = self.session.get(self.userinfo_url)

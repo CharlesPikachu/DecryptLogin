@@ -50,7 +50,6 @@ class jianguoyunPC():
         # 登录失败
         else:
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-        print(response.text)
     '''初始化'''
     def __initialize(self):
         self.headers = {
