@@ -139,6 +139,19 @@ infos_return, session = lg.ximalaya()
 |  :----:                                            |           :----:          |   :----:                                           |
 |  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processing in (weibo, pc)  |
 
+# Citation
+If you use this project in your research, please cite this project.
+```
+@misc{decryptlogin2020,
+    author = {Zhenchao Jin},
+    title = {DecryptLogin: APIs for loginning some websites by using requests},
+    year = {2020},
+    publisher = {GitHub},
+    journal = {GitHub repository},
+    howpublished = {\url{https://github.com/CharlesPikachu/DecryptLogin}},
+}
+```
+
 # More
 #### WeChat Official Accounts
 *Charles_pikachu*  
