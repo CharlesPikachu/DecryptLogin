@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-11-06
+    2021-05-16
 '''
 import re
 import rsa
@@ -15,6 +15,7 @@ import random
 import base64
 import requests
 import warnings
+from urllib import parse
 from ..utils.misc import *
 from binascii import b2a_hex
 warnings.filterwarnings('ignore')
@@ -58,46 +59,46 @@ class weiboPC():
                 'rsakt': 'mod',
                 'checkpin': '1',
                 'client': 'ssologin.js(v1.4.19)',
-                '_': str(int(time.time()*1000))
+                '_': str(round(time.time() * 1000))
             }
-            response = self.session.get(self.prelogin_url, headers=self.headers, params=params, verify=False)
+            response = self.session.get(self.prelogin_url, headers=self.headers, params=params)
             response_json = response.json()
             if response_json.get('msg', '') == 'system error':
                 raise RuntimeError(response_json.get('msg'))
-            nonce = response_json.get('nonce', '')
-            pubkey = response_json.get('pubkey', '')
-            rsakv = response_json.get('rsakv', '')
-            servertime = response_json.get('servertime', '')
             # --请求ssologin_url
-            publickey = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
-            sp = rsa.encrypt((str(servertime)+'\t'+nonce+'\n'+password).encode('utf-8'), publickey)
-            sp = b2a_hex(sp)
+            pubkey = response_json['pubkey']
+            servertime = response_json['servertime']
+            nonce = response_json['nonce']
+            public_key = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
+            password_str = str(servertime) + '\t' + str(nonce) + '\n' + password
+            sp = b2a_hex(rsa.encrypt(password_str.encode('utf8'), public_key)).decode('utf8')
             data_post = {
-                'entry': 'account',
+                '_': str(round(time.time() * 1000)),
+                'entry': 'cnmail',
                 'gateway': '1',
                 'from': '',
                 'savestate': '30',
+                'qrcode_flag': 'false',
                 'useticket': '0',
-                'useticket': '1',
                 'pagerefer': '',
-                'vsnf': '1',
-                'su': su,
-                'service': 'account',
-                'servertime': str(int(servertime)+random.randint(1, 20)),
-                'nonce': nonce,
+                'service': 'sso',
                 'pwencode': 'rsa2',
-                'rsakv': rsakv,
-                'sp': sp,
-                'sr': '1536 * 864',
-                'encoding': 'UTF - 8',
+                'sr': '1356*864',
+                'encoding': 'UTF-8',
+                'prelt': '95',
                 'cdult': '3',
                 'domain': 'sina.com.cn',
-                'prelt': '95',
-                'returntype': 'TEXT'
+                'returntype': 'TEXT',
+                'servertime': response_json['servertime'],
+                'nonce': response_json['nonce'],
+                'rsakv': response_json['rsakv'],
+                'pcid': response_json['pcid'],
+                'su': su,
+                'sp': sp,
             }
             if is_need_captcha:
                 data_post['door'] = captcha
-            response = self.session.post(self.ssologin_url, headers=self.headers, data=data_post, allow_redirects=False, verify=False)
+            response = self.session.post(self.ssologin_url, headers=self.headers, data=data_post)
             response_json = response.json()
             # --登录成功
             if response_json['retcode'] == '0':
@@ -138,7 +139,8 @@ class weiboPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+            'Referer': 'https://mail.sina.com.cn/',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
         }
         self.pin_url = 'https://login.sina.com.cn/cgi/pin.php'
         self.prelogin_url = 'https://login.sina.com.cn/sso/prelogin.php?'
@@ -302,7 +304,8 @@ class weiboScanqr():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
+            'Referer': 'https://mail.sina.com.cn/',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
         }
         self.home_url = 'https://weibo.com'
         self.qrcode_url = 'https://login.sina.com.cn/sso/qrcode/image?entry=homepage&size=128&callback=STK_{}'
