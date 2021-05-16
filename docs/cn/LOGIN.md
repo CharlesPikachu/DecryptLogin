@@ -333,7 +333,14 @@ infos_return, session = lg.zgconline(username, password, 'pc')
 
 ### 推特 
 #### PC端登录
-暂不支持PC端登录。
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.twitter(username, password, 'pc')
+```
+暂不支持crack_captcha_func。
 #### 移动端登录
 示例代码:
 ```python

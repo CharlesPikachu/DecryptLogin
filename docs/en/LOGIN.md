@@ -345,7 +345,14 @@ infos_return, session = lg.twitter(username, password, 'pc')
 ```
 Unsupport the user-defined crack_captcha_func.
 #### Mobile Mode
-This mode is temporarily not supported.
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.twitter(username, password, 'mobile')
+```
+Unsupport the user-defined crack_captcha_func.
 #### Scanqr Mode
 This mode is temporarily not supported.
 

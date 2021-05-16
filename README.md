@@ -30,7 +30,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Sohu            | ✗       | ✓           | ✗           | 搜狐              |
 |  Zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
 |  Lagou           | ✗       | ✗           | ✗           | 拉勾网            |
-|  Twitter         | ✗       | ✓           | ✗           | 推特              |
+|  Twitter         | ✓       | ✓           | ✗           | 推特              |
 |  Vultr           | ✓       | ✗           | ✗           | Vultr             |
 |  eSurfing        | ✓       | ✗           | ✗           | 天翼              |
 |  Renren          | ✓       | ✗           | ✗           | 人人网            |

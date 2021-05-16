@@ -19,7 +19,7 @@
 |  Sohu            | ✗       | ✓           | ✗           |
 |  Zgconline       | ✓       | ✗           | ✗           |
 |  Lagou           | ✗       | ✗           | ✗           |
-|  Twitter         | ✗       | ✓           | ✗           |
+|  Twitter         | ✓       | ✓           | ✗           |
 |  Vultr           | ✓       | ✗           | ✗           |
 |  eSurfing        | ✓       | ✗           | ✗           |
 |  Renren          | ✓       | ✗           | ✗           |

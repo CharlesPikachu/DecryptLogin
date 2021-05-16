@@ -15,7 +15,6 @@ import random
 import base64
 import requests
 import warnings
-from urllib import parse
 from ..utils.misc import *
 from binascii import b2a_hex
 warnings.filterwarnings('ignore')
