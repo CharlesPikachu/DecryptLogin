@@ -36,11 +36,11 @@ class TBGoodsCrawler():
             page_pointer = 0
             while True:
                 params = {
-                            'q': goods_name,
-                            'ajax': 'true',
-                            'ie': 'utf8',
-                            's': str(offset)
-                        }
+                    'q': goods_name,
+                    'ajax': 'true',
+                    'ie': 'utf8',
+                    's': str(offset)
+                }
                 response = self.session.get(search_url, params=params)
                 if (response.status_code != 200):
                     break
@@ -51,19 +51,19 @@ class TBGoodsCrawler():
                 for item in all_items:
                     if not item['category']:
                         continue
-                    goods_infos_dict.update({len(goods_infos_dict)+1: 
-                                                {
-                                                    'shope_name': item.get('nick', ''),
-                                                    'title': item.get('raw_title', ''),
-                                                    'pic_url': item.get('pic_url', ''),
-                                                    'detail_url': item.get('detail_url', ''),
-                                                    'price': item.get('view_price', ''),
-                                                    'location': item.get('item_loc', ''),
-                                                    'fee': item.get('view_fee', ''),
-                                                    'num_comments': item.get('comment_count', ''),
-                                                    'num_sells': item.get('view_sales', '')
-                                                }
-                                            })
+                    goods_infos_dict.update({
+                        len(goods_infos_dict)+1: {
+                            'shope_name': item.get('nick', ''),
+                            'title': item.get('raw_title', ''),
+                            'pic_url': item.get('pic_url', ''),
+                            'detail_url': item.get('detail_url', ''),
+                            'price': item.get('view_price', ''),
+                            'location': item.get('item_loc', ''),
+                            'fee': item.get('view_fee', ''),
+                            'num_comments': item.get('comment_count', ''),
+                            'num_sells': item.get('view_sales', '')
+                        }
+                    })
                 print(goods_infos_dict)
                 self.__save(goods_infos_dict, goods_name+'.pkl')
                 offset += page_size

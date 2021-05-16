@@ -50,13 +50,13 @@ class NeteaseListenLeaderboard():
     def getLeaderboard(self, uid):
         url = 'https://music.163.com/weapi/v1/play/record?csrf_token=' + self.csrf
         data = {
-                    'type': '-1',
-                    'uid': uid,
-                    'limit': '1000',
-                    'offset': '0',
-                    'total': 'true',
-                    'csrf_token': self.csrf
-                }
+            'type': '-1',
+            'uid': uid,
+            'limit': '1000',
+            'offset': '0',
+            'total': 'true',
+            'csrf_token': self.csrf
+        }
         res = self.session.post(url, headers=self.headers, data=self.cracker.get(data))
         res_json = res.json()
         leader_board = {'weekData': [], 'allData': []}

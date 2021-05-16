@@ -29,8 +29,8 @@ class WeiboSender():
     def __init__(self, username, password, **kwargs):
         self.nickname, self.uid, self.session = WeiboSender.login(username, password)
         self.headers = {
-                        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
-                        }
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
+        }
     '''外部调用'''
     def start(self):
         while True:
@@ -41,11 +41,13 @@ class WeiboSender():
             # 大吼一声确定是该微博
             print('微博内容为: %s\n配图数量为: %s' % (text, len(pictures)))
             print('如果您确认想发这条微博, 请在30s内对着电脑大吼一声')
-            stream = pyaudio.PyAudio().open(format=pyaudio.paInt16, 
-                                            channels=1, 
-                                            rate=int(pyaudio.PyAudio().get_device_info_by_index(0)['defaultSampleRate']), 
-                                            input=True, 
-                                            frames_per_buffer=1024)
+            stream = pyaudio.PyAudio().open(
+                format=pyaudio.paInt16, 
+                channels=1, 
+                rate=int(pyaudio.PyAudio().get_device_info_by_index(0)['defaultSampleRate']), 
+                input=True, 
+                frames_per_buffer=1024
+            )
             is_send_flag = False
             start_t = time.time()
             while True:
@@ -70,18 +72,18 @@ class WeiboSender():
         pic_id = []
         url = 'https://picupload.weibo.com/interface/pic_upload.php'
         params = {
-                    'data': '1',
-                    'p': '1',
-                    'url': 'weibo.com/u/%s' % self.uid,
-                    'markpos': '1',
-                    'logo': '1',
-                    'nick': '@%s' % self.nickname,
-                    'marks': '1',
-                    'app': 'miniblog',
-                    's': 'json',
-                    'pri': 'null',
-                    'file_source': '1'
-                }
+            'data': '1',
+            'p': '1',
+            'url': 'weibo.com/u/%s' % self.uid,
+            'markpos': '1',
+            'logo': '1',
+            'nick': '@%s' % self.nickname,
+            'marks': '1',
+            'app': 'miniblog',
+            's': 'json',
+            'pri': 'null',
+            'file_source': '1'
+        }
         for picture in pictures:
             res = self.session.post(url, headers=self.headers, params=params, data=picture)
             res_json = res.json()
@@ -92,24 +94,24 @@ class WeiboSender():
         # 发微博
         url = 'https://www.weibo.com/aj/mblog/add?ajwvr=6&__rnd=%d' % int(time.time() * 1000)
         data = {
-                    'title': '',
-                    'location': 'v6_content_home',
-                    'text': text,
-                    'appkey': '',
-                    'style_type': '1',
-                    'pic_id': '|'.join(pic_id),
-                    'tid': '',
-                    'pdetail': '',
-                    'mid': '',
-                    'isReEdit': 'false',
-                    'gif_ids': '',
-                    'rank': '0',
-                    'rankid': '',
-                    'pub_source': 'page_2',
-                    'topic_id': '',
-                    'updata_img_num': str(len(pictures)),
-                    'pub_type': 'dialog'
-                }
+            'title': '',
+            'location': 'v6_content_home',
+            'text': text,
+            'appkey': '',
+            'style_type': '1',
+            'pic_id': '|'.join(pic_id),
+            'tid': '',
+            'pdetail': '',
+            'mid': '',
+            'isReEdit': 'false',
+            'gif_ids': '',
+            'rank': '0',
+            'rankid': '',
+            'pub_source': 'page_2',
+            'topic_id': '',
+            'updata_img_num': str(len(pictures)),
+            'pub_type': 'dialog'
+        }
         headers = self.headers.copy()
         headers.update({'Referer': 'http://www.weibo.com/u/%s/home?wvr=5' % self.uid})
         res = self.session.post(url, headers=headers, data=data)
