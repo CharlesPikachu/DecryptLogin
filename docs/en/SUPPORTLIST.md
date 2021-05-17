@@ -39,6 +39,6 @@
 |  Baidutieba      | ✗       | ✗           | ✓           |
 |  Dazhongdianping | ✗       | ✗           | ✓           |
 |  Jianguoyun      | ✓       | ✗           | ✗           |
-|  Cloud189        | ✓       | ✗           | ✗           |
+|  Cloud189        | ✓       | ✓           | ✗           |
 |  QQMusic         | ✗       | ✗           | ✓           |
 |  Ximalaya        | ✗       | ✗           | ✓           |

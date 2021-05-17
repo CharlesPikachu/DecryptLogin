@@ -670,7 +670,13 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 #### 移动端登录
-暂不支持移动端登录。
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.cloud189(username, password, 'mobile')
+```
+暂不支持crack_captcha_func。
 #### 扫码登录
 暂不支持扫码登录。
 

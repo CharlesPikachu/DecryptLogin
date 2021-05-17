@@ -673,7 +673,14 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 #### Mobile Mode
-This mode is temporarily not supported.
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.cloud189(username, password, 'mobile')
+```
+Unsupport the user-defined crack_captcha_func.
 #### Scanqr Mode
 This mode is temporarily not supported.
 

@@ -50,7 +50,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
 |  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
 |  Jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
-|  Cloud189        | ✓       | ✗           | ✗           | 天翼云盘          |
+|  Cloud189        | ✓       | ✓           | ✗           | 天翼云盘          |
 |  QQMusic         | ✗       | ✗           | ✓           | QQ音乐            |
 |  Ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
 

@@ -1,4 +1,4 @@
-﻿'''
+'''
 Function:
     天翼云盘模拟登录
 Author:
@@ -6,13 +6,16 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-11-01
+    2021-05-17
 '''
 import os
 import re
 import rsa
+import uuid
 import base64
+import hashlib
 import requests
+from urllib import parse
 from ..utils.misc import *
 
 
@@ -136,10 +139,116 @@ class cloud189PC():
 
 '''移动端登录天翼云盘'''
 class cloud189Mobile():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in cloud189 in mobile mode'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username, password, crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 检查是否需要验证码
+        assert not self.__needcaptcha(username, password), 'Unsupport the situation that needs captcha'
+        # 设备信息
+        device_info = {
+            'imei': '',
+            'imsi': '',
+            'deviceId': self.__md5(username + password),
+            'terminalInfo': 'Mi MIX3',
+            'osInfo': 'Android:10',
+            'mobileBrand': 'Xiaomi',
+            'mobileModel': 'Mi MIX3',
+        }
+        device_info = str(device_info).replace("'", '"')
+        # 模拟登录
+        data = {
+            'appKey': 'cloud',
+            'deviceInfo': self.__encrypthex(device_info),
+            'apptype': 'wap',
+            'loginType': '1',
+            'dynamicCheck': 'false',
+            'userName': '{RSA}' + self.__rsaencrypthex(username),
+            'password': '{RSA}' + self.__rsaencrypthex(password),
+            'validateCode': '',
+            'captchaToken': '',
+            'jointWay': '1|2',
+            'jointVersion': 'v3.8.1',
+            'operator': '',
+            'nwc': 'WIFI',
+            'nws': '2',
+            'guid': self.__md5(password),
+            'reqId': 'undefined',
+            'headerDeviceId': self.__md5(password),
+        }
+        headers = self.headers.copy()
+        headers.update({
+            'X-Requested-With': 'com.cn21.ecloud',
+            'X-Request-Id': str(uuid.uuid4),
+            'Host': parse.urlparse(self.login_url).hostname
+        })
+        response = self.session.post(self.login_url, data=data, headers=headers)
+        response_json = response.json()
+        # 登录失败
+        if str(response_json['result']) != '0':
+            raise RuntimeError(response_json['msg'])
+        # 登录成功
+        print('[INFO]: Account -> %s, login successfully' % username)
+        infos_return = {'username': username}
+        response_json['returnParas_decrypt'] = parse.parse_qs(self.__decrypthex(parse.parse_qs(response_json['returnParas']).get('paras')[0]))
+        infos_return.update(response_json)
+        return infos_return, self.session
+    '''检查是否需要验证码'''
+    def __needcaptcha(self, username, password):
+        data = {
+            'appKey': 'cloud',
+            'userName': '{RSA}' + self.__rsaencrypthex(username),
+            'guid': self.__md5(password),
+            'reqId': 'undefined',
+            'headerDeviceId': self.__md5(password),
+        }
+        headers = {
+            'X-Requested-With': 'com.cn21.ecloud',
+            'X-Request-Id': str(uuid.uuid4),
+            'Host': parse.urlparse(self.needcaptcha_url).hostname
+        }
+        response = self.session.post(self.needcaptcha_url, data=data, headers=headers)
+        if response.text != '0': return True
+        return False
+    '''md5'''
+    def __md5(self, data):
+        return hashlib.md5(data.encode('utf-8')).hexdigest()
+    '''encrypt data with the public key of base64 to hex string'''
+    def __rsaencrypthex(self, data, public_key=None):
+        if public_key is None: 
+            rsa_public_key = rsa.PublicKey(152334346597938436293356441115719435124636105143326532780542577723094703991678344742000021867588140450685721745211231553599381639990706123205672974928645595682727909568532858444056192955490635499533969753560238390855204373585601526650632417250726199698579300301057558260951102971295524642685968805111112239701, 65537)
+        else:
+            rsa_public_key = rsa.PublicKey.load_pkcs1_openssl_pem(f'-----BEGIN PUBLIC KEY-----\n{public_key}\n-----END PUBLIC KEY-----'.encode('utf-8'))
+        return rsa.encrypt(data.encode('utf-8'), rsa_public_key).hex()
+    '''encrypt str data to hex string'''
+    def __encrypthex(self, data):
+        try:
+            import xxtea
+        except:
+            raise ImportError('Try to run "pip install xxtea-py" for using xxtea')
+        return xxtea.encrypt(data, bytes.fromhex('67377150343554566b51354736694e6262686155356e586c41656c4763416373')).hex()
+    '''decrypt hex string data to str'''
+    def __decrypthex(self, data):
+        try:
+            import xxtea
+        except:
+            raise ImportError('Try to run "pip install xxtea-py" for using xxtea')
+        return xxtea.decrypt_utf8(bytes.fromhex(data), bytes.fromhex('67377150343554566b51354736694e6262686155356e586c41656c4763416373'))
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Linux; Android 10; Mi MIX3 Build/QKQ1.190828.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/87.0.4280.66 Mobile Safari/537.36 clientCtaSdkVersion/v3.8.1 deviceSystemVersion/10 deviceSystemType/Android clientPackageName/com.cn21.ecloud clientPackageNameSign/1c71af12beaa24e4d4c9189f3c9ad576'
+        }
+        self.needcaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/needcaptcha.do'
+        self.login_url = 'https://open.e.189.cn/api/logbox/oauth2/oAuth2SdkLoginByPassword.do'
+        self.session.headers.update(self.headers)
 
 
 '''扫码登录天翼云盘'''
