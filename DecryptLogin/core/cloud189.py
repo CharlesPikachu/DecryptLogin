@@ -6,12 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2021-05-17
+    2021-05-18
 '''
 import os
 import re
 import rsa
 import uuid
+import hmac
+import time
 import base64
 import hashlib
 import requests
@@ -195,11 +197,38 @@ class cloud189Mobile():
         if str(response_json['result']) != '0':
             raise RuntimeError(response_json['msg'])
         # 登录成功
-        print('[INFO]: Account -> %s, login successfully' % username)
-        infos_return = {'username': username}
         response_json['returnParas_decrypt'] = parse.parse_qs(self.__decrypthex(parse.parse_qs(response_json['returnParas']).get('paras')[0]))
+        infos_return = {'username': username}
         infos_return.update(response_json)
+        infos_return.update(self.__check(response_json['returnParas_decrypt']['accessToken'][0]))
+        print('[INFO]: Account -> %s, login successfully' % username)
         return infos_return, self.session
+    '''检查登录是否成功'''
+    def __check(self, access_token, appkey='600100885'):
+        data = {
+            'rand': str(time.time() * 1000),
+            'accessToken': access_token,
+            'clientType': 'TELEANDROID',
+            'version': '8.9.0',
+            'clientSn': 'null',
+            'model': 'Mi MIX3',
+            'osFamily': 'Android',
+            'osVersion': '29',
+            'networkAccessMode': 'WIFI',
+            'telecomsOperator': 'unknow',
+            'channelId': 'uc',
+        }
+        sign = f'AppKey={appkey}&Operate=POST&RequestURI=login4MergedClient.action&Timestamp={data["rand"]}'
+        headers = {
+            'appkey': appkey,
+            'appsignature': self.__getsignhex(sign).upper(),
+            'timestamp': data["rand"],
+            'user-agent': 'Ecloud/8.9.0 (Mi MIX3; ; uc) Android/10',
+            'x-request-id': str(uuid.uuid4()),
+            'host': parse.urlparse(self.merge_url).hostname,
+        }
+        response = self.session.post(self.merge_url, data=data, headers=headers)
+        return {'merge_info': response.text}
     '''检查是否需要验证码'''
     def __needcaptcha(self, username, password):
         data = {
@@ -241,6 +270,10 @@ class cloud189Mobile():
         except:
             raise ImportError('Try to run "pip install xxtea-py" for using xxtea')
         return xxtea.decrypt_utf8(bytes.fromhex(data), bytes.fromhex('67377150343554566b51354736694e6262686155356e586c41656c4763416373'))
+    '''signature the data to hex'''
+    def __getsignhex(self, data, session_secret=None):
+        key = bytes.fromhex('6665353733346337346332663936613338313537663432306233326463393935') if session_secret is None else session_secret.encode('utf-8')
+        return hmac.new(key, data.encode('utf-8'), 'sha1').hexdigest()
     '''初始化'''
     def __initialize(self):
         self.headers = {
@@ -248,6 +281,7 @@ class cloud189Mobile():
         }
         self.needcaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/needcaptcha.do'
         self.login_url = 'https://open.e.189.cn/api/logbox/oauth2/oAuth2SdkLoginByPassword.do'
+        self.merge_url = 'https://api.cloud.189.cn/login4MergedClient.action'
         self.session.headers.update(self.headers)
 
 
