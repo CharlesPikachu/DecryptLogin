@@ -3,11 +3,9 @@ Function:
     setup
 Author:
     Charles
-微信公众号:
-    Charles的皮卡丘
+    Charles
 GitHub:
     https://github.com/CharlesPikachu
-更新日期:
     2020-11-22
 '''
 import DecryptLogin
