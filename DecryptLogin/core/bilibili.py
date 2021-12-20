@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2021-12-20
 '''
 import rsa
 import time
@@ -72,7 +72,7 @@ class bilibiliPC():
                 raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
             # 其他错误
             else:
-                raise RuntimeError(response_json.get('message'))
+                raise RuntimeError(response_json.get('data', {}).get('message'))
     '''计算sign值'''
     def __calcSign(self, param, salt="560c52ccd288fed045859ed18bffd973"):
         sign = hashlib.md5('{}{}'.format(param, salt).encode('utf-8'))
@@ -133,6 +133,7 @@ class bilibiliMobile():
             data = "{}&sign={}".format(data, self.__calcSign(data))
             response = self.session.post(self.login_url, data=data, headers=self.login_headers)
             response_json = response.json()
+            print(response_json)
             # 不需要验证码, 登录成功
             if response_json['code'] == 0 and response_json['data']['status'] == 0:
                 for cookie in response_json['data']['cookie_info']['cookies']:
@@ -149,7 +150,7 @@ class bilibiliMobile():
                 raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
             # 其他错误
             else:
-                raise RuntimeError(response_json.get('message'))
+                raise RuntimeError(response_json.get('data', {}).get('message'))
     '''计算sign值'''
     def __calcSign(self, param, salt="60698ba2f68e01ce44738920a0ffe768"):
         sign = hashlib.md5('{}{}'.format(param, salt).encode('utf-8'))
