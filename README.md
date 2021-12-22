@@ -10,6 +10,7 @@
 [![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 
 Documents-CN:  https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/
+
 Documents-EN: https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 
 
