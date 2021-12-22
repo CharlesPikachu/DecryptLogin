@@ -1,16 +1,26 @@
-# Introduction
+<div align="center">
+  <img src="./docs/logo.png" width="600"/>
+</div>
+<br />
+
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/DecryptLogin)](https://pypi.org/project/DecryptLogin/)
+[![PyPI](https://img.shields.io/pypi/v/DecryptLogin)](https://pypi.org/project/DecryptLogin)
+[![license](https://img.shields.io/github/license/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/blob/master/LICENSE)
+[![issue resolution](https://isitmaintained.com/badge/resolution/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
+[![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
+
+Documents-CN:  https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/
+Documents-EN: https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
+
+
+# DecryptLogin
 ```
 APIs for loginning some websites by using requests.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
 ```
 
-# Documents
-#### In Chinese
-https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/
-#### In English
-https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 
-# Supported
+# Support List
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
 |  Weibo           | ✓       | ✓           | ✓           | 新浪微博          |
@@ -54,6 +64,7 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  QQMusic         | ✗       | ✗           | ✓           | QQ音乐            |
 |  Ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
 
+
 # Some Cases by Using DecryptLogin
 |  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
 |  :----:                     |   :----:                                                         |   :----:                                                                                                     |  :----:                         |
@@ -74,11 +85,14 @@ https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en/latest/
 |  NeteaseClickPlaylist       |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |  网易云音乐刷歌曲播放量         |
 |  cloud189signin             |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |  天翼云盘自动签到+抽奖          |
 
+
 # Install
+
 #### Pip install
 ```
 run "pip install DecryptLogin"
 ```
+
 #### Source code install
 ```sh
 (1) Offline
@@ -87,6 +101,7 @@ Step2: cd DecryptLogin -> run "python setup.py install"
 (2) Online
 run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 ```
+
 
 # Quick Start
 ```python
@@ -135,10 +150,12 @@ infos_return, session = lg.qqmusic()
 infos_return, session = lg.ximalaya()
 ```
 
+
 # Thanks List
 |  Author                                            |           Time            |   Contribution                                     |
 |  :----:                                            |           :----:          |   :----:                                           |
 |  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processing in (weibo, pc)  |
+
 
 # Citation
 If you use this project in your research, please cite this project.
@@ -152,6 +169,7 @@ If you use this project in your research, please cite this project.
     howpublished = {\url{https://github.com/CharlesPikachu/DecryptLogin}},
 }
 ```
+
 
 # More
 #### WeChat Official Accounts
