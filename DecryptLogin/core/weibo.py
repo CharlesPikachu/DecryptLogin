@@ -6,11 +6,12 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2021-05-16
+    2021-12-25
 '''
 import re
 import rsa
 import time
+import json
 import random
 import base64
 import requests
@@ -261,9 +262,15 @@ class weiboScanqr():
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获取二维码
-        response = self.session.get(self.qrcode_url.format(int(time.time() * 10000)))
-        imageurl = re.findall(r'"image":"(.*?)"', response.text)[0].replace('\\', '')
-        qrid = re.findall(r'"qrid":"(.*?)"', response.text)[0]
+        params = {
+            'entry': 'weibo',
+            'size': '180',
+            'callback': str(int(time.time() * 1000)),
+        }
+        response = self.session.get(self.qrcode_url, params=params)
+        response_json = json.loads(response.text.split('(')[-1].split(')')[0])
+        qrid = response_json['data']['qrid']
+        imageurl = 'https:' + response_json['data']['image']
         response = self.session.get(imageurl)
         saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
         showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
@@ -275,9 +282,8 @@ class weiboScanqr():
                 'callback': 'STK_%s' % int(time.time() * 10000)
             }
             response = self.session.get(self.check_url, params=params)
-            if 'succ' in response.text:
-                response_json = eval(re.findall(r'"data":({.*?})', response.text)[0])
-                break
+            response_json = json.loads(response.text.split('(')[-1].split(')')[0])
+            if response_json['retcode'] in [20000000]: break
             time.sleep(0.5)
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         # 模拟登录
@@ -287,13 +293,15 @@ class weiboScanqr():
             'crossdomain': '1',
             'cdult': '3',
             'domain': 'weibo.com',
-            'alt': response_json['alt'],
+            'alt': response_json['data']['alt'],
             'savestate': '30',
+            'callback': 'STK_' + str(int(time.time() * 1000)),
         }
         response = self.session.get(self.login_url, params=params)
-        response_json = response.json()
+        response_json = json.loads(response.text.split('(')[-1].split(')')[0])
+        response_json['crossDomainUrlList'][0] = response_json['crossDomainUrlList'][0] + '&action=login'
         for url in response_json['crossDomainUrlList']:
-            response = self.session.get(url, verify=False)
+            response = self.session.get(url)
         # 登录成功
         response = self.session.get(self.home_url)
         print('[INFO]: Account -> %s, login successfully' % response_json.get('nick', username))
@@ -307,7 +315,7 @@ class weiboScanqr():
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
         }
         self.home_url = 'https://weibo.com'
-        self.qrcode_url = 'https://login.sina.com.cn/sso/qrcode/image?entry=homepage&size=128&callback=STK_{}'
+        self.qrcode_url = 'https://login.sina.com.cn/sso/qrcode/image'
         self.check_url = 'https://login.sina.com.cn/sso/qrcode/check'
         self.login_url = 'http://login.sina.com.cn/sso/login.php'
         self.session.headers.update(self.headers)
