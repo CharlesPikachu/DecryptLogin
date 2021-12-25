@@ -8,16 +8,13 @@ Author:
 更新日期:
     2021-12-25
 '''
+import os
 import re
-import rsa
 import time
 import json
-import random
-import base64
 import requests
 import warnings
 from ..utils.misc import *
-from binascii import b2a_hex
 warnings.filterwarnings('ignore')
 
 
@@ -27,126 +24,94 @@ class weiboPC():
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in weibo in pc mode'
-        self.cur_path = os.getcwd()
         self.session = requests.Session()
         self.__initialize()
     '''登录函数'''
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 进行模拟登录
-        is_need_captcha = False
-        while True:
-            # --是否需要验证码
-            if is_need_captcha:
-                params = {
-                    'r': str(int(random.random()*100000000)),
-                    's': '0'
-                }
-                response = self.session.get(self.pin_url, headers=self.headers, params=params)
-                saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
-                if crack_captcha_func is None:
-                    showImage(os.path.join(self.cur_path, 'captcha.jpg'))
-                    captcha = input('Input the captcha: ')
-                else:
-                    captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-                removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
-            # --请求prelogin_url
-            su = base64.b64encode(username.encode('utf-8'))
-            params = {
-                'entry': 'weibo',
-                'su': su,
-                'rsakt': 'mod',
-                'checkpin': '1',
-                'client': 'ssologin.js(v1.4.19)',
-                '_': str(round(time.time() * 1000))
-            }
-            response = self.session.get(self.prelogin_url, headers=self.headers, params=params)
-            response_json = response.json()
-            if response_json.get('msg', '') == 'system error':
-                raise RuntimeError(response_json.get('msg'))
-            # --请求ssologin_url
-            pubkey = response_json['pubkey']
-            servertime = response_json['servertime']
-            nonce = response_json['nonce']
-            public_key = rsa.PublicKey(int(pubkey, 16), int('10001', 16))
-            password_str = str(servertime) + '\t' + str(nonce) + '\n' + password
-            sp = b2a_hex(rsa.encrypt(password_str.encode('utf8'), public_key)).decode('utf8')
-            data_post = {
-                '_': str(round(time.time() * 1000)),
-                'entry': 'cnmail',
-                'gateway': '1',
-                'from': '',
-                'savestate': '30',
-                'qrcode_flag': 'false',
-                'useticket': '0',
-                'pagerefer': '',
-                'service': 'sso',
-                'pwencode': 'rsa2',
-                'sr': '1356*864',
-                'encoding': 'UTF-8',
-                'prelt': '95',
-                'cdult': '3',
-                'domain': 'sina.com.cn',
-                'returntype': 'TEXT',
-                'servertime': response_json['servertime'],
-                'nonce': response_json['nonce'],
-                'rsakv': response_json['rsakv'],
-                'pcid': response_json['pcid'],
-                'su': su,
-                'sp': sp,
-            }
-            if is_need_captcha:
-                data_post['door'] = captcha
-            response = self.session.post(self.ssologin_url, headers=self.headers, data=data_post)
-            response_json = response.json()
-            # --登录成功
-            if response_json['retcode'] == '0':
-                break
-            # --用户名或密码错误
-            elif response_json['retcode'] == '101':
-                raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-            # --验证码错误
-            elif response_json['retcode'] == '2070':
-                raise RuntimeError('Account -> %s, fail to login, crack captcha error' % username)
-            # --需要验证码
-            elif response_json['retcode'] == '4049':
-                is_need_captcha = True
-            # --其他错误
-            else:
-                raise RuntimeError(response_json.get('reason', ''))
-        ticket, ssosavestate = re.findall(r'ticket=(.*?)&ssosavestate=(.*?)"', response.text)[0]
-        # 请求login_url和home_url, 进一步验证登录是否成功
-        params = {
-            'ticket': ticket,
-            'ssosavestate': str(ssosavestate),
-            'callback': 'sinaSSOController.doCrossDomainCallBack',
-            'scriptId': 'ssoscript0',
-            'client': 'ssologin.js(v1.4.19)',
-            '_': str(int(time.time() * 1000))
+        # 模拟登录
+        data = {
+            'username': username,
+            'password': password,
+            'savestate': '1',
+            'ec': '1',
+            'pagerefer': '',
+            'entry': 'wapsso',
+            'sinacnlogin': '1',
         }
-        params = '&'.join(['%s=%s' % (key, value) for key, value in params.items()])
-        response = self.session.get(self.login_url+params, headers=self.headers, verify=False)
-        uid = re.findall(r'"uniqueid":"(.*?)"', response.text)[0]
-        response = self.session.get(self.home_url % uid, headers=self.headers, verify=False)
-        if '我的首页' in response.text:
+        response = self.session.post(self.login_url, headers=self.login_headers, data=data)
+        response_json = response.json()
+        # 登录成功
+        if response_json['retcode'] in [20000000]:
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
             return infos_return, self.session
+        # 用户名或密码错误
+        elif response_json['retcode'] in [50011002]:
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 安全验证
+        elif response_json['retcode'] in [50050011]:
+            response = self.session.get(response_json['data']['errurl'])
+            msg_type, tip_content, num_times = 'sms', 'You have to secondverify your account, please input the sms code your phone received: ', 0
+            response_json = self.__sendverificationcode(username, msg_type=msg_type, verification_page=response)
+            while response_json['retcode'] not in [100000]:
+                num_times += 1
+                if num_times > 1: raise RuntimeError(response_json.get('msg'))
+                if response_json['retcode'] in [8513]:
+                    msg_type, tip_content = 'private_msg', 'You have to secondverify your account, please input the verification code in your private message: '
+                    response_json = self.__sendverificationcode(username, msg_type=msg_type, verification_page=response)
+                    break
+                else:
+                    raise RuntimeError(response_json.get('msg'))
+            code = input(tip_content)
+            params = {
+                'code': code,
+                'msg_type': msg_type,
+            }
+            response = self.session.get(self.ajcheck_url, params=params)
+            response_json = response.json()
+            if response_json['retcode'] not in [100000]:
+                raise RuntimeError(response_json.get('msg'))
+            login_url = response_json['data']['url']
+            self.session.get(login_url)
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username}
+            infos_return.update(response_json)
+            return infos_return, self.session
+        # 其他错误
         else:
-            raise RuntimeError('Account -> %s, fail to login, visit %s error' % (username, self.home_url % uid))
+            raise RuntimeError(response_json['msg'])
+    '''安全验证, 发送验证码'''
+    def __sendverificationcode(self, username=None, msg_type='sms', verification_page=None):
+        assert msg_type in ['sms', 'private_msg']
+        params = {'msg_type': msg_type}
+        if msg_type == 'sms':
+            infos = json.loads(re.search(r'phoneList: JSON.parse\(\'([^\']+)\'\),', verification_page.text).group(1))
+            params.update({
+                'number': infos[0]['number'],
+                'mask_mobile': infos[0]['maskMobile'],
+            })
+        else:
+            self.session.get('https://passport.weibo.cn/signin/secondverify/index', params={'way': 'private_msg'})
+        response = self.session.get(self.ajsend_url, params=params)
+        return response.json()
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'Referer': 'https://mail.sina.com.cn/',
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36',
         }
-        self.pin_url = 'https://login.sina.com.cn/cgi/pin.php'
-        self.prelogin_url = 'https://login.sina.com.cn/sso/prelogin.php?'
-        self.ssologin_url = 'https://login.sina.com.cn/sso/login.php?client=ssologin.js(v1.4.19)'
-        self.login_url = 'https://passport.weibo.com/wbsso/login?'
-        self.home_url = 'https://weibo.com/u/%s/home'
+        self.login_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36',
+            'Content': 'application/x-www-form-urlencoded',
+            'Origin': 'https://passport.sina.cn',
+            'Referer': 'https://passport.sina.cn/signin/signin'
+        }
+        self.login_url = 'https://passport.sina.cn/sso/login'
+        self.ajsend_url = 'https://passport.weibo.cn/signin/secondverify/ajsend'
+        self.ajcheck_url = 'https://passport.weibo.cn/signin/secondverify/ajcheck'
+        self.session.headers.update(self.headers)
 
 
 '''移动端登录微博'''
@@ -166,18 +131,10 @@ class weiboMobile():
             'username': username,
             'password': password,
             'savestate': '1',
-            'r': 'https://m.weibo.cn/',
-            'ec': '0',
-            'pagerefer': 'https://m.weibo.cn/',
-            'entry': 'mweibo',
-            'wentry': '',
-            'loginfrom': '',
-            'client_id': '',
-            'code': '',
-            'qq': '',
-            'mainpageflag': '1',
-            'hff': '',
-            'hfp': ''
+            'ec': '1',
+            'pagerefer': '',
+            'entry': 'wapsso',
+            'sinacnlogin': '1',
         }
         response = self.session.post(self.login_url, headers=self.login_headers, data=data)
         response_json = response.json()
@@ -194,13 +151,13 @@ class weiboMobile():
         elif response_json['retcode'] in [50050011]:
             response = self.session.get(response_json['data']['errurl'])
             msg_type, tip_content, num_times = 'sms', 'You have to secondverify your account, please input the sms code your phone received: ', 0
-            response_json = self.__sendverificationcode(username, msg_type=msg_type)
+            response_json = self.__sendverificationcode(username, msg_type=msg_type, verification_page=response)
             while response_json['retcode'] not in [100000]:
                 num_times += 1
                 if num_times > 1: raise RuntimeError(response_json.get('msg'))
                 if response_json['retcode'] in [8513]:
                     msg_type, tip_content = 'private_msg', 'You have to secondverify your account, please input the verification code in your private message: '
-                    response_json = self.__sendverificationcode(username, msg_type=msg_type)
+                    response_json = self.__sendverificationcode(username, msg_type=msg_type, verification_page=response)
                     break
                 else:
                     raise RuntimeError(response_json.get('msg'))
@@ -213,6 +170,8 @@ class weiboMobile():
             response_json = response.json()
             if response_json['retcode'] not in [100000]:
                 raise RuntimeError(response_json.get('msg'))
+            login_url = response_json['data']['url']
+            self.session.get(login_url)
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -221,15 +180,17 @@ class weiboMobile():
         else:
             raise RuntimeError(response_json['msg'])
     '''安全验证, 发送验证码'''
-    def __sendverificationcode(self, username=None, msg_type='sms'):
+    def __sendverificationcode(self, username=None, msg_type='sms', verification_page=None):
         assert msg_type in ['sms', 'private_msg']
-        params = {}
+        params = {'msg_type': msg_type}
         if msg_type == 'sms':
-            params = {
-                'number': '1',
-                'mask_mobile': username[:2] + '*******' + username[-2:],
-            }
-        params['msg_type'] = msg_type
+            infos = json.loads(re.search(r'phoneList: JSON.parse\(\'([^\']+)\'\),', verification_page.text).group(1))
+            params.update({
+                'number': infos[0]['number'],
+                'mask_mobile': infos[0]['maskMobile'],
+            })
+        else:
+            self.session.get('https://passport.weibo.cn/signin/secondverify/index', params={'way': 'private_msg'})
         response = self.session.get(self.ajsend_url, params=params)
         return response.json()
     '''初始化'''
@@ -239,10 +200,11 @@ class weiboMobile():
         }
         self.login_headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36',
-            'Origin': 'https://passport.weibo.cn',
-            'Referer': 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F'
+            'Content': 'application/x-www-form-urlencoded',
+            'Origin': 'https://passport.sina.cn',
+            'Referer': 'https://passport.sina.cn/signin/signin'
         }
-        self.login_url = 'https://passport.weibo.cn/sso/login'
+        self.login_url = 'https://passport.sina.cn/sso/login'
         self.ajsend_url = 'https://passport.weibo.cn/signin/secondverify/ajsend'
         self.ajcheck_url = 'https://passport.weibo.cn/signin/secondverify/ajcheck'
         self.session.headers.update(self.headers)
