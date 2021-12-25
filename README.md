@@ -3,9 +3,11 @@
 </div>
 <br />
 
+[![docs](https://img.shields.io/badge/docs-latest-blue)](https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/zh/latest/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/DecryptLogin)](https://pypi.org/project/DecryptLogin/)
 [![PyPI](https://img.shields.io/pypi/v/DecryptLogin)](https://pypi.org/project/DecryptLogin)
 [![license](https://img.shields.io/github/license/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/blob/master/LICENSE)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/DecryptLogin?style=flat-square)](https://pypi.org/project/DecryptLogin/)
 [![issue resolution](https://isitmaintained.com/badge/resolution/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 [![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 
