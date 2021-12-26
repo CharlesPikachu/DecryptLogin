@@ -174,6 +174,13 @@ If you use this project in your research, please cite this project.
 ```
 
 
+# Projects in Charles_pikachu
+- [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
+- [Musicdl](https://github.com/CharlesPikachu/musicdl): A lightweight music downloader written by pure python.
+- [Videodl](https://github.com/CharlesPikachu/videodl): A lightweight video downloader written by pure python.
+- [Pytools](https://github.com/CharlesPikachu/pytools): Some useful tools written by pure python.
+
+
 # More
 #### WeChat Official Accounts
 *Charles_pikachu*  
