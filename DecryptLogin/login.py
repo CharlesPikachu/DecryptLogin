@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2021-12-27
 '''
 from .core import *
 
@@ -25,7 +25,7 @@ class Login():
             'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
             'xiami': xiami().login, 'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 
             'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 'baidutieba': baidutieba().login, 'dazhongdianping': dazhongdianping().login,
-            'jianguoyun': jianguoyun().login, 'cloud189': cloud189().login, 'qqmusic': qqmusic().login, 'ximalaya': ximalaya().login
+            'jianguoyun': jianguoyun().login, 'cloud189': cloud189().login, 'qqmusic': qqmusic().login, 'ximalaya': ximalaya().login, 'icourse163': icourse163().login,
         }
         for key, value in self.supported_apis.items():
             setattr(self, key, value)
@@ -45,7 +45,7 @@ class Loginer():
             'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
             'xiami': xiami, 'douyu': douyu, 'migu': migu, 'qunar': qunar, 
             'mieshop': mieshop, 'mpweixin': mpweixin, 'baidutieba': baidutieba, 'dazhongdianping': dazhongdianping,
-            'jianguoyun': jianguoyun, 'cloud189': cloud189, 'qqmusic': qqmusic, 'ximalaya': ximalaya
+            'jianguoyun': jianguoyun, 'cloud189': cloud189, 'qqmusic': qqmusic, 'ximalaya': ximalaya, 'icourse163': icourse163
         }
         for key, value in self.supported_apis.items():
             setattr(self, key, value)

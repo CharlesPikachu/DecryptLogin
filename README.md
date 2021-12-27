@@ -26,46 +26,47 @@ You can star this repository to keep track of the project if it's helpful for yo
 # Support List
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
-|  Weibo           | ✓       | ✓           | ✓           | 新浪微博          |
-|  Douban          | ✓       | ✗           | ✗           | 豆瓣              |
-|  Github          | ✓       | ✗           | ✗           | Github            |
-|  Music163        | ✓       | ✗           | ✗           | 网易云音乐        |
-|  Zt12306         | ✓       | ✗           | ✗           | 中国铁路12306     |
+|  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
+|  douban          | ✓       | ✗           | ✗           | 豆瓣              |
+|  github          | ✓       | ✗           | ✗           | Github            |
+|  music163        | ✓       | ✗           | ✗           | 网易云音乐        |
+|  zt12306         | ✓       | ✗           | ✗           | 中国铁路12306     |
 |  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |
 |  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
-|  Zhihu		   | ✓       | ✗           | ✓           | 知乎         	 |
-|  Bilibili		   | ✓       | ✓           | ✗           | B站               |
-|  Toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
-|  Taobao          | ✗       | ✗           | ✓           | 淘宝              |
-|  Jingdong        | ✗       | ✗           | ✓           | 京东              |
-|  Ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
-|  Sohu            | ✗       | ✓           | ✗           | 搜狐              |
-|  Zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
-|  Lagou           | ✗       | ✗           | ✗           | 拉勾网            |
-|  Twitter         | ✓       | ✓           | ✗           | 推特              |
-|  Vultr           | ✓       | ✗           | ✗           | Vultr             |
+|  zhihu		   | ✓       | ✗           | ✓           | 知乎         	 |
+|  bilibili		   | ✓       | ✓           | ✗           | B站               |
+|  toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
+|  taobao          | ✗       | ✗           | ✓           | 淘宝              |
+|  jingdong        | ✗       | ✗           | ✓           | 京东              |
+|  ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
+|  sohu            | ✗       | ✓           | ✗           | 搜狐              |
+|  zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
+|  lagou           | ✗       | ✗           | ✗           | 拉勾网            |
+|  twitter         | ✓       | ✓           | ✗           | 推特              |
+|  vultr           | ✓       | ✗           | ✗           | Vultr             |
 |  eSurfing        | ✓       | ✗           | ✗           | 天翼              |
-|  Renren          | ✓       | ✗           | ✗           | 人人网            |
-|  W3Cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
-|  Fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
-|  Youdao          | ✓       | ✗           | ✗           | 有道              |
-|  Baidupan        | ✓       | ✗           | ✗           | 百度网盘          |
-|  Stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
-|  CodaLab         | ✓       | ✗           | ✗           | CodaLab           |
-|  PyPi            | ✓       | ✗           | ✗           | PyPi              | 
-|  Xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
-|  Douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
-|  Migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
-|  Qunar           | ✓       | ✗           | ✗           | 去哪儿旅行        |
-|  Mieshop         | ✓       | ✗           | ✗           | 小米商城          |
-|  Mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
-|  Baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
-|  Dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
-|  Jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
-|  Cloud189        | ✓       | ✓           | ✗           | 天翼云盘          |
-|  QQMusic         | ✗       | ✗           | ✓           | QQ音乐            |
-|  Ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
+|  renren          | ✓       | ✗           | ✗           | 人人网            |
+|  w3cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
+|  fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
+|  youdao          | ✓       | ✗           | ✗           | 有道              |
+|  baidupan        | ✓       | ✗           | ✗           | 百度网盘          |
+|  stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
+|  codalab         | ✓       | ✗           | ✗           | CodaLab           |
+|  pypi            | ✓       | ✗           | ✗           | PyPi              | 
+|  xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
+|  douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
+|  migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
+|  qunar           | ✓       | ✗           | ✗           | 去哪儿旅行        |
+|  mieshop         | ✓       | ✗           | ✗           | 小米商城          |
+|  mpweixin        | ✓       | ✗           | ✗           | 微信公众号        |
+|  baidutieba      | ✗       | ✗           | ✓           | 百度贴吧          |
+|  dazhongdianping | ✗       | ✗           | ✓           | 大众点评          |
+|  jianguoyun      | ✓       | ✗           | ✗           | 坚果云            |
+|  cloud189        | ✓       | ✓           | ✗           | 天翼云盘          |
+|  qqmusic         | ✗       | ✗           | ✓           | QQ音乐            |
+|  ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
+|  icourse163      | ✗       | ✓           | ✗           | 中国大学MOOC      |
 
 
 # Some Cases by Using DecryptLogin
@@ -90,6 +91,9 @@ You can star this repository to keep track of the project if it's helpful for yo
 
 
 # Install
+
+#### Preparation
+- [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
 
 #### Pip install
 ```
@@ -151,6 +155,7 @@ infos_return, session = lg.jianguoyun(username, password)
 infos_return, session = lg.cloud189(username, password)
 infos_return, session = lg.qqmusic()
 infos_return, session = lg.ximalaya()
+infos_return, session = lg.icourse163(username, password)
 ```
 
 

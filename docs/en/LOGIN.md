@@ -714,6 +714,21 @@ infos_return, session = lg.ximalaya('', '', 'scanqr')
 ```
 Unsupport the user-defined crack_captcha_func.
 
+### Icourse163
+#### PC Mode
+This mode is temporarily not supported.
+#### Mobile Mode
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.icourse163(username, password, 'mobile')
+```
+Unsupport the user-defined crack_captcha_func.
+#### Scanqr Mode
+This mode is temporarily not supported.
+
 
 ## Util functions
 

@@ -710,6 +710,20 @@ infos_return, session = lg.ximalaya('', '', 'scanqr')
 ```
 暂不支持crack_captcha_func。
 
+### 中国大学MOOC
+#### PC端登录
+暂不支持PC端登录。
+#### 移动端登录
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.icourse163(username, password, 'mobile')
+```
+暂不支持crack_captcha_func。
+#### 扫码登录
+暂不支持扫码登录。
+
 
 ## 一些工具函数
 
