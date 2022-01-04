@@ -7,7 +7,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/DecryptLogin)](https://pypi.org/project/DecryptLogin/)
 [![PyPI](https://img.shields.io/pypi/v/DecryptLogin)](https://pypi.org/project/DecryptLogin)
 [![license](https://img.shields.io/github/license/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/blob/master/LICENSE)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/DecryptLogin?style=flat-square)](https://pypi.org/project/DecryptLogin/)
+[![PyPI - Downloads](https://pepy.tech/badge/DecryptLogin)](https://pypi.org/project/DecryptLogin/)
 [![issue resolution](https://isitmaintained.com/badge/resolution/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 [![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 
@@ -181,6 +181,7 @@ If you use this project in your research, please cite this project.
 
 # Projects in Charles_pikachu
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
+- [DecryptLogin](https://github.com/CharlesPikachu/DecryptLogin): APIs for loginning some websites by using requests.
 - [Musicdl](https://github.com/CharlesPikachu/musicdl): A lightweight music downloader written by pure python.
 - [Videodl](https://github.com/CharlesPikachu/videodl): A lightweight video downloader written by pure python.
 - [Pytools](https://github.com/CharlesPikachu/pytools): Some useful tools written by pure python.
