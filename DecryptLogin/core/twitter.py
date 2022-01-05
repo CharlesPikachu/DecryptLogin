@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2021-05-16
+    2022-01-05
 '''
 import re
 import random
@@ -63,7 +63,7 @@ class twitterPC():
         # 登录成功
         if response.status_code == 200:
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username}
+            infos_return = {'username': username, 'response_text': response_text}
             return infos_return, self.session
         # 登录失败
         else:
@@ -136,7 +136,7 @@ class twitterMobile():
         # 登录成功
         if response.status_code == 200:
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username}
+            infos_return = {'username': username, 'response_text': response_text}
             return infos_return, self.session
         # 登录失败
         else:
