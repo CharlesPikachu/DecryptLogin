@@ -69,8 +69,8 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  icourse163      | ✗       | ✓           | ✗           | 中国大学MOOC      |
 
 
-# Some Cases by Using DecryptLogin
-|  Name                       |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
+# Practice with DecryptLogin
+|  Project                    |   Introduction                                                   |   code                                                                                                       |  in Chinese                     |
 |  :----:                     |   :----:                                                         |   :----:                                                                                                     |  :----:                         |
 |  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboMonitor)                  |  微博监控                       |
 |  QQReport                   |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/QQReports)                     |  生成QQ个人专属报告             |
