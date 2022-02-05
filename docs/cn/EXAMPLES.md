@@ -31,6 +31,7 @@
 1.相关依赖
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
 ```sh
 pip install DecryptLogin
 ```
@@ -59,6 +60,7 @@ optional arguments:
 ```
 
 例如：
+
 ```sh
 python weiboMonitor.py -u 用户名 -p 密码
 ```
@@ -68,6 +70,7 @@ python weiboMonitor.py -u 用户名 -p 密码
 1.相关依赖
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
 ```sh
 pip install DecryptLogin, wordcloud, pillow
 ```
@@ -83,4 +86,525 @@ pip install DecryptLogin, wordcloud, pillow
 
 ```sh
 python generate.py
+```
+
+#### 下载B站指定UP主的所有视频
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, prettytable
+```
+
+2.环境配置
+
+- 操作系统: Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: downloadUserVideos.py [-h] --username USERNAME --password PASSWORD
+
+下载B站指定用户的所有视频(仅支持Windows下使用)
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python downloadUserVideos.py --username 用户名 --password 密码
+```
+
+#### 网易云个人歌单下载器
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, prettytable, contextlib, click
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: NeteaseSongListDownloader.py [-h] --username USERNAME --password
+                                    PASSWORD
+
+下载网易云音乐登录用户创建/收藏的歌单内所有歌曲
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python NeteaseSongListDownloader.py --username 用户名 --password 密码
+```
+
+#### 网易云个人听歌排行榜
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, prettytable
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: NeteaseListenLeaderboard.py [-h] --username USERNAME --password
+                                   PASSWORD
+
+爬取目标用户的网易云听歌排行榜
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python NeteaseListenLeaderboard.py --username 用户名 --password 密码
+```
+
+#### 下载指定微博用户的所有微博数据
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, prettytable, tqdm, lxml, pyecharts, wordcloud, jieba
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+爬虫脚本的运行方式如下：
+
+```sh
+usage: weiboSpider.py [-h] --username USERNAME --password PASSWORD
+
+下载指定微博用户的所有微博数据
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python weiboSpider.py --username 用户名 --password 密码
+```
+
+数据分析脚本的运行方式如下：
+
+```
+python analysis.py
+```
+
+#### 网易云音乐自动签到
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: signin.py [-h] --username USERNAME --password PASSWORD
+
+网易云音乐自动签到
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python signin.py --username 用户名 --password 密码
+```
+
+#### 微博表情包爬取
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, tqdm, prettytable, fake_useragent, lxml
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: weiboEmoji.py [-h] --username USERNAME --password PASSWORD
+
+下载指定微博用户发的所有图片
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python weiboEmoji.py --username 用户名 --password 密码
+```
+
+#### 大吼一声发微博
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, pyaudio
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: weiboSender.py [-h] --username USERNAME --password PASSWORD
+
+大吼一声发条微博
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python weiboSender.py --username 用户名 --password 密码
+```
+
+#### 淘宝商品数据小爬虫
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, pyecharts
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+爬虫脚本的运行方式如下：
+
+```sh
+python tbgoods.py
+```
+
+数据分析脚本的运行方式如下：
+
+```
+python analysis.py
+```
+
+#### 京东商品数据小爬虫
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, pyecharts
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+爬虫脚本的运行方式如下：
+
+```sh
+python jdgoods.py
+```
+
+数据分析脚本的运行方式如下：
+
+```
+python analysis.py
+```
+
+#### 批量删除微博
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: delallweibos.py [-h] --username USERNAME --password PASSWORD
+
+批量删除自己所有的微博
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python delallweibos.py --username 用户名 --password 密码
+```
+
+#### 批量删除QQ空间说说
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+python ClearQzone.py
+```
+
+#### 在终端看网易云每日歌曲推荐
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, contextlib, pick, click
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: NeteaseEveryday.py [-h] --username USERNAME --password PASSWORD
+
+在终端看网易云每日歌曲推荐
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python NeteaseEveryday.py --username 用户名 --password 密码
+```
+
+#### 网易云音乐刷歌曲播放量
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, prettytable
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: NeteaseClickPlaylist.py [-h] --username USERNAME --password PASSWORD
+
+网易云音乐刷歌曲播放量
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python NeteaseClickPlaylist.py --username 用户名 --password 密码
+```
+
+#### 天翼云盘自动签到+抽奖
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, xmltodict
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: signin.py [-h] --username USERNAME --password PASSWORD
+
+天翼网盘自动签到+抽奖
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名
+  --password PASSWORD  密码
+```
+
+例如：
+
+```sh
+python signin.py --username 用户名 --password 密码
+```
+
+#### 中国大学MOOC下载器
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, click, tqdm
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+- ffmpeg: 使用前请确保ffmpeg在环境变量中, [下载地址](https://ffmpeg.org/)
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: moocdl.py [-h] --url URL
+
+MOOC下载器
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --url URL   课程链接, 例如: https://www.icourse163.org/course/SJTU-1003381021
+```
+
+例如：
+
+```sh
+python moocdl.py --username 用户名 --password 密码
 ```
