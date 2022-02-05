@@ -1,6 +1,9 @@
-# 使用案例
+# 实战案例
 
-|  Name                           |   Introduction                                                   |   code                                                                                                       |
+
+## 项目汇总
+
+|  项目名称                       |   微信公众号文章简介                                             |   源代码                                                                                                     |
 |  :----:                         |   :----:                                                         |   :----:                                                                                                     |
 |  微博监控                       |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboMonitor)                  |
 |  生成QQ个人专属报告             |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/QQReports)                     |
@@ -19,3 +22,65 @@
 |  网易云音乐刷歌曲播放量         |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |
 |  天翼云盘自动签到+抽奖          |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |
 |  中国大学MOOC下载器             |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |
+
+
+## 使用简介
+
+#### 微博监控
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: weiboMonitor.py [-h] [-u USERNAME] [-p PASSWORD] [-i ID]
+                       [-t TIME_INTERVAL]
+
+微博监控
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -u USERNAME       用户名
+  -p PASSWORD       密码
+  -i ID             待监控用户id
+  -t TIME_INTERVAL  监控的时间间隔
+```
+
+例如：
+```sh
+python weiboMonitor.py -u 用户名 -p 密码
+```
+
+#### 生成QQ个人专属报告
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+```sh
+pip install DecryptLogin, wordcloud, pillow
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+python generate.py
+```
