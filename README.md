@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./docs/logo.png" width="600"/>
+    <img src="./docs/logo.png" width="600"/>
 </div>
 <br />
 
@@ -33,10 +33,10 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  zt12306         | ✓       | ✗           | ✗           | 中国铁路12306     |
 |  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |
-|  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
-|  zhihu		   | ✓       | ✗           | ✓           | 知乎         	 |
-|  bilibili		   | ✓       | ✓           | ✓           | B站               |
-|  toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
+|  QQId            | ✗       | ✗           | ✓           | 我的QQ中心        |
+|  zhihu           | ✓       | ✗           | ✓           | 知乎         	 |
+|  bilibili        | ✓       | ✓           | ✓           | B站               |
+|  toutiao         | ✗       | ✗           | ✗           | 今日头条          |
 |  taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
@@ -53,7 +53,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  baidupan        | ✓       | ✗           | ✗           | 百度网盘          |
 |  stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
 |  codalab         | ✓       | ✗           | ✗           | CodaLab           |
-|  pypi            | ✓       | ✗           | ✗           | PyPi              | 
+|  pypi            | ✓       | ✗           | ✗           | PyPi              |
 |  xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
 |  douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
 |  migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
@@ -97,7 +97,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 - [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
 
 #### Pip install
-```
+```sh
 run "pip install DecryptLogin"
 ```
 

@@ -2,7 +2,9 @@
 
 
 ## 利用Login类实现模拟登录
+
 对于仅想实现网站模拟登录功能的用户, 推荐使用DecryptLogin库提供的Login类对象。具体而言, 代码实现如下:
+
 ```python
 from DecryptLogin import login
 
@@ -11,18 +13,20 @@ lg = login.Login()
 # 调用对应的接口实现模拟登录(以B站为例)
 infos_return, session = lg.bilibili(username='Your Username', password='Your Password')
 ```
+
 所有网站接口均支持以下几个参数:
-```
-username: 登录用户名
-password: 登录密码
-mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可
-crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果
-proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同: https://requests.readthedocs.io/en/master/user/advanced/#proxies
-```
+
+- username: 登录用户名
+- password: 登录密码
+- mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可
+- crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果
+- proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同[Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
 
 ## 利用Loginer类实现模拟登录
+
 DecryptLogin库也支持先返回对应网站的实例化模拟登录类, 然后再实现模拟登录。具体而言，代码实现如下:
+
 ```python
 from DecryptLogin import login
 
@@ -33,14 +37,14 @@ zhihu_loginer = loginer.zhihu()
 # 调用login函数实现模拟登录
 infos_return, session = zhihu_loginer.login(mode='scanqr')
 ```
+
 loginer.login函数均支持以下几个参数:
-```
-username: 登录用户名
-password: 登录密码
-mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可
-crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果
-proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同: https://requests.readthedocs.io/en/master/user/advanced/#proxies
-```
+
+- username: 登录用户名
+- password: 登录密码
+- mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可
+- crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果
+- proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同[Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
 
 ## 各平台模拟登录简介
@@ -54,11 +58,7 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.weibo(username, password, 'pc')
 ```
-支持用户自定义crack_captcha_func识别PC端登录的数字字母验证码, 例如:
-```python
-def cracker(imagepath):
-    return 'LOVE'
-```
+暂不支持crack_captcha_func。
 #### 移动端登录
 示例代码:
 ```python

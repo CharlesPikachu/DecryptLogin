@@ -2,8 +2,10 @@
 
 
 ## Login class
+
 For users who only want to simply get the login-in session, it is recommended to use the Login class object provided by the DecryptLogin library.
 Specifically, here is an example:
+
 ```python
 from DecryptLogin import login
 
@@ -12,19 +14,21 @@ lg = login.Login()
 # use the provided api function to login in the target website (e.g., twitter)
 infos_return, session = lg.twitter(username='Your Username', password='Your Password')
 ```
+
 All the api functions for logining in the corresponding websites support the following arguments:
-```
-username: the username for login in the target website
-password: the password for login in the target website
-mode: pc/mobile/scanqr, using the default setting is recommended
-crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
-proxies: use proxies during the simulated login, the supported formats of proxies is the same as https://requests.readthedocs.io/en/master/user/advanced/#proxies
-```
+
+- username: the username for login in the target website
+- password: the password for login in the target website
+- mode: pc/mobile/scanqr, using the default setting is recommended
+- crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
+- proxies: use proxies during the simulated login, the supported formats of proxies is the same as [Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
 
 ## Loginer class
+
 The DecryptLogin library also supports returning the instanced simulated login class of the corresponding website before implementing the simulated login. 
 Specifically, the code could be implemented as follows:
+
 ```python
 from DecryptLogin import login
 
@@ -35,14 +39,14 @@ twitter_loginer = loginer.twitter()
 # call login function to achieve simulated login
 infos_return, session = twitter_loginer.login(username='Your Username', password='Your Password')
 ```
+
 All the loginer.login functions for logining in the corresponding websites support the following arguments:
-```
-username: the username for login in the target website
-password: the password for login in the target website
-mode: pc/mobile/scanqr, using the default setting is recommended
-crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
-proxies: use proxies during the simulated login, the supported formats of proxies is the same as https://requests.readthedocs.io/en/master/user/advanced/#proxies
-```
+
+- username: the username for login in the target website
+- password: the password for login in the target website
+- mode: pc/mobile/scanqr, using the default setting is recommended
+- crack_captcha_func: a user-defined captcha identification function, the input of this function is the image path of captcha and it should return the recognition result of captcha
+- proxies: use proxies during the simulated login, the supported formats of proxies is the same as [Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
 
 
 ## Introduction of supported websites
@@ -56,11 +60,7 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.weibo(username, password, 'pc')
 ```
-Support the user-defined crack_captcha_func to identify the digital/letter captcha automatically, for example:
-```python
-def cracker(imagepath):
-    return 'LOVE'
-```
+Unsupport the user-defined crack_captcha_func.
 #### Mobile Mode
 The sample code is as following:
 ```python
