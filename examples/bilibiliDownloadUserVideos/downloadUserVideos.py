@@ -113,8 +113,8 @@ class Bilibili():
         # 开始下载
         out_pipe_quiet = subprocess.PIPE
         out_pipe = None
-        aria2c_path = os.path.join(os.getcwd(), 'tools/aria2c')
-        ffmpeg_path = os.path.join(os.getcwd(), 'tools/ffmpeg')
+        aria2c_path = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'tools/aria2c')
+        ffmpeg_path = os.path.join(os.path.split(os.path.abspath(__file__))[0], 'tools/ffmpeg')
         for idx in range(len(video_info['titles'])):
             title = video_info['titles'][idx]
             aid = video_info['aids'][idx]
