@@ -223,7 +223,7 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.bilibili(username, password, 'pc')
 ```
-暂不支持crack_captcha_func, 直接调用了https://github.com/Hsury/Bilibili-Toolkit作者提供的接口进行验证码识别。
+暂不支持crack_captcha_func。
 #### 移动端登录
 示例代码:
 ```python
@@ -232,9 +232,16 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.bilibili(username, password, 'mobile')
 ```
-暂不支持crack_captcha_func, 直接调用了https://github.com/Hsury/Bilibili-Toolkit作者提供的接口进行验证码识别。
+暂不支持crack_captcha_func。
 #### 扫码登录
-暂不支持扫码登录。
+示例代码:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.bilibili('', '', 'scanqr')
+```
+暂不支持crack_captcha_func。
 
 ### 今日头条
 #### PC端登录

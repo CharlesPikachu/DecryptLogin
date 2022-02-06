@@ -226,7 +226,7 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.bilibili(username, password, 'pc')
 ```
-Unsupport the user-defined crack_captcha_func, we use the recognition api from https://github.com/Hsury/Bilibili-Toolkit.
+Unsupport the user-defined crack_captcha_func.
 #### Mobile Mode
 The sample code is as following:
 ```python
@@ -235,9 +235,16 @@ from DecryptLogin import login
 lg = login.Login()
 infos_return, session = lg.bilibili(username, password, 'mobile')
 ```
-Unsupport the user-defined crack_captcha_func, we use the recognition api from https://github.com/Hsury/Bilibili-Toolkit.
+Unsupport the user-defined crack_captcha_func.
 #### Scanqr Mode
-This mode is temporarily not supported.
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.bilibili('', '', 'scanqr')
+```
+Unsupport the user-defined crack_captcha_func.
 
 ### Toutiao
 #### PC Mode

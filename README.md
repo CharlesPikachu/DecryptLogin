@@ -35,7 +35,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |
 |  QQId			   | ✗       | ✗           | ✓           | 我的QQ中心        |
 |  zhihu		   | ✓       | ✗           | ✓           | 知乎         	 |
-|  bilibili		   | ✓       | ✓           | ✗           | B站               |
+|  bilibili		   | ✓       | ✓           | ✓           | B站               |
 |  toutiao		   | ✗       | ✗           | ✗           | 今日头条          |
 |  taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  jingdong        | ✗       | ✗           | ✓           | 京东              |
@@ -125,7 +125,7 @@ infos_return, session = lg.QQZone()
 infos_return, session = lg.QQQun()
 infos_return, session = lg.QQId()
 infos_return, session = lg.zhihu()
-infos_return, session = lg.bilibili(username, password)
+infos_return, session = lg.bilibili()
 infos_return, session = lg.toutiao(username, password)
 infos_return, session = lg.taobao()
 infos_return, session = lg.jingdong()

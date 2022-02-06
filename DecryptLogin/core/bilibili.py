@@ -8,12 +8,15 @@ Author:
 更新日期:
     2022-02-06
 '''
+import os
 import rsa
 import time
+import qrcode
 import base64
 import urllib
 import hashlib
 import requests
+from ..utils import showImage
 
 
 '''PC端登录B站'''
@@ -154,10 +157,55 @@ class bilibiliMobile():
 
 '''扫码登录B站'''
 class bilibiliScanqr():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in bilibili in scanqr mode'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username, password, crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 获得登录信息
+        response = self.session.get(self.getLogin_url)
+        response_json = response.json()
+        scan_url, oauthKey = response_json['data']['url'], response_json['data']['oauthKey']
+        # 制作二维码
+        qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=2)
+        qr.add_data(scan_url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color='black', back_color='white')
+        img.save(os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        # 扫码
+        headers = self.headers.copy()
+        headers['Host'] = 'passport.bilibili.com'
+        headers['Referer'] = 'https://passport.bilibili.com/login'
+        while True:
+            response = self.session.post(self.getLoginInfo_url, data={'oauthKey': oauthKey}, headers=headers)
+            if response.json()['status']: break
+            elif response.json()['data'] in [-4, -5]: time.sleep(0.5)
+            else: raise RuntimeError(response.json())
+        # 登录成功
+        response = self.session.get(response.json()['data']['url'])
+        response = self.session.get(self.nav_url)
+        response_json = response.json()
+        username = response_json['data']['uname']
+        print('[INFO]: Account -> %s, login successfully' % username)
+        infos_return = {'username': username}
+        infos_return.update(response_json)
+        return infos_return, self.session
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36'
+        }
+        self.getLogin_url = 'https://passport.bilibili.com/qrcode/getLoginUrl'
+        self.getLoginInfo_url = 'https://passport.bilibili.com/qrcode/getLoginInfo'
+        self.nav_url = 'https://api.bilibili.com/x/web-interface/nav'
+        self.session.headers.update(self.headers)
 
 
 '''
@@ -184,7 +232,7 @@ class bilibili():
             'scanqr': bilibiliScanqr(**kwargs),
         }
     '''登录函数'''
-    def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
+    def login(self, username='', password='', mode='scanqr', crack_captcha_func=None, **kwargs):
         assert mode in self.supported_modes, 'unsupport mode %s in bilibili.login' % mode
         selected_api = self.supported_modes[mode]
         if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in bilibili.login' % mode)

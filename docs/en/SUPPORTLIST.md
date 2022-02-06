@@ -11,7 +11,7 @@
 |  QQQun           | ✗       | ✗           | ✓           |
 |  QQId			   | ✗       | ✗           | ✓           |
 |  zhihu		   | ✓       | ✗           | ✓           |
-|  bilibili		   | ✓       | ✓           | ✗           |
+|  bilibili		   | ✓       | ✓           | ✓           |
 |  toutiao		   | ✗       | ✗           | ✗           |
 |  taobao          | ✗       | ✗           | ✓           |
 |  jingdong        | ✗       | ✗           | ✓           |
