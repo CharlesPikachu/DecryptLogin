@@ -11,12 +11,15 @@ Author:
 import os
 import rsa
 import time
+import random
 import qrcode
 import base64
 import urllib
 import hashlib
 import requests
 from ..utils import showImage
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_v1_5
 
 
 '''PC端登录B站'''
@@ -90,69 +93,88 @@ class bilibiliMobile():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 是否需要验证码
-        is_need_captcha = False
-        while True:
-            # 需要验证码
-            if is_need_captcha:
-                captcha_img = self.session.get(self.captcha_url, headers=self.captcha_headers).content
-                data = {'image': base64.b64encode(captcha_img).decode('utf-8')}
-                captcha = self.session.post(self.crack_captcha_url, json=data).json()['message']
-            # 获得key值
-            appkey = 'bca7e84c2d947ac6'
-            data = {
-                'appkey': appkey,
-                'sign': self.__calcSign('appkey={}'.format(appkey))
-            }
-            response = self.session.post(self.getkey_url, data=data)
-            response_json = response.json()
-            key_hash = response_json['data']['hash']
-            pub_key = rsa.PublicKey.load_pkcs1_openssl_pem(response_json['data']['key'].encode('utf-8'))
-            # 模拟登录
-            if is_need_captcha:
-                data = "access_key=&actionKey=appkey&appkey={}&build=6040500&captcha={}&challenge=&channel=bili&cookies=&device=phone&mobi_app=android&password={}&permission=ALL&platform=android&seccode=&subid=1&ts={}&username={}&validate=" \
-                        .format(appkey, captcha, urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key))), int(time.time()), urllib.parse.quote_plus(username))
-            else:
-                data = "access_key=&actionKey=appkey&appkey={}&build=6040500&captcha=&challenge=&channel=bili&cookies=&device=phone&mobi_app=android&password={}&permission=ALL&platform=android&seccode=&subid=1&ts={}&username={}&validate=" \
-                        .format(appkey, urllib.parse.quote_plus(base64.b64encode(rsa.encrypt('{}{}'.format(key_hash, password).encode(), pub_key))), int(time.time()), urllib.parse.quote_plus(username))
-            data = "{}&sign={}".format(data, self.__calcSign(data))
-            response = self.session.post(self.login_url, data=data, headers=self.login_headers)
-            response_json = response.json()
-            # 不需要验证码, 登录成功
-            if response_json['code'] == 0 and response_json['data']['status'] == 0:
-                for cookie in response_json['data']['cookie_info']['cookies']:
-                    self.session.cookies.set(cookie['name'], cookie['value'], domain='.bilibili')
-                print('[INFO]: Account -> %s, login successfully' % username)
-                infos_return = {'username': username}
-                infos_return.update(response_json)
-                return infos_return, self.session
-            # 需要识别验证码
-            elif response_json['code'] == -105:
-                is_need_captcha = True
-            # 账号密码错误
-            elif response_json['code'] == -629:
-                raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-            # 其他错误
-            else:
-                raise RuntimeError(response_json.get('data', {}).get('message'))
+        # 加密
+        response = self.session.get(self.key_url)
+        hash_value, public_key = response.json()['data']['hash'], response.json()['data']['key']
+        public_key = RSA.importKey(public_key)
+        password = hash_value + password
+        cipher = PKCS1_v1_5.new(public_key)
+        password = str(base64.b64encode(cipher.encrypt(password.encode('utf-8'))), 'utf-8')
+        # 模拟登录
+        data = {
+            'captcha': '',
+            'challenge': '',
+            'cookies': '',
+            'password': password,
+            'permission': 'ALL',
+            'seccode': '',
+            'subid': '1',
+            'username': username,
+            'validate': '',
+            'access_key': '',
+            'actionKey': 'appkey',
+            'appkey': '783bbb7264451d82',
+            'build': '6550400',
+            'channel': 'bili',
+            'device': 'phone',
+            'mobi_app': 'android',
+            'platform': 'android',
+            'ts': str(int(time.time())),
+        }
+        keys = sorted(data.keys())
+        data_sorted = {}
+        for key in keys: data_sorted[key] = data[key]
+        data = data_sorted
+        sign = self.__calcSign(data)
+        data.update({'sign': sign})
+        response = self.session.post(self.login_url, data=data, headers=self.headers)
+        response_json = response.json()
+        # 登录成功
+        if response_json['code'] == 0 and response_json['data']['status'] == 0:
+            for cookie in response_json['data']['cookie_info']['cookies']:
+                self.session.cookies.set(cookie['name'], cookie['value'], domain='.bilibili')
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username}
+            infos_return.update(response_json)
+            return infos_return, self.session
+        # 账号密码错误
+        elif response_json['code'] == -629:
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 其他错误
+        else:
+            raise RuntimeError(response_json.get('data', {}))
     '''计算sign值'''
-    def __calcSign(self, param, salt="60698ba2f68e01ce44738920a0ffe768"):
+    def __calcSign(self, param, salt="2653583c8873dea268ab9386918b1d65"):
+        param = urllib.parse.urlencode(param)
         sign = hashlib.md5('{}{}'.format(param, salt).encode('utf-8'))
         return sign.hexdigest()
+    '''伪造buvid'''
+    def __fakebuvid(self):
+        mac_list = []
+        for i in range(1, 7):
+            rand_str = ''.join(random.sample('0123456789abcdef', 2))
+            mac_list.append(rand_str)
+        rand_mac = ':'.join(mac_list)
+        md5 = hashlib.md5()
+        md5.update(rand_mac.encode())
+        md5_mac_str = md5.hexdigest()
+        md5_mac = list(md5_mac_str)
+        fake_mac = ('XY' + md5_mac[2] + md5_mac[12] + md5_mac[22] + md5_mac_str).upper()
+        return fake_mac
     '''初始化'''
     def __initialize(self):
-        self.login_headers = {
-            'Content-type': 'application/x-www-form-urlencoded'
+        self.login_url = 'https://passport.bilibili.com/x/passport-login/oauth2/login'
+        self.key_url = 'https://passport.bilibili.com/x/passport-login/web/key'
+        self.headers = {
+            'env': 'prod',
+            'APP-KEY': 'android',
+            'Buvid': self.__fakebuvid(),
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip',
+            'Accept-Language': 'zh-cn',
+            'Connection': 'keep-alive',
+            'User-Agent': 'Mozilla/5.0 BiliDroid/6.55.0 (bbcalllen@gmail.com) os/android model/MuMu mobi_app/android build/6550400 channel/bili innerVer/6550400 osVer/7.1.2 network/2',
         }
-        self.captcha_headers = {
-            'Host': 'passport.bilibili.com'
-        }
-        self.getkey_url = 'https://passport.bilibili.com/api/oauth2/getKey'
-        self.login_url = 'https://passport.bilibili.com/api/v3/oauth2/login'
-        self.captcha_url = 'https://passport.bilibili.com/captcha'
-        # 破解网站来自: https://github.com/Hsury/Bilibili-Toolkit
-        self.crack_captcha_url = 'https://bili.dev:2233/captcha'
-        self.session.headers.update({'User-Agent': "Mozilla/5.0 BiliDroid/5.51.1 (bbcallen@gmail.com)"})
 
 
 '''扫码登录B站'''
