@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2021-12-25
+    2022-02-06
 '''
 import rsa
 import time
@@ -28,47 +28,43 @@ class bilibiliPC():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 是否需要验证码
-        is_need_captcha = False
-        while True:
-            # 需要验证码
-            if is_need_captcha:
-                response = self.session.get(self.captcha_url)
-                if response.status_code != 200: raise RuntimeError(response.text)
-                response_json = response.json()
-                if response_json['code'] != 0: raise RuntimeError(response.json())
-                gt = response_json['data']['result']['gt']
-                challenge = response_json['data']['result']['challenge']
-                key = response_json['data']['result']['key']
-                print(f'[INFO]: gt is {gt} and challenge is {challenge}')
-                validate = input(f'[INFO]: Please visit https://kuresaru.github.io/geetest-validator/ to obtain validate:')
-                seccode = validate
-            response = self.session.get(self.getkey_url)
-            response_json = response.json()
-            password_encrypt = self.encrypt(response_json['key'].encode('utf-8'), (response_json['hash'] + password).encode('utf-8'))
-            if is_need_captcha:
-                data = f'captchaType=6&username={username}&password={password_encrypt.decode("utf-8")}&keep=true&key={key}&challenge={challenge}&validate={validate}&seccode={seccode}'
-            else:
-                data = f'captchaType=""&username={username}&password={password_encrypt.decode("utf-8")}&keep=true&key=""&challenge=""&validate=""&seccode=""'
-            response = self.session.post(self.login_url, headers=self.login_headers, data=data)
-            response_json = response.json()
-            # 登录成功
-            if response_json['code'] == 0:
-                response = self.session.get(response_json['data']['redirectUrl'])
-                response_json['response_text'] = response.text
-                print('[INFO]: Account -> %s, login successfully' % username)
-                infos_return = {'username': username}
-                infos_return.update(response_json)
-                return infos_return, self.session
-            # 需要识别验证码
-            elif response_json['code'] in [-105, -400, 2400]:
-                is_need_captcha = True
-            # 账号密码错误
-            elif response_json['code'] == -629:
-                raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-            # 其他错误
-            else:
-                raise RuntimeError(response_json.get('data', {}).get('message'))
+        # 手动过验证码
+        response = self.session.get(self.captcha_url)
+        if response.status_code != 200: raise RuntimeError(response.text)
+        response_json = response.json()
+        if response_json['code'] != 0: raise RuntimeError(response.json())
+        gt = response_json['data']['result']['gt']
+        challenge = response_json['data']['result']['challenge']
+        key = response_json['data']['result']['key']
+        print(f'[INFO]: gt is {gt} and challenge is {challenge}')
+        print('[INFO]: Please visit https://kuresaru.github.io/geetest-validator/ to obtain validate and seccode')
+        validate = input('validate: ')
+        seccode = input('seccode: ')
+        # 模拟登录
+        response = self.session.get(self.getkey_url)
+        response_json = response.json()
+        password_encrypt = self.encrypt(response_json['key'].encode('utf-8'), (response_json['hash'] + password).encode('utf-8'))
+        data = f'captchaType=6&username={username}&password={password_encrypt.decode("utf-8")}&keep=true&key={key}&challenge={challenge}&validate={validate}&seccode={seccode}'
+        response = self.session.post(self.login_url, headers=self.login_headers, data=data)
+        response_json = response.json()
+        # 登录成功
+        if response_json['code'] == 0:
+            response = self.session.get(response_json['data']['redirectUrl'])
+            response_json['response_text'] = response.text
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username}
+            infos_return.update(response_json)
+            return infos_return, self.session
+        # 账号存在风险
+        elif response_json['code'] == -2110:
+            risk_url = response_json['data']
+            response = self.session.get(risk_url)
+        # 账号密码错误
+        elif response_json['code'] == -629:
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 其他错误
+        else:
+            raise RuntimeError(response_json.get('data', {}))
     '''加密'''
     def encrypt(self, public_key, data):
         pub_key = rsa.PublicKey.load_pkcs1_openssl_pem(public_key)
