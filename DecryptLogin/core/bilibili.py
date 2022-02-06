@@ -55,10 +55,6 @@ class bilibiliPC():
             infos_return = {'username': username}
             infos_return.update(response_json)
             return infos_return, self.session
-        # 账号存在风险
-        elif response_json['code'] == -2110:
-            risk_url = response_json['data']
-            response = self.session.get(risk_url)
         # 账号密码错误
         elif response_json['code'] == -629:
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
