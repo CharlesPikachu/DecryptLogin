@@ -22,6 +22,7 @@
 |  网易云音乐刷歌曲播放量         |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |
 |  天翼云盘自动签到+抽奖          |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |
 |  中国大学MOOC下载器             |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |
+|  修改小米运动中的步数           |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           | 
 
 
 ## 使用简介
@@ -607,4 +608,42 @@ optional arguments:
 
 ```sh
 python moocdl.py --username 用户名 --password 密码
+```
+
+#### 修改小米运动中的步数
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: modifymihealthsteps.py [-h] --username USERNAME --password PASSWORD
+                              --steps STEPS
+
+修改小米运动中的步数
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  用户名, 仅支持小米运动账号(即华米), 不支持小米账号
+  --password PASSWORD  密码, 仅支持小米运动账号(即华米), 不支持小米账号
+  --steps STEPS        想要刷到的目标步数
+```
+
+例如：
+
+```sh
+python modifymihealthsteps.py --username 用户名 --password 密码 --steps 目标步数
 ```

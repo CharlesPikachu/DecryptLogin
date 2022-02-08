@@ -90,6 +90,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  NeteaseClickPlaylist       |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |  网易云音乐刷歌曲播放量         |
 |  cloud189signin             |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |  天翼云盘自动签到+抽奖          |
 |  moocdl                     |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |  中国大学MOOC下载器             |
+|  modifymihealthsteps        |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           |  修改小米运动中的步数           |
 
 
 # Install
