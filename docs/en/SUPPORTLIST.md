@@ -43,3 +43,4 @@
 |  qqmusic         | ✗       | ✗           | ✓           |
 |  ximalaya        | ✗       | ✗           | ✓           |
 |  icourse163      | ✗       | ✓           | ✗           |
+|  xiaomihealth    | ✗       | ✓           | ✗           |

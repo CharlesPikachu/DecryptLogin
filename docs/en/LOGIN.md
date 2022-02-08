@@ -736,6 +736,21 @@ Unsupport the user-defined crack_captcha_func.
 #### Scanqr Mode
 This mode is temporarily not supported.
 
+### Xiaomihealth
+#### PC Mode
+This mode is temporarily not supported.
+#### Mobile Mode
+The sample code is as following:
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.xiaomihealth(username, password, 'mobile')
+```
+Unsupport the user-defined crack_captcha_func.
+#### Scanqr Mode
+This mode is temporarily not supported.
+
 
 ## Util functions
 

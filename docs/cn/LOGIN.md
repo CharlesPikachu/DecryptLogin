@@ -731,6 +731,20 @@ infos_return, session = lg.icourse163(username, password, 'mobile')
 #### 扫码登录
 暂不支持扫码登录。
 
+### 小米运动
+#### PC端登录
+暂不支持PC端登录。
+#### 移动端登录
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.xiaomihealth(username, password, 'mobile')
+```
+暂不支持crack_captcha_func。
+#### 扫码登录
+暂不支持扫码登录。
+
 
 ## 一些工具函数
 

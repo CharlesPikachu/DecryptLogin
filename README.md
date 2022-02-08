@@ -67,6 +67,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  qqmusic         | ✗       | ✗           | ✓           | QQ音乐            |
 |  ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
 |  icourse163      | ✗       | ✓           | ✗           | 中国大学MOOC      |
+|  xiaomihealth    | ✗       | ✓           | ✗           | 小米运动          |
 
 
 # Practice with DecryptLogin
@@ -193,4 +194,4 @@ If you use this project in your research, please cite this project.
 # More
 #### WeChat Official Accounts
 *Charles_pikachu*  
-![img](pikachu.jpg)
+![img](./docs/pikachu.jpg)
