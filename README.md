@@ -158,6 +158,7 @@ infos_return, session = lg.cloud189(username, password)
 infos_return, session = lg.qqmusic()
 infos_return, session = lg.ximalaya()
 infos_return, session = lg.icourse163(username, password)
+infos_return, session = lg.xiaomihealth(username, password)
 ```
 
 
