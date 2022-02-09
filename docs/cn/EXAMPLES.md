@@ -23,6 +23,7 @@
 |  天翼云盘自动签到+抽奖          |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |
 |  中国大学MOOC下载器             |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |
 |  修改小米运动中的步数           |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           | 
+|  淘宝抢购脚本                   |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |
 
 
 ## 使用简介
@@ -646,4 +647,40 @@ optional arguments:
 
 ```sh
 python modifymihealthsteps.py --username 用户名 --password 密码 --steps 目标步数
+```
+
+#### 淘宝抢购脚本
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, pyttsx3, prettytable
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: taobaosnap.py [-h] --interval INTERVAL [--key KEY]
+
+淘宝抢购脚本
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --interval INTERVAL  抢购商品时查询商品是否可以购买的时间间隔(单位秒)
+  --key KEY            Server酱的Key
+```
+
+例如：
+
+```sh
+python taobaosnap.py --interval 1800 --key Server酱的Key
 ```

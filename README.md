@@ -91,7 +91,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 |  cloud189signin             |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |  天翼云盘自动签到+抽奖          |
 |  moocdl                     |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |  中国大学MOOC下载器             |
 |  modifymihealthsteps        |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           |  修改小米运动中的步数           |
-|  taobaosnap                 |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |  淘宝抢购脚本                   |
+|  taobaosnap                 |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |  淘宝抢购脚本                   |
 
 
 # Install
