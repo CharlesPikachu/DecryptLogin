@@ -1,6 +1,10 @@
 # 实战案例
 
 
+## 项目声明
+本系列文章源代码仅供python学习交流，请勿用于商业等违法相关法律法规的用途，如有发现，我会直接删除这个系列的文章和代码。
+
+
 ## 项目汇总
 
 |  项目名称                       |   微信公众号文章简介                                             |   源代码                                                                                                     |
@@ -24,6 +28,7 @@
 |  中国大学MOOC下载器             |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |
 |  修改小米运动中的步数           |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           | 
 |  淘宝抢购脚本                   |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |
+|  京东抢购脚本                   |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
 
 
 ## 使用简介
@@ -683,4 +688,42 @@ optional arguments:
 
 ```sh
 python taobaosnap.py --interval 1800 --key Server酱的Key
+```
+
+#### 京东抢购脚本
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, pyttsx3, prettytable, beautifulsoup4
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+
+usage: jingdongsnap.py [-h] [--interval INTERVAL] [--paywd PAYWD] [--key KEY]
+
+京东抢购脚本
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --interval INTERVAL  抢购商品时查询商品是否可以购买的时间间隔(单位秒)
+  --paywd PAYWD        支付密码, 部分商品需要支付密码才能提交订单, 输入密码不会导致你直接购买商品, 请放心使用
+  --key KEY            Server酱的Key
+```
+
+例如：
+
+```sh
+python jingdongsnap.py --interval 1800 --key Server酱的Key --paywd 支付密码
 ```
