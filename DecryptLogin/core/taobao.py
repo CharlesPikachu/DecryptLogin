@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-02-12
 '''
 import re
 import time
@@ -81,7 +81,12 @@ class taobaoScanqr():
                 # ----检查是否需要安全验证
                 response = self.session.get(response_json.get('url', '') + '&umid_token={}'.format(umid_token))
                 if response.url.find('login_unusual.htm') > -1:
-                    raise RuntimeError('Fail to login, your account requires security verification')
+                    verification_url = re.findall(r"url: 'https://aq.taobao.com/durex/validate(.*?)',", response.text)
+                    if len(verification_url) > 0:
+                        verification_url = 'https://aq.taobao.com/durex/validate' + verification_url[0]
+                        response = self.session.get(verification_url)
+                    else:
+                        raise RuntimeError('Fail to login, your account requires security verification')
                 uid, token = re.findall(r'uid=(.*?)&token=(.*?)&', response_json.get('url'))[0]
                 username = unquote(uid.replace('cntaobao', ''))
                 break
