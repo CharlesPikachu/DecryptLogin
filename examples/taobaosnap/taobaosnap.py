@@ -68,15 +68,16 @@ class TaobaoSnap():
         good_id = input('请选择想要抢购的商品编号(例如"0"): ')
         assert good_id in good_infos, '输入的商品编号有误'
         # 根据选择尝试购买商品
-        print(f'[INFO]: 正在尝试抢购商品***{good_infos[good_id]["title"]}***')
+        print(f'[{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())} INFO]: 正在尝试抢购商品***{good_infos[good_id]["title"]}***')
         while True:
             try:
                 is_success = self.buygood(good_infos[good_id], user_id)
-            except:
+            except Exception as err:
+                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())} INFO]: 抢购失败, 错误信息如下: \n{err}\n将在{self.trybuy_interval}秒后重新尝试.')
                 is_success = False
             if is_success: break
             time.sleep(self.trybuy_interval)
-        print(f'[INFO]: 抢购***{good_infos[good_id]["title"]}***成功, 已为您自动提交订单, 请尽快前往淘宝完成付款.')
+        print(f'[{time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())} INFO]: 抢购***{good_infos[good_id]["title"]}***成功, 已为您自动提交订单, 请尽快前往淘宝完成付款.')
         # 电脑语音提示
         for _ in range(5):
             pyttsx3.speak('已经为您抢购到你所需的商品, 请尽快前往淘宝完成付款.')
