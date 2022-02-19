@@ -25,8 +25,8 @@ You can star this repository to keep track of the project if it's helpful for yo
 
 # Statements
 ```
-The project is only for learning python, 
-and I will delete this project if I find that anyone use this project to do some illegal things.
+This repo is created for learning python.
+If I find that anyone leverage this project in an illegal way, I will delete this project immediately.
 
 本项目仅供python爱好者学习使用, 若作者发现该项目以任何不正当方式被使用, 将立即删除该项目。
 希望大家合理利用该项目🙂
@@ -203,6 +203,7 @@ If you use this project in your research, please cite this project.
 - [Pytools](https://github.com/CharlesPikachu/pytools): Some useful tools written by pure python.
 - [PikachuWeChat](https://github.com/CharlesPikachu/pikachuwechat): Play WeChat with itchat-uos.
 - [Pydrawing](https://github.com/CharlesPikachu/pydrawing): Beautify your image or video.
+- [ImageCompressor](https://github.com/CharlesPikachu/imagecompressor): Image compressors written by pure python.
 
 
 # More
