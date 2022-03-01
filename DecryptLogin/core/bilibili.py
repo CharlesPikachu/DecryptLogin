@@ -54,7 +54,8 @@ class bilibiliPC():
         response = self.session.post(self.login_url, headers=self.login_headers, data=data)
         response_json = response.json()
         # 判断是否存在安全风险
-        if response_json['code'] == 2: response_json = bilibiliMobile().loginbysms(username)
+        if 'passport.bilibili.com/account/mobile/security/managephone/phone/verify' in response.text:
+            response_json = bilibiliMobile().loginbysms(username)
         # 登录成功
         if response_json['code'] == 0:
             response = self.session.get(response_json['data']['redirectUrl'])
@@ -132,7 +133,8 @@ class bilibiliMobile():
         response = self.session.post(self.login_url, data=data, headers=self.headers)
         response_json = response.json()
         # 判断是否存在安全风险
-        if response_json['code'] == 2: response_json = self.loginbysms(username)
+        if 'passport.bilibili.com/account/mobile/security/managephone/phone/verify' in response.text:
+            response_json = self.loginbysms(username)
         # 登录成功
         if response_json['code'] == 0 and response_json['data']['status'] == 0:
             for cookie in response_json['data']['cookie_info']['cookies']:
