@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-02-06
+    2022-03-01
 '''
 import os
 import rsa
@@ -53,6 +53,8 @@ class bilibiliPC():
         data = f'captchaType=6&username={username}&password={password_encrypt.decode("utf-8")}&keep=true&key={key}&challenge={challenge}&validate={validate}&seccode={seccode}'
         response = self.session.post(self.login_url, headers=self.login_headers, data=data)
         response_json = response.json()
+        # 判断是否存在安全风险
+        if response_json['code'] == 2: response_json = bilibiliMobile().loginbysms(username)
         # 登录成功
         if response_json['code'] == 0:
             response = self.session.get(response_json['data']['redirectUrl'])
@@ -129,6 +131,8 @@ class bilibiliMobile():
         data.update({'sign': sign})
         response = self.session.post(self.login_url, data=data, headers=self.headers)
         response_json = response.json()
+        # 判断是否存在安全风险
+        if response_json['code'] == 2: response_json = self.loginbysms(username)
         # 登录成功
         if response_json['code'] == 0 and response_json['data']['status'] == 0:
             for cookie in response_json['data']['cookie_info']['cookies']:
@@ -161,10 +165,57 @@ class bilibiliMobile():
         md5_mac = list(md5_mac_str)
         fake_mac = ('XY' + md5_mac[2] + md5_mac[12] + md5_mac[22] + md5_mac_str).upper()
         return fake_mac
+    '''通过SMS登录'''
+    def loginbysms(self, username):
+        default = {
+            'access_key': '',
+            'actionKey': 'appkey',
+            'appkey': '783bbb7264451d82',
+            'build': '6590300',
+            'channel': 'bili',
+            'device': 'phone',
+            'mobi_app': 'android',
+            'platform': 'android',
+            'ts': str(int(time.time())),
+        }
+        # 发送验证码
+        data = {
+            'cid': '86',
+            'tel': username,
+            'statistics': '{"appId":1,"platform":3,"version":"6.32.0","abtest":""}'
+        }
+        data, data_sorted = {**data, **default}, {}
+        for key in sorted(data.keys()):
+            data_sorted.update({key: data[key]})
+        data = data_sorted
+        sign = self.__calcSign(data)
+        data.update({'sign': sign})
+        response = self.session.post(self.send_url, headers=self.headers, data=data)
+        # 验证登录
+        captcha_key = response.json()['data']['captcha_key']
+        code = input(f'Due to the risk of this login, input the sms code sent to {username}: ')
+        data_sms = {
+            'captcha_key': captcha_key,
+            'cid': data['cid'],
+            'tel': data['tel'],
+            'statistics': data['statistics'],
+            'code': code,
+        }
+        data_sms, data_sms_sorted = {**data_sms, **default}, {}
+        for key in sorted(data_sms.keys()):
+            data_sms_sorted.update({key: data_sms[key]})
+        data_sms = data_sms_sorted
+        sign = self.__calcSign(data_sms)
+        data_sms.update({'sign': sign})
+        response = self.session.post(self.sms_url, headers=self.headers, data=data_sms)
+        # 返回
+        return response.json()
     '''初始化'''
     def __initialize(self):
         self.login_url = 'https://passport.bilibili.com/x/passport-login/oauth2/login'
         self.key_url = 'https://passport.bilibili.com/x/passport-login/web/key'
+        self.send_url = 'https://passport.bilibili.com//x/passport-login/sms/send'
+        self.sms_url = 'https://passport.bilibili.com/x/passport-login/login/sms'
         self.headers = {
             'env': 'prod',
             'APP-KEY': 'android',
