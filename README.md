@@ -8,6 +8,7 @@
 [![PyPI](https://img.shields.io/pypi/v/DecryptLogin)](https://pypi.org/project/DecryptLogin)
 [![license](https://img.shields.io/github/license/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/blob/master/LICENSE)
 [![PyPI - Downloads](https://pepy.tech/badge/DecryptLogin)](https://pypi.org/project/DecryptLogin/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/DecryptLogin?style=flat-square)](https://pypi.org/project/DecryptLogin/)
 [![issue resolution](https://isitmaintained.com/badge/resolution/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 [![open issues](https://isitmaintained.com/badge/open/CharlesPikachu/DecryptLogin.svg)](https://github.com/CharlesPikachu/DecryptLogin/issues)
 
@@ -206,6 +207,7 @@ If you use this project in your research, please cite this project.
 - [ImageCompressor](https://github.com/CharlesPikachu/imagecompressor): Image compressors written by pure python.
 - [FreeProxy](https://github.com/CharlesPikachu/freeproxy): Collecting free proxies from internet.
 - [Paperdl](https://github.com/CharlesPikachu/paperdl): Search and download paper from specific websites.
+- [Sciogovterminal](https://github.com/CharlesPikachu/sciogovterminal): Browse "The State Council Information Office of the People's Republic of China" in the terminal.
 
 
 # More
