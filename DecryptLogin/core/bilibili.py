@@ -17,9 +17,9 @@ import base64
 import urllib
 import hashlib
 import requests
-from ..utils import showImage
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_v1_5
+from ..utils import showImage, removeImage
 
 
 '''PC端登录B站'''
@@ -264,6 +264,7 @@ class bilibiliScanqr():
             elif response.json()['data'] in [-4, -5]: time.sleep(0.5)
             else: raise RuntimeError(response.json())
         # 登录成功
+        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         response = self.session.get(response.json()['data']['url'])
         response = self.session.get(self.nav_url)
         response_json = response.json()
