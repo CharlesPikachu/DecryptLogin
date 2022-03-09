@@ -2,6 +2,7 @@
 
 
 ## 项目声明
+
 本系列文章源代码仅供python学习交流，请勿用于商业等违法相关法律法规的用途，如有发现，我会直接删除这个系列的文章和代码。
 
 
@@ -29,6 +30,7 @@
 |  修改小米运动中的步数           |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           | 
 |  淘宝抢购脚本                   |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |
 |  京东抢购脚本                   |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
+|  B站UP主监控                    |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
 
 
 ## 使用简介
@@ -710,7 +712,6 @@ pip install DecryptLogin, pyttsx3, prettytable, beautifulsoup4
 脚本运行方式如下：
 
 ```sh
-
 usage: jingdongsnap.py [-h] [--interval INTERVAL] [--paywd PAYWD] [--key KEY]
 
 京东抢购脚本
@@ -726,4 +727,40 @@ optional arguments:
 
 ```sh
 python jingdongsnap.py --interval 1800 --key Server酱的Key --paywd 支付密码
+```
+
+#### B站UP主监控
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, videofetch
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: bilibiliupmonitor.py [-h] [--ids IDS] [--key KEY]
+
+B站UP主监控
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --ids IDS   监控的UP主ID, 例如"406756145,406756146"
+  --key KEY   Server酱的Key
+```
+
+例如：
+
+```sh
+python bilibiliupmonitor.py -ids 406756145 --key Server酱的Key
 ```
