@@ -70,7 +70,6 @@ class zt12306PC():
         infos_return = response_json
         username = infos_return['username']
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         response = self.session.post(self.initMy12306Api_url)
         response_json = response.json()
         print('[INFO]: Account -> %s, login successfully' % username)
@@ -78,6 +77,8 @@ class zt12306PC():
         return infos_return, self.session
     '''加密密码'''
     def encrypt(self, password):
+        crypt_sm4 = CryptSM4()
+        crypt_sm4.set_key(b'tiekeyuankp12306', SM4_ENCRYPT)
         encrypted_passwd = crypt_sm4.crypt_ecb(password.strip().encode())
         encrypted_passwd = base64.b64encode(encrypted_passwd).decode()
         return '@' + encrypted_passwd
