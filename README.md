@@ -38,7 +38,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
 |  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
-|  douban          | ✓       | ✗           | ✗           | 豆瓣              |
+|  douban          | ✓       | ✗           | ✓           | 豆瓣              |
 |  github          | ✓       | ✗           | ✗           | Github            |
 |  music163        | ✓       | ✗           | ✗           | 网易云音乐        |
 |  zt12306         | ✓       | ✗           | ✗           | 中国铁路12306     |
@@ -56,7 +56,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  lagou           | ✗       | ✗           | ✗           | 拉勾网            |
 |  twitter         | ✓       | ✓           | ✗           | 推特              |
 |  vultr           | ✓       | ✗           | ✗           | Vultr             |
-|  eSurfing        | ✓       | ✗           | ✗           | 天翼              |
+|  eSurfing        | ✗       | ✗           | ✓           | 天翼              |
 |  renren          | ✓       | ✗           | ✗           | 人人网            |
 |  w3cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
 |  fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
@@ -65,7 +65,6 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
 |  codalab         | ✓       | ✗           | ✗           | CodaLab           |
 |  pypi            | ✓       | ✗           | ✗           | PyPi              |
-|  xiami           | ✓       | ✗           | ✗           | 虾米音乐          |
 |  douyu           | ✗       | ✗           | ✓           | 斗鱼直播          |
 |  migu            | ✓       | ✗           | ✗           | 咪咕音乐          |
 |  qunar           | ✓       | ✗           | ✗           | 去哪儿旅行        |
@@ -160,7 +159,6 @@ infos_return, session = lg.baidupan(username, password)
 infos_return, session = lg.stackoverflow(username, password)
 infos_return, session = lg.codalab(username, password)
 infos_return, session = lg.pypi(username, password)
-infos_return, session = lg.xiami(username, password)
 infos_return, session = lg.douyu()
 infos_return, session = lg.migu(username, password)
 infos_return, session = lg.qunar(username, password)

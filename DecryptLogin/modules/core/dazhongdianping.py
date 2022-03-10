@@ -6,14 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-09
 '''
 import os
 import re
 import time
 import random
 import requests
-from ..utils.misc import *
+from ..utils import saveImage, showImage, removeImage
 
 
 '''PC端登录大众点评'''
@@ -74,7 +74,7 @@ class dazhongdianpingScanqr():
         # 登录成功
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         print('[INFO]: Account -> %s, login successfully' % username)
-        infos_return = {'username': username, 'userid': userid}
+        infos_return = {'username': username, 'userid': userid, 'text': response.text}
         return infos_return, self.session
     '''初始化'''
     def __initialize(self):

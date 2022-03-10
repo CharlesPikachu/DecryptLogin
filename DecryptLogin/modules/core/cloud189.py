@@ -18,7 +18,7 @@ import base64
 import hashlib
 import requests
 from urllib import parse
-from ..utils.misc import *
+from ..utils import saveImage, showImage, removeImage
 
 
 '''PC端登录天翼云盘'''
@@ -37,9 +37,9 @@ class cloud189PC():
         # 初始化, 获取必要的登录参数
         params = {
             'pageId': '1',
-            'redirectURL': '/main.action',
+            'redirectURL': 'https://cloud.189.cn/main.action',
         }
-        response = self.session.get(self.udb_login_url, params=params)
+        response = self.session.get(self.loginUrl_url, params=params)
         captcha_token = re.search(r'captchaToken\W*value=\W*(\w*)', response.text).group(1)
         return_url = re.search(r'returnUrl =\W*([^\'"]*)', response.text).group(1)
         param_id = re.search(r'paramId =\W*(\w*)', response.text).group(1)
@@ -78,6 +78,7 @@ class cloud189PC():
         response_json = response.json()
         # 登录成功
         if response_json['msg'] == u'登录成功' and response_json['result'] == 0:
+            response = self.session.get(response_json['toUrl'])
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -131,8 +132,9 @@ class cloud189PC():
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36',
             'Referer': 'https://open.e.189.cn/',
+            'Accept': 'application/json;charset=UTF-8',
         }
-        self.udb_login_url = 'https://cloud.189.cn/udb/udb_login.jsp'
+        self.loginUrl_url = 'https://cloud.189.cn/api/portal/loginUrl.action'
         self.needcaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/needcaptcha.do'
         self.picCaptcha_url = 'https://open.e.189.cn/api/logbox/oauth2/picCaptcha.do'
         self.loginSubmit_url = 'https://open.e.189.cn/api/logbox/oauth2/loginSubmit.do'
@@ -317,7 +319,7 @@ class cloud189():
             'scanqr': cloud189Scanqr(**kwargs),
         }
     '''登录函数'''
-    def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
+    def login(self, username, password, mode='mobile', crack_captcha_func=None, **kwargs):
         assert mode in self.supported_modes, 'unsupport mode %s in cloud189.login' % mode
         selected_api = self.supported_modes[mode]
         if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in cloud189.login' % mode)

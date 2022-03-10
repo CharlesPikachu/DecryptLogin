@@ -1,84 +1,85 @@
 '''
 Function:
-    豆瓣模拟登录
+    CodaLab模拟登录
 Author:
     Charles
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-09
 '''
+import re
 import requests
 
 
-'''PC端登录豆瓣'''
-class doubanPC():
+'''PC端登录CodaLab'''
+class codalabPC():
     is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
-        self.info = 'login in douban in pc mode'
+        self.info = 'login in codalab in pc mode'
         self.session = requests.Session()
         self.__initialize()
     '''登录函数'''
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 初始化cookie
-        self.session.get(self.home_url)
-        # 模拟登录
+        # 获得csrfmiddlewaretoken参数
+        response = self.session.get(self.token_url)
+        csrfmiddlewaretoken = re.findall(r"name='csrfmiddlewaretoken' value='(.*?)'", response.text)[0]
+        # 构造登录请求
         data = {
-            'ck': '',
-            'name': username,
+            'csrfmiddlewaretoken': csrfmiddlewaretoken,
+            'login': username,
             'password': password,
-            'remember': 'true',
-            'ticket': ''
+            'remember': 'on',
+            'next': '/'
         }
-        response = self.session.post(self.login_url, data=data)
-        response_json = response.json()
+        self.session.headers.update({'Referer': self.token_url})
+        response = self.session.post(self.login_url, data=data, allow_redirects=False)
+        response = self.session.get(self.home_url)
+        print(response.text)
         # 登录成功
-        if response_json['status'] == 'success':
+        if (response.status_code == 200) and (username in response.text):
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username}
-            infos_return.update(response_json)
+            user_id = re.findall(r'user_id: (\d+),', response.text)[0]
+            email = re.findall(r'email: "(.*?)",', response.text)[0]
+            infos_return = {'username': username, 'user_id': user_id, 'email': email}
             return infos_return, self.session
-        # 账号或密码错误
-        elif response_json['status'] == 'failed' and response_json['message'] == 'unmatch_name_password':
-            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-        # 其他错误
+        # 登录失败
         else:
-            raise RuntimeError(response_json.get('description'))
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
     '''初始化'''
     def __initialize(self):
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-            'Host': 'accounts.douban.com',
-            'Origin': 'https://accounts.douban.com',
-            'Referer': 'https://accounts.douban.com/passport/login_popup?login_source=anony'
+            'Host': 'competitions.codalab.org'
         }
-        self.home_url = 'https://www.douban.com/'
-        self.login_url = 'https://accounts.douban.com/j/mobile/login/basic'
+        self.token_url = 'https://competitions.codalab.org/accounts/login/?next=/'
+        self.home_url = 'https://competitions.codalab.org/'
+        self.login_url = 'https://competitions.codalab.org/accounts/login/'
         self.session.headers.update(self.headers)
 
 
-'''移动端登录豆瓣'''
-class doubanMobile():
+'''移动端登录CodaLab'''
+class codalabMobile():
     is_callable = False
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
-        self.info = 'login in douban in mobile mode'
+        self.info = 'login in codalab in mobile mode'
 
 
-'''扫码登录豆瓣'''
-class doubanScanqr():
+'''扫码登录CodaLab'''
+class codalabScanqr():
     is_callable = False
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
-        self.info = 'login in douban in scanqr mode'
+        self.info = 'login in codalab in scanqr mode'
 
 
 '''
 Function:
-    豆瓣模拟登录
+    CodaLab模拟登录
 Detail:
     -login:
         Input:
@@ -91,19 +92,19 @@ Detail:
             --infos_return: 用户名等信息
             --session: 登录后的requests.Session()
 '''
-class douban():
+class codalab():
     def __init__(self, **kwargs):
-        self.info = 'login in douban'
+        self.info = 'login in codalab'
         self.supported_modes = {
-            'pc': doubanPC(**kwargs),
-            'mobile': doubanMobile(**kwargs),
-            'scanqr': doubanScanqr(**kwargs),
+            'pc': codalabPC(**kwargs),
+            'mobile': codalabMobile(**kwargs),
+            'scanqr': codalabScanqr(**kwargs),
         }
     '''登录函数'''
     def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
-        assert mode in self.supported_modes, 'unsupport mode %s in douban.login' % mode
+        assert mode in self.supported_modes, 'unsupport mode %s in codalab.login' % mode
         selected_api = self.supported_modes[mode]
-        if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in douban.login' % mode)
+        if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in codalab.login' % mode)
         args = {
             'username': username,
             'password': password,

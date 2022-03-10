@@ -6,7 +6,6 @@ from .QQId import QQId
 from .qunar import qunar
 from .vultr import vultr
 from .fishc import fishc
-from .xiami import xiami
 from .lagou import lagou
 from .weibo import weibo
 from .douyu import douyu
@@ -43,11 +42,11 @@ from .stackoverflow import stackoverflow
 from .dazhongdianping import dazhongdianping
 
 
-'''define import all'''
+'''all'''
 __all__ = [
     'douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
     'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
-    'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'xiami', 'douyu', 
+    'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'douyu', 
     'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189', 'qqmusic',
     'ximalaya', 'icourse163', 'xiaomihealth'
 ]
