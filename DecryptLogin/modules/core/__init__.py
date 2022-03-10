@@ -4,7 +4,6 @@ from .sohu import sohu
 from .migu import migu
 from .QQId import QQId
 from .qunar import qunar
-from .vultr import vultr
 from .fishc import fishc
 from .lagou import lagou
 from .weibo import weibo
@@ -45,7 +44,7 @@ from .dazhongdianping import dazhongdianping
 '''all'''
 __all__ = [
     'douban', 'github', 'weibo', 'music163', 'zt12306', 'QQZone', 'QQQun', 'QQId', 'zhihu', 'bilibili', 
-    'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'vultr', 'eSurfing', 
+    'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'eSurfing', 
     'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'douyu', 
     'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189', 'qqmusic',
     'ximalaya', 'icourse163', 'xiaomihealth'

@@ -55,7 +55,6 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
 |  lagou           | ✓       | ✗           | ✗           | 拉勾网            |
 |  twitter         | ✓       | ✓           | ✗           | 推特              |
-|  vultr           | ✓       | ✗           | ✗           | Vultr             |
 |  eSurfing        | ✗       | ✗           | ✓           | 天翼              |
 |  renren          | ✓       | ✗           | ✗           | 人人网            |
 |  w3cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
@@ -149,7 +148,6 @@ infos_return, session = lg.sohu(username, password)
 infos_return, session = lg.zgconline(username, password)
 infos_return, session = lg.lagou(username, password)
 infos_return, session = lg.twitter(username, password)
-infos_return, session = lg.vultr(username, password)
 infos_return, session = lg.eSurfing()
 infos_return, session = lg.renren(username, password)
 infos_return, session = lg.w3cschool(username, password)

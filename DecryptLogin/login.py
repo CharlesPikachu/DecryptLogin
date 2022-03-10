@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-03-10
 '''
 from .modules import *
 
@@ -20,7 +20,7 @@ class Login():
             'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
             'zhihu': zhihu().login, 'bilibili': bilibili().login, 'toutiao': toutiao().login, 'taobao': taobao().login, 
             'jingdong': jingdong().login, 'ifeng': ifeng().login, 'sohu': sohu().login, 'zgconline': zgconline().login, 
-            'lagou': lagou().login, 'twitter': twitter().login, 'vultr': vultr().login, 'eSurfing': eSurfing().login, 
+            'lagou': lagou().login, 'twitter': twitter().login, 'eSurfing': eSurfing().login, 
             'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
             'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
             'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 
@@ -44,7 +44,7 @@ class Loginer():
             'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
             'zhihu': zhihu, 'bilibili': bilibili, 'toutiao': toutiao, 'taobao': taobao, 
             'jingdong': jingdong, 'ifeng': ifeng, 'sohu': sohu, 'zgconline': zgconline, 
-            'lagou': lagou, 'twitter': twitter, 'vultr': vultr, 'eSurfing': eSurfing, 
+            'lagou': lagou, 'twitter': twitter, 'eSurfing': eSurfing, 
             'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao,
             'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
             'douyu': douyu, 'migu': migu, 'qunar': qunar, 'mieshop': mieshop, 'mpweixin': mpweixin, 
