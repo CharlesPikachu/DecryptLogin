@@ -6,16 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-30
+    2022-03-10
 '''
 import os
 import time
 import random
 import hashlib
 import requests
-import warnings
-from ..utils.misc import *
-warnings.filterwarnings('ignore')
+from ..utils import saveImage, showImage, removeImage
 
 
 '''PC端登录微信公众号'''

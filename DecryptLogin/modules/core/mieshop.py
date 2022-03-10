@@ -6,15 +6,13 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import re
 import time
 import json
 import hashlib
-import warnings
 import requests
-warnings.filterwarnings('ignore')
 
 
 '''PC端登录小米商城'''
@@ -30,10 +28,10 @@ class mieshopPC():
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获得sign等值
-        response = self.session.get(self.sign_url, verify=False)
+        response = self.session.get(self.sign_url, verify=False, params={'sid': 'mi_eshop', '_json': 'true'})
         sign = re.findall(r'"_sign":"(.*?)",', response.text)[0]
-        qs = re.findall(r'qs:"(.*?)",', response.text)[0]
-        callback = re.findall(r'callback:"(.*?)"', response.text)[0]
+        qs = re.findall(r'"qs":"(.*?)",', response.text)[0]
+        callback = re.findall(r'"callback":"(.*?)"', response.text)[0]
         # 模拟登录
         data = {
             '_json': 'true',
@@ -41,13 +39,13 @@ class mieshopPC():
             'sid': 'mi_eshop',
             'qs': qs,
             '_sign': sign,
-            'serviceParam': '{"checkSafePhone":false}',
+            'serviceParam': '{"checkSafePhone":false,"checkSafeAddress":false}',
             'user': username,
             'hash': hashlib.md5(password.encode(encoding='utf-8')).hexdigest().upper(),
             'cc': '',
-            'log': ''
+            'log': '{"title":"dataCenterZone","message":"China"}{"title":"locale","message":"zh_CN"}{"title":"env","message":"release"}{"title":"browser","message":{"name":"Chrome","version":78}}{"title":"search","message":"?callback=http%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%26sign%3DNzY3MDk1YzczNmUwMGM4ODAxOWE0NjRiNTU5ZGQyMzFhYjFmOGU0Nw%2C%2C&sid=mi_eshop&_bannerBiz=mistore&_qrsize=180"}{"title":"outerlinkDone","message":"done"}{"title":"addInputChange","message":"userName"}{"title":"loginOrigin","message":"loginMain"}',
         }
-        response = self.session.post(self.login_url % (int(time.time()*1000)), headers=self.login_headers, data=data)
+        response = self.session.post(self.login_url % (int(time.time()*1000)), data=data)
         response_json = json.loads(response.text.replace('&&&START&&&', ''))
         # 登录成功
         if response_json['code'] == 0:
@@ -63,20 +61,8 @@ class mieshopPC():
             raise ValueError(response_json['desc'])
     '''初始化'''
     def __initialize(self):
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-            'Host': 'account.xiaomi.com'
-        }
-        self.login_headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
-            'Host': 'account.xiaomi.com',
-            'Origin': 'https://account.xiaomi.com',
-            'Accept': '*/*',
-            'Referer': 'https://account.xiaomi.com/pass/serviceLogin?sid=mi_eshop',
-        }
-        self.sign_url = 'https://account.xiaomi.com/pass/serviceLogin?sid=mi_eshop'
+        self.sign_url = 'https://account.xiaomi.com/pass/serviceLogin'
         self.login_url = 'https://account.xiaomi.com/pass/serviceLoginAuth2?_dc=%s'
-        self.session.headers.update(self.headers)
 
 
 '''移动端登录小米商城'''

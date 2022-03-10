@@ -6,11 +6,11 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
 import requests
-from ..utils.misc import *
+from ..utils import removeImage, showImage, saveImage
 
 
 '''PC端登录凤凰网'''
@@ -26,8 +26,6 @@ class ifengPC():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 访问登录主页user_login_url
-        self.session.get(self.user_login_url)
         # 获取验证码
         response = self.session.get(self.authcode_url)
         saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
@@ -76,7 +74,6 @@ class ifengPC():
             'Referer': 'https://id.ifeng.com/user/login',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
         }
-        self.user_login_url = 'https://id.ifeng.com/user/login'
         self.api_login_url = 'https://id.ifeng.com/api/login'
         self.authcode_url = 'https://id.ifeng.com/public/authcode'
         self.session.headers.update(self.headers)
