@@ -47,7 +47,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  QQId            | ✗       | ✗           | ✓           | 我的QQ中心        |
 |  zhihu           | ✓       | ✗           | ✓           | 知乎         	 |
 |  bilibili        | ✓       | ✓           | ✓           | B站               |
-|  toutiao         | ✗       | ✗           | ✗           | 今日头条          |
+|  toutiao         | ✗       | ✗           | ✓           | 今日头条          |
 |  taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
@@ -140,7 +140,7 @@ infos_return, session = lg.QQQun()
 infos_return, session = lg.QQId()
 infos_return, session = lg.zhihu()
 infos_return, session = lg.bilibili()
-infos_return, session = lg.toutiao(username, password)
+infos_return, session = lg.toutiao()
 infos_return, session = lg.taobao()
 infos_return, session = lg.jingdong()
 infos_return, session = lg.ifeng(username, password)

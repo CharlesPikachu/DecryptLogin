@@ -38,7 +38,7 @@ class Login():
 '''模拟登录器类-仅返回对应平台的实例化类'''
 class Loginer():
     def __init__(self, **kwargs):
-        self.info = 'Loginer class, returning the instantiated website loginers.'
+        if not disable_print_auth: print(self)
         self.supported_apis = {
             'douban': douban, 'weibo': weibo, 'github': github, 'music163': music163, 
             'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
