@@ -6,19 +6,20 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-30
+    2022-03-10
 '''
 import os
 import re
 import time
+import qrcode
 import hashlib
 import requests
-from ..utils.misc import *
+from ..utils import removeImage, showImage, saveImage
 
 
 '''PC端登录拉钩网'''
 class lagouPC():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in lagou in pc mode'
@@ -71,14 +72,11 @@ class lagouPC():
                 infos_return.update(response_json)
                 return infos_return, self.session
             # 需要验证码
-            elif response_json['state'] == 10010:
+            elif response_json['state'] in [10010, 21010]:
                 is_need_captcha = True
-            # 账号或密码错误
-            elif response_json['state'] in [201, 203, 220, 240, 241, 400]:
-                raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
             # 其他原因
             else:
-                raise RuntimeError(response_json.get('message'))
+                raise RuntimeError(response_json)
     '''获得X-Anit-Forge-Code和X-Anit-Forge-Token参数'''
     def __getAnitForge(self):
         response = self.session.get(self.home_url, headers=self.headers)
@@ -110,14 +108,14 @@ class lagouPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
             'Referer': 'https://passport.lagou.com/login/login.html',
             'X-Requested-With': 'XMLHttpRequest',
             'Host': 'passport.lagou.com',
             'Origin': 'https://passport.lagou.com'
         }
         self.verify_headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
             'Host': 'passport.lagou.com',
             'Referer': 'https://passport.lagou.com/login/login.html'
         }
@@ -142,6 +140,31 @@ class lagouScanqr():
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in lagou in scanqr mode'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username, password, crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 获得auth_id
+        response = self.session.get(self.auth_url)
+        auth_id = response.json()['content']['data']['authId']
+        # 保存并显示登录二维码(这里需要把获得的scan_url转成登录二维码)
+        qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=2)
+        qr.add_data(self.image_url.format(auth_id))
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")
+        img.save(os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+        }
+        self.auth_url = 'https://passport.lagou.com/login/auth_id.json'
+        self.image_url = 'https://weapp.lagou.com/qr/b/login?scanType=authorized&authId={}'
+        self.session.headers.update(self.headers)
 
 
 '''

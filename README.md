@@ -53,7 +53,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
 |  sohu            | ✓       | ✓           | ✗           | 搜狐              |
 |  zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
-|  lagou           | ✗       | ✗           | ✗           | 拉勾网            |
+|  lagou           | ✓       | ✗           | ✗           | 拉勾网            |
 |  twitter         | ✓       | ✓           | ✗           | 推特              |
 |  vultr           | ✓       | ✗           | ✗           | Vultr             |
 |  eSurfing        | ✗       | ✗           | ✓           | 天翼              |

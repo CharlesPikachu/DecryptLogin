@@ -38,7 +38,6 @@ class codalabPC():
         self.session.headers.update({'Referer': self.token_url})
         response = self.session.post(self.login_url, data=data, allow_redirects=False)
         response = self.session.get(self.home_url)
-        print(response.text)
         # 登录成功
         if (response.status_code == 200) and (username in response.text):
             print('[INFO]: Account -> %s, login successfully' % username)
