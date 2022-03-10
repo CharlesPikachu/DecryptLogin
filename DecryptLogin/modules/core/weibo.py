@@ -6,16 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2021-12-25
+    2022-03-10
 '''
 import os
 import re
 import time
 import json
 import requests
-import warnings
-from ..utils.misc import *
-warnings.filterwarnings('ignore')
+from ..utils import removeImage, showImage, saveImage
 
 
 '''PC端登录微博'''

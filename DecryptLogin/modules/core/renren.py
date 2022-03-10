@@ -6,13 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
-import re
-import random
+import time
+import base64
+import hashlib
 import requests
-from ..utils.misc import *
+from ..utils import removeImage, saveImage, showImage
 
 
 '''PC端登录人人网'''
@@ -28,64 +29,76 @@ class renrenPC():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 判断是否需要验证码
+        # 模拟登录
         is_need_captcha = False
-        response = self.session.get(self.home_url)
-        if 'id="verifyPic_login"' in response.text:
-            is_need_captcha = True
-        # 如果需要验证码, 则获取验证码
-        if is_need_captcha:
-            response = self.session.get(self.captcha_url.format(random.random()))
-            saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
-            if crack_captcha_func is None:
-                showImage(os.path.join(self.cur_path, 'captcha.jpg'))
-                captcha = input('Input the captcha: ')
+        while True:
+            if is_need_captcha:
+                data = {
+                    'appKey': 'bcceb522717c2c49f895b561fa913d10',
+                    'callId': str(int(time.time() * 1000)),
+                    'sessionKey': '',
+                    'type': '1'
+                }
+                data['sign'] = self.getsign(data, data['appKey'])
+                response = self.session.post(self.icode_url, json=data)
+                response_json = response.json()
+                saveImage(base64.b64decode(response_json['data']['imageBase64String']), os.path.join(self.cur_path, 'captcha.png'))
+                if crack_captcha_func is None:
+                    showImage(os.path.join(self.cur_path, 'captcha.png'))
+                    captcha = input('Input the captcha: ')
+                else:
+                    captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.png'))
+                removeImage(os.path.join(self.cur_path, 'captcha.png'))
+                data = {
+                    'user': username,
+                    'password': hashlib.md5(password.encode('utf-8')).hexdigest(),
+                    'appKey': 'bcceb522717c2c49f895b561fa913d10',
+                    'callId': str(int(time.time() * 1000)),
+                    'sessionKey': '',
+                    'ick': response_json['data']['ick'],
+                    'verifyCode': captcha,
+                }
             else:
-                captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-            removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
-        # 进行登录
-        data = {
-            'email': username,
-            'origURL': 'http://www.renren.com/home',
-            'domain': 'renren.com',
-            'key_id': 1,
-            'captcha_type': 'web_login',
-            'password': password,
-            'f': ''
-        }
-        if is_need_captcha: data.update({'icode': captcha})
-        response = self.session.post(self.login_url, data=data)
-        user_id = re.findall(r'id:"(.*?)",', response.text.replace('\n', '').replace(' ', ''))
-        user_ruid = re.findall(r'ruid:"(.*?)",', response.text.replace('\n', '').replace(' ', ''))
-        name = re.findall(r'name:"(.*?)",', response.text.replace('\n', '').replace(' ', ''))
-        privacy = re.findall(r'privacy:"(.*?)",', response.text.replace('\n', '').replace(' ', ''))
-        request_token = re.findall(r"requestToken:'(.*?)',", response.text.replace('\n', '').replace(' ', ''))
-        _rtk = re.findall(r"_rtk:'(.*?)'}", response.text.replace('\n', '').replace(' ', ''))
-        is_vip = re.findall(r'user.isvip=(.*?);', response.text.replace('\n', '').replace(' ', ''))
-        # 登录失败(一般就是账户或密码错误)
-        if (not name[0]) and (u'不匹配' in response.text):
-            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-        # 登录成功
-        print('[INFO]: Account -> %s, login successfully' % username)
-        infos_return = {
-            'username': username, 
-            'id': user_id[0], 
-            'ruid': user_ruid[0], 
-            'name': name[0], 
-            'privacy': privacy[0], 
-            'requestToken': request_token[0],
-            '_rtk': _rtk[0], 
-            'isvip': is_vip[0]
-        }
-        return infos_return, self.session
+                data = {
+                    'user': username,
+                    'password': hashlib.md5(password.encode('utf-8')).hexdigest(),
+                    'appKey': 'bcceb522717c2c49f895b561fa913d10',
+                    'callId': str(int(time.time() * 1000)),
+                    'sessionKey': '',
+                }
+            data['sig'] = self.getsign(data, data['appKey'])
+            response = self.session.post(self.login_url, json=data)
+            response_json = response.json()
+            # 登录成功
+            if response_json['errorCode'] == 0:
+                print('[INFO]: Account -> %s, login successfully' % username)
+                infos_return = {'username': username}
+                infos_return.update(response_json)
+                return infos_return, self.session
+            # 登录失败, 尝试验证码
+            elif (response_json['errorCode'] != 0) and (not is_need_captcha):
+                is_need_captcha = True
+            # 登录失败
+            else:
+                raise RuntimeError(response_json)
+    '''获得签名'''
+    def getsign(self, data, secret_key):
+        sign = ''.join(f'{k}={data[k]}' for k in sorted(data.keys()))
+        sign += secret_key
+        sign = hashlib.md5(sign.encode('utf-8')).hexdigest()
+        return sign
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36'
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Host': 'rrwapi.renren.com',
+            'Origin': 'http://www.renren.com',
+            'Referer': 'http://www.renren.com/',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
         }
         self.home_url = 'http://renren.com/'
-        self.login_url = 'http://www.renren.com/PLogin.do'
-        self.captcha_url = 'http://icode.renren.com/getcode.do?t=web_login&rnd={}'
+        self.login_url = 'https://rrwapi.renren.com/account/v1/loginByPassword'
+        self.icode_url = 'https://rrwapi.renren.com/icode/v1/getBase64ImgCode'
         self.session.headers.update(self.headers)
 
 

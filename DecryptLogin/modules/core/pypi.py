@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import re
 import requests
@@ -42,7 +42,7 @@ class pypiPC():
         # 登录成功
         if (response.status_code == 200) and (username in response.text):
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username, 'csrf_token': csrf_token}
+            infos_return = {'username': username, 'csrf_token': csrf_token, 'response': response.text}
             return infos_return, self.session
         # 登录失败
         else:
