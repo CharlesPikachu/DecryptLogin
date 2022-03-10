@@ -103,7 +103,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  modifymihealthsteps        |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           |  修改小米运动中的步数           |
 |  taobaosnap                 |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |  淘宝抢购脚本                   |
 |  jingdongsnap               |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |  京东抢购脚本                   |
-|  bilibiliupmonitor          |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |  B站UP主监控                    |
+|  bilibiliupmonitor          |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |  B站UP主监控                    |
 
 
 # Install
@@ -131,7 +131,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 from DecryptLogin import login
 
 lg = login.Login()
-infos_return, session = lg.douban(username[telephone], password)
+infos_return, session = lg.douban()
 infos_return, session = lg.github(username[email], password)
 infos_return, session = lg.weibo()
 infos_return, session = lg.music163(username[telephone/email], password)
@@ -150,7 +150,7 @@ infos_return, session = lg.zgconline(username, password)
 infos_return, session = lg.lagou(username, password)
 infos_return, session = lg.twitter(username, password)
 infos_return, session = lg.vultr(username, password)
-infos_return, session = lg.eSurfing(username, password)
+infos_return, session = lg.eSurfing()
 infos_return, session = lg.renren(username, password)
 infos_return, session = lg.w3cschool(username, password)
 infos_return, session = lg.fishc(username, password)

@@ -30,7 +30,7 @@
 |  修改小米运动中的步数           |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           | 
 |  淘宝抢购脚本                   |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |
 |  京东抢购脚本                   |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
-|  B站UP主监控                    |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
+|  B站UP主监控                    |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
 
 
 ## 使用简介
