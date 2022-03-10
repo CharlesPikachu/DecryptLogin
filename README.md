@@ -51,7 +51,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  taobao          | ✗       | ✗           | ✓           | 淘宝              |
 |  jingdong        | ✗       | ✗           | ✓           | 京东              |
 |  ifeng           | ✓       | ✗           | ✗           | 凤凰网            |
-|  sohu            | ✗       | ✓           | ✗           | 搜狐              |
+|  sohu            | ✓       | ✓           | ✗           | 搜狐              |
 |  zgconline       | ✓       | ✗           | ✗           | 中关村在线        |
 |  lagou           | ✗       | ✗           | ✗           | 拉勾网            |
 |  twitter         | ✓       | ✓           | ✗           | 推特              |

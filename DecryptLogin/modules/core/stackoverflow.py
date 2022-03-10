@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import re
 import requests
@@ -47,7 +47,7 @@ class stackoverflowPC():
             response = self.session.get(self.home_url)
             profile_url = 'https://stackoverflow.com' + re.findall(r'<a href="(.+)" class="my-profile', response.text)[0]
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username, 'fkey': fkey, 'profile_url': profile_url}
+            infos_return = {'username': username, 'fkey': fkey, 'profile_url': profile_url, 'response': response.text}
             return infos_return, self.session
         # 登录失败
         else:

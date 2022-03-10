@@ -6,14 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-30
+    2022-03-10
 '''
 import os
 import re
 import time
 import requests
 from hashlib import md5
-from ..utils.misc import *
+from ..utils import saveImage, showImage, removeImage
 
 
 '''PC端登录中关村在线'''
@@ -29,14 +29,15 @@ class zgconlinePC():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 请求home_url
-        self.session.get(self.home_url)
         # 请求login_url
         data = {
             'userid': username,
             'pwd': md5((password+'zol').encode(encoding='utf-8')).hexdigest(),
             'is_auto': '1',
-            'backUrl': 'http://www.zol.com.cn/'
+            'backUrl': 'http://www.zol.com.cn/',
+            'tmallBtn': '0',
+            'activeBtn': '0',
+            'headPicid': '0',
         }
         cookies = {'ip_ck': self.__getIPCK()}
         self.session.headers.update({'Content-type': 'application/x-www-form-urlencoded'})
@@ -72,7 +73,7 @@ class zgconlinePC():
                 'imgcode': imgcode,
             }
             response = self.session.post(response_json['ext'], data=data)
-            self.login(username, password, crack_captcha_func, **kwargs)
+            return self.login(username, password, crack_captcha_func, **kwargs)
         # 其他原因
         else:
             raise RuntimeError(response_json.get('msg'))
@@ -87,7 +88,6 @@ class zgconlinePC():
             'Referer': 'http://service.zol.com.cn/user/login.php?backUrl=http://www.zol.com.cn/',
             'Origin': 'http://service.zol.com.cn'
         }
-        self.home_url = 'http://www.zol.com.cn/'
         self.login_url = 'http://service.zol.com.cn/user/ajax/login2014/login.php'
         self.ipck_url = 'http://js.zol.com.cn/pvn/pv.ht?&t={}&c={}'
         self.session.headers.update(self.headers)
