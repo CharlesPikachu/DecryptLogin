@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
 import json
@@ -17,11 +17,7 @@ import requests
 from Crypto.Cipher import AES
 
 
-'''
-Function:
-    用于算post的两个参数, 具体原理详见知乎：
-    https://www.zhihu.com/question/36081767
-'''
+'''用于算post的两个参数, 具体原理详见知乎：https://www.zhihu.com/question/36081767'''
 class Cracker():
     def __init__(self):
         self.modulus = '00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7'
@@ -88,7 +84,7 @@ class music163PC():
         # 登录成功
         if response_json['code'] == 200:
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username, 'token': response_json['token'], 'userid': response_json['profile']['userId']}
+            infos_return = {'username': username, 'response': response_json}
             return infos_return, self.session
         # 账户名/密码错误
         elif (response_json['code'] == 400) or (response_json['code'] == 502):

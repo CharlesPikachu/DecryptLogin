@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import re
 import requests
@@ -41,7 +41,7 @@ class fishcPC():
         uid = re.findall(r"discuz_uid = '(\d+)',", response.text)[0]
         nickname = re.findall(r'title="访问我的空间">(.*?)</a>', response.text)[0]
         print('[INFO]: Account -> %s, login successfully' % username)
-        infos_return = {'username': username, 'nickname': nickname, 'uid': uid}
+        infos_return = {'username': username, 'nickname': nickname, 'uid': uid, 'response': response.text}
         return infos_return, self.session
     '''初始化'''
     def __initialize(self):

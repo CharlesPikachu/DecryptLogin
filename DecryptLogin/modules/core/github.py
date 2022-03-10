@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import re
 import requests
@@ -37,7 +37,7 @@ class githubPC():
         response = self.session.post(self.post_url, headers=self.login_headers, data=data)
         if response.status_code == 200 and 'Sign in to GitHub · GitHub' not in response.text:
             print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username}
+            infos_return = {'username': username, 'response': response.text}
             return infos_return, self.session
         else:
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)

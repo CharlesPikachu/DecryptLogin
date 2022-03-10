@@ -6,15 +6,13 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-11-26
+    2022-03-10
 '''
 import os
 import time
 import base64
-import warnings
 import requests
-from ..utils.misc import *
-warnings.filterwarnings('ignore')
+from ..utils import saveImage, showImage, removeImage
 
 
 '''PC端登录喜马拉雅'''
@@ -68,7 +66,7 @@ class ximalayaScanqr():
             time.sleep(0.5)
         # 登录成功
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
-        print('[INFO]: Account -> %s, login successfully' % response_json['uid'])
+        print('[INFO]: Account -> %s, login successfully' % response_json['mobileMask'] if response_json['mobileMask'] else response_json['uid'])
         infos_return = {'username': username}
         infos_return.update(response_json)
         return infos_return, self.session

@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-02-08
+    2022-03-10
 '''
 import re
 import requests
@@ -41,7 +41,9 @@ class xiaomihealthMobile():
         }
         response = self.session.post(self.registrations_url.format(username), data=data, allow_redirects=False)
         location = response.headers['Location']
-        access = re.findall(r'(?<=access=).*?(?=&)', location)[0]
+        access = re.findall(r'(?<=access=).*?(?=&)', location)
+        if len(access) < 1: raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        access = access[0]
         # 模拟登录
         data = {
             'app_name': 'com.xiaomi.hm.health',
