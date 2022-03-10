@@ -6,12 +6,15 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
 import time
+import json
+import base64
 import requests
-from ..utils.misc import *
+from gmssl.sm4 import CryptSM4, SM4_ENCRYPT
+from ..utils import removeImage, saveImage, showImage
 
 
 '''PC端登录12306'''
@@ -20,73 +23,89 @@ class zt12306PC():
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in zt12306 in pc mode'
-        self.cur_path = os.getcwd()
         self.session = requests.Session()
         self.__initialize()
     '''登录函数'''
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
-        # 下载验证码
-        self.__downloadCaptcha()
-        time.sleep(0.1)
-        # 验证码验证
-        response = self.__verifyCaptcha(crack_captcha_func)
-        if not response:
-            raise RuntimeError('Account -> %s, fail to login, crack captcha error' % username)
+        # 获得device信息
+        response = self.session.get(self.device_url)
+        response_json = response.json()
+        url = base64.b64decode(response_json['id']).decode()
+        response = self.session.get(url)
+        response_json = response.text
+        if response_json.find('callbackFunction') >= 0: response_json = response_json[18:-2]
+        response_json = json.loads(response_json)
+        self.session.cookies.update({
+            'RAIL_EXPIRATION': response_json.get('exp'),
+            'RAIL_DEVICEID': response_json.get('dfp'),
+        })
+        device_id = response_json.get('dfp')
+        # 获得验证码
+        self.sendsms(username)
+        sms = input('Input the sms code: ')
         # 模拟登录
         data = {
+            'sessionid': '',
+            'sig': '',
+            'if_check_slide_passcode_token': '',
+            'scene': '',
+            'checkMode': '0',
+            'randCode': sms,
             'username': username,
-            'password': password,
-            'appid': 'otn'
+            'password': self.encrypt(password),
+            'appid': 'otn',
         }
-        response = self.session.post(self.login_url, headers=self.headers, data=data)
+        response = self.session.post(self.login_url, data=data)
+        if response.json()['result_code'] != 0: raise RuntimeError(response.json())
+        # uamtk
+        response = self.session.post(self.uamtk_url, data={'appid': 'otn'})
+        response_json = response.json()
+        if str(response_json['result_code']) != '0': raise RuntimeError(response_json)
+        apptk = response_json['newapptk']
+        response = self.session.post(self.uamauthclient_url, data={'tk': apptk})
+        response_json = response.json()
+        if str(response_json['result_code']) != '0': raise RuntimeError(response_json)
+        infos_return = response_json
+        username = infos_return['username']
         # 登录成功
-        if response.status_code == 200:
-            print('[INFO]: Account -> %s, login successfully' % username)
-            infos_return = {'username': username}
-            return infos_return, self.session
-        # 登录失败
-        else:
-            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
-    '''下载验证码'''
-    def __downloadCaptcha(self):
-        response = self.session.get(self.captcha_url, headers=self.headers)
-        saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
-        return True
-    '''验证码验证'''
-    def __verifyCaptcha(self, crack_captcha_func):
-        img_path = os.path.join(self.cur_path, 'captcha.jpg')
-        if crack_captcha_func is None:
-            showImage(img_path)
-            user_enter = input('Enter the positions of captcha, use <,> to separate, such as <2,3>\n(From left to right, top to bottom -> 1,2,3,4,5,6,7,8): ')
-        else:
-            user_enter = crack_captcha_func(img_path)
-        digital_list = []
-        for each in user_enter.split(','):
-            each = each.strip()
-            try:
-                digital_list.append(self.positions[int(each)-1])
-            except:
-                raise RuntimeError('captcha format error...')
+        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        response = self.session.post(self.initMy12306Api_url)
+        response_json = response.json()
+        print('[INFO]: Account -> %s, login successfully' % username)
+        infos_return.update(response_json)
+        return infos_return, self.session
+    '''加密密码'''
+    def encrypt(self, password):
+        encrypted_passwd = crypt_sm4.crypt_ecb(password.strip().encode())
+        encrypted_passwd = base64.b64encode(encrypted_passwd).decode()
+        return '@' + encrypted_passwd
+    '''获得验证码'''
+    def sendsms(self, username):
+        cast_num = input('Input the last 4 digits of your ID card: ')
         data = {
-            'answer': ','.join(digital_list),
-            'login_site': 'E',
-            'rand': 'sjrand'
+            'appid': 'otn',
+            'username': username,
+            'castNum': cast_num
         }
-        response = self.session.post(url=self.captcha_check_url, headers=self.headers, data=data)
-        removeImage(img_path)
-        if response.json()['result_code'] == '4': return True
-        return False
+        response = self.session.post(self.sms_url, data=data)
+        response_json = response.json()
+        if '获取手机验证码成功' not in response_json['result_message']:
+            raise RuntimeError(response_json)
+        return response_json
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
         }
-        self.positions = ['36,46', '109,44', '181,47', '254,44', '33,112', '105,116', '186,116', '253,115']
-        self.captcha_url = 'https://kyfw.12306.cn/passport/captcha/captcha-image?login_site=E&module=login&rand=sjrand&0.5579044251920726'
-        self.captcha_check_url = 'https://kyfw.12306.cn/passport/captcha/captcha-check'
+        self.device_url = 'https://12306-rail-id-v2.pjialin.com/'
+        self.sms_url = 'https://kyfw.12306.cn/passport/web/getMessageCode'
         self.login_url = 'https://kyfw.12306.cn/passport/web/login'
+        self.uamtk_url = 'https://kyfw.12306.cn/passport/web/auth/uamtk'
+        self.uamauthclient_url = 'https://kyfw.12306.cn/otn/uamauthclient'
+        self.initMy12306Api_url = 'https://kyfw.12306.cn/otn/index/initMy12306Api'
+        self.session.headers.update(self.headers)
 
 
 '''移动端登录12306'''
@@ -99,10 +118,82 @@ class zt12306Mobile():
 
 '''扫码登录12306'''
 class zt12306Scanqr():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in zt12306 in scanqr mode'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username='', password='', crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 获得device信息
+        response = self.session.get(self.device_url)
+        response_json = response.json()
+        url = base64.b64decode(response_json['id']).decode()
+        response = self.session.get(url)
+        response_json = response.text
+        if response_json.find('callbackFunction') >= 0: response_json = response_json[18:-2]
+        response_json = json.loads(response_json)
+        self.session.cookies.update({
+            'RAIL_EXPIRATION': response_json.get('exp'),
+            'RAIL_DEVICEID': response_json.get('dfp'),
+        })
+        device_id = response_json.get('dfp')
+        # 下载二维码
+        response = self.session.post(self.create_url, data={'appid': 'otn'})
+        response_json = response.json()
+        image, uuid = response_json['image'], response_json['uuid']
+        saveImage(base64.b64decode(image), os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        # 检查二维码扫码状态
+        while True:
+            data = {
+                'RAIL_DEVICEID': device_id,
+                'RAIL_EXPIRATION': str(int(time.time() * 1000)),
+                'uuid': uuid,
+                'appid': 'otn',
+            }
+            response = self.session.post(self.checkqr_url, data=data)
+            response_json = response.json()
+            if response_json['result_code'] in ['0', '1']:
+                time.sleep(1)
+                continue
+            elif response_json['result_code'] in ['2']:
+                break
+            else:
+                raise RuntimeError(response_json)
+        # uamtk
+        response = self.session.post(self.uamtk_url, data={'appid': 'otn'})
+        response_json = response.json()
+        if str(response_json['result_code']) != '0': raise RuntimeError(response_json)
+        apptk = response_json['newapptk']
+        response = self.session.post(self.uamauthclient_url, data={'tk': apptk})
+        response_json = response.json()
+        if str(response_json['result_code']) != '0': raise RuntimeError(response_json)
+        infos_return = response_json
+        username = infos_return['username']
+        # 登录成功
+        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        response = self.session.post(self.initMy12306Api_url)
+        response_json = response.json()
+        print('[INFO]: Account -> %s, login successfully' % username)
+        infos_return.update(response_json)
+        return infos_return, self.session
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'
+        }
+        self.device_url = 'https://12306-rail-id-v2.pjialin.com/'
+        self.create_url = 'https://kyfw.12306.cn/passport/web/create-qr64'
+        self.checkqr_url = 'https://kyfw.12306.cn/passport/web/checkqr'
+        self.uamtk_url = 'https://kyfw.12306.cn/passport/web/auth/uamtk'
+        self.uamauthclient_url = 'https://kyfw.12306.cn/otn/uamauthclient'
+        self.initMy12306Api_url = 'https://kyfw.12306.cn/otn/index/initMy12306Api'
+        self.session.headers.update(self.headers)
 
 
 '''
@@ -129,7 +220,7 @@ class zt12306():
             'scanqr': zt12306Scanqr(**kwargs),
         }
     '''登录函数'''
-    def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
+    def login(self, username='', password='', mode='scanqr', crack_captcha_func=None, **kwargs):
         assert mode in self.supported_modes, 'unsupport mode %s in zt12306.login' % mode
         selected_api = self.supported_modes[mode]
         if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in zt12306.login' % mode)

@@ -5,3 +5,4 @@ PyExecJS >= 1.5.1
 requests >= 2.22.0
 pycryptodome >= 3.8.1
 requests_toolbelt >= 0.9.1
+gmssl >= 3.2.1
