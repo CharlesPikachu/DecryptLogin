@@ -6,14 +6,15 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-02-12
+    2022-03-10
 '''
+import os
 import re
 import time
 import random
 import requests
-from ..utils.misc import *
 from urllib.parse import unquote
+from ..utils import removeImage, saveImage, showImage
 
 
 '''PC端登录淘宝'''

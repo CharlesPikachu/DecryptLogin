@@ -6,14 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
 import time
 import json
 import requests
-from ..utils.misc import *
 from urllib.parse import unquote
+from ..utils import removeImage, showImage, saveImage
 
 
 '''PC端登录京东'''
@@ -77,7 +77,7 @@ class jingdongScanqr():
         # 登录成功
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         print('[INFO]: Account -> %s, login successfully' % nickname)
-        infos_return = {'username': username, 'nickname': nickname}
+        infos_return = {'username': username, 'nickname': nickname, 'response': response_json}
         return infos_return, self.session
     '''初始化'''
     def __initialize(self):

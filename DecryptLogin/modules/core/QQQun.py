@@ -6,16 +6,14 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-03-10
 '''
 import os
 import re
 import time
 import random
-import warnings
 import requests
-from ..utils.misc import *
-warnings.filterwarnings('ignore')
+from ..utils import removeImage, showImage, saveImage
 
 
 '''PC端登录QQ群'''
@@ -110,7 +108,7 @@ class QQQunScanqr():
         self.session.cookies.update(all_cookies)
         removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         print('[INFO]: Account -> %s, login successfully' % qq_number)
-        infos_return = {'username': qq_number}
+        infos_return = {'username': qq_number, 'cookies': all_cookies}
         return infos_return, self.session
     '''qrsig转ptqrtoken, hash33函数'''
     def __decryptQrsig(self, qrsig):

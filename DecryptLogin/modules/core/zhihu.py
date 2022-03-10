@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-30
+    2022-03-10
 '''
 import os
 import time
@@ -15,9 +15,9 @@ import base64
 import execjs
 import hashlib
 import requests
-from ..utils.misc import *
 from urllib.parse import urlencode
 from requests_toolbelt import MultipartEncoder
+from ..utils import removeImage, showImage, saveImage
 
 
 '''js code for pc mode'''
