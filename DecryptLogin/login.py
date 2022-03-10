@@ -35,24 +35,14 @@ class Login():
         return 'Welcome to use DecryptLogin!\nYou can visit https://github.com/CharlesPikachu/DecryptLogin for more details.'
 
 
-'''模拟登录器类-仅返回对应平台的实例化类'''
-class Loginer():
-    def __init__(self, **kwargs):
+'''返回对应网站的客户端'''
+class Client():
+    def __init__(self, disable_print_auth=False, **kwargs):
         if not disable_print_auth: print(self)
-        self.supported_apis = {
-            'douban': douban, 'weibo': weibo, 'github': github, 'music163': music163, 
-            'zt12306': zt12306, 'QQZone': QQZone, 'QQQun': QQQun, 'QQId': QQId, 
-            'zhihu': zhihu, 'bilibili': bilibili, 'toutiao': toutiao, 'taobao': taobao, 
-            'jingdong': jingdong, 'ifeng': ifeng, 'sohu': sohu, 'zgconline': zgconline, 
-            'lagou': lagou, 'twitter': twitter, 'eSurfing': eSurfing, 
-            'renren': renren, 'w3cschool': w3cschool, 'fishc': fishc, 'youdao': youdao,
-            'baidupan': baidupan, 'stackoverflow': stackoverflow, 'codalab': codalab, 'pypi': pypi, 
-            'douyu': douyu, 'migu': migu, 'qunar': qunar, 'mieshop': mieshop, 'mpweixin': mpweixin, 
-            'baidutieba': baidutieba, 'dazhongdianping': dazhongdianping, 'jianguoyun': jianguoyun, 
-            'cloud189': cloud189, 'qqmusic': qqmusic, 'ximalaya': ximalaya, 'icourse163': icourse163, 
-            'xiaomihealth': xiaomihealth,
+        self.supported_clients = {
+            'bilibili': BiliBiliClient, 
         }
-        for key, value in self.supported_apis.items():
+        for key, value in self.supported_clients.items():
             setattr(self, key, value)
     '''str'''
     def __str__(self):
