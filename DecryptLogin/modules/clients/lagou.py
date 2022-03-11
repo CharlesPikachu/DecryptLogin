@@ -18,8 +18,8 @@ class LagouClient(BaseClient):
     '''检查会话是否已经过期, 过期返回True'''
     def checksessionstatus(self, session, infos_return):
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36'}
-        url = 'https://gate.lagou.com/v1/entry/resume/info'
+        url = 'https://www.lagou.com/wn/resume/myresume'
         response = session.get(url, headers=headers)
-        if response.json()['state'] == 1:
+        if 'resumeName' in response.text:
             return False
         return True
