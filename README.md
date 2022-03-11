@@ -35,7 +35,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 
 
 # Support List
-|  Websites        | PC Mode | Mobile Mode | ScanQR Mode | in Chinese        |
+|  Websites        | PC Mode | Mobile Mode | ScanQR Mode | Chinese Name      |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
 |  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
 |  douban          | ✓       | ✗           | ✓           | 豆瓣              |
