@@ -1,6 +1,6 @@
 '''
 Function:
-    B站客户端
+    Github客户端
 Author:
     Charles
 微信公众号:
@@ -11,15 +11,14 @@ Author:
 from .baseclient import BaseClient
 
 
-'''B站客户端'''
-class BiliBiliClient(BaseClient):
+'''Github客户端'''
+class GithubClient(BaseClient):
     def __init__(self, reload_history=True, **kwargs):
-        super(BiliBiliClient, self).__init__(website_name='bilibili', reload_history=reload_history, **kwargs)
+        super(GithubClient, self).__init__(website_name='github', reload_history=reload_history, **kwargs)
     '''检查会话是否已经过期, 过期返回True'''
     def checksessionstatus(self, session, infos_return):
-        url = 'https://api.bilibili.com/x/web-interface/nav/stat'
+        url = 'https://github.com/'
         response = session.get(url)
-        response_json = response.json()
-        if str(response_json['code']) == '0' and str(response_json['message']) == '0':
+        if 'octolytics-actor-login' in response.text:
             return False
         return True

@@ -41,6 +41,8 @@ class BaseClient():
         if need_new_login:
             api = self.supported_apis[self.website_name]
             self.infos_return, self.session = api(username, password, mode, crack_captcha_func, **kwargs)
+        else:
+            print(f"[INFO]: Resume {username}'s session and infos from {os.path.join(self.rootdir, self.website_name+'.pkl')}")
         self.savehistory(username, self.infos_return, self.session)
         return self.infos_return, self.session
     '''保存历史数据'''
@@ -69,9 +71,9 @@ class BaseClient():
         # 提取对应的数据
         infos_return, session = history_infos[username]
         # 检查是否已经过期
-        if self.checksessionstatus(session): return None, None, True
+        if self.checksessionstatus(session, infos_return): return None, None, True
         # 返回可用的数据
         return infos_return, session, False
     '''检查会话是否已经过期, 过期返回True'''
-    def checksessionstatus(self, session):
+    def checksessionstatus(self, session, infos_return):
         return True

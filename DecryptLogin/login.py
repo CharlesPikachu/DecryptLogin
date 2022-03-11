@@ -40,7 +40,9 @@ class Client():
     def __init__(self, disable_print_auth=False, **kwargs):
         if not disable_print_auth: print(self)
         self.supported_clients = {
-            'bilibili': BiliBiliClient, 
+            'bilibili': BiliBiliClient, 'weibo': WeiboClient, 'douban': DoubanClient, 'github': GithubClient,
+            'music163': Music163Client, 'zt12306': Zt12306Client, 'QQZone': QQZoneClient, 'QQId': QQIdClient,
+            'QQQun': QQQunClient, 'zhihu': ZhihuClient,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)

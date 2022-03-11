@@ -1,6 +1,6 @@
 '''
 Function:
-    B站客户端
+    豆瓣客户端
 Author:
     Charles
 微信公众号:
@@ -11,15 +11,14 @@ Author:
 from .baseclient import BaseClient
 
 
-'''B站客户端'''
-class BiliBiliClient(BaseClient):
+'''豆瓣客户端'''
+class DoubanClient(BaseClient):
     def __init__(self, reload_history=True, **kwargs):
-        super(BiliBiliClient, self).__init__(website_name='bilibili', reload_history=reload_history, **kwargs)
+        super(DoubanClient, self).__init__(website_name='douban', reload_history=reload_history, **kwargs)
     '''检查会话是否已经过期, 过期返回True'''
     def checksessionstatus(self, session, infos_return):
-        url = 'https://api.bilibili.com/x/web-interface/nav/stat'
+        url = 'https://www.douban.com/'
         response = session.get(url)
-        response_json = response.json()
-        if str(response_json['code']) == '0' and str(response_json['message']) == '0':
+        if infos_return['username'] in response.text:
             return False
         return True
