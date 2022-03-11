@@ -16,18 +16,48 @@ infos_return, session = lg.bilibili(username='Your Username', password='Your Pas
 
 所有网站接口均支持以下几个参数:
 
-- username: 登录用户名
-- password: 登录密码
-- mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可
-- crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果
-- proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同[Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)
+- username: 登录用户名;
+- password: 登录密码;
+- mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可;
+- crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果;
+- proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同[Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
+
+
+## 利用Client类实现模拟登录
+
+Client类为目标网站的客户端类，集成了目标网站的一些常用加密算法，并支持历史登录状态检测的功能。
+换句话说，如果你用DecryptLogin在某个电脑上登录过，则该电脑会把你session保留下来，下次再在该电脑上进行登录操作时，我们会优先导入之前保留的session，并自动检测该session是否已经过期，若过期，则再发起新的登录操作。
+具体而言, 代码实现如下:
+
+```python
+from DecryptLogin import login
+
+# 实例化Client对象
+client = login.Client()
+# 实例化微博客户端
+weibo = client.weibo(reload_history=True)
+# 调用login函数进行模拟登录
+infos_return, session = weibo.login('me', 'pass', 'scanqr')
+```
+
+所有网站的Client实例化对象均支持以下几个参数：
+
+- reload_history: 是否进行历史登录状态检测，设置为False则直接发起新的模拟登录请求。
+
+所有网站的Login函数均支持以下几个参数:
+
+- username: 登录用户名;
+- password: 登录密码;
+- mode: 选择使用移动端登录(mode='mobile')/PC端登录(mode='pc')/扫码登录(mode='scanqr'), 一般使用默认的接口即可;
+- crack_captcha_func: 支持用户自定义一个验证码识别函数, 该函数传入验证码图片路径, 并返回识别结果;
+- proxies: 模拟登录的过程中使用指定的代理服务器, 代理支持的格式同[Requests](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
 
 
 ## 各平台模拟登录简介
 
 #### 新浪微博
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -40,7 +70,7 @@ infos_return, session = lg.weibo(username, password, 'pc')
 
 暂不支持crack_captcha_func，因为目前微博的PC端登录都需要短信验证码验证，运行之后根据提示输入收到的SMS码即可。
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -53,7 +83,7 @@ infos_return, session = lg.weibo(username, password, 'mobile')
 
 暂不支持crack_captcha_func，因为目前微博的移动端登录都需要短信验证码验证，运行之后根据提示输入收到的SMS码即可。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -68,7 +98,7 @@ infos_return, session = lg.weibo('', '', 'scanqr')
 
 #### 豆瓣
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -81,11 +111,11 @@ infos_return, session = lg.douban(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -100,7 +130,7 @@ infos_return, session = lg.douban('', '', 'scanqr')
 
 #### Github
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -113,17 +143,17 @@ infos_return, session = lg.github(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 网易云音乐
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -136,17 +166,17 @@ infos_return, session = lg.music163(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 中国铁路12306
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -159,11 +189,11 @@ infos_return, session = lg.zt12306(username, password, 'pc')
 
 暂不支持crack_captcha_func，因为目前中国铁路12306的PC端登录都需要短信验证码验证，运行之后根据提示输入收到的SMS码即可。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -178,15 +208,15 @@ infos_return, session = lg.zt12306('', '', 'scanqr')
 
 #### QQ空间
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -201,15 +231,15 @@ infos_return, session = lg.QQZone('', '', 'scanqr')
 
 #### QQ群
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -224,15 +254,15 @@ infos_return, session = lg.QQQun('', '', 'scanqr')
 
 #### 我的QQ中心
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -247,7 +277,7 @@ infos_return, session = lg.QQId('', '', 'scanqr')
 
 #### 知乎
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -267,11 +297,11 @@ def cracker(imagepath):
 
 注意，如果提示"为了您的账号安全，请使用短信验证码登录", 可以尝试绑定邮箱后, 利用邮箱作为用户名登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -286,7 +316,7 @@ infos_return, session = lg.zhihu('', '', 'scanqr')
 
 #### B站
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -299,7 +329,7 @@ infos_return, session = lg.bilibili(username, password, 'pc')
 
 暂不支持crack_captcha_func，因为目前B站的PC端登录都需要短信验证码验证，运行之后根据提示输入收到的SMS码即可。
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -312,7 +342,7 @@ infos_return, session = lg.bilibili(username, password, 'mobile')
 
 暂不支持crack_captcha_func，因为目前B站的移动端登录都需要短信验证码验证，运行之后根据提示输入收到的SMS码即可。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -327,15 +357,15 @@ infos_return, session = lg.bilibili('', '', 'scanqr')
 
 #### 今日头条
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -350,15 +380,15 @@ infos_return, session = lg.toutiao('', '', 'scanqr')
 
 #### 淘宝
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -373,15 +403,15 @@ infos_return, session = lg.taobao('', '', 'scanqr')
 
 #### 京东
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -396,7 +426,7 @@ infos_return, session = lg.jingdong('', '', 'scanqr')
 
 #### 凤凰网
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -414,17 +444,17 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 搜狐
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -437,7 +467,7 @@ infos_return, session = lg.sohu(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -450,13 +480,13 @@ infos_return, session = lg.sohu(username, password, 'mobile')
 
 暂不支持crack_captcha_func。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 中关村在线
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -474,17 +504,17 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 拉勾网
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -502,17 +532,17 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 推特 
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -525,7 +555,7 @@ infos_return, session = lg.twitter(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -538,21 +568,21 @@ infos_return, session = lg.twitter(username, password, 'mobile')
 
 暂不支持crack_captcha_func。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 天翼
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -567,7 +597,7 @@ infos_return, session = lg.eSurfing('', '', 'scanqr')
 
 #### 人人网
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -585,17 +615,17 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### W3Cschool(编程狮)
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -608,17 +638,17 @@ infos_return, session = lg.w3cschool(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 鱼C论坛
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -631,17 +661,17 @@ infos_return, session = lg.fishc(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 有道
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -654,17 +684,17 @@ infos_return, session = lg.youdao(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 百度网盘
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -684,17 +714,17 @@ def cracker(imagepath):
 
 模拟登录百度网盘一般会触发安全验证机制，请根据提示输入百度网盘账户绑定的手机/邮箱收到的验证码。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### Stackoverflow
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -707,17 +737,17 @@ infos_return, session = lg.stackoverflow(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### CodaLab
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -730,17 +760,17 @@ infos_return, session = lg.codalab(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### PyPi
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -753,25 +783,25 @@ infos_return, session = lg.pypi(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 斗鱼直播
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -786,7 +816,7 @@ infos_return, session = lg.douyu('', '', 'scanqr')
 
 #### 咪咕音乐
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -799,17 +829,17 @@ infos_return, session = lg.migu(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 去哪儿旅行
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -827,17 +857,17 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 小米商城
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -850,17 +880,17 @@ infos_return, session = lg.mieshop(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 微信公众号
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -873,25 +903,25 @@ infos_return, session = lg.mpweixin(username, password, 'pc')
 
 暂不支持crack_captcha_func，密码验证通过后一般需要用微信APP扫码进行二次验证。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 百度贴吧
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -906,15 +936,15 @@ infos_return, session = lg.baidutieba('', '', 'scanqr')
 
 #### 大众点评
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -929,7 +959,7 @@ infos_return, session = lg.dazhongdianping('', '', 'scanqr')
 
 #### 坚果云
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -942,17 +972,17 @@ infos_return, session = lg.jianguoyun(username, password, 'pc')
 
 暂不支持crack_captcha_func。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 天翼云盘
 
-1.PC端登录
+**1.PC端登录**
 
 示例代码:
 
@@ -970,7 +1000,7 @@ def cracker(imagepath):
     return 'LOVE'
 ```
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -983,21 +1013,21 @@ infos_return, session = lg.cloud189(username, password, 'mobile')
 
 暂不支持crack_captcha_func。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### QQ音乐
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -1012,15 +1042,15 @@ infos_return, session = lg.qqmusic('', '', 'scanqr')
 
 #### 喜马拉雅
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 暂不支持移动端登录。
 
-3.扫码登录
+**3.扫码登录**
 
 示例代码:
 
@@ -1035,11 +1065,11 @@ infos_return, session = lg.ximalaya('', '', 'scanqr')
 
 #### 中国大学MOOC
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 示例代码:
 
@@ -1052,17 +1082,17 @@ infos_return, session = lg.icourse163(username, password, 'mobile')
 
 暂不支持crack_captcha_func。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
 #### 小米运动
 
-1.PC端登录
+**1.PC端登录**
 
 暂不支持PC端登录。
 
-2.移动端登录
+**2.移动端登录**
 
 ```python
 from DecryptLogin import login
@@ -1073,7 +1103,7 @@ infos_return, session = lg.xiaomihealth(username, password, 'mobile')
 
 暂不支持crack_captcha_func。
 
-3.扫码登录
+**3.扫码登录**
 
 暂不支持扫码登录。
 
