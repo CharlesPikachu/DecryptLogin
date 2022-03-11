@@ -1112,7 +1112,7 @@ infos_return, session = lg.xiaomihealth(username, password, 'mobile')
 
 #### Cookies
 
-1.Cookies保存
+**1.Cookies保存**
 
 您可以利用如下方法保存登录后的session中的cookies:
 
@@ -1137,7 +1137,7 @@ Return:
 	--infos_return: 是否保存成功的flag, 以及错误原因
 ```
 
-2.Cookies导入
+**2.Cookies导入**
 
 您可以利用如下方法为requests.Session对象导入cookies:
 

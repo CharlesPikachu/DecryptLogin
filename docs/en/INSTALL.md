@@ -1,44 +1,63 @@
 # Install
 
-## Environment
-The environment I have tested is:
-- OS: Win10 / Mac OS
+
+#### Environment
+
+Here is the basic environment information:
+
+- OS: Win10 / Mac OS / Linux
 - Python: 3.6~3.8
 
-## Dependency package 
-Dependencies requirement:
-```
-rsa >= 4.0
-qrcode >= 6.1
-pillow >= 6.0.0
-requests >= 2.22.0
-pycryptodome >= 3.8.1
-requests_toolbelt >= 0.9.1
-PyExecJS >= 1.5.1 (The version of Node.js is v10.15.3)
-```
 
-## Pip install
-Just run the following command:
+#### Dependency Package 
+
+Dependencies requirement:
+
+- rsa >= 4.0
+- qrcode >= 6.1
+- pillow >= 6.0.0
+- requests >= 2.22.0
+- pycryptodome >= 3.8.1
+- requests_toolbelt >= 0.9.1
+- gmssl >= 3.2.1
+- PyExecJS >= 1.5.1 (the version of Node.js is v10.15.3 for my personal environment)
+
+
+#### Pip Install
+
+Run the following command in your terminal (Python should be in the develop environment):
+
 ```sh
 pip install DecryptLogin
 ```
 
-## Source code install
-#### Online
-Just run the following command:
+
+#### Source Code Install
+
+**1.Online**
+
+Run the following command in your terminal (Python and git should be in the develop environment):
+
 ```sh
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
-#### Offline
-First, clone the project:
+
+**2.Offline**
+
+First, you should clone the project in your computer:
+
 ```sh
 git clone https://github.com/CharlesPikachu/DecryptLogin.git
 ```
-Then, run the following command:
+
+Then, you should enter the project directory by running the following command:
+
 ```sh
 cd DecryptLogin
 ```
-Finally, run the following command to install:
+
+Finally, you should run the following command in your terminal (Python should be in the develop environment) to install DecryptLogin:
+
 ```sh
 python setup.py install
 ```

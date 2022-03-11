@@ -34,7 +34,7 @@ pip install DecryptLogin --upgrade
 
 #### 源代码安装
 
-1.在线安装
+**1.在线安装**
 
 运行如下命令即可在线安装:
 
@@ -42,7 +42,7 @@ pip install DecryptLogin --upgrade
 pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master
 ```
 
-2.离线安装
+**2.离线安装**
 
 利用如下命令下载DecryptLogin源代码到本地:
 

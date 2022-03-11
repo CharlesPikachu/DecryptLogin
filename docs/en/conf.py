@@ -18,9 +18,9 @@
 # -- Project information -----------------------------------------------------
 
 project = 'DecryptLogin'
-copyright = '2020, Charles'
-author = 'Charles'
-release = '0.2.0'
+copyright = '2020-2022, Zhenchao Jin'
+author = 'Zhenchao Jin'
+release = '0.3.0'
 
 # -- General configuration ---------------------------------------------------
 

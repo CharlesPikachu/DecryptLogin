@@ -1,4 +1,4 @@
-# Some Examples
+# Practice with DecryptLogin
 
 |  Name                       |   Introduction                                                   |   code                                                                                                       |
 |  :----:                     |   :----:                                                         |   :----:                                                                                                     |

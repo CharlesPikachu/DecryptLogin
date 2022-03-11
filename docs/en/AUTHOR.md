@@ -1,15 +1,13 @@
-# About author
+# About Author
 
-```
-I'm a student interested in computer vision and information security  
+I'm a student interested in computer vision and information security.
 
-My personal wechat public account is Charles_pikachu  
+WeChat public account: Charles_pikachu (*i.e.*, Charles的皮卡丘)
 
-My github is https://github.com/CharlesPikachu  
+Github: https://github.com/CharlesPikachu  
 
-My zhihu is https://www.zhihu.com/people/charles_pikachu
+Zhihu: https://www.zhihu.com/people/charles_pikachu
 
-My bilibili is https://space.bilibili.com/406756145
+BiliBili: https://space.bilibili.com/406756145
 
-My email is charlesblwx@gmail.com
-```
+Email: charlesblwx@gmail.com

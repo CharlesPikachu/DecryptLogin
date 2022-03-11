@@ -1,5 +1,10 @@
-# Statements about the project
-```
-The project is only for learning python, 
-and I will delete this project if I find that anyone use this project to do some illegal things.
-```
+# Statements
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/CharlesPikachu/DecryptLogin/master/docs/logo.png" width="600"/>
+</div>
+<br />
+
+This repo is created for learning python.
+
+If I find that anyone leverage this project in an illegal way, I will delete this project immediately.
