@@ -47,7 +47,9 @@ class Client():
             'twitter': TwitterClient, 'renren': RenRenClient, 'lagou': LagouClient, 'eSurfing': eSurfingClient,
             'w3cschool': W3CSchoolClient, 'fishc': FishCClient, 'youdao': YoudaoClient, 'stackoverflow': StackoverflowClient,
             'baidupan': BaiduPanClient, 'douyu': DouyuClient, 'codalab': CodaLabClient, 'pypi': PyPiClient,
-            'migu': MiguClient, 'qunar': QunarClient,
+            'migu': MiguClient, 'qunar': QunarClient, 'xiaomihealth': XiaomiHealthClient, 'mieshop': MieShopClient,
+            'mpweixin': MpweixinClient, 'baidutieba': BaiduTiebaClient, 'dazhongdianping': DazhongdianpingClient, 'jianguoyun': JianguoyunClient,
+            'cloud189': Cloud189Client, 'qqmusic': QQMusicClient, 'ximalaya': XimalayaClient, 'icourse163': Icourse163Client,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)

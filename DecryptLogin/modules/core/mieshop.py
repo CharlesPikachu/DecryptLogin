@@ -11,6 +11,7 @@ Author:
 import re
 import time
 import json
+import random
 import hashlib
 import requests
 
@@ -27,6 +28,12 @@ class mieshopPC():
     def login(self, username, password, crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
+        # 初始化cookies
+        device_id = ''.join(map(lambda i: chr(i), [random.randint(97, 122) for _ in range(6)]))
+        self.session.cookies.set("sdkVersion", "accountsdk-18.8.15", domain="mi.com")
+        self.session.cookies.set("sdkVersion", "accountsdk-18.8.15", domain="xiaomi.com")
+        self.session.cookies.set("deviceId", device_id, domain="mi.com")
+        self.session.cookies.set("deviceId", device_id, domain="xiaomi.com")
         # 获得sign等值
         response = self.session.get(self.sign_url, verify=False, params={'sid': 'mi_eshop', '_json': 'true'})
         sign = re.findall(r'"_sign":"(.*?)",', response.text)[0]
@@ -49,6 +56,9 @@ class mieshopPC():
         response_json = json.loads(response.text.replace('&&&START&&&', ''))
         # 登录成功
         if response_json['code'] == 0:
+            location_url = response_json['location']
+            response = self.session.get(location_url)
+            response = self.session.get(self.home_url)
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -61,8 +71,13 @@ class mieshopPC():
             raise ValueError(response_json['desc'])
     '''初始化'''
     def __initialize(self):
+        self.headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
+        }
         self.sign_url = 'https://account.xiaomi.com/pass/serviceLogin'
         self.login_url = 'https://account.xiaomi.com/pass/serviceLoginAuth2?_dc=%s'
+        self.home_url = 'https://www.mi.com/index.html'
+        self.session.headers.update(self.headers)
 
 
 '''移动端登录小米商城'''

@@ -21,6 +21,11 @@ from .codalab import CodaLabClient
 from .toutiao import ToutiaoClient
 from .twitter import TwitterClient
 from .zt12306 import Zt12306Client
+from .mieshop import MieShopClient
+from .qqmusic import QQMusicClient
+from .mpweixin import MpweixinClient
+from .cloud189 import Cloud189Client
+from .ximalaya import XimalayaClient
 from .eSurfing import eSurfingClient
 from .music163 import Music163Client
 from .bilibili import BiliBiliClient
@@ -28,4 +33,9 @@ from .jingdong import JingdongClient
 from .baidupan import BaiduPanClient
 from .zgconline import ZgconlineClient
 from .w3cschool import W3CSchoolClient
+from .baidutieba import BaiduTiebaClient
+from .icourse163 import Icourse163Client
+from .jianguoyun import JianguoyunClient
+from .xiaomihealth import XiaomiHealthClient
 from .stackoverflow import StackoverflowClient
+from .dazhongdianping import DazhongdianpingClient

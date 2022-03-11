@@ -75,6 +75,8 @@ class mpweixinPC():
         response_json = response.json()
         # 登录成功
         if response_json['base_resp']['ret'] == 0:
+            url = 'https://mp.weixin.qq.com/' + response_json['redirect_url']
+            response = self.session.get(url)
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -85,7 +87,7 @@ class mpweixinPC():
     '''初始化'''
     def __initialize(self):
         self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36',
             'Referer': 'https://mp.weixin.qq.com/'
         }
         self.startlogin_url = 'https://mp.weixin.qq.com/cgi-bin/bizlogin?action=startlogin'

@@ -112,6 +112,11 @@ class qqmusicScanqr():
         response = self.session.get(url_refresh, allow_redirects=False, verify=False)
         print('[INFO]: Account -> %s, login successfully' % qq_number)
         infos_return.update({'username': qq_number})
+        self.session.cookies.set("uin", f"o{qq_number}")
+        self.session.cookies.set("qqmusic_uin", "")
+        self.session.cookies.set("qqmusic_key", "")
+        self.session.cookies.set("qqmusic_fromtag", "")
+        self.session.cookies.set("skey", "@3JhImgU9h")
         return infos_return, self.session
     '''qrsig转ptqrtoken, hash33函数'''
     def __decryptQrsig(self, qrsig):
