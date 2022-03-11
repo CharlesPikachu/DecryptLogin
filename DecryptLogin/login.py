@@ -42,7 +42,9 @@ class Client():
         self.supported_clients = {
             'bilibili': BiliBiliClient, 'weibo': WeiboClient, 'douban': DoubanClient, 'github': GithubClient,
             'music163': Music163Client, 'zt12306': Zt12306Client, 'QQZone': QQZoneClient, 'QQId': QQIdClient,
-            'QQQun': QQQunClient, 'zhihu': ZhihuClient,
+            'QQQun': QQQunClient, 'zhihu': ZhihuClient, 'taobao': TaobaoClient, 'toutiao': ToutiaoClient,
+            'jingdong': JingdongClient, 'ifeng': IfengClient, 'sohu': SohuClient, 'zgconline': ZgconlineClient,
+            'twitter': TwitterClient, 'renren': RenRenClient, 'lagou': LagouClient, 'eSurfing': eSurfingClient,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)
