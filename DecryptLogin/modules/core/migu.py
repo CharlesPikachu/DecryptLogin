@@ -751,6 +751,13 @@ class miguPC():
         response_json = response.json()
         # 登录成功
         if response_json['status'] == 2000:
+            params = {
+                'callbackURL': 'https://music.migu.cn/v3',
+                'relayState': '',
+                'token': response_json['result']['token'],
+            }
+            response = self.session.get(self.check_url, params=params)
+            response = self.session.get(self.home_url)
             print('[INFO]: Account -> %s, login successfully' % username)
             infos_return = {'username': username}
             infos_return.update(response_json)
@@ -769,6 +776,8 @@ class miguPC():
         }
         self.publickey_url = 'https://passport.migu.cn/password/publickey'
         self.login_url = 'https://passport.migu.cn/authn'
+        self.check_url = 'https://music.migu.cn/v3/user/login?'
+        self.home_url = 'https://music.migu.cn/v3'
         self.session.headers.update(self.headers)
 
 

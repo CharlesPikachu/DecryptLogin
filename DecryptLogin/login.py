@@ -45,6 +45,9 @@ class Client():
             'QQQun': QQQunClient, 'zhihu': ZhihuClient, 'taobao': TaobaoClient, 'toutiao': ToutiaoClient,
             'jingdong': JingdongClient, 'ifeng': IfengClient, 'sohu': SohuClient, 'zgconline': ZgconlineClient,
             'twitter': TwitterClient, 'renren': RenRenClient, 'lagou': LagouClient, 'eSurfing': eSurfingClient,
+            'w3cschool': W3CSchoolClient, 'fishc': FishCClient, 'youdao': YoudaoClient, 'stackoverflow': StackoverflowClient,
+            'baidupan': BaiduPanClient, 'douyu': DouyuClient, 'codalab': CodaLabClient, 'pypi': PyPiClient,
+            'migu': MiguClient, 'qunar': QunarClient,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)
