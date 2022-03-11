@@ -522,7 +522,7 @@ def cracker(imagepath):
 from DecryptLogin import login
 
 lg = login.Login()
-infos_return, session = lg.zgconline(username, password, 'pc')
+infos_return, session = lg.lagou(username, password, 'pc')
 ```
 
 支持用户自定义crack_captcha_func识别PC端登录的数字字母验证码, 例如:

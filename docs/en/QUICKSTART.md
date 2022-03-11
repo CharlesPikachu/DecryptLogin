@@ -34,7 +34,7 @@ weibo = client.weibo(reload_history=True)
 infos_return, session = weibo.login('me', 'pass', mode='scanqr')
 ```
 
-"reload_history=True" is used to reload the historical session saved in the computer and check whether the historical session is expired. 
+"reload_history=True" is used to reload the corresponding historical session saved in the computer and check whether the historical session is expired. 
 If the historical session is expired, we will start a new login operation.
 Here is a screenshot:
 
