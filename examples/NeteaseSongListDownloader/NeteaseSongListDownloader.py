@@ -13,7 +13,7 @@ import argparse
 import prettytable
 from contextlib import closing
 from DecryptLogin import login
-from DecryptLogin.core.music163 import Cracker
+from DecryptLogin.modules.core.music163 import Cracker
 
 
 '''命令行参数解析'''
