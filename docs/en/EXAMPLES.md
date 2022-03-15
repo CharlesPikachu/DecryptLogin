@@ -23,3 +23,4 @@
 |  taobaosnap                 |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |
 |  jingdongsnap               |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
 |  bilibiliupmonitor          |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
+|  bilibililottery            |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |
