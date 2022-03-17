@@ -42,3 +42,4 @@
 |  [ximalaya](https://www.ximalaya.com/)                | ✗        | ✗          | ✓            |
 |  [icourse163](https://www.icourse163.org/)            | ✗        | ✓          | ✗            |
 |  [xiaomihealth](https://www.huami.com/)               | ✗        | ✓          | ✗            |
+|  [tencentvideo](https://v.qq.com/)                    | ✗        | ✗          | ✓            |

@@ -1038,7 +1038,7 @@ lg = login.Login()
 infos_return, session = lg.qqmusic('', '', 'scanqr')
 ```
 
-使用QQ音乐APP扫码登录即可。
+使用QQ或者TIM的APP扫码登录即可。
 
 #### 喜马拉雅
 
@@ -1106,6 +1106,29 @@ infos_return, session = lg.xiaomihealth(username, password, 'mobile')
 **3.扫码登录**
 
 暂不支持扫码登录。
+
+#### 腾讯视频
+
+**1.PC端登录**
+
+暂不支持PC端登录。
+
+**2.移动端登录**
+
+暂不支持移动端登录。
+
+**3.扫码登录**
+
+示例代码:
+
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.tencentvideo('', '', 'scanqr')
+```
+
+使用QQ或者TIM的APP扫码登录即可。
 
 
 ## 一些工具函数

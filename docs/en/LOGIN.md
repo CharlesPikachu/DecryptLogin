@@ -1038,7 +1038,7 @@ lg = login.Login()
 infos_return, session = lg.qqmusic('', '', 'scanqr')
 ```
 
-Then, you can leverage the APP of qqmusic to scan the qr code to login in the website.
+Then, you can leverage the APP of QQ or TIM to scan the qr code to login in the website.
 
 #### ximalaya
 
@@ -1106,6 +1106,29 @@ The user-defined crack_captcha_func has not been supported.
 **3.Scanqr Mode**
 
 The scanqr mode has not been supported.
+
+#### tencentvideo
+
+**1.PC Mode**
+
+The pc mode has not been supported.
+
+**2.Mobile Mode**
+
+The mobile mode has not been supported.
+
+**3.Scanqr Mode**
+
+The sample codes is as follow::
+
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.tencentvideo('', '', 'scanqr')
+```
+
+Then, you can leverage the APP of QQ or TIM to scan the qr code to login in the website.
 
 
 ## Utility Functions

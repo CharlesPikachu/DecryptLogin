@@ -77,6 +77,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  ximalaya        | ✗       | ✗           | ✓           | 喜马拉雅          |
 |  icourse163      | ✗       | ✓           | ✗           | 中国大学MOOC      |
 |  xiaomihealth    | ✗       | ✓           | ✗           | 小米运动          |
+|  tencentvideo    | ✗       | ✗           | ✓           | 腾讯视频          |
 
 
 # Practice with DecryptLogin
@@ -171,6 +172,7 @@ infos_return, session = lg.qqmusic()
 infos_return, session = lg.ximalaya()
 infos_return, session = lg.icourse163(username, password)
 infos_return, session = lg.xiaomihealth(username, password)
+infos_return, session = lg.tencentvideo()
 ```
 
 

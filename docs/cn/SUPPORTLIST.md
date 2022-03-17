@@ -42,3 +42,4 @@
 |  [喜马拉雅](https://www.ximalaya.com/)                | ✗        | ✗          | ✓        |
 |  [中国大学MOOC](https://www.icourse163.org/)          | ✗        | ✓          | ✗        |
 |  [小米运动](https://www.huami.com/)                   | ✗        | ✓          | ✗        |
+|  [腾讯视频](https://v.qq.com/)                        | ✗        | ✗          | ✓        |
