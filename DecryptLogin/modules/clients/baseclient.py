@@ -26,7 +26,7 @@ class BaseClient():
             'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 
             'baidutieba': baidutieba().login, 'dazhongdianping': dazhongdianping().login, 'jianguoyun': jianguoyun().login, 
             'cloud189': cloud189().login, 'qqmusic': qqmusic().login, 'ximalaya': ximalaya().login, 'icourse163': icourse163().login, 
-            'xiaomihealth': xiaomihealth().login,
+            'xiaomihealth': xiaomihealth().login, 'tencentvideo': tencentvideo().login
         }
         assert website_name in self.supported_apis
         self.rootdir = os.path.split(os.path.abspath(__file__))[0]

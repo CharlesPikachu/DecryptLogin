@@ -37,5 +37,6 @@ from .baidutieba import BaiduTiebaClient
 from .icourse163 import Icourse163Client
 from .jianguoyun import JianguoyunClient
 from .xiaomihealth import XiaomiHealthClient
+from .tencentvideo import TencentVideoClient
 from .stackoverflow import StackoverflowClient
 from .dazhongdianping import DazhongdianpingClient

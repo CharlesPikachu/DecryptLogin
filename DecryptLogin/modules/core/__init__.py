@@ -36,6 +36,7 @@ from .zgconline import zgconline
 from .baidutieba import baidutieba
 from .jianguoyun import jianguoyun
 from .icourse163 import icourse163
+from .tencentvideo import tencentvideo
 from .xiaomihealth import xiaomihealth
 from .stackoverflow import stackoverflow
 from .dazhongdianping import dazhongdianping
@@ -47,5 +48,5 @@ __all__ = [
     'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'eSurfing', 
     'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'douyu', 
     'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189', 'qqmusic',
-    'ximalaya', 'icourse163', 'xiaomihealth'
+    'ximalaya', 'icourse163', 'xiaomihealth', 'tencentvideo'
 ]

@@ -6,9 +6,11 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-03-17
 '''
+import warnings
 from .modules import *
+warnings.filterwarnings('ignore')
 
 
 '''模拟登录类-直接返回登录后的session'''
@@ -20,7 +22,7 @@ class Login():
             'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
             'zhihu': zhihu().login, 'bilibili': bilibili().login, 'toutiao': toutiao().login, 'taobao': taobao().login, 
             'jingdong': jingdong().login, 'ifeng': ifeng().login, 'sohu': sohu().login, 'zgconline': zgconline().login, 
-            'lagou': lagou().login, 'twitter': twitter().login, 'eSurfing': eSurfing().login, 
+            'lagou': lagou().login, 'twitter': twitter().login, 'eSurfing': eSurfing().login, 'tencentvideo': tencentvideo().login,
             'renren': renren().login, 'w3cschool': w3cschool().login, 'fishc': fishc().login, 'youdao': youdao().login, 
             'baidupan': baidupan().login, 'stackoverflow': stackoverflow().login, 'codalab': codalab().login, 'pypi': pypi().login, 
             'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 
@@ -50,6 +52,7 @@ class Client():
             'migu': MiguClient, 'qunar': QunarClient, 'xiaomihealth': XiaomiHealthClient, 'mieshop': MieShopClient,
             'mpweixin': MpweixinClient, 'baidutieba': BaiduTiebaClient, 'dazhongdianping': DazhongdianpingClient, 'jianguoyun': JianguoyunClient,
             'cloud189': Cloud189Client, 'qqmusic': QQMusicClient, 'ximalaya': XimalayaClient, 'icourse163': Icourse163Client,
+            'tencentvideo': TencentVideoClient,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)

@@ -4,7 +4,7 @@ from .core import (
     toutiao, taobao, jingdong, ifeng, sohu, zgconline, lagou, twitter, eSurfing, 
     renren, w3cschool, fishc, youdao, baidupan, stackoverflow, codalab, pypi, douyu, 
     migu, qunar, mieshop, mpweixin, baidutieba, dazhongdianping, jianguoyun, cloud189, qqmusic,
-    ximalaya, icourse163, xiaomihealth,
+    ximalaya, icourse163, xiaomihealth, tencentvideo,
 )
 from .clients import (
     MiguClient, PyPiClient, SohuClient, QQIdClient, QunarClient, FishCClient, LagouClient, IfengClient,
@@ -13,5 +13,5 @@ from .clients import (
     MieShopClient, QQMusicClient, MpweixinClient, Cloud189Client, XimalayaClient, eSurfingClient,
     Music163Client, BiliBiliClient, JingdongClient, BaiduPanClient, ZgconlineClient, W3CSchoolClient,
     BaiduTiebaClient, Icourse163Client, JianguoyunClient, XiaomiHealthClient, StackoverflowClient,
-    DazhongdianpingClient,
+    DazhongdianpingClient, TencentVideoClient,
 )
