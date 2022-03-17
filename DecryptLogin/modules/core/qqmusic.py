@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-03-17
 '''
 import os
 import re
@@ -45,6 +45,8 @@ class qqmusicScanqr():
     def login(self, username='', password='', crack_captcha_func=None, **kwargs):
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
+        # 初始化
+        init_params = self.__initparams()
         # 获得pt_login_sig
         params = {
             'appid': '716027609',
@@ -108,15 +110,34 @@ class qqmusicScanqr():
         # 登录成功
         infos_return = {'data': response.text}
         qq_number = re.findall(r'&uin=(.+?)&service', response.text)[0]
+        nickname = re.findall(r'\'(.*?)\'', response.text)[-1]
         url_refresh = re.findall(r"'(https:.*?)'", response.text)[0]
-        response = self.session.get(url_refresh, allow_redirects=False, verify=False)
+        response = self.session.get(url_refresh)
+        response = self.session.get(self.jump_url)
+        data = {
+            'response_type': 'code',
+            'client_id': '100497308',
+            'redirect_uri': 'https://y.qq.com/portal/wx_redirect.html?login_type=1&surl=https://y.qq.com/',
+            'scope': 'all',
+            'state': 'state',
+            'switch': '',
+            'from_ptlogin': '1',
+            'src': '1',
+            'update_auth': '1',
+            'openapi': '80901010_1030',
+            'g_tk': self.__gettoken(self.session.cookies.get('p_skey')),
+            'auth_time': str(int(time.time() * 1000)),
+            'ui': '22D0D6E4-2F46-45FE-8552-23FDDADC0F81',
+        }
+        response = self.session.post(self.authorize_url, data=data, allow_redirects=False)
+        infos_return.update({'auth_infos': response.headers})
+        response = self.session.get(response.headers['Location'])
         print('[INFO]: Account -> %s, login successfully' % qq_number)
-        infos_return.update({'username': qq_number})
-        self.session.cookies.set("uin", f"o{qq_number}")
-        self.session.cookies.set("qqmusic_uin", "")
-        self.session.cookies.set("qqmusic_key", "")
-        self.session.cookies.set("qqmusic_fromtag", "")
-        self.session.cookies.set("skey", "@3JhImgU9h")
+        self.session.cookies.set('qm_keyst', 'Q_H_L_5cVMFZxJxA-farfT78kWjRybM6CETeVX4GPrHNM6MMIm8qY0fui_Crw')
+        self.session.cookies.set('qqmusic_key', 'Q_H_L_5cVMFZxJxA-farfT78kWjRybM6CETeVX4GPrHNM6MMIm8qY0fui_Crw')
+        self.session.cookies.set('uin', qq_number)
+        self.session.cookies.set('qqmusic_fromtag', '')
+        infos_return.update({'username': qq_number, 'nickname': nickname})
         return infos_return, self.session
     '''qrsig转ptqrtoken, hash33函数'''
     def __decryptQrsig(self, qrsig):
@@ -124,6 +145,16 @@ class qqmusicScanqr():
         for c in qrsig:
             e += (e << 5) + ord(c)
         return 2147483647 & e
+    '''获得token'''
+    def __gettoken(self, skey):
+        e = 5381
+        for c in skey:
+            e += (e << 5) + ord(c)
+        return 0x7fffffff & e
+    '''初始化一些必要的参数'''
+    def __initparams(self):
+        url = 'https://graph.qq.com/oauth2.0/show?which=Login&display=pc&response_type=code&client_id=100497308&redirect_uri=https%3A%2F%2Fy.qq.com%2Fportal%2Fwx_redirect.html%3Flogin_type%3D1%26surl%3Dhttps%3A%2F%2Fy.qq.com%2F&state=state&display=pc&scope=all'
+        return self.session.get(url, verify=False)
     '''初始化'''
     def __initialize(self):
         self.headers = {
@@ -132,6 +163,8 @@ class qqmusicScanqr():
         self.ptqrshow_url = 'https://ssl.ptlogin2.qq.com/ptqrshow?'
         self.xlogin_url = 'https://xui.ptlogin2.qq.com/cgi-bin/xlogin?'
         self.ptqrlogin_url = 'https://ssl.ptlogin2.qq.com/ptqrlogin?'
+        self.jump_url = 'https://graph.qq.com/oauth2.0/login_jump'
+        self.authorize_url = 'https://graph.qq.com/oauth2.0/authorize'
         self.session.headers.update(self.headers)
 
 
