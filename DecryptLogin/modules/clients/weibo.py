@@ -8,7 +8,6 @@ Author:
 更新日期:
     2022-03-19
 '''
-import re
 from .baseclient import BaseClient
 
 
@@ -25,8 +24,8 @@ class WeiboClient(BaseClient):
                 return False
             return True
         else:
-            url = 'https://m.weibo.cn/u/7518276693?uid=7518276693&luicode=10000011&lfid=231093_-_selffollowed'
-            session.get(url)
-            if len(re.findall(r'fid%3D(\d+)%26', str(session.cookies))) > 0:
+            url = 'http://m.weibo.com/'
+            response = session.get(url)
+            if 'screen_name' in response.text:
                 return False
             return True

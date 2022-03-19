@@ -14,7 +14,7 @@ from ..core import *
 
 '''基类客户端'''
 class BaseClient():
-    def __init__(self, website_name=None, reload_history=True, **kwargs):
+    def __init__(self, website_name=None, reload_history=True, auto_cache_history=True, **kwargs):
         self.supported_apis = {
             'douban': douban().login, 'weibo': weibo().login, 'github': github().login, 'music163': music163().login, 
             'zt12306': zt12306().login, 'QQZone': QQZone().login, 'QQQun': QQQun().login, 'QQId': QQId().login, 
@@ -32,6 +32,7 @@ class BaseClient():
         self.rootdir = os.path.split(os.path.abspath(__file__))[0]
         self.website_name = website_name
         self.reload_history = reload_history
+        self.auto_cache_history = auto_cache_history
         self.infos_return, self.session = {}, requests.Session()
     '''模拟登录'''
     def login(self, username='none', password='none', mode='pc', crack_captcha_func=None, **kwargs):
@@ -43,7 +44,7 @@ class BaseClient():
             self.infos_return, self.session = api(username, password, mode, crack_captcha_func, **kwargs)
         else:
             print(f"[INFO]: Resume {username}'s session and infos from {os.path.join(self.rootdir, self.website_name+'.pkl')}")
-        self.savehistory(username, self.infos_return, self.session)
+        if self.auto_cache_history: self.savehistory(username, self.infos_return, self.session)
         return self.infos_return, self.session
     '''保存历史数据'''
     def savehistory(self, username, infos_return, session):
