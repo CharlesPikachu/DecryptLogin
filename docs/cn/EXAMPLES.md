@@ -32,6 +32,7 @@
 |  京东抢购脚本                    |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
 |  B站UP主监控                     |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
 |  B站监控关注的UP主并自动转发抽奖 |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |
+|  微博水军                        |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |
 
 
 ## 使用简介
@@ -802,4 +803,42 @@ optional arguments:
 
 ```sh
 python bilibililottery.py --iterval 1000
+```
+
+#### 微博水军
+
+1.相关依赖
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin
+```
+
+2.环境配置
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+3.运行方式
+
+脚本运行方式如下：
+
+```sh
+usage: weibowater.py [-h] [--username USERNAME] [--password PASSWORD]
+                     --targetid TARGETID
+​
+一个简单的微博水军机器人
+​
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  微博登录用的账户名
+  --password PASSWORD  微博登录用的密码
+  --targetid TARGETID  想要流量造假服务的明星微博ID, 例如: 1776448504
+```
+
+例如：
+
+```sh
+python weibowater.py --username 用户名 --password 密码 --targetid 1776448504
 ```
