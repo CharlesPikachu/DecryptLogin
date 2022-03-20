@@ -32,7 +32,7 @@
 |  京东抢购脚本                    |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |
 |  B站UP主监控                     |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
 |  B站监控关注的UP主并自动转发抽奖 |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |
-|  微博水军                        |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |
+|  微博水军                        |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |
 
 
 ## 使用简介
