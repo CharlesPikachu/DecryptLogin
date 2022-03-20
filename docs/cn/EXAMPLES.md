@@ -39,7 +39,7 @@
 
 #### 微博监控
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -47,12 +47,12 @@
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -78,7 +78,7 @@ python weiboMonitor.py -u 用户名 -p 密码
 
 #### 生成QQ个人专属报告
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -86,12 +86,12 @@ python weiboMonitor.py -u 用户名 -p 密码
 pip install DecryptLogin, wordcloud, pillow
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -101,7 +101,7 @@ python generate.py
 
 #### 下载B站指定UP主的所有视频
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -109,12 +109,12 @@ python generate.py
 pip install DecryptLogin, prettytable
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -137,7 +137,7 @@ python downloadUserVideos.py --username 用户名 --password 密码
 
 #### 网易云个人歌单下载器
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -145,12 +145,12 @@ python downloadUserVideos.py --username 用户名 --password 密码
 pip install DecryptLogin, prettytable, contextlib, click
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -174,7 +174,7 @@ python NeteaseSongListDownloader.py --username 用户名 --password 密码
 
 #### 网易云个人听歌排行榜
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -182,12 +182,12 @@ python NeteaseSongListDownloader.py --username 用户名 --password 密码
 pip install DecryptLogin, prettytable
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -211,7 +211,7 @@ python NeteaseListenLeaderboard.py --username 用户名 --password 密码
 
 #### 下载指定微博用户的所有微博数据
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -219,12 +219,12 @@ python NeteaseListenLeaderboard.py --username 用户名 --password 密码
 pip install DecryptLogin, prettytable, tqdm, lxml, pyecharts, wordcloud, jieba
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 爬虫脚本的运行方式如下：
 
@@ -253,7 +253,7 @@ python analysis.py
 
 #### 网易云音乐自动签到
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -261,12 +261,12 @@ python analysis.py
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -289,7 +289,7 @@ python signin.py --username 用户名 --password 密码
 
 #### 微博表情包爬取
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -297,12 +297,12 @@ python signin.py --username 用户名 --password 密码
 pip install DecryptLogin, tqdm, prettytable, fake_useragent, lxml
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -325,7 +325,7 @@ python weiboEmoji.py --username 用户名 --password 密码
 
 #### 大吼一声发微博
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -333,12 +333,12 @@ python weiboEmoji.py --username 用户名 --password 密码
 pip install DecryptLogin, pyaudio
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -361,7 +361,7 @@ python weiboSender.py --username 用户名 --password 密码
 
 #### 淘宝商品数据小爬虫
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -369,12 +369,12 @@ python weiboSender.py --username 用户名 --password 密码
 pip install DecryptLogin, pyecharts
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 爬虫脚本的运行方式如下：
 
@@ -390,7 +390,7 @@ python analysis.py
 
 #### 京东商品数据小爬虫
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -398,12 +398,12 @@ python analysis.py
 pip install DecryptLogin, pyecharts
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 爬虫脚本的运行方式如下：
 
@@ -419,7 +419,7 @@ python analysis.py
 
 #### 批量删除微博
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -427,12 +427,12 @@ python analysis.py
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -455,7 +455,7 @@ python delallweibos.py --username 用户名 --password 密码
 
 #### 批量删除QQ空间说说
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -463,12 +463,12 @@ python delallweibos.py --username 用户名 --password 密码
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -478,7 +478,7 @@ python ClearQzone.py
 
 #### 在终端看网易云每日歌曲推荐
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -486,12 +486,12 @@ python ClearQzone.py
 pip install DecryptLogin, contextlib, pick, click
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -514,7 +514,7 @@ python NeteaseEveryday.py --username 用户名 --password 密码
 
 #### 网易云音乐刷歌曲播放量
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -522,12 +522,12 @@ python NeteaseEveryday.py --username 用户名 --password 密码
 pip install DecryptLogin, prettytable
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -550,7 +550,7 @@ python NeteaseClickPlaylist.py --username 用户名 --password 密码
 
 #### 天翼云盘自动签到+抽奖
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -558,12 +558,12 @@ python NeteaseClickPlaylist.py --username 用户名 --password 密码
 pip install DecryptLogin, xmltodict
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -586,7 +586,7 @@ python signin.py --username 用户名 --password 密码
 
 #### 中国大学MOOC下载器
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -594,13 +594,13 @@ python signin.py --username 用户名 --password 密码
 pip install DecryptLogin, click, tqdm
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 - ffmpeg: 使用前请确保ffmpeg在环境变量中, [下载地址](https://ffmpeg.org/)
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -622,7 +622,7 @@ python moocdl.py --username 用户名 --password 密码
 
 #### 修改小米运动中的步数
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -630,12 +630,12 @@ python moocdl.py --username 用户名 --password 密码
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -660,7 +660,7 @@ python modifymihealthsteps.py --username 用户名 --password 密码 --steps 目
 
 #### 淘宝抢购脚本
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -668,12 +668,12 @@ python modifymihealthsteps.py --username 用户名 --password 密码 --steps 目
 pip install DecryptLogin, pyttsx3, prettytable
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -696,7 +696,7 @@ python taobaosnap.py --interval 1800 --key Server酱的Key
 
 #### 京东抢购脚本
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -704,12 +704,12 @@ python taobaosnap.py --interval 1800 --key Server酱的Key
 pip install DecryptLogin, pyttsx3, prettytable, beautifulsoup4
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -733,7 +733,7 @@ python jingdongsnap.py --interval 1800 --key Server酱的Key --paywd 支付密�
 
 #### B站UP主监控
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -741,12 +741,12 @@ python jingdongsnap.py --interval 1800 --key Server酱的Key --paywd 支付密�
 pip install DecryptLogin, videofetch
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -769,7 +769,7 @@ python bilibiliupmonitor.py --ids 406756145 --key Server酱的Key
 
 #### B站监控关注的UP主并自动转发抽奖
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -777,12 +777,12 @@ python bilibiliupmonitor.py --ids 406756145 --key Server酱的Key
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
@@ -807,7 +807,7 @@ python bilibililottery.py --iterval 1000
 
 #### 微博水军
 
-1.相关依赖
+**1.相关依赖**
 
 在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
 
@@ -815,12 +815,12 @@ python bilibililottery.py --iterval 1000
 pip install DecryptLogin
 ```
 
-2.环境配置
+**2.环境配置**
 
 - 操作系统: Linux or macOS or Windows
 - Python版本: Python3.6+
 
-3.运行方式
+**3.运行方式**
 
 脚本运行方式如下：
 
