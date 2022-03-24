@@ -15,4 +15,5 @@ DecryptLogin中文文档
 	QUICKSTART.md
 	LOGIN.md
 	EXAMPLES.md
+	RECOMMEND.md
 	AUTHOR.md

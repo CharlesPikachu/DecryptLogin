@@ -15,4 +15,5 @@ Welcome to DecryptLogin's Document
 	QUICKSTART.md
 	LOGIN.md
 	EXAMPLES.md
+	RECOMMEND.md
 	AUTHOR.md
