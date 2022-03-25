@@ -1,13 +1,13 @@
-# About Author
+# About Me
 
-I'm a student interested in computer vision and information security.
+I'm a student whose research interests include computer vision and information security.
 
 WeChat public account: Charles_pikachu (*i.e.*, Charles的皮卡丘)
 
-Github: https://github.com/CharlesPikachu  
+Github: [https://github.com/CharlesPikachu](https://github.com/CharlesPikachu)
 
-Zhihu: https://www.zhihu.com/people/charles_pikachu
+Zhihu: [https://www.zhihu.com/people/charles_pikachu](https://www.zhihu.com/people/charles_pikachu)
 
-BiliBili: https://space.bilibili.com/406756145
+Bilibili: [https://space.bilibili.com/406756145](https://www.zhihu.com/people/charles_pikachu)
 
 Email: charlesblwx@gmail.com

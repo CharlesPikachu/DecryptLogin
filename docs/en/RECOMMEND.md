@@ -1,4 +1,4 @@
-# 项目推荐
+# Recommended Projects
 
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
 
