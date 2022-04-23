@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -147,8 +147,8 @@ class zt12306Scanqr():
         response = self.session.post(self.create_url, data={'appid': 'otn'})
         response_json = response.json()
         image, uuid = response_json['image'], response_json['uuid']
-        saveImage(base64.b64decode(image), os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(base64.b64decode(image), os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检查二维码扫码状态
         while True:
             data = {
@@ -177,7 +177,7 @@ class zt12306Scanqr():
         infos_return = response_json
         username = infos_return['username']
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         response = self.session.post(self.initMy12306Api_url)
         response_json = response.json()
         print('[INFO]: Account -> %s, login successfully' % username)

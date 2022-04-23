@@ -6,37 +6,33 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2020-10-29
+    2022-04-23
 '''
 import os
-import sys
-import subprocess
+import imghdr
+import shutil
+from PIL import Image
 
 
-'''用于在不同OS显示验证码'''
-def showImage(img_path):
-    try:
-        if sys.platform.find('darwin') >= 0: subprocess.call(['open', img_path])
-        elif sys.platform.find('linux') >= 0: subprocess.call(['xdg-open', img_path])
-        else: os.startfile(img_path)
-    except:
-        from PIL import Image
-        img = Image.open(img_path)
-        img.show()
-        img.close()
+'''显示图像'''
+def showImage(imagepath):
+    img = Image.open(imagepath)
+    img.show()
+    img.close()
 
 
-'''验证码验证完毕后关闭验证码并移除'''
-def removeImage(img_path):
-    if sys.platform.find('darwin') >= 0:
-        os.system("osascript -e 'quit app \"Preview\"'")
-    os.remove(img_path)
+'''移除图像'''
+def removeImage(imagepath):
+    os.remove(imagepath)
 
 
-'''保存验证码图像'''
-def saveImage(img, img_path):
-    if os.path.isfile(img_path):
-        os.remove(img_path)
-    fp = open(img_path, 'wb')
-    fp.write(img)
+'''保存图像'''
+def saveImage(image, imagepath):
+    fp = open(imagepath, 'wb')
+    fp.write(image)
     fp.close()
+    filetype = imghdr.what(imagepath)
+    assert filetype in ['jpg', 'jpeg', 'png', 'bmp', 'gif']
+    imagepath_correct = f"{'.'.join(imagepath.split('.')[:-1])}.{filetype}"
+    shutil.move(imagepath, imagepath_correct)
+    return imagepath_correct

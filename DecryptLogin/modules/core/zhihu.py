@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -480,12 +480,12 @@ class zhihuPC():
             self.captcha_headers.update({'origin': 'https://www.zhihu.com'})
             response = self.session.put(self.captcha_url, headers=self.captcha_headers)
             img_base64 = response.json()['img_base64'].replace('\\n', '')
-            saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
+            captcha_path = saveImage(base64.b64decode(img_base64), os.path.join(self.cur_path, 'captcha.jpg'))
             if crack_captcha_func is None:
-                showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                showImage(captcha_path)
                 captcha = input('Input the captcha: ')
             else:
-                captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
+                captcha = crack_captcha_func(captcha_path)
             data = {'input_text': captcha}
             data = MultipartEncoder(fields=data, boundary='----WebKitFormBoundary')
             headers = {
@@ -495,7 +495,7 @@ class zhihuPC():
                 'x-requested-with': 'fetch'
             }
             self.session.post(self.captcha_url, data=data, headers=headers)
-        removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+        removeImage(captcha_path)
         # 构造登录请求
         client_id = 'c3cef7c66a1843f8b3a9e6a1e3160e20'
         timestamp = str(int(time.time() * 1000))
@@ -602,8 +602,8 @@ class zhihuScanqr():
         token = response.json().get('token', '')
         # 下载保存二维码
         response = self.session.get(self.qrcode_image_url.format(token), headers=token_headers)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         while True:
             response = self.session.get(self.scaninfo_url.format(token), headers=captcha_headers)
@@ -617,7 +617,7 @@ class zhihuScanqr():
             # --扫码成功
             elif response_json.get('user_id', ''):
                 break
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         # 登录成功, 返回必要的数据
         self.session.cookies.update(response_json['cookie'])
         print('[INFO]: Account -> %s, login successfully' % ('uid' + str(response_json['user_id'])))

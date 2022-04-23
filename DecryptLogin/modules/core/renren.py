@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -42,13 +42,13 @@ class renrenPC():
                 data['sign'] = self.getsign(data, data['appKey'])
                 response = self.session.post(self.icode_url, json=data)
                 response_json = response.json()
-                saveImage(base64.b64decode(response_json['data']['imageBase64String']), os.path.join(self.cur_path, 'captcha.png'))
+                captcha_path = saveImage(base64.b64decode(response_json['data']['imageBase64String']), os.path.join(self.cur_path, 'captcha.png'))
                 if crack_captcha_func is None:
-                    showImage(os.path.join(self.cur_path, 'captcha.png'))
+                    showImage(captcha_path)
                     captcha = input('Input the captcha: ')
                 else:
-                    captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.png'))
-                removeImage(os.path.join(self.cur_path, 'captcha.png'))
+                    captcha = crack_captcha_func(captcha_path)
+                removeImage(captcha_path)
                 data = {
                     'user': username,
                     'password': hashlib.md5(password.encode('utf-8')).hexdigest(),

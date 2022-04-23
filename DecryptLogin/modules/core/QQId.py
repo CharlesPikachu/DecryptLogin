@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import re
@@ -76,8 +76,8 @@ class QQIdScanqr():
         all_cookies.update(requests.utils.dict_from_cookiejar(response.cookies))
         ptqrtoken = self.__decryptQrsig(all_cookies['qrsig'])
         # 保存二维码图片
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         self.session.cookies.update(all_cookies)
         # 检测二维码状态
         while True:
@@ -114,7 +114,7 @@ class QQIdScanqr():
         response = self.session.get(url_refresh, allow_redirects=False, verify=False)
         all_cookies.update(requests.utils.dict_from_cookiejar(response.cookies))
         self.session.cookies.update(all_cookies)
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % qq_number)
         infos_return = {'username': qq_number, 'cookies': all_cookies}
         return infos_return, self.session

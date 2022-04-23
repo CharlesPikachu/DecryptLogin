@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -47,8 +47,8 @@ class ximalayaScanqr():
         # 获取二维码
         response = self.session.get(self.qrcode_url, verify=False)
         response_json = response.json()
-        saveImage(base64.b64decode(response_json['img']), os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(base64.b64decode(response_json['img']), os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         qr_id = response_json['qrId']
         while True:
@@ -65,7 +65,7 @@ class ximalayaScanqr():
                 raise RuntimeError(response_json.get('msg', 'something error'))
             time.sleep(0.5)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % response_json['mobileMask'] if response_json['mobileMask'] else response_json['uid'])
         infos_return = {'username': username}
         infos_return.update(response_json)

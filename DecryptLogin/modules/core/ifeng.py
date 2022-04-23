@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import requests
@@ -28,13 +28,13 @@ class ifengPC():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获取验证码
         response = self.session.get(self.authcode_url)
-        saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
+        captcha_path = saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
         if crack_captcha_func is None:
-            showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+            showImage(captcha_path)
             captcha = input('Input the captcha: ')
         else:
-            captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-        removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+            captcha = crack_captcha_func(captcha_path)
+        removeImage(captcha_path)
         # 请求登录接口api_login_url进行模拟登录
         self.session.headers.update({
             'Upgrade-Insecure-Requests': '1',

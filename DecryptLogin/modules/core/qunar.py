@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import re
@@ -32,13 +32,13 @@ class qunarPC():
         response = self.session.get(self.home_url)
         # 获取验证码
         response = self.session.get(self.captcha_url % str(int(time.time() * 1000)))
-        saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
+        captcha_path = saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
         if crack_captcha_func is None:
-            showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+            showImage(captcha_path)
             captcha = input('Input the captcha: ')
         else:
-            captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-        removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+            captcha = crack_captcha_func(captcha_path)
+        removeImage(captcha_path)
         # 设置cookies
         self.session.get(self.addICK_url)
         response = self.session.get(self.sessionId_url)
@@ -71,13 +71,13 @@ class qunarPC():
         # 账号安全问题, 需要短信验证
         elif response_json['errcode'] in [21035]:
             response = self.session.get(self.captcha_url % str(int(time.time() * 1000)))
-            saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
+            captcha_path = saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
             if crack_captcha_func is None:
-                showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                showImage(captcha_path)
                 captcha = input('Input the captcha: ')
             else:
-                captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-            removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                captcha = crack_captcha_func(captcha_path)
+            removeImage(captcha_path)
             self.session.get(self.addICK_url)
             response = self.session.get(self.sessionId_url)
             session_id = re.findall(r'sessionId=(.*?)&', response.text)[0]

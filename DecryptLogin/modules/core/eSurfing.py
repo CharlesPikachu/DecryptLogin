@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-04-23
 '''
 import os
 import time
@@ -58,8 +58,8 @@ class eSurfingScanqr():
             'REQID': headers['reqid'],
         }
         response = self.session.get(self.image_url, params=params)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.png'))
-        showImage(os.path.join(self.cur_path, 'qrcode.png'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.png'))
+        showImage(qrcode_path)
         # 检测二维码状态
         data = {
             'appId': 'E_189',
@@ -85,7 +85,7 @@ class eSurfingScanqr():
             else:
                 raise RuntimeError(response_json)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.png'))
+        removeImage(qrcode_path)
         response = self.session.get(response_json['redirectUrl'])
         headers = self.headers.copy()
         headers.update({

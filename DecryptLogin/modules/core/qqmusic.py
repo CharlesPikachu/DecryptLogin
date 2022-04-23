@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-17
+    2022-04-23
 '''
 import os
 import re
@@ -75,8 +75,8 @@ class qqmusicScanqr():
             'pt_3rd_aid': '100497308',
         }
         response = self.session.get(self.ptqrshow_url, params=params)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         qrsig = self.session.cookies.get('qrsig')
         ptqrtoken = self.__decryptQrsig(qrsig)
         # 检测二维码状态
@@ -106,7 +106,7 @@ class qqmusicScanqr():
             elif '二维码已经失效' in response.text:
                 raise RuntimeError('Fail to login, qrcode has expired')
             time.sleep(0.5)
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         # 登录成功
         infos_return = {'data': response.text}
         qq_number = re.findall(r'&uin=(.+?)&service', response.text)[0]

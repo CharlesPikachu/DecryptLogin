@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-04-23
 '''
 import os
 import re
@@ -52,13 +52,13 @@ class baidupanPC():
             # --需要图片验证码
             if is_need_captcha:
                 response = self.session.get(self.genimage_url+codestring)
-                saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
+                captcha_path = saveImage(response.content, os.path.join(self.cur_path, 'captcha.jpg'))
                 if crack_captcha_func is None:
-                    showImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                    showImage(captcha_path)
                     captcha = input('Input the captcha: ')
                 else:
-                    captcha = crack_captcha_func(os.path.join(self.cur_path, 'captcha.jpg'))
-                removeImage(os.path.join(self.cur_path, 'captcha.jpg'))
+                    captcha = crack_captcha_func(captcha_path)
+                removeImage(captcha_path)
             # --需要验证手机/邮箱
             if is_need_phone_email_verify:
                 response_json = self.__verifyPhoneEmail(goto_url)

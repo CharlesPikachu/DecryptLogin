@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-04-23
 '''
 import os
 import time
@@ -58,8 +58,8 @@ class baidutiebaScanQR():
         imgurl = response.json()['imgurl']
         sign = response.json()['sign']
         response = self.session.get('https://%s' % imgurl)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         while True:
             timestamp = str(int(time.time() * 1000))
@@ -104,7 +104,7 @@ class baidutiebaScanQR():
                 username = response_json['userinfo']['data']['user_name_show']
                 break
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % username)
         infos_return = {'username': username}
         infos_return.update(response_json)

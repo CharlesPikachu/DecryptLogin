@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-04-23
 '''
 import os
 import re
@@ -49,8 +49,8 @@ class dazhongdianpingScanqr():
         self.session.get(self.home_url)
         # 获取二维码
         response = self.session.get(self.getqrcodeimg_url+str(random.random()), headers=self.qr_headers)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         lgtoken = self.session.cookies.get('lgtoken')
         while True:
@@ -72,7 +72,7 @@ class dazhongdianpingScanqr():
                 pass
             time.sleep(0.5)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % username)
         infos_return = {'username': username, 'userid': userid, 'text': response.text}
         return infos_return, self.session

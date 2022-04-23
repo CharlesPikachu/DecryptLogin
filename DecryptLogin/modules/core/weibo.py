@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import re
@@ -232,8 +232,8 @@ class weiboScanqr():
         qrid = response_json['data']['qrid']
         imageurl = 'https:' + response_json['data']['image']
         response = self.session.get(imageurl)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         while True:
             params = {
@@ -245,7 +245,7 @@ class weiboScanqr():
             response_json = json.loads(response.text.split('(')[-1].split(')')[0])
             if response_json['retcode'] in [20000000]: break
             time.sleep(0.5)
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         # 模拟登录
         params = {
             'entry': 'weibo',

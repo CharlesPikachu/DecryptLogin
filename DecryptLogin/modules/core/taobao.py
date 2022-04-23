@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import re
@@ -62,8 +62,8 @@ class taobaoScanqr():
         response = self.session.get('https:'+xcode_url)
         if not (response.status_code == 200):
             raise RuntimeError('Fail to login, unable to download qrcode from %s' % xcode_url)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         self.session.headers.update({'Referer': 'https://login.taobao.com/member/login_unusual.htm?user_num_id=2979250577&is_ignore=&from=tbTop&style=\
                                                  &popid=&callback=&minipara=&css_style=&is_scure=true&c_is_secure=&tpl_redirect_url=https%3A%2F%2Fwww.\
@@ -99,7 +99,7 @@ class taobaoScanqr():
                 pass
             time.sleep(1)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % username)
         infos_return = {'username': username, 'uid': uid, 'token': token}
         infos_return.update(response_json)

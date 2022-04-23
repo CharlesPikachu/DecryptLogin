@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import re
 import os
@@ -57,8 +57,8 @@ class toutiaoScanqr():
         response_json = response.json()
         token = response_json['data']['token']
         qrcode = base64.b64decode(response_json['data']['qrcode'])
-        saveImage(qrcode, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(qrcode, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检查二维码状态
         while True:
             params = {
@@ -79,7 +79,7 @@ class toutiaoScanqr():
             else:
                 raise RuntimeError(response_json)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         infos_return = response_json
         redirect_url = response_json['data']['redirect_url']
         response = self.session.get(redirect_url)

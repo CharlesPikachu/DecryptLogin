@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-09
+    2022-04-23
 '''
 import os
 import re
@@ -98,8 +98,8 @@ class doubanScanqr():
         code, img_url = response_json['payload']['code'], response_json['payload']['img']
         headers = {'User-Agent': self.headers['User-Agent']}
         response = requests.get(img_url, headers=headers)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.png'))
-        showImage(os.path.join(self.cur_path, 'qrcode.png'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.png'))
+        showImage(qrcode_path)
         # 检测扫码状态
         params = {
             'ck': '',
@@ -117,7 +117,7 @@ class doubanScanqr():
             else:
                 raise RuntimeError(response_json)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.png'))
+        removeImage(qrcode_path)
         response = self.session.get(self.stat_url)
         response = self.session.get(self.home_url)
         username = re.findall(r'input name="nick" type="text" value="(.*?)"', response.text)[0]

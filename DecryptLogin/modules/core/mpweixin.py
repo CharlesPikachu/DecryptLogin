@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -48,8 +48,8 @@ class mpweixinPC():
                 raise RuntimeError(response_json['base_resp']['err_msg'])
         # 保障账号安全, 还需要微信扫码
         response = self.session.get(self.getqrcode_url, verify=False)
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         while True:
             response = self.session.get(self.ask_url, verify=False)
@@ -64,7 +64,7 @@ class mpweixinPC():
             else:
                 raise RuntimeError(response_json['base_resp']['err_msg'])
             time.sleep(1)
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         # 模拟登录
         data = {
             'f': 'json',

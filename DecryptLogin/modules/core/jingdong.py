@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-10
+    2022-04-23
 '''
 import os
 import time
@@ -47,8 +47,8 @@ class jingdongScanqr():
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获取二维码
         response = self.session.get(self.qrshow_url.format(int(time.time()*1000)))
-        saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
         # 检测二维码状态
         token = self.session.cookies.get('wlfstk_smdl')
         while True:
@@ -75,7 +75,7 @@ class jingdongScanqr():
                 raise RuntimeError(response_json['msg'])
             time.sleep(1)
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        removeImage(qrcode_path)
         print('[INFO]: Account -> %s, login successfully' % nickname)
         infos_return = {'username': username, 'nickname': nickname, 'response': response_json}
         return infos_return, self.session
