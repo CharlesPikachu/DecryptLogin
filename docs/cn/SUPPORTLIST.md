@@ -5,7 +5,7 @@
 |  [新浪微博](https://m.weibo.cn/)                      | ✓        | ✓          | ✓        |
 |  [豆瓣](https://www.douban.com/)                      | ✓        | ✗          | ✓        |
 |  [Github](https://github.com/)                        | ✓        | ✗          | ✗        |
-|  [网易云音乐](https://music.163.com/)                 | ✓        | ✗          | ✗        |
+|  [网易云音乐](https://music.163.com/)                 | ✓        | ✗          | ✓        |
 |  [中国铁路12306](https://www.12306.cn/index/)         | ✓        | ✗          | ✓        |
 |  [QQ空间](https://qzone.qq.com)                       | ✗        | ✗          | ✓        |
 |  [QQ群](https://qun.qq.com/)                          | ✗        | ✗          | ✓        |

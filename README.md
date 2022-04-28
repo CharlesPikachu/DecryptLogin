@@ -40,7 +40,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
 |  douban          | ✓       | ✗           | ✓           | 豆瓣              |
 |  github          | ✓       | ✗           | ✗           | Github            |
-|  music163        | ✓       | ✗           | ✗           | 网易云音乐        |
+|  music163        | ✓       | ✗           | ✓           | 网易云音乐        |
 |  zt12306         | ✓       | ✗           | ✓           | 中国铁路12306     |
 |  QQZone          | ✗       | ✗           | ✓           | QQ空间            |
 |  QQQun           | ✗       | ✗           | ✓           | QQ群              |

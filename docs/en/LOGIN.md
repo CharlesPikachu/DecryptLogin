@@ -172,7 +172,16 @@ The mobile mode has not been supported.
 
 **3.Scanqr Mode**
 
-The scanqr mode has not been supported.
+The sample codes is as follow::
+
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.music163('', '', 'scanqr')
+```
+
+Then, you can leverage the APP of music163 to scan the qr code to login in the website.
 
 #### zt12306
 

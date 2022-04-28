@@ -172,7 +172,16 @@ infos_return, session = lg.music163(username, password, 'pc')
 
 **3.扫码登录**
 
-暂不支持扫码登录。
+示例代码:
+
+```python
+from DecryptLogin import login
+
+lg = login.Login()
+infos_return, session = lg.music163('', '', 'scanqr')
+```
+
+利用网易云音乐的APP扫码登录即可。
 
 #### 中国铁路12306
 

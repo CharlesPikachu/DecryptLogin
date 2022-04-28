@@ -5,7 +5,7 @@
 |  [weibo](https://m.weibo.cn/)                         | ✓        | ✓          | ✓           |
 |  [douban](https://www.douban.com/)                    | ✓        | ✗          | ✓           |
 |  [github](https://github.com/)                        | ✓        | ✗          | ✗           |
-|  [music163](https://music.163.com/)                   | ✓        | ✗          | ✗           |
+|  [music163](https://music.163.com/)                   | ✓        | ✗          | ✓           |
 |  [zt12306](https://www.12306.cn/index/)               | ✓        | ✗          | ✓           |
 |  [QQZone](https://qzone.qq.com)                       | ✗        | ✗          | ✓            |
 |  [QQQun](https://qun.qq.com/)                         | ✗        | ✗          | ✓            |
