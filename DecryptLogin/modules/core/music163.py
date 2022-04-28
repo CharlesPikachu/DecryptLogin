@@ -180,9 +180,9 @@ class music163Scanqr():
         infos_return = {
             'nickname': response_json['profile']['nickname'], 
             'csrf': csrf,
+            'response': response_json,
         }
         print('[INFO]: Account -> %s, login successfully' % infos_return['nickname'])
-        infos_return.update(response_json)
         return infos_return, self.session
     '''初始化'''
     def __initialize(self):
