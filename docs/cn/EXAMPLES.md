@@ -33,6 +33,7 @@
 |  B站UP主监控                     |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |
 |  B站监控关注的UP主并自动转发抽奖 |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |
 |  微博水军                        |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |
+|  微博批量拉黑脚本                |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboblacklist)                |
 
 
 ## 使用简介
@@ -841,4 +842,42 @@ optional arguments:
 
 ```sh
 python weibowater.py --username 用户名 --password 密码 --targetid 1776448504
+```
+
+#### 微博批量拉黑脚本
+
+**1.相关依赖**
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLogin, tqdm
+```
+
+**2.环境配置**
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+**3.运行方式**
+
+脚本运行方式如下：
+
+```sh
+usage: weiboblacklist.py [-h] [--username USERNAME] [--password PASSWORD]
+                         --filepath FILEPATH
+​
+微博批量拉黑脚本
+​
+optional arguments:
+  -h, --help           show this help message and exit
+  --username USERNAME  微博登录用的账户名
+  --password PASSWORD  微博登录用的密码
+  --filepath FILEPATH  存储想要批量拉黑的用户的文本文件路径
+```
+
+例如：
+
+```sh
+python weiboblacklist.py --username 用户名 --password 密码 --filepath blacklist.txt
 ```
