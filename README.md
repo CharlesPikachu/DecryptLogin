@@ -106,7 +106,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  bilibiliupmonitor          |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |  B站UP主监控                     |
 |  bilibililottery            |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |  B站监控关注的UP主并自动转发抽奖 |
 |  weibowater                 |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |  微博水军                        |
-|  weiboblacklist             |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboblacklist)                |  微博批量拉黑脚本                |
+|  weiboblacklist             |   [click](https://mp.weixin.qq.com/s/9npyr9banKSUl-mVXYhmPA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboblacklist)                |  微博批量拉黑脚本                |
 
 
 # Install
