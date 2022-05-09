@@ -18,6 +18,7 @@ Documents-EN: https://httpsgithubcomcharlespikachudecryptlogin.readthedocs.io/en
 
 
 # DecryptLogin
+
 ```
 APIs for loginning some websites by using requests.
 You can star this repository to keep track of the project if it's helpful for you, thank you for your support.
@@ -25,6 +26,7 @@ You can star this repository to keep track of the project if it's helpful for yo
 
 
 # Statements
+
 ```
 This repo is created for learning python.
 If I find that anyone leverage this project in an illegal way, I will delete this project immediately.
@@ -35,6 +37,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 
 
 # Support List
+
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | Chinese Name      |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
 |  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
@@ -78,9 +81,11 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  icourse163      | ✗       | ✓           | ✗           | 中国大学MOOC      |
 |  xiaomihealth    | ✗       | ✓           | ✗           | 小米运动          |
 |  tencentvideo    | ✗       | ✗           | ✓           | 腾讯视频          |
+|  baidu           | ✗       | ✗           | ✓           | 百度              |
 
 
 # Practice with DecryptLogin
+
 |  Project                    |   Introduction                                                   |   code                                                                                                       |  in Chinese                      |
 |  :----:                     |   :----:                                                         |   :----:                                                                                                     |  :----:                          |
 |  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboMonitor)                  |  微博监控                        |
@@ -112,14 +117,17 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 # Install
 
 #### Preparation
+
 - [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
 
 #### Pip install
+
 ```sh
 run "pip install DecryptLogin"
 ```
 
 #### Source code install
+
 ```sh
 (1) Offline
 Step1: git clone https://github.com/CharlesPikachu/DecryptLogin.git
@@ -130,6 +138,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 
 
 # Quick Start
+
 ```python
 from DecryptLogin import login
 
@@ -175,17 +184,21 @@ infos_return, session = lg.ximalaya()
 infos_return, session = lg.icourse163(username, password)
 infos_return, session = lg.xiaomihealth(username, password)
 infos_return, session = lg.tencentvideo()
+infos_return, session = lg.baidu()
 ```
 
 
 # Thanks List
+
 |  Author                                            |           Time            |   Contribution                                     |
 |  :----:                                            |           :----:          |   :----:                                           |
 |  @[skygongque](https://github.com/skygongque)      |           2020-02-13      |   add verification code processing in (weibo, pc)  |
 
 
 # Citation
-If you use this project in your research, please cite this project.
+
+If you use this project in your research, please cite this project:
+
 ```
 @misc{decryptlogin2020,
     author = {Zhenchao Jin},
@@ -199,6 +212,7 @@ If you use this project in your research, please cite this project.
 
 
 # Projects in Charles_pikachu
+
 - [Games](https://github.com/CharlesPikachu/Games): Create interesting games by pure python.
 - [DecryptLogin](https://github.com/CharlesPikachu/DecryptLogin): APIs for loginning some websites by using requests.
 - [Musicdl](https://github.com/CharlesPikachu/musicdl): A lightweight music downloader written by pure python.
@@ -218,6 +232,8 @@ If you use this project in your research, please cite this project.
 
 
 # More
+
 #### WeChat Official Accounts
+
 *Charles_pikachu*  
 ![img](./docs/pikachu.jpg)

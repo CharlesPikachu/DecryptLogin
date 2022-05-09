@@ -43,3 +43,4 @@
 |  [中国大学MOOC](https://www.icourse163.org/)          | ✗        | ✓          | ✗        |
 |  [小米运动](https://www.huami.com/)                   | ✗        | ✓          | ✗        |
 |  [腾讯视频](https://v.qq.com/)                        | ✗        | ✗          | ✓        |
+|  [百度](https://baidu.com/)                           | ✗        | ✗          | ✓        |

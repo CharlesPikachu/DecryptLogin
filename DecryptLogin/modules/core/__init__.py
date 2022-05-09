@@ -3,6 +3,7 @@ from .pypi import pypi
 from .sohu import sohu
 from .migu import migu
 from .QQId import QQId
+from .baidu import baidu
 from .qunar import qunar
 from .fishc import fishc
 from .lagou import lagou

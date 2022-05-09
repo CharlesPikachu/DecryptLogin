@@ -43,3 +43,4 @@
 |  [icourse163](https://www.icourse163.org/)            | ✗        | ✓          | ✗            |
 |  [xiaomihealth](https://www.huami.com/)               | ✗        | ✓          | ✗            |
 |  [tencentvideo](https://v.qq.com/)                    | ✗        | ✗          | ✓            |
+|  [baidu](https://baidu.com/)                          | ✗        | ✗          | ✓            |

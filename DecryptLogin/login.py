@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-03-17
+    2022-05-09
 '''
 import warnings
 from .modules import *
@@ -28,7 +28,7 @@ class Login():
             'douyu': douyu().login, 'migu': migu().login, 'qunar': qunar().login, 'mieshop': mieshop().login, 'mpweixin': mpweixin().login, 
             'baidutieba': baidutieba().login, 'dazhongdianping': dazhongdianping().login, 'jianguoyun': jianguoyun().login, 
             'cloud189': cloud189().login, 'qqmusic': qqmusic().login, 'ximalaya': ximalaya().login, 'icourse163': icourse163().login, 
-            'xiaomihealth': xiaomihealth().login,
+            'xiaomihealth': xiaomihealth().login, 'baidu': baidu().login,
         }
         for key, value in self.supported_apis.items():
             setattr(self, key, value)
@@ -52,7 +52,7 @@ class Client():
             'migu': MiguClient, 'qunar': QunarClient, 'xiaomihealth': XiaomiHealthClient, 'mieshop': MieShopClient,
             'mpweixin': MpweixinClient, 'baidutieba': BaiduTiebaClient, 'dazhongdianping': DazhongdianpingClient, 'jianguoyun': JianguoyunClient,
             'cloud189': Cloud189Client, 'qqmusic': QQMusicClient, 'ximalaya': XimalayaClient, 'icourse163': Icourse163Client,
-            'tencentvideo': TencentVideoClient,
+            'tencentvideo': TencentVideoClient, 'baidu': BaiduClient,
         }
         for key, value in self.supported_clients.items():
             setattr(self, key, value)

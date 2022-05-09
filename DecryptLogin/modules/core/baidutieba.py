@@ -75,7 +75,7 @@ class baidutiebaScanQR():
             response_json = json.loads(response.text.replace('(', '').replace(')', ''))
             # --二维码失效或请求有误
             if 'channel_v' not in response_json:
-                raise RuntimeError('Fail to login, qrcode has expired or something error when fetching qrcode status')
+                raise RuntimeError('Fail to login in baidutieba, qrcode has expired or something error when fetching qrcode status')
             # --正在扫码
             elif json.loads(response_json['channel_v'])['status'] in [1]:
                 pass
@@ -119,6 +119,7 @@ class baidutiebaScanQR():
         self.login_url = 'https://passport.baidu.com/v3/login/main/qrbdusslogin'
         self.crossdomain_url = 'https://user.hao123.com/static/crossdomain.php'
         self.userinfo_url = 'https://tieba.baidu.com/f/user/json_userinfo'
+        self.session.headers.update(self.headers)
 
 
 '''

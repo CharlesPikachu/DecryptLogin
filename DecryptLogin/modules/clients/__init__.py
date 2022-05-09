@@ -3,6 +3,7 @@ from .migu import MiguClient
 from .pypi import PyPiClient
 from .sohu import SohuClient
 from .QQId import QQIdClient
+from .baidu import BaiduClient
 from .qunar import QunarClient
 from .fishc import FishCClient
 from .lagou import LagouClient
