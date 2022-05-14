@@ -28,15 +28,9 @@ class Client():
         for key, value in self.supported_crawlers.items():
             setattr(self, key, value)
     '''执行对应的爬虫'''
-    def execute(self, crawler_type=None, config={}):
+    def executor(self, crawler_type=None, config={}):
         crawler = self.supported_crawlers[crawler_type](**config)
         return crawler.run()
     '''str'''
     def __str__(self):
         return 'Welcome to use DecryptLogin-examples!\nYou can visit https://github.com/CharlesPikachu/DecryptLogin for more details.'
-
-
-'''run'''
-if __name__ == '__main__':
-    client = Client()
-    client.execute('qqreports', config={})

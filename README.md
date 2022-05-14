@@ -62,7 +62,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 
 ### Support List
 
-|  Websites        | PC Mode | Mobile Mode | ScanQR Mode | Chinese Name      |
+|  Website_EN      | PC Mode | Mobile Mode | ScanQR Mode | Website_CN        |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
 |  weibo           | ✓       | ✓           | ✓           | 新浪微博          |
 |  douban          | ✓       | ✗           | ✓           | 豆瓣              |
@@ -142,7 +142,7 @@ run "pip install DecryptLoginExamples"
 
 ### Support List
 
-|  Project                    |   Introduction                                                   |   code                                                                                                                                     |  in Chinese                      |
+|  Project_EN                 |   Introduction                                                   |   Core Code                                                                                                                                |  Project_CN                      |
 |  :----:                     |   :----:                                                         |   :----:                                                                                                                                   |  :----:                          |
 |  weibomonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibomonitor)                  |  微博监控                        |
 |  qqreports                  |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/qqreports)                     |  生成QQ个人专属报告              |
@@ -150,7 +150,7 @@ run "pip install DecryptLoginExamples"
 |  neteasesonglistdownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteasesonglistdownloader)     |  网易云个人歌单下载器            |
 |  neteaselistenleaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteaselistenleaderboard)      |  网易云个人听歌排行榜            |
 |  userweibospider            |   [click](https://mp.weixin.qq.com/s/-3BDTZAE1x7nfCLNq2mFBw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/userweibospider)               |  下载指定微博用户的所有微博数据  |
-|  neteasesignin              |   [click](https://mp.weixin.qq.com/s/8d7smUSzW2ds1ypZq-yeFw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteasesignin)                 |  网易云音乐自动签到              |  
+|  neteasesignin              |   [click](https://mp.weixin.qq.com/s/8d7smUSzW2ds1ypZq-yeFw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteasesignin)                 |  网易云音乐自动签到              |
 |  weiboemoji                 |   [click](https://mp.weixin.qq.com/s/QiPm4gyE8i5amR5gB3IbBA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weiboemoji)                    |  微博表情包爬取                  |
 |  weibosender                |   [click](https://mp.weixin.qq.com/s/_aIY-iVj3xetfHQyMxflkg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibosender)                   |  大吼一声发微博                  |
 |  tbgoods                    |   [click](https://mp.weixin.qq.com/s/NhK9eeWNXv_wPnolccRR-g)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/tbgoods)                       |  淘宝商品数据小爬虫              |

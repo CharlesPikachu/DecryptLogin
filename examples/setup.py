@@ -8,7 +8,7 @@ Author:
 GitHub:
     https://github.com/CharlesPikachu
 '''
-import DecryptLogin
+import DecryptLoginExamples
 from setuptools import setup, find_packages
 
 
@@ -17,11 +17,18 @@ with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 
+'''package data'''
+package_data = {}
+package_data.update({
+    'DecryptLoginExamples.crawlers.qqreports': ['resources/*'] 
+})
+
+
 '''setup'''
 setup(
-    name=DecryptLogin.__title__,
-    version=DecryptLogin.__version__,
-    description=DecryptLogin.__description__,
+    name=DecryptLoginExamples.__title__,
+    version=DecryptLoginExamples.__version__,
+    description=DecryptLoginExamples.__description__,
     long_description=long_description,
     long_description_content_type='text/markdown',
     classifiers=[
@@ -30,11 +37,12 @@ setup(
         'Intended Audience :: Developers',
         'Operating System :: OS Independent'
     ],
-    author=DecryptLogin.__author__,
-    url=DecryptLogin.__url__,
-    author_email=DecryptLogin.__email__,
-    license=DecryptLogin.__license__,
+    author=DecryptLoginExamples.__author__,
+    url=DecryptLoginExamples.__url__,
+    author_email=DecryptLoginExamples.__email__,
+    license=DecryptLoginExamples.__license__,
     include_package_data=True,
+    package_data=package_data,
     install_requires=list(open('requirements.txt', 'r').readlines()),
     zip_safe=True,
     packages=find_packages()

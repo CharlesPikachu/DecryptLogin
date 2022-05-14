@@ -1,6 +1,6 @@
 # Support List
 
-|  Websites                                             | PC Mode  | Mobile Mode | ScanQR Mode  |
+|  Website                                              | PC Mode  | Mobile Mode | ScanQR Mode  |
 |  :----:                                               | :----:   | :----:      | :----:       |
 |  [weibo](https://m.weibo.cn/)                         | ✓        | ✓          | ✓           |
 |  [douban](https://www.douban.com/)                    | ✓        | ✗          | ✓           |
