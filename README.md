@@ -40,17 +40,17 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 
 ### Install
 
-**1.Preparation**
+**Preparation**
 
 - [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
 
-**2.Pip install**
+**Pip install**
 
 ```sh
 run "pip install DecryptLogin"
 ```
 
-**3.Source code install**
+**Source code install**
 
 ```sh
 (1) Offline
