@@ -136,6 +136,13 @@ infos_return, session = weibo.login('me', 'pass', 'scanqr')
 
 ### Install
 
+**Preparation**
+
+- [ffmpeg](https://ffmpeg.org/): You should set ffmpeg in environment variable.
+- [aria2c](https://aria2.github.io/): You should set aria2c in environment variable.
+
+**Pip install**
+
 ```
 run "pip install DecryptLoginExamples"
 ```
