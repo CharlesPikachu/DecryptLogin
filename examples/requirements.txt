@@ -1,0 +1,10 @@
+DecryptLogin
+tqdm
+lxml
+user_agent
+prettytable
+pyaudio
+xmltodict
+click
+videofetch
+pick
