@@ -36,7 +36,31 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 ```
 
 
-# Support List
+# Login with Requests
+
+#### Install
+
+**1.Preparation**
+
+- [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
+
+**2.Pip install**
+
+```sh
+run "pip install DecryptLogin"
+```
+
+**3.Source code install**
+
+```sh
+(1) Offline
+Step1: git clone https://github.com/CharlesPikachu/DecryptLogin.git
+Step2: cd DecryptLogin -> run "python setup.py install"
+(2) Online
+run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
+```
+
+#### Support List
 
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | Chinese Name      |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
@@ -83,108 +107,79 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 |  tencentvideo    | ✗       | ✗           | ✓           | 腾讯视频          |
 |  baidu           | ✗       | ✗           | ✓           | 百度              |
 
+#### Quick Start
 
-# Practice with DecryptLogin
-
-|  Project                    |   Introduction                                                   |   code                                                                                                       |  in Chinese                      |
-|  :----:                     |   :----:                                                         |   :----:                                                                                                     |  :----:                          |
-|  weiboMonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboMonitor)                  |  微博监控                        |
-|  QQReport                   |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/QQReports)                     |  生成QQ个人专属报告              |
-|  bilibiliDownloadUserVideos |   [click](https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliDownloadUserVideos)    |  下载B站指定UP主的所有视频       |
-|  NeteaseSongListDownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseSongListDownloader)     |  网易云个人歌单下载器            |
-|  NeteaseListenLeaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseListenLeaderboard)      |  网易云个人听歌排行榜            |
-|  userWeiboSpider            |   [click](https://mp.weixin.qq.com/s/-3BDTZAE1x7nfCLNq2mFBw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/userWeiboSpider)               |  下载指定微博用户的所有微博数据  |
-|  NeteaseSignin              |   [click](https://mp.weixin.qq.com/s/8d7smUSzW2ds1ypZq-yeFw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseSignin)                 |  网易云音乐自动签到              |  
-|  weiboEmoji                 |   [click](https://mp.weixin.qq.com/s/QiPm4gyE8i5amR5gB3IbBA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboEmoji)                    |  微博表情包爬取                  |
-|  weiboSender                |   [click](https://mp.weixin.qq.com/s/_aIY-iVj3xetfHQyMxflkg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboSender)                   |  大吼一声发微博                  |
-|  tbgoods                    |   [click](https://mp.weixin.qq.com/s/NhK9eeWNXv_wPnolccRR-g)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/tbgoods)                       |  淘宝商品数据小爬虫              |
-|  jdgoods                    |   [click](https://mp.weixin.qq.com/s/LXheJveR248ZW4SP5F6fjw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jdgoods)                       |  京东商品数据小爬虫              |
-|  delallweibos               |   [click](https://mp.weixin.qq.com/s/E5Erg10FvyutEKaB_JGufA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/delallweibos)                  |  批量删除微博                    |
-|  ClearQzone                 |   [click](https://mp.weixin.qq.com/s/Fj9MQXXRZ8wuKiX3Tytx8A)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/ClearQzone)                    |  批量删除QQ空间说说              |
-|  NeteaseEveryday            |   [click](https://mp.weixin.qq.com/s/tliFa5CYVEirMEyUj0jPbg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseEveryday)               |  在终端看网易云每日歌曲推荐      |
-|  NeteaseClickPlaylist       |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/NeteaseClickPlaylist)          |  网易云音乐刷歌曲播放量          |
-|  cloud189signin             |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/cloud189signin)                |  天翼云盘自动签到+抽奖           |
-|  moocdl                     |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/moocdl)                        |  中国大学MOOC下载器              |
-|  modifymihealthsteps        |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/modifymihealthsteps)           |  修改小米运动中的步数            |
-|  taobaosnap                 |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/taobaosnap)                    |  淘宝抢购脚本                    |
-|  jingdongsnap               |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/jingdongsnap)                  |  京东抢购脚本                    |
-|  bilibiliupmonitor          |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibiliupmonitor)             |  B站UP主监控                     |
-|  bilibililottery            |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/bilibililottery)               |  B站监控关注的UP主并自动转发抽奖 |
-|  weibowater                 |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weibowater)                    |  微博水军                        |
-|  weiboblacklist             |   [click](https://mp.weixin.qq.com/s/9npyr9banKSUl-mVXYhmPA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/weiboblacklist)                |  微博批量拉黑脚本                |
-
-
-# Install
-
-#### Preparation
-
-- [Nodejs](https://nodejs.org/en/): Since some of the supported websites need to compile the js code, you should install the nodejs in your computer.
-
-#### Pip install
-
-```sh
-run "pip install DecryptLogin"
-```
-
-#### Source code install
-
-```sh
-(1) Offline
-Step1: git clone https://github.com/CharlesPikachu/DecryptLogin.git
-Step2: cd DecryptLogin -> run "python setup.py install"
-(2) Online
-run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
-```
-
-
-# Quick Start
-
+**login.Login**
 ```python
 from DecryptLogin import login
 
+# the instanced Login class object
 lg = login.Login()
-infos_return, session = lg.douban()
-infos_return, session = lg.github(username[email], password)
-infos_return, session = lg.weibo()
-infos_return, session = lg.music163(username[telephone/email], password)
-infos_return, session = lg.zt12306(username[telephone], password)
-infos_return, session = lg.QQZone()
-infos_return, session = lg.QQQun()
-infos_return, session = lg.QQId()
-infos_return, session = lg.zhihu()
-infos_return, session = lg.bilibili()
-infos_return, session = lg.toutiao()
-infos_return, session = lg.taobao()
-infos_return, session = lg.jingdong()
-infos_return, session = lg.ifeng(username, password)
-infos_return, session = lg.sohu(username, password)
-infos_return, session = lg.zgconline(username, password)
-infos_return, session = lg.lagou(username, password)
-infos_return, session = lg.twitter(username, password)
-infos_return, session = lg.eSurfing()
-infos_return, session = lg.renren(username, password)
-infos_return, session = lg.w3cschool(username, password)
-infos_return, session = lg.fishc(username, password)
-infos_return, session = lg.youdao(username, password)
-infos_return, session = lg.baidupan(username, password)
-infos_return, session = lg.stackoverflow(username, password)
-infos_return, session = lg.codalab(username, password)
-infos_return, session = lg.pypi(username, password)
-infos_return, session = lg.douyu()
-infos_return, session = lg.migu(username, password)
-infos_return, session = lg.qunar(username, password)
-infos_return, session = lg.mieshop(username, password)
-infos_return, session = lg.mpweixin(username, password)
-infos_return, session = lg.baidutieba()
-infos_return, session = lg.dazhongdianping()
-infos_return, session = lg.jianguoyun(username, password)
-infos_return, session = lg.cloud189(username, password)
-infos_return, session = lg.qqmusic()
-infos_return, session = lg.ximalaya()
-infos_return, session = lg.icourse163(username, password)
-infos_return, session = lg.xiaomihealth(username, password)
-infos_return, session = lg.tencentvideo()
-infos_return, session = lg.baidu()
+# use the provided api function to login in the target website (e.g., twitter)
+infos_return, session = lg.twitter(username='Your Username', password='Your Password')
+```
+
+**login.Client**
+```python
+from DecryptLogin import login
+
+# the instanced client
+client = login.Client()
+# the instanced weibo
+weibo = client.weibo(reload_history=True)
+# use the login function to login in weibo
+infos_return, session = weibo.login('me', 'pass', 'scanqr')
+```
+
+
+# Practice with DecryptLogin
+
+#### Install
+
+```
+run "pip install DecryptLoginExamples"
+```
+
+#### Support List
+
+|  Project                    |   Introduction                                                   |   code                                                                                                                                     |  in Chinese                      |
+|  :----:                     |   :----:                                                         |   :----:                                                                                                                                   |  :----:                          |
+|  weibomonitor               |   [click](https://mp.weixin.qq.com/s/uOT1cGqXkOq-Hdc8TVnglg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibomonitor)                  |  微博监控                        |
+|  qqreports                  |	  [click](https://mp.weixin.qq.com/s/dsVtEp_TFeyeSAAUn1zFEw)     |	 [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/qqreports)                     |  生成QQ个人专属报告              |
+|  bilibiliuservideos         |   [click](https://mp.weixin.qq.com/s/GaVW4_nbAaO0QvphI7QgnA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/bilibiliuservideos)            |  下载B站指定UP主的所有视频       |
+|  neteasesonglistdownloader  |   [click](https://mp.weixin.qq.com/s/_82U7luG6jmV-xb8-Qkiew)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteasesonglistdownloader)     |  网易云个人歌单下载器            |
+|  neteaselistenleaderboard   |   [click](https://mp.weixin.qq.com/s/Wlf1a82oACc9N7zGezcy8Q)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteaselistenleaderboard)      |  网易云个人听歌排行榜            |
+|  userweibospider            |   [click](https://mp.weixin.qq.com/s/-3BDTZAE1x7nfCLNq2mFBw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/userweibospider)               |  下载指定微博用户的所有微博数据  |
+|  neteasesignin              |   [click](https://mp.weixin.qq.com/s/8d7smUSzW2ds1ypZq-yeFw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteasesignin)                 |  网易云音乐自动签到              |  
+|  weiboemoji                 |   [click](https://mp.weixin.qq.com/s/QiPm4gyE8i5amR5gB3IbBA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weiboemoji)                    |  微博表情包爬取                  |
+|  weibosender                |   [click](https://mp.weixin.qq.com/s/_aIY-iVj3xetfHQyMxflkg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibosender)                   |  大吼一声发微博                  |
+|  tbgoods                    |   [click](https://mp.weixin.qq.com/s/NhK9eeWNXv_wPnolccRR-g)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/tbgoods)                       |  淘宝商品数据小爬虫              |
+|  jdgoods                    |   [click](https://mp.weixin.qq.com/s/LXheJveR248ZW4SP5F6fjw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/jdgoods)                       |  京东商品数据小爬虫              |
+|  delallweibos               |   [click](https://mp.weixin.qq.com/s/E5Erg10FvyutEKaB_JGufA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/delallweibos)                  |  批量删除微博                    |
+|  clearqzone                 |   [click](https://mp.weixin.qq.com/s/Fj9MQXXRZ8wuKiX3Tytx8A)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/clearqzone)                    |  批量删除QQ空间说说              |
+|  neteaseeveryday            |   [click](https://mp.weixin.qq.com/s/tliFa5CYVEirMEyUj0jPbg)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteaseeveryday)               |  在终端看网易云每日歌曲推荐      |
+|  neteaseclickplaylist       |   [click](https://mp.weixin.qq.com/s/BpoO55I-jxAGO_Vv32khlA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/neteaseclickplaylist)          |  网易云音乐刷歌曲播放量          |
+|  cloud189signin             |   [click](https://mp.weixin.qq.com/s/tSLTSKDMzMAkP2deCjkanA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/cloud189signin)                |  天翼云盘自动签到+抽奖           |
+|  moocdl                     |   [click](https://mp.weixin.qq.com/s/KsXU-pMvT8GzpPWVpcWIOA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/moocdl)                        |  中国大学MOOC下载器              |
+|  modifymihealthsteps        |   [click](https://mp.weixin.qq.com/s/TQLM9GIW50UWAsKoXb7pzQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/modifymihealthsteps)           |  修改小米运动中的步数            |
+|  taobaosnap                 |   [click](https://mp.weixin.qq.com/s/vCZYtynHtQAOuQJHvjhpWA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/taobaosnap)                    |  淘宝抢购脚本                    |
+|  jingdongsnap               |   [click](https://mp.weixin.qq.com/s/-H8bwuUIPDi41d09tTlvRw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/jingdongsnap)                  |  京东抢购脚本                    |
+|  bilibiliupmonitor          |   [click](https://mp.weixin.qq.com/s/KjJLPcqHecK8T8LDVesxJQ)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/bilibiliupmonitor)             |  B站UP主监控                     |
+|  bilibililottery            |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/bilibililottery)               |  B站监控关注的UP主并自动转发抽奖 |
+|  weibowater                 |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibowater)                    |  微博水军                        |
+|  weiboblacklist             |   [click](https://mp.weixin.qq.com/s/9npyr9banKSUl-mVXYhmPA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weiboblacklist)                |  微博批量拉黑脚本                |
+
+#### Quick Start
+
+```python
+from DecryptLoginExamples import client
+​
+config = {
+    'username': 'charlespikachu', 
+    'time_interval':  1800,
+}
+crawler_executor = client.Client()
+crawler_executor.executor('bilibililottery', config=config)
 ```
 
 
