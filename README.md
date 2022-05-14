@@ -38,7 +38,7 @@ If I find that anyone leverage this project in an illegal way, I will delete thi
 
 # Login with Requests
 
-#### Install
+### Install
 
 **1.Preparation**
 
@@ -60,7 +60,7 @@ Step2: cd DecryptLogin -> run "python setup.py install"
 run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 ```
 
-#### Support List
+### Support List
 
 |  Websites        | PC Mode | Mobile Mode | ScanQR Mode | Chinese Name      |
 |  :----:          | :----:  | :----:      | :----:      | :----:            |
@@ -107,7 +107,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 |  tencentvideo    | ✗       | ✗           | ✓           | 腾讯视频          |
 |  baidu           | ✗       | ✗           | ✓           | 百度              |
 
-#### Quick Start
+### Quick Start
 
 **login.Login**
 ```python
@@ -228,7 +228,7 @@ If you use this project in your research, please cite this project:
 
 # More
 
-#### WeChat Official Accounts
+### WeChat Official Accounts
 
 *Charles_pikachu*  
 ![img](./docs/pikachu.jpg)
