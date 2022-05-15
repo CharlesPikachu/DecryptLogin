@@ -35,20 +35,22 @@ class WeiboLottery():
         for targetid in targetid_list:
             repost_weibos_dict[targetid] = []
         # 每隔一段时间遍历一遍目标用户, 把有抽奖信息的微博都转发一遍
+        self.logging('初始化完成, 开始自动检测抽奖相关的微博')
         for targetid in targetid_list:
+            print(f'正在检测用户{targetid}是否发布了新的抽奖微博')
             weibos = self.getweibos(session, targetid)
             for card in weibos:
                 if card['mblog']['id'] in repost_weibos_dict[targetid]: 
                     continue
                 else:
                     repost_weibos_dict[targetid].append(card['mblog']['id'])
-                if '抽奖' in card['mblog']:
+                if '抽奖' in card['mblog']['text']:
                     self.logging(f'检测到一条疑似含有抽奖信息的微博: {card}')
                     # 自动点赞
                     card_id = card['mblog']['id']
                     response = session.get('https://m.weibo.cn/api/config')
                     st = response.json()['data']['st']
-                    flag, response_json = self.starweibo(session, st, card_id)
+                    flag, response_json = self.starweibo(session, st, card_id, targetid)
                     if flag:
                         self.logging(f'自动点赞ID为{card_id}的微博成功')
                     else:
@@ -91,10 +93,10 @@ class WeiboLottery():
             return True, response.json()
         return False, response.json()
     '''自动点赞'''
-    def starweibo(self, session, st, card_id):
+    def starweibo(self, session, st, card_id, targetid):
         session.headers.update({
             'origin': 'https://m.weibo.cn',
-            'referer': f'https://m.weibo.cn/u/{self.targetid}?uid={self.targetid}',
+            'referer': f'https://m.weibo.cn/u/{targetid}?uid={targetid}',
         })
         data = {
             'id': card_id,

@@ -772,3 +772,34 @@ config = {
 crawler_executor = client.Client()
 crawler_executor.executor('weiboblacklist', config=config)
 ```
+
+#### 微博自动转发抽奖
+
+**1.相关依赖**
+
+在终端运行如下命令即可安装运行该项目所需要的相关依赖包：
+
+```sh
+pip install DecryptLoginExamples
+```
+
+**2.环境配置**
+
+- 操作系统: Linux or macOS or Windows
+- Python版本: Python3.6+
+
+**3.调用方式**
+
+脚本调用方式如下：
+
+```python
+from DecryptLoginExamples import client
+
+config = {
+    'username': 用户名,
+    'password': 密码,
+    'time_interval': 查询微博动态的间隔时间,
+}
+crawler_executor = client.Client()
+crawler_executor.executor('weibolottery', config=config)
+```
