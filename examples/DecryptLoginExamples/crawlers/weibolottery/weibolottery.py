@@ -9,7 +9,6 @@ Author:
 import re
 import time
 import random
-from urllib import parse
 from DecryptLogin import login
 
 
@@ -36,31 +35,33 @@ class WeiboLottery():
             repost_weibos_dict[targetid] = []
         # 每隔一段时间遍历一遍目标用户, 把有抽奖信息的微博都转发一遍
         self.logging('初始化完成, 开始自动检测抽奖相关的微博')
-        for targetid in targetid_list:
-            print(f'正在检测用户{targetid}是否发布了新的抽奖微博')
-            weibos = self.getweibos(session, targetid)
-            for card in weibos:
-                if card['mblog']['id'] in repost_weibos_dict[targetid]: 
-                    continue
-                else:
-                    repost_weibos_dict[targetid].append(card['mblog']['id'])
-                if '抽奖' in card['mblog']['text']:
-                    self.logging(f'检测到一条疑似含有抽奖信息的微博: {card}')
-                    # 自动点赞
-                    card_id = card['mblog']['id']
-                    response = session.get('https://m.weibo.cn/api/config')
-                    st = response.json()['data']['st']
-                    flag, response_json = self.starweibo(session, st, card_id, targetid)
-                    if flag:
-                        self.logging(f'自动点赞ID为{card_id}的微博成功')
+        while True:
+            for targetid in targetid_list:
+                print(f'正在检测用户{targetid}是否发布了新的抽奖微博')
+                weibos = self.getweibos(session, targetid)
+                for card in weibos:
+                    if card['mblog']['id'] in repost_weibos_dict[targetid]: 
+                        continue
                     else:
-                        self.logging(f'自动点赞ID为{card_id}的微博失败, 返回的内容为 >>>\n{response_json}')
-                    # 自动转发+评论
-                    flag, response_json = self.repost(session, st, card_id)
-                    if flag:
-                        self.logging(f'自动转发+评论ID为{card_id}的微博成功')
-                    else:
-                        self.logging(f'自动转发+评论ID为{card_id}的微博失败, 返回的内容为 >>>\n{response_json}')
+                        repost_weibos_dict[targetid].append(card['mblog']['id'])
+                    if '抽奖' in card['mblog']['text']:
+                        self.logging(f'检测到一条疑似含有抽奖信息的微博: {card}')
+                        # 自动点赞
+                        card_id = card['mblog']['id']
+                        response = session.get('https://m.weibo.cn/api/config')
+                        st = response.json()['data']['st']
+                        flag, response_json = self.starweibo(session, st, card_id, targetid)
+                        if flag:
+                            self.logging(f'自动点赞ID为{card_id}的微博成功')
+                        else:
+                            self.logging(f'自动点赞ID为{card_id}的微博失败, 返回的内容为 >>>\n{response_json}')
+                        # 自动转发+评论
+                        flag, response_json = self.repost(session, st, card_id)
+                        if flag:
+                            self.logging(f'自动转发+评论ID为{card_id}的微博成功')
+                        else:
+                            self.logging(f'自动转发+评论ID为{card_id}的微博失败, 返回的内容为 >>>\n{response_json}')
+                print(f'检测用户{targetid}是否发布了新的抽奖微博完成')
             time.sleep(self.time_interval)
     '''获得目标用户首页所有微博'''
     def getweibos(self, session, targetid):
