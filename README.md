@@ -175,6 +175,7 @@ run "pip install DecryptLoginExamples"
 |  bilibililottery            |   [click](https://mp.weixin.qq.com/s/7kGjT48AOG_zB1v-cODgVw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/bilibililottery)               |  B站监控关注的UP主并自动转发抽奖 |
 |  weibowater                 |   [click](https://mp.weixin.qq.com/s/Avf169tvDNRLrgmrNj8jUw)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibowater)                    |  微博水军                        |
 |  weiboblacklist             |   [click](https://mp.weixin.qq.com/s/9npyr9banKSUl-mVXYhmPA)     |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weiboblacklist)                |  微博批量拉黑脚本                |
+|  weibolottery               |   [click]()                                                      |   [click](https://github.com/CharlesPikachu/DecryptLogin/tree/master/examples/DecryptLoginExamples/crawlers/weibolottery)                  |  微博自动转发抽奖                |
 
 ### Quick Start
 

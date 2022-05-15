@@ -8,3 +8,4 @@ xmltodict
 click
 videofetch
 pick
+pyttsx3

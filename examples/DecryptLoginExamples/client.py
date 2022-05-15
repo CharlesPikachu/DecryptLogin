@@ -23,7 +23,7 @@ class Client():
             'bilibiliuservideos': BilibiliUserVideos, 'modifymihealthsteps': ModifyMiHealthSteps, 'neteaseeveryday': NeteaseEveryday,
             'neteaseclickplaylist': NeteaseClickPlaylist, 'neteaselistenleaderboard': NeteaseListenLeaderboard, 'neteasesignin': NeteaseSignin,
             'neteasesonglistdownloader': NeteaseSongListDownloader, 'tbgoods': TBGoods, 'jdgoods': JDGoods, 'jingdongsnap': JingDongSnap,
-            'taobaosnap': TaobaoSnap, 'qqreports': QQReports,
+            'taobaosnap': TaobaoSnap, 'qqreports': QQReports, 'weibolottery': WeiboLottery,
         }
         for key, value in self.supported_crawlers.items():
             setattr(self, key, value)

@@ -11,6 +11,7 @@ from .weibosender import WeiboSender
 from .weibomonitor import WeiboMonitor
 from .jingdongsnap import JingDongSnap
 from .delallweibos import DelAllWeibos
+from .weibolottery import WeiboLottery
 from .neteasesignin import NeteaseSignin
 from .cloud189signin import Cloud189Signin
 from .weiboblacklist import WeiboBlackList
