@@ -16,7 +16,7 @@ from .baseclient import BaseClient
 '''阿里云客户端'''
 class AlipanClient(BaseClient):
     def __init__(self, reload_history=True, **kwargs):
-        super(AlipanClient, self).__init__(website_name='douyu', reload_history=reload_history, **kwargs)
+        super(AlipanClient, self).__init__(website_name='alipan', reload_history=reload_history, **kwargs)
     '''检查会话是否已经过期, 过期返回True'''
     def checksessionstatus(self, session, infos_return):
         url = 'https://api.aliyundrive.com/token/refresh'
