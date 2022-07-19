@@ -25,7 +25,7 @@
 |  [w3cschool](https://www.w3cschool.cn/)               | ✓        | ✗          | ✗            |
 |  [fishc](https://fishc.com.cn/)                       | ✓        | ✗          | ✗            |
 |  [youdao](https://youdao.com/)                        | ✓        | ✗          | ✗            |
-|  [baidupan](https://pan.baidu.com/)                   | ✓        | ✗          | ✗            |
+|  [baidupan](https://pan.baidu.com/)                   | ✓        | ✗          | ✓            |
 |  [stackoverflow](https://stackoverflow.com/)          | ✓        | ✗          | ✗            |
 |  [codalab](https://competitions.codalab.org/)         | ✓        | ✗          | ✗            |
 |  [pypi](https://pypi.org/)                            | ✓        | ✗          | ✗            |

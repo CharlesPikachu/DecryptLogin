@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-04-23
+    2022-07-19
 '''
 import os
 import re
@@ -43,11 +43,8 @@ class baidupanPC():
         # 获得时间戳
         timestamp = str(int(time.time()/1000)) + '773_357'
         # 模拟登录
-        is_need_captcha = False
-        is_need_phone_email_verify = False
-        captcha = ''
-        codestring = ''
-        goto_url = ''
+        is_need_captcha, is_need_phone_email_verify = False, False
+        captcha, codestring, goto_url = '', '', ''
         while True:
             # --需要图片验证码
             if is_need_captcha:
@@ -212,10 +209,68 @@ class baidupanMobile():
 
 '''扫码登录百度网盘'''
 class baidupanScanQR():
-    is_callable = False
+    is_callable = True
     def __init__(self, **kwargs):
         for key, value in kwargs.items(): setattr(self, key, value)
         self.info = 'login in baidupan in scanqr mode'
+        self.cur_path = os.getcwd()
+        self.session = requests.Session()
+        self.__initialize()
+    '''登录函数'''
+    def login(self, username='', password='', crack_captcha_func=None, **kwargs):
+        # 设置代理
+        self.session.proxies.update(kwargs.get('proxies', {}))
+        # 获得sign值
+        response = self.session.get(self.getqrcode_url)
+        response_json = response.json()
+        imgurl = 'https://' + response_json['imgurl']
+        errno, sign, prompt = response_json['errno'], response_json['sign'], response_json['prompt']
+        # 获得二维码
+        response = self.session.get(self.sign_url.format(sign))
+        qrcode_path = saveImage(response.content, os.path.join(self.cur_path, 'qrcode.jpg'))
+        showImage(qrcode_path)
+        # 检测二维码状态
+        while True:
+            params = {
+                'channel_id': sign,
+                'tpl': 'netdisk',
+                'apiver': 'v3',
+                'tt': int(round(time.time() * 1000)),
+                '_': int(round(time.time() * 1000)),
+            }
+            response = self.session.get(self.unicast_url, params=params)
+            if response.json()['errno'] == 0 and json.loads(response.json()['channel_v'])['status'] == 0:
+                bduss = json.loads(response.json()['channel_v'])['v']
+                break
+            time.sleep(1)
+        # 登录成功
+        removeImage(qrcode_path)
+        params = {
+            'v': int(round(time.time() * 1000)),
+            'bduss': bduss,
+            'loginVersion': 'v4',
+            'qrcode': 1,
+            'tpl': 'netdisk',
+            'apiver': 'v3',
+            'tt': int(round(time.time() * 1000)),
+        }
+        response = self.session.get(self.qrbdusslogin_url, params=params)
+        assert response.status_code == 200
+        response.encoding = 'utf-8'
+        username = re.findall(r'"username": "(.*?)",', response.text)[0]
+        print('[INFO]: Account -> %s, login successfully' % username)
+        infos_return = {'username': username, 'response_text': response.text}
+        return infos_return, self.session
+    '''初始化'''
+    def __initialize(self):
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36'
+        }
+        self.getqrcode_url = 'https://passport.baidu.com/v2/api/getqrcode?lp=pc'
+        self.sign_url = 'https://passport.baidu.com/v2/api/qrcode?sign={}&lp=pc'
+        self.unicast_url = 'https://passport.baidu.com/channel/unicast'
+        self.qrbdusslogin_url = 'https://passport.baidu.com/v3/login/main/qrbdusslogin'
+        self.session.headers.update(self.headers)
 
 
 '''
@@ -242,7 +297,7 @@ class baidupan():
             'scanqr': baidupanScanQR(**kwargs),
         }
     '''登录函数'''
-    def login(self, username, password, mode='pc', crack_captcha_func=None, **kwargs):
+    def login(self, username='', password='', mode='pc', crack_captcha_func=None, **kwargs):
         assert mode in self.supported_modes, 'unsupport mode %s in baidupan.login' % mode
         selected_api = self.supported_modes[mode]
         if not selected_api.is_callable: raise NotImplementedError('not be implemented for mode %s in baidupan.login' % mode)

@@ -25,7 +25,7 @@
 |  [编程狮](https://www.w3cschool.cn/)                  | ✓        | ✗          | ✗        |
 |  [鱼C论坛](https://fishc.com.cn/)                     | ✓        | ✗          | ✗        |
 |  [有道](https://youdao.com/)                          | ✓        | ✗          | ✗        |
-|  [百度网盘](https://pan.baidu.com/)                   | ✓        | ✗          | ✗        |
+|  [百度网盘](https://pan.baidu.com/)                   | ✓        | ✗          | ✓        |
 |  [Stackoverflow](https://stackoverflow.com/)          | ✓        | ✗          | ✗        |
 |  [CodaLab](https://competitions.codalab.org/)         | ✓        | ✗          | ✗        |
 |  [PyPi](https://pypi.org/)                            | ✓        | ✗          | ✗        |

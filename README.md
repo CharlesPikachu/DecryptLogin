@@ -87,7 +87,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 |  w3cschool       | ✓       | ✗           | ✗           | W3Cschool(编程狮) |
 |  fishc           | ✓       | ✗           | ✗           | 鱼C论坛           |
 |  youdao          | ✓       | ✗           | ✗           | 有道              |
-|  baidupan        | ✓       | ✗           | ✗           | 百度网盘          |
+|  baidupan        | ✓       | ✗           | ✓           | 百度网盘          |
 |  stackoverflow   | ✓       | ✗           | ✗           | Stackoverflow     |
 |  codalab         | ✓       | ✗           | ✗           | CodaLab           |
 |  pypi            | ✓       | ✗           | ✗           | PyPi              |
