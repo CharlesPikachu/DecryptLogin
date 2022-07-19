@@ -35,3 +35,5 @@
 - [Imagedl](https://github.com/CharlesPikachu/imagedl): Search and download images from specific websites.
 
 - [Pytoydl](https://github.com/CharlesPikachu/pytoydl): A toy deep learning framework built upon numpy.
+
+- [NovelDL](https://github.com/CharlesPikachu/noveldl): Search and download novels from some specific websites.

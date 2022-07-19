@@ -44,3 +44,4 @@
 |  [xiaomihealth](https://www.huami.com/)               | ✗        | ✓          | ✗            |
 |  [tencentvideo](https://v.qq.com/)                    | ✗        | ✗          | ✓            |
 |  [baidu](https://baidu.com/)                          | ✗        | ✗          | ✓            |
+|  [alipan](https://www.aliyundrive.com/)               | ✗        | ✗          | ✓            |

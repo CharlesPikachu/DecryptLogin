@@ -106,6 +106,7 @@ run "pip install git+https://github.com/CharlesPikachu/DecryptLogin.git@master"
 |  xiaomihealth    | ✗       | ✓           | ✗           | 小米运动          |
 |  tencentvideo    | ✗       | ✗           | ✓           | 腾讯视频          |
 |  baidu           | ✗       | ✗           | ✓           | 百度              |
+|  alipan          | ✗       | ✗           | ✓           | 阿里云盘          |
 
 ### Quick Start
 

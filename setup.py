@@ -8,7 +8,7 @@ Author:
 GitHub:
     https://github.com/CharlesPikachu
 更新日期:
-    2022-02-08
+    2022-07-19
 '''
 import DecryptLogin
 from setuptools import setup, find_packages
@@ -37,7 +37,7 @@ setup(
     author_email=DecryptLogin.__email__,
     license=DecryptLogin.__license__,
     include_package_data=True,
-    install_requires=list(open('requirements.txt', 'r').readlines()),
+    install_requires=[lab.strip('\n') for lab in list(open('requirements.txt', 'r').readlines())],
     zip_safe=True,
     packages=find_packages()
 )

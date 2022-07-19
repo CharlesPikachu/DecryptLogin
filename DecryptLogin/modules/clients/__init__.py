@@ -12,6 +12,7 @@ from .zhihu import ZhihuClient
 from .QQQun import QQQunClient
 from .weibo import WeiboClient
 from .douyu import DouyuClient
+from .alipan import AlipanClient
 from .youdao import YoudaoClient
 from .renren import RenRenClient
 from .taobao import TaobaoClient

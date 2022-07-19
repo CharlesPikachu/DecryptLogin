@@ -44,3 +44,4 @@
 |  [小米运动](https://www.huami.com/)                   | ✗        | ✓          | ✗        |
 |  [腾讯视频](https://v.qq.com/)                        | ✗        | ✗          | ✓        |
 |  [百度](https://baidu.com/)                           | ✗        | ✗          | ✓        |
+|  [阿里云盘](https://www.aliyundrive.com/)             | ✗        | ✗          | ✓        |

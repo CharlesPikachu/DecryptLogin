@@ -12,6 +12,7 @@ from .douyu import douyu
 from .zhihu import zhihu
 from .ifeng import ifeng
 from .QQQun import QQQun
+from .alipan import alipan
 from .renren import renren
 from .youdao import youdao
 from .douban import douban
@@ -49,5 +50,5 @@ __all__ = [
     'toutiao', 'taobao', 'jingdong', 'ifeng', 'sohu', 'zgconline', 'lagou', 'twitter', 'eSurfing', 
     'renren', 'w3cschool', 'fishc', 'youdao', 'baidupan', 'stackoverflow', 'codalab', 'pypi', 'douyu', 
     'migu', 'qunar', 'mieshop', 'mpweixin', 'baidutieba', 'dazhongdianping', 'jianguoyun', 'cloud189', 'qqmusic',
-    'ximalaya', 'icourse163', 'xiaomihealth', 'tencentvideo'
+    'ximalaya', 'icourse163', 'xiaomihealth', 'tencentvideo', 'alipan'
 ]
