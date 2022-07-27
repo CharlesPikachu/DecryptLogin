@@ -9,3 +9,4 @@ click
 videofetch
 pick
 pyttsx3
+wordcloud
