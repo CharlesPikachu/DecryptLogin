@@ -6,7 +6,7 @@ Author:
 微信公众号:
     Charles的皮卡丘
 更新日期:
-    2022-04-28
+    2022-08-29
 '''
 import os
 import json
@@ -72,21 +72,21 @@ class music163PC():
         # 设置代理
         self.session.proxies.update(kwargs.get('proxies', {}))
         # 获得账号类型
-        account_type = self.__getAccountType(username)
+        account_type = self.judgeaccounttype(username)
         # 模拟登录
         password = hashlib.md5(password.encode('utf-8')).hexdigest()
-        data = {
-            'password': password,
-            'rememberLogin': 'True'
-        }
         if account_type == 'phone':
-            data['phone'] = username
-            data = self.cracker.get(data)
-            response = self.session.post(self.login_url_phone, headers=self.login_headers, data=data)
+            data = {
+                'phone': username, 'password': password, 'rememberLogin': 'true'
+            }
+            login_url = self.login_url_phone
         else:
-            data['username'] = username
-            data = self.cracker.get(data)
-            response = self.session.post(self.login_url_email, headers=self.login_headers, data=data)
+            data = {
+                'username': username, 'password': password, 'rememberLogin': 'true', 'clientToken': '1_jVUMqWEPke0/1/Vu56xCmJpo5vP1grjn_SOVVDzOc78w8OKLVZ2JH7IfkjSXqgfmh'
+            }
+            login_url = self.login_url_email
+        data = self.cracker.get(data)
+        response = self.session.post(login_url, headers=self.login_headers, data=data)
         response_json = response.json()
         # 登录成功
         if response_json['code'] == 200:
@@ -94,16 +94,55 @@ class music163PC():
             infos_return = {'username': username, 'response': response_json}
             return infos_return, self.session
         # 账户名/密码错误
-        elif (response_json['code'] == 400) or (response_json['code'] == 502):
+        elif response_json['code'] in [400, 502]:
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 网络太拥挤
+        elif response_json['code'] in [-462] and account_type == 'phone':
+            print('[Warning]: network error, try to login by sms')
+            return self.loginbysms(username, password)
         # 其他错误
         else:
             raise RuntimeError(response_json.get('msg')) if 'msg' in response_json else RuntimeError(response_json.get('message'))
     '''获取账号类型(手机号/邮箱)'''
-    def __getAccountType(self, username):
+    def judgeaccounttype(self, username):
         if '@' not in username: account_type = 'phone'
         else: account_type = 'email'
         return account_type
+    '''短信验证码登录'''
+    def loginbysms(self, username, password, ctcode=86):
+        # 发送短信验证码
+        url = 'http://music.163.com/weapi/sms/captcha/sent'
+        data = {
+            'cellphone': username, 'ctcode': ctcode, 'csrf_token': ''
+        }
+        data = self.cracker.get(data)
+        response = self.session.post(url, headers=self.login_headers, data=data, params={'csrf_token': ''})
+        response_json = response.json()
+        assert response_json.get('code') == 200, 'send sms error'
+        # 输入短信验证码
+        sms_code = input('Input the sms code sent from music163 please: ')
+        # 验证登录
+        url = 'http://music.163.com/weapi/sms/captcha/verify'
+        data = {
+            'cellphone': username, 'captcha': sms_code, 'ctcode': ctcode, 'csrf_token': self.session.cookies.get('__csrf')
+        }
+        data = self.cracker.get(data)
+        response = self.session.post(url, headers=self.login_headers, data=data, params={'csrf_token': self.session.cookies.get('__csrf')})
+        response_json = response.json()
+        # 登录成功
+        if response_json['code'] == 200:
+            print('[INFO]: Account -> %s, login successfully' % username)
+            infos_return = {'username': username, 'response': response_json}
+            return infos_return, self.session
+        # 账户名/密码错误
+        elif response_json['code'] in [400, 502]:
+            raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
+        # 网络太拥挤
+        elif response_json['code'] in [-462] and account_type == 'phone':
+            return self.loginbysms(username, password)
+        # 其他错误
+        else:
+            raise RuntimeError(response_json.get('msg')) if 'msg' in response_json else RuntimeError(response_json.get('message'))
     '''初始化'''
     def __initialize(self):
         self.login_headers = {
