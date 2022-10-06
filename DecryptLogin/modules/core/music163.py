@@ -138,7 +138,7 @@ class music163PC():
         elif response_json['code'] in [400, 502]:
             raise RuntimeError('Account -> %s, fail to login, username or password error' % username)
         # 网络太拥挤
-        elif response_json['code'] in [-462] and account_type == 'phone':
+        elif response_json['code'] in [-462] and self.judgeaccounttype() == 'phone':
             return self.loginbysms(username, password)
         # 其他错误
         else:
@@ -191,9 +191,11 @@ class music163Scanqr():
         qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=2)
         qr.add_data(scan_url)
         qr.make(fit=True)
-        img = qr.make_image(fill_color='black', back_color='white')
-        img.save(os.path.join(self.cur_path, 'qrcode.jpg'))
-        showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        #img = qr.make_image(fill_color='black', back_color='white')
+        #img.save(os.path.join(self.cur_path, 'qrcode.jpg'))
+        #showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+
+        qr.print_ascii(out=None, tty=False, invert=False)
         # 检测二维码状态
         data = {
             'csrf_token': '',
@@ -203,15 +205,20 @@ class music163Scanqr():
         data = self.cracker.get(data)
         while True:
             response = self.session.post(self.checklogin_url, data=data)
-            if response.json()['code'] in [803]:
-                break
-            elif response.json()['code'] in [801, 802]:
-                continue
-            else:
-                raise RuntimeError(response.json())
-            time.sleep(0.5)
+            try:
+                if response.json()['code'] in [803]:
+                    break
+                elif response.json()['code'] in [801, 802]:
+                    continue
+                else:
+                    raise RuntimeError(response.json())
+            except:
+                raise RuntimeError("未知错误")
+            finally:
+                time.sleep(1)# sleep()在次循环中中无法到达，导致网易返回频繁操作的信息。(Lkhsss: 修复)
+
         # 登录成功
-        removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
+        # removeImage(os.path.join(self.cur_path, 'qrcode.jpg'))
         csrf = self.session.cookies.get('__csrf')
         data = self.cracker.get({'csrf_token': csrf})
         response = self.session.post(self.account_url.format(csrf), data=data)
