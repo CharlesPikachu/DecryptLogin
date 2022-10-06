@@ -195,7 +195,7 @@ class music163Scanqr():
         #img.save(os.path.join(self.cur_path, 'qrcode.jpg'))
         #showImage(os.path.join(self.cur_path, 'qrcode.jpg'))
 
-        qr.print_ascii(out=None, tty=False, invert=False)
+        qr.print_ascii(out=None, tty=False, invert=False) # 使用print_ascii函数在终端打印二维码，实现github action 扫码
         # 检测二维码状态
         data = {
             'csrf_token': '',
